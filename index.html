@@ -37,6 +37,7 @@
       <a href="#maps-prio">Top 12</a>
       <a href="#guide">Guide</a>
       <a href="#vcds">VCDS</a>
+      <a href="#downloads">Pack</a>
     </nav>
   </div>
   <p class="sub">Caddy CAYE · PCR2.1 · SW 9979 · SM2G0P2000000 · clic adresse = Ctrl+G · <kbd>/</kbd> chercher</p>
@@ -115,8 +116,26 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div id="vcds-rawmeta"></div>
 </details>
 
-
-
+<details class="downloads collapsible" id="downloads">
+  <summary><h2>Pack atelier — téléchargement</h2> <span class="sum-hint">protégé par mot de passe</span></summary>
+  <div class="guide">
+    <b>Contenu du ZIP</b> (une fois déverrouillé) :
+    mappack WinOLS, jump list, maps changées, guides deletes / import, deletes DTC par P-code.
+    Demande le mot de passe à SAVAGESEAR — le fichier reste chiffré sur le serveur.
+  </div>
+  <form class="dl-lock" id="dl-form" autocomplete="off">
+    <label class="dl-label" for="dl-pass">Mot de passe</label>
+    <div class="dl-row">
+      <input type="password" id="dl-pass" name="password" placeholder="••••••••" required minlength="4" autocomplete="current-password">
+      <button type="submit" class="act" id="dl-unlock">Déverrouiller</button>
+    </div>
+    <p class="dl-status" id="dl-status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="dl-unlocked" id="dl-unlocked" hidden>
+    <p class="dl-ok">Pack déchiffré. Télécharge le ZIP puis importe le mappack dans WinOLS.</p>
+    <button type="button" class="act" id="dl-save">Télécharger atelier-caddy-9979.zip</button>
+  </div>
+</details>
 
 
 
@@ -1535,6 +1554,94 @@ function openMap2d(id) {
 })();
 
 /* /dtc-atlas-js */
+</script>
+
+<script>
+/* pack-download-js */
+(function () {
+  const PACK_URL = 'packs/atelier-caddy-9979.bin';
+  const AAD = new TextEncoder().encode('SAVAGESEAR-PACK');
+  const form = document.getElementById('dl-form');
+  const passEl = document.getElementById('dl-pass');
+  const statusEl = document.getElementById('dl-status');
+  const unlocked = document.getElementById('dl-unlocked');
+  const saveBtn = document.getElementById('dl-save');
+  if (!form || !passEl || !saveBtn) return;
+
+  let zipBlob = null;
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg || '';
+    statusEl.className = 'dl-status' + (kind ? ' ' + kind : '');
+  }
+
+  async function deriveKey(password, salt) {
+    const base = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(password),
+      'PBKDF2',
+      false,
+      ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: 200000, hash: 'SHA-256' },
+      base,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+  }
+
+  async function unlock(password) {
+    setStatus('Vérification…', 'busy');
+    unlocked.hidden = true;
+    zipBlob = null;
+    const res = await fetch(PACK_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Pack introuvable (' + res.status + ')');
+    const buf = new Uint8Array(await res.arrayBuffer());
+    if (buf.length < 8 + 16 + 12 + 16) throw new Error('Pack corrompu');
+    const magic = new TextDecoder().decode(buf.slice(0, 8));
+    if (magic !== 'SSPACK01') throw new Error('Format pack invalide');
+    const salt = buf.slice(8, 24);
+    const iv = buf.slice(24, 36);
+    const cipher = buf.slice(36);
+    const key = await deriveKey(password, salt);
+    let plain;
+    try {
+      plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv, additionalData: AAD }, key, cipher);
+    } catch (_) {
+      throw new Error('Mot de passe incorrect');
+    }
+    zipBlob = new Blob([plain], { type: 'application/zip' });
+    unlocked.hidden = false;
+    setStatus('OK — pack prêt.', 'ok');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pwd = passEl.value;
+    if (!pwd) return;
+    try {
+      await unlock(pwd);
+    } catch (err) {
+      unlocked.hidden = true;
+      zipBlob = null;
+      setStatus(err.message || 'Échec', 'bad');
+    }
+  });
+
+  saveBtn.addEventListener('click', () => {
+    if (!zipBlob) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(zipBlob);
+    a.download = 'atelier-caddy-9979.zip';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  });
+})();
+/* /pack-download-js */
 </script>
 </body>
 </html>
