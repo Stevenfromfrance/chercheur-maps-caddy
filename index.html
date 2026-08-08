@@ -77,7 +77,7 @@
     <li><b>Comprendre la page</b> : choisis la paire en haut — <b>ORI vs ACE</b> (Stage1 prépa), <b>ORI vs V1</b> (ta carto), <b>ACE vs V1</b> (écart V1 sur ACE). Chaque adresse = une map WinOLS.</li>
     <li><b>V1</b> = base ACE + AccPed/tqlim/rail/smoke (partiels soft, WOT ~350 Nm, hardcut 4800). Deletes FAP/EGR ACE inchangés.</li>
     <li><b>Cible atelier ≠ ACE brut</b> : ACE pousse wish/smoke vers ~350–400 Nm. V1 plafonne le WOT à ~350 avec pédale plus calme.</li>
-    <li><b>Atlas DTC</b> : section <a href="#dtc-atlas">DTC atlas</a> = chaque P-code DaVinci 1-par-1 + reste fonction <code>0x180xxx</code>.</li>
+    <li><b>Atlas DTC</b> : section <a href="#dtc-atlas">DTC atlas</a> = tableau compact des P-codes DaVinci + reste fonction <code>0x180xxx</code>.</li>
     <li><b>Hors A2L</b> = mélange DTC deletes + suites Stage1 (rail…) + calib — pas « deletes seulement ». Filtre famille <code>Deletes ACE</code> pour les P-codes.</li>
     <li><b>WinOLS</b> : charge ORI en version « Original », puis ACE <code>.NOCS</code> en 2ᵉ version (même SW 9979).</li>
     <li>Clique une adresse bleue ici → elle se copie → dans WinOLS <kbd>Ctrl</kbd>+<kbd>G</kbd> → coller → Entrée.</li>
@@ -148,13 +148,13 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 
 
 
-<section class="dtc-atlas" id="dtc-atlas">
-  <div class="sec-head">
-    <h2>Atlas DTC OFF (DaVinci 1-par-1)</h2>
-    <p class="sec-lead">30 codes cartographiés · zone DTC 100% · clic adresse = Ctrl+G · couverture DPF+EGR ≈ 91%</p>
-  </div>
-  <p class="lead" style="padding:0 var(--pad)">Masques table <code>0x19E000–0x1A4000</code> : DaVinci met le bloc à <b>00</b>. Pas des maps couple.</p>
-  <div class="dtc-filters" id="dtc-filters" style="padding:8px var(--pad) 4px;display:flex;flex-wrap:wrap;gap:8px">
+<details class="dtc-atlas collapsible" id="dtc-atlas">
+  <summary>
+    <h2>Atlas DTC OFF (DaVinci)</h2>
+    <span class="sum-hint">30 codes · replié — ouvrir si besoin</span>
+  </summary>
+  <p class="lead dtc-lead">Masques <code>0x19E000–0x1A4000</code> → DaVinci met à <b>00</b>. Pas des maps couple. Couverture DPF+EGR ≈ 91%.</p>
+  <div class="dtc-filters" id="dtc-filters">
     <button type="button" class="chip on" data-dtc-fam="">Tous</button>
     <button type="button" class="chip" data-dtc-fam="EGR">EGR</button>
     <button type="button" class="chip" data-dtc-fam="DPF">DPF</button>
@@ -163,194 +163,48 @@ Ou clique « Charger fichier… » et choisis ton .CSV
     <button type="button" class="chip" data-dtc-fam="EGR com">EGR com</button>
     <button type="button" class="chip" data-dtc-fam="DPF/O2">DPF/O2</button>
   </div>
-  <div class="cards" id="dtc-cards">
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0400</span><span class="dtc-name">Exhaust Gas Recirculation Flow</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0935">1A0935</button> → <button class="addr big" data-addr="1A095B">1A095B</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0401</span><span class="dtc-name">Exhaust Gas Recirculation Flow Insufficient Detected</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0725">1A0725</button> → <button class="addr big" data-addr="1A074B">1A074B</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0402</span><span class="dtc-name">Exhaust Gas Recirculation Flow Excessive Detected</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0751">1A0751</button> → <button class="addr big" data-addr="1A0777">1A0777</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0403</span><span class="dtc-name">Exhaust Gas Recirculation Control Circuit</span></h3>
-  <p class="meta">1 zone(s) · 83 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0885">1A0885</button> → <button class="addr big" data-addr="1A08D7">1A08D7</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0407</span><span class="dtc-name">Exhaust Gas Recirculation Sensor B Circuit Low</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0408</span><span class="dtc-name">Exhaust Gas Recirculation Sensor B Circuit High</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR/DPF">
-  <div class="badge">EGR/DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P046C</span><span class="dtc-name">Transmetteur 1 de recyclage des gaz d'echappement</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A32CD">1A32CD</button> → <button class="addr big" data-addr="1A32F3">1A32F3</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0471</span><span class="dtc-name">Exhaust Pressure Sensor Range Performance</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A01D1">1A01D1</button> → <button class="addr big" data-addr="1A01F7">1A01F7</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGT">
-  <div class="badge">EGT</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0544</span><span class="dtc-name">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1</span></h3>
-  <p class="meta">3 zone(s) · 63 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A2CC9">1A2CC9</button> → <button class="addr big" data-addr="1A2CEF">1A2CEF</button> · +<button class="addr" data-addr="1A2D4D">1A2D4D</button>, <button class="addr" data-addr="1A2D73">1A2D73</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGT">
-  <div class="badge">EGT</div>
-  <h3 class="dtc-title"><span class="dtc-code">P0545</span><span class="dtc-name">Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A2DD1">1A2DD1</button> → <button class="addr big" data-addr="1A2DF7">1A2DF7</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P1400</span><span class="dtc-name">EGR related</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0961">1A0961</button> → <button class="addr big" data-addr="1A0987">1A0987</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P1428</span><span class="dtc-name">EGR / vacuum</span></h3>
-  <p class="meta">2 zone(s) · 24 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P147A</span><span class="dtc-name">EGR related (with P1428)</span></h3>
-  <p class="meta">2 zone(s) · 24 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2002</span><span class="dtc-name">Particulate Trap Efficiency Below Threshold Bank 1</span></h3>
-  <p class="meta">4 zone(s) · 109 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0071">1A0071</button> → <button class="addr big" data-addr="1A0097">1A0097</button> · +<button class="addr" data-addr="1A014D">1A014D</button>, <button class="addr" data-addr="1A0173">1A0173</button>, <button class="addr" data-addr="1A01A5">1A01A5</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGT">
-  <div class="badge">EGT</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2080</span><span class="dtc-name">Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1</span></h3>
-  <p class="meta">3 zone(s) · 63 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="19FE09">19FE09</button> → <button class="addr big" data-addr="19FE2F">19FE2F</button> · +<button class="addr" data-addr="19FE8D">19FE8D</button>, <button class="addr" data-addr="19FEB3">19FEB3</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2425</span><span class="dtc-name">Exhaust Gas Recirculation Cooling Valve Control CircuitOpen</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A06A1">1A06A1</button> → <button class="addr big" data-addr="1A06C7">1A06C7</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2426</span><span class="dtc-name">Exhaust Gas Recirculation Cooling Valve Control Circuit Low</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A06CD">1A06CD</button> → <button class="addr big" data-addr="1A06F3">1A06F3</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR">
-  <div class="badge">EGR</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2427</span><span class="dtc-name">Exhaust Gas Recirculation Cooling Valve Control Circuit High</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A06F9">1A06F9</button> → <button class="addr big" data-addr="1A071F">1A071F</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGT">
-  <div class="badge">EGT</div>
-  <h3 class="dtc-title"><span class="dtc-code">P242B</span><span class="dtc-name">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance</span></h3>
-  <p class="meta">3 zone(s) · 63 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="19FE35">19FE35</button> → <button class="addr big" data-addr="19FE5B">19FE5B</button> · +<button class="addr" data-addr="19FEB9">19FEB9</button>, <button class="addr" data-addr="19FEDF">19FEDF</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2453</span><span class="dtc-name">DPF pressure sensor A circuit range performance</span></h3>
-  <p class="meta">2 zone(s) · 166 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A009D">1A009D</button> → <button class="addr big" data-addr="1A011B">1A011B</button> · +<button class="addr" data-addr="1A0255">1A0255</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2454</span><span class="dtc-name">DPF pressure sensor A circuit low</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2455</span><span class="dtc-name">DPF pressure sensor A circuit high</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2456</span><span class="dtc-name">DPF pressure sensor</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A0229">1A0229</button> → <button class="addr big" data-addr="1A024F">1A024F</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2458</span><span class="dtc-name">DPF regeneration duration</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A2959">1A2959</button> → <button class="addr big" data-addr="1A297F">1A297F</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2463</span><span class="dtc-name">DPF Restriction - Soot accumulation</span></h3>
-  <p class="meta">3 zone(s) · 117 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A1409">1A1409</button> → <button class="addr big" data-addr="1A142F">1A142F</button> · +<button class="addr" data-addr="1A1B99">1A1B99</button>, <button class="addr" data-addr="1A3065">1A3065</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGT">
-  <div class="badge">EGT</div>
-  <h3 class="dtc-title"><span class="dtc-code">P246E</span><span class="dtc-name">EGT / DPF related</span></h3>
-  <p class="meta">2 zone(s) · 25 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A2DA5">1A2DA5</button> → <button class="addr big" data-addr="1A2DBB">1A2DBB</button> · +<button class="addr" data-addr="1A2DCA">1A2DCA</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF/O2">
-  <div class="badge">DPF/O2</div>
-  <h3 class="dtc-title"><span class="dtc-code">P2626</span><span class="dtc-name">O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1</span></h3>
-  <p class="meta">1 zone(s) · 39 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A1931">1A1931</button> → <button class="addr big" data-addr="1A1957">1A1957</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P3004</span><span class="dtc-name">DPF related</span></h3>
-  <p class="meta">4 zone(s) · 54 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A22A5">1A22A5</button> → <button class="addr big" data-addr="1A22BE">1A22BE</button> · +<button class="addr" data-addr="1A22CB">1A22CB</button>, <button class="addr" data-addr="1A22FD">1A22FD</button>, <button class="addr" data-addr="1A2323">1A2323</button></p>
-</article>
-<article class="card dtc-card" data-fam="DPF">
-  <div class="badge">DPF</div>
-  <h3 class="dtc-title"><span class="dtc-code">P3005</span><span class="dtc-name">DPF related</span></h3>
-  <p class="meta">2 zone(s) · 27 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="1A2381">1A2381</button> → <button class="addr big" data-addr="1A239A">1A239A</button> · +<button class="addr" data-addr="1A23A7">1A23A7</button></p>
-</article>
-<article class="card dtc-card" data-fam="EGR com">
-  <div class="badge">EGR com</div>
-  <h3 class="dtc-title"><span class="dtc-code">U1112</span><span class="dtc-name">Lost communication (EGR)</span></h3>
-  <p class="meta">13 zone(s) · 348 octets → 00</p>
-  <p class="range"><button class="addr big" data-addr="19E1AD">19E1AD</button> → <button class="addr big" data-addr="19E1FF">19E1FF</button> · +<button class="addr" data-addr="19E759">19E759</button>, <button class="addr" data-addr="19EFC5">19EFC5</button>, <button class="addr" data-addr="19EFEA">19EFEA</button> (+9)</p>
-</article>
+  <div class="table-wrap dtc-table-wrap">
+  <table class="dtc-table" id="dtc-cards">
+    <thead><tr><th>Famille</th><th>Code</th><th>Libellé</th><th>Zones</th><th>Octets</th><th>Adresses (Ctrl+G)</th></tr></thead>
+    <tbody>
+<tr class="dtc-row" data-fam="EGR" data-text="p0400 exhaust gas recirculation flow egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0400</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0935">1A0935</button> → <button class="addr big" data-addr="1A095B">1A095B</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0401 exhaust gas recirculation flow insufficient detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0401</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Insufficient Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0725">1A0725</button> → <button class="addr big" data-addr="1A074B">1A074B</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0402 exhaust gas recirculation flow excessive detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0402</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Excessive Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0751">1A0751</button> → <button class="addr big" data-addr="1A0777">1A0777</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0403 exhaust gas recirculation control circuit egr 1 zone(s) · 83 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0403</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Control Circuit</td><td class="num">1</td><td class="num">83</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0885">1A0885</button> → <button class="addr big" data-addr="1A08D7">1A08D7</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0407 exhaust gas recirculation sensor b circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0407</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0408 exhaust gas recirculation sensor b circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0408</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></td></tr>
+<tr class="dtc-row" data-fam="EGR/DPF" data-text="p046c transmetteur 1 de recyclage des gaz d'echappement egr/dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR/DPF</span></td><td class="dtc-code-cell"><b>P046C</b></td><td class="dtc-name-cell">Transmetteur 1 de recyclage des gaz d'echappement</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32CD">1A32CD</button> → <button class="addr big" data-addr="1A32F3">1A32F3</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p0471 exhaust pressure sensor range performance dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P0471</b></td><td class="dtc-name-cell">Exhaust Pressure Sensor Range Performance</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A01D1">1A01D1</button> → <button class="addr big" data-addr="1A01F7">1A01F7</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p0544 exhaust gas temperature sensor circuit bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0544</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2CC9">1A2CC9</button> → <button class="addr big" data-addr="1A2CEF">1A2CEF</button> · +<button class="addr" data-addr="1A2D4D">1A2D4D</button>, <button class="addr" data-addr="1A2D73">1A2D73</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p0545 exhaust gas temperature sensor circuit low bank 1 sensor 1 egt 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0545</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DD1">1A2DD1</button> → <button class="addr big" data-addr="1A2DF7">1A2DF7</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p1400 egr related egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1400</b></td><td class="dtc-name-cell">EGR related</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0961">1A0961</button> → <button class="addr big" data-addr="1A0987">1A0987</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p1428 egr / vacuum egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1428</b></td><td class="dtc-name-cell">EGR / vacuum</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p147a egr related (with p1428) egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P147A</b></td><td class="dtc-name-cell">EGR related (with P1428)</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2002 particulate trap efficiency below threshold bank 1 dpf 4 zone(s) · 109 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2002</b></td><td class="dtc-name-cell">Particulate Trap Efficiency Below Threshold Bank 1</td><td class="num">4</td><td class="num">109</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0071">1A0071</button> → <button class="addr big" data-addr="1A0097">1A0097</button> · +<button class="addr" data-addr="1A014D">1A014D</button>, <button class="addr" data-addr="1A0173">1A0173</button>, <button class="addr" data-addr="1A01A5">1A01A5</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p2080 exhaust gas temperature sensor circuit range performance bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P2080</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE09">19FE09</button> → <button class="addr big" data-addr="19FE2F">19FE2F</button> · +<button class="addr" data-addr="19FE8D">19FE8D</button>, <button class="addr" data-addr="19FEB3">19FEB3</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2425 exhaust gas recirculation cooling valve control circuitopen egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2425</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control CircuitOpen</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06A1">1A06A1</button> → <button class="addr big" data-addr="1A06C7">1A06C7</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2426 exhaust gas recirculation cooling valve control circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2426</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06CD">1A06CD</button> → <button class="addr big" data-addr="1A06F3">1A06F3</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2427 exhaust gas recirculation cooling valve control circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2427</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06F9">1A06F9</button> → <button class="addr big" data-addr="1A071F">1A071F</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p242b exhaust gas temperature sensor circuit bank 1 sensor 3 range performance egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P242B</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE35">19FE35</button> → <button class="addr big" data-addr="19FE5B">19FE5B</button> · +<button class="addr" data-addr="19FEB9">19FEB9</button>, <button class="addr" data-addr="19FEDF">19FEDF</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2453 dpf pressure sensor a circuit range performance dpf 2 zone(s) · 166 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2453</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit range performance</td><td class="num">2</td><td class="num">166</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A009D">1A009D</button> → <button class="addr big" data-addr="1A011B">1A011B</button> · +<button class="addr" data-addr="1A0255">1A0255</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2454 dpf pressure sensor a circuit low dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2454</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2455 dpf pressure sensor a circuit high dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2455</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit high</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2456 dpf pressure sensor dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2456</b></td><td class="dtc-name-cell">DPF pressure sensor</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0229">1A0229</button> → <button class="addr big" data-addr="1A024F">1A024F</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2458 dpf regeneration duration dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2458</b></td><td class="dtc-name-cell">DPF regeneration duration</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2959">1A2959</button> → <button class="addr big" data-addr="1A297F">1A297F</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2463 dpf restriction - soot accumulation dpf 3 zone(s) · 117 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2463</b></td><td class="dtc-name-cell">DPF Restriction - Soot accumulation</td><td class="num">3</td><td class="num">117</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1409">1A1409</button> → <button class="addr big" data-addr="1A142F">1A142F</button> · +<button class="addr" data-addr="1A1B99">1A1B99</button>, <button class="addr" data-addr="1A3065">1A3065</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p246e egt / dpf related egt 2 zone(s) · 25 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P246E</b></td><td class="dtc-name-cell">EGT / DPF related</td><td class="num">2</td><td class="num">25</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DA5">1A2DA5</button> → <button class="addr big" data-addr="1A2DBB">1A2DBB</button> · +<button class="addr" data-addr="1A2DCA">1A2DCA</button></td></tr>
+<tr class="dtc-row" data-fam="DPF/O2" data-text="p2626 o2=sensor pumping current trim circuit open bank 1 sensor 1 dpf/o2 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF/O2</span></td><td class="dtc-code-cell"><b>P2626</b></td><td class="dtc-name-cell">O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1931">1A1931</button> → <button class="addr big" data-addr="1A1957">1A1957</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p3004 dpf related dpf 4 zone(s) · 54 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3004</b></td><td class="dtc-name-cell">DPF related</td><td class="num">4</td><td class="num">54</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A22A5">1A22A5</button> → <button class="addr big" data-addr="1A22BE">1A22BE</button> · +<button class="addr" data-addr="1A22CB">1A22CB</button>, <button class="addr" data-addr="1A22FD">1A22FD</button>, <button class="addr" data-addr="1A2323">1A2323</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p3005 dpf related dpf 2 zone(s) · 27 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3005</b></td><td class="dtc-name-cell">DPF related</td><td class="num">2</td><td class="num">27</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2381">1A2381</button> → <button class="addr big" data-addr="1A239A">1A239A</button> · +<button class="addr" data-addr="1A23A7">1A23A7</button></td></tr>
+<tr class="dtc-row" data-fam="EGR com" data-text="u1112 lost communication (egr) egr com 13 zone(s) · 348 octets → 00"><td><span class="dtc-fam">EGR com</span></td><td class="dtc-code-cell"><b>U1112</b></td><td class="dtc-name-cell">Lost communication (EGR)</td><td class="num">13</td><td class="num">348</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E1AD">19E1AD</button> → <button class="addr big" data-addr="19E1FF">19E1FF</button> · +<button class="addr" data-addr="19E759">19E759</button>, <button class="addr" data-addr="19EFC5">19EFC5</button>, <button class="addr" data-addr="19EFEA">19EFEA</button> (+9)</td></tr>
+    </tbody>
+  </table>
+  <p class="note" id="dtc-count"></p>
   </div>
 
-  <div class="sec-head" style="margin-top:28px">
-    <h2>Reste fonction <code>0x180xxx</code> (non-DTC)</h2>
-    <p class="sec-lead">135 octets encore dans DaVinci DPF+EGR · hors A2L Stage1 · flags / seuils</p>
-  </div>
-  <div class="table-wrap" style="padding:0 var(--pad) 24px">
+  <details class="dtc-reste collapsible">
+    <summary><b>Reste fonction <code>0x180xxx</code></b> <span class="sum-hint">135 B · flags / seuils · hors A2L</span></summary>
+  <div class="table-wrap dtc-reste-wrap">
   <table>
     <thead><tr><th>Début</th><th>Fin</th><th>Octets</th><th>Pattern</th><th>ORI → DAV</th></tr></thead>
     <tbody>
@@ -387,7 +241,8 @@ Ou clique « Charger fichier… » et choisis ton .CSV
     </tbody>
   </table>
   </div>
-</section>
+  </details>
+</details>
 
 <section class="maps-prio" id="maps-prio">
   <div class="sec-head">
@@ -1685,24 +1540,30 @@ function applyComparePair(pair) {
 
 (function(){
   const filters = document.getElementById('dtc-filters');
-  const cards = document.querySelectorAll('#dtc-cards .dtc-card');
+  const rows = document.querySelectorAll('#dtc-cards tbody tr.dtc-row');
+  const countEl = document.getElementById('dtc-count');
   if (!filters) return;
+  function apply(fam) {
+    let n = 0;
+    rows.forEach(row => {
+      const f = row.getAttribute('data-fam') || '';
+      let show = !fam;
+      if (fam === 'EGR') show = ['EGR','EGR/DPF','EGR com'].includes(f);
+      else if (fam === 'DPF') show = ['DPF','EGR/DPF','DPF/O2'].includes(f);
+      else if (fam) show = f === fam;
+      row.style.display = show ? '' : 'none';
+      if (show) n++;
+    });
+    if (countEl) countEl.textContent = n + ' / ' + rows.length + ' DTC';
+  }
   filters.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-dtc-fam]');
     if (!btn) return;
     filters.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
     btn.classList.add('on');
-    const fam = btn.getAttribute('data-dtc-fam') || '';
-    cards.forEach(card => {
-      const ok = !fam || (card.getAttribute('data-fam') || '').includes(fam) || card.getAttribute('data-fam') === fam;
-      // EGR filter should match EGR, EGR/DPF, EGR com
-      let show = !fam;
-      if (fam === 'EGR') show = ['EGR','EGR/DPF','EGR com'].includes(card.getAttribute('data-fam'));
-      else if (fam === 'DPF') show = ['DPF','EGR/DPF','DPF/O2'].includes(card.getAttribute('data-fam'));
-      else if (fam) show = card.getAttribute('data-fam') === fam;
-      card.style.display = show ? '' : 'none';
-    });
+    apply(btn.getAttribute('data-dtc-fam') || '');
   });
+  apply('');
 })();
 
 /* /dtc-atlas-js */
