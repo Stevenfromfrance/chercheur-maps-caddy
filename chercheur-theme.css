@@ -240,6 +240,44 @@ h1 {
   gap: 6px;
   margin-top: 8px;
 }
+.pair-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 8px;
+}
+.pair-label {
+  font-family: var(--display);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pair-btn {
+  background: #0d0d0d;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-family: var(--display);
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+.pair-btn.on, .pair-btn:hover {
+  color: #fff;
+  border-color: var(--accent);
+  background: rgba(226, 58, 26, 0.22);
+}
+.pair-hint {
+  color: var(--muted);
+  font-size: 0.85em;
+}
 .chip {
   background: #0d0d0d;
   color: var(--muted);
