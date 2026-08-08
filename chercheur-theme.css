@@ -86,6 +86,7 @@ body.mode-work > #all-maps { order: 2; }
 body.mode-work > #view2d { order: 3; }
 body.mode-work > #guide { order: 8; }
 body.mode-work > #vcds { order: 9; }
+body.mode-work > #downloads { order: 10; }
 body.mode-work > .toast { order: 20; }
 body.mode-work > #v2d-tip { order: 21; }
 body.mode-work .stats { display: none; }
