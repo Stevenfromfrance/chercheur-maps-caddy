@@ -37,6 +37,7 @@
       <a href="#maps-prio">Top 12</a>
       <a href="#guide">Guide</a>
       <a href="#vcds">VCDS</a>
+      <a href="#hexdump">Hex</a>
       <a href="#downloads">Pack</a>
     </nav>
   </div>
@@ -520,6 +521,39 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </article>
   </div>
 </section>
+<section id="hexdump" class="hexdump">
+  <h2>Dump hex type WinOLS — adresses + octets</h2>
+  <div class="guide">
+    <b>Comme le dump WinOLS</b> : adresse à gauche, 16 octets/ligne, ASCII à droite.
+    Jaune = octet différent ORI → ACE. Clique une adresse bleue ailleurs sur le site, ou saisis-en une ici (Ctrl+G).
+    Atlas = zones touchées + maps A2L (pas le dump 2&nbsp;Mo entier).
+  </div>
+  <div class="hex-bar">
+    <label class="hex-goto">Adresse
+      <input id="hex-addr" type="text" spellcheck="false" placeholder="1CF9C0" maxlength="8" inputmode="text" autocomplete="off">
+    </label>
+    <button type="button" class="act" id="hex-go">Aller</button>
+    <button type="button" class="act sec" id="hex-prev" title="Page précédente">↑</button>
+    <button type="button" class="act sec" id="hex-next" title="Page suivante">↓</button>
+    <div class="hex-modes" role="group" aria-label="Mode dump">
+      <button type="button" data-hex-mode="ace" class="on">ACE</button>
+      <button type="button" data-hex-mode="ori">ORI</button>
+      <button type="button" data-hex-mode="split">ORI | ACE</button>
+    </div>
+    <select id="hex-jump" aria-label="Aller à une map">
+      <option value="">Maps touchées…</option>
+    </select>
+    <span class="note" id="hex-status">Chargement atlas…</span>
+  </div>
+  <div class="hex-legend">
+    <span><i class="hx-diff"></i> Octet modifié</span>
+    <span><i class="hx-sel"></i> Adresse cible</span>
+    <span><i class="hx-same"></i> Identique</span>
+  </div>
+  <div id="hex-meta" class="hex-meta"></div>
+  <div id="hex-view" class="hex-view" tabindex="0" aria-label="Dump hexadécimal"></div>
+</section>
+
 <section id="view2d" class="view2d">
   <h2>Vue 2D type WinOLS — comparaison ORI / ACE</h2>
   <div class="guide">
@@ -821,6 +855,9 @@ function copyAddr(addr) {
     toast.style.display = 'block';
     setTimeout(() => toast.style.display = 'none', 1600);
   });
+  if (typeof window.hexGoto === 'function') {
+    window.hexGoto(addr, { scroll: false, silent: true });
+  }
 }
 document.addEventListener('click', (e) => {
   const b = e.target.closest('button.addr');
@@ -1642,6 +1679,253 @@ function openMap2d(id) {
   });
 })();
 /* /pack-download-js */
+</script>
+
+<script>
+/* hex-dump-js */
+(function () {
+  const ATLAS_URL = 'data/hex-atlas.json';
+  const ROWS = 24;
+  const COLS = 16;
+  const view = document.getElementById('hex-view');
+  const statusEl = document.getElementById('hex-status');
+  const metaEl = document.getElementById('hex-meta');
+  const addrInput = document.getElementById('hex-addr');
+  const jumpSel = document.getElementById('hex-jump');
+  if (!view || !addrInput) return;
+
+  let atlas = null;
+  let windows = [];
+  let mode = 'ace';
+  let cursor = 0x1CF9C0;
+  let pageStart = cursor & ~0xF;
+
+  function hx(n, w) {
+    return (n >>> 0).toString(16).toUpperCase().padStart(w || 6, '0');
+  }
+  function parseAddr(s) {
+    const t = String(s || '').trim().replace(/^0x/i, '');
+    if (!/^[0-9a-fA-F]{1,8}$/.test(t)) return null;
+    return parseInt(t, 16);
+  }
+  function b64ToBytes(b64) {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  function findWindow(addr) {
+    for (const w of windows) {
+      if (addr >= w.start && addr < w.start + w.ori.length) return w;
+    }
+    return null;
+  }
+  function nearestWindow(addr) {
+    let best = null, bestDist = Infinity;
+    for (const w of windows) {
+      const end = w.start + w.ori.length - 1;
+      const dist = addr < w.start ? w.start - addr : (addr > end ? addr - end : 0);
+      if (dist < bestDist) { bestDist = dist; best = w; }
+    }
+    return best;
+  }
+  function asciiChar(b) {
+    return b >= 32 && b <= 126 ? String.fromCharCode(b) : '.';
+  }
+  function renderBytes(w, off, which, selAddr) {
+    let html = '';
+    for (let i = 0; i < COLS; i++) {
+      const abs = w.start + off + i;
+      if (off + i >= w.ori.length) {
+        html += '<span class="byte gap">··</span>';
+        continue;
+      }
+      const o = w.ori[off + i];
+      const a = w.ace[off + i];
+      const v = which === 'ori' ? o : a;
+      const cls = ['byte'];
+      if (o !== a) cls.push('diff');
+      if (abs === selAddr) cls.push('sel');
+      html += '<span class="' + cls.join(' ') + '" title="' + hx(abs) + ' ORI=' + hx(o, 2) + ' ACE=' + hx(a, 2) + '">' + hx(v, 2) + '</span>';
+    }
+    return html;
+  }
+  function renderAscii(w, off, which) {
+    let s = '';
+    for (let i = 0; i < COLS; i++) {
+      if (off + i >= w.ori.length) { s += ' '; continue; }
+      const v = which === 'ori' ? w.ori[off + i] : w.ace[off + i];
+      s += asciiChar(v);
+    }
+    return s;
+  }
+  function setStatus(msg) {
+    if (statusEl) statusEl.textContent = msg || '';
+  }
+
+  function render() {
+    if (!atlas) return;
+    const w = findWindow(pageStart) || findWindow(cursor);
+    metaEl.innerHTML = '';
+    if (!w) {
+      const near = nearestWindow(cursor);
+      view.innerHTML = '<div class="hx-empty">Adresse <b>' + hx(cursor) + '</b> hors atlas (zone non chargée — probablement identique ORI/ACE).<br>' +
+        (near ? 'Plus proche : <button type="button" class="addr" data-addr="' + hx(near.start) + '">' + hx(near.start) + '</button>' : '') +
+        '</div>';
+      setStatus('Hors atlas');
+      return;
+    }
+    const winEnd = w.start + w.ori.length;
+    let start = Math.max(w.start, pageStart & ~0xF);
+    if (start >= winEnd) start = (winEnd - COLS) & ~0xF;
+    if (start < w.start) start = w.start & ~0xF;
+    pageStart = start;
+
+    const lines = Math.min(ROWS, Math.ceil((winEnd - start) / COLS));
+    const changedInView = (() => {
+      let n = 0;
+      for (let a = start; a < Math.min(start + lines * COLS, winEnd); a++) {
+        const i = a - w.start;
+        if (w.ori[i] !== w.ace[i]) n++;
+      }
+      return n;
+    })();
+
+    metaEl.innerHTML = 'Fenêtre <b>' + hx(w.start) + '</b>–<b>' + hx(winEnd - 1) + '</b> · curseur <b>' + hx(cursor) + '</b> · ' +
+      changedInView + ' octet(s) diff visibles · atlas ' + atlas.windowCount + ' zones / ' + atlas.changedTotal + ' changés';
+
+    if (mode === 'split') {
+      let left = '', right = '';
+      for (let r = 0; r < lines; r++) {
+        const abs = start + r * COLS;
+        if (abs >= winEnd) break;
+        const off = abs - w.start;
+        left += '<div class="hex-line"><span class="addr-col">' + hx(abs) + '</span><span class="bytes">' +
+          renderBytes(w, off, 'ori', cursor) + '</span><span class="ascii">' + renderAscii(w, off, 'ori') + '</span></div>';
+        right += '<div class="hex-line"><span class="addr-col">' + hx(abs) + '</span><span class="bytes">' +
+          renderBytes(w, off, 'ace', cursor) + '</span><span class="ascii">' + renderAscii(w, off, 'ace') + '</span></div>';
+      }
+      view.innerHTML = '<div class="hex-split-wrap cols">' +
+        '<div><div class="hex-pane-lab">ORI</div>' + left + '</div>' +
+        '<div><div class="hex-pane-lab">ACE</div>' + right + '</div></div>';
+    } else {
+      let html = '';
+      const which = mode === 'ori' ? 'ori' : 'ace';
+      for (let r = 0; r < lines; r++) {
+        const abs = start + r * COLS;
+        if (abs >= winEnd) break;
+        const off = abs - w.start;
+        html += '<div class="hex-line"><span class="addr-col">' + hx(abs) + '</span><span class="bytes">' +
+          renderBytes(w, off, which, cursor) + '</span><span class="ascii">' + renderAscii(w, off, which) + '</span></div>';
+      }
+      view.innerHTML = html;
+    }
+    addrInput.value = hx(cursor);
+    setStatus('OK · mode ' + mode.toUpperCase());
+  }
+
+  function gotoAddr(addr, opts) {
+    opts = opts || {};
+    if (addr == null || addr < 0 || (atlas && addr >= atlas.size)) {
+      if (!opts.silent) setStatus('Adresse invalide');
+      return;
+    }
+    cursor = addr >>> 0;
+    const w = findWindow(cursor);
+    if (w) {
+      pageStart = Math.max(w.start, (cursor - 8 * COLS)) & ~0xF;
+      if (pageStart < w.start) pageStart = w.start & ~0xF;
+    } else {
+      pageStart = cursor & ~0xF;
+    }
+    render();
+    if (opts.scroll) {
+      document.getElementById('hexdump')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  window.hexGoto = gotoAddr;
+
+  document.getElementById('hex-go')?.addEventListener('click', () => {
+    const a = parseAddr(addrInput.value);
+    if (a == null) { setStatus('Adresse hex invalide'); return; }
+    gotoAddr(a);
+  });
+  addrInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      document.getElementById('hex-go')?.click();
+    }
+  });
+  document.getElementById('hex-prev')?.addEventListener('click', () => {
+    pageStart = Math.max(0, pageStart - ROWS * COLS);
+    cursor = pageStart;
+    render();
+  });
+  document.getElementById('hex-next')?.addEventListener('click', () => {
+    pageStart = pageStart + ROWS * COLS;
+    cursor = pageStart;
+    render();
+  });
+  document.querySelector('.hex-modes')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-hex-mode]');
+    if (!btn) return;
+    mode = btn.getAttribute('data-hex-mode');
+    document.querySelectorAll('.hex-modes [data-hex-mode]').forEach((b) => b.classList.toggle('on', b === btn));
+    render();
+  });
+  jumpSel?.addEventListener('change', () => {
+    const a = parseAddr(jumpSel.value);
+    if (a == null) return;
+    gotoAddr(a, { scroll: true });
+  });
+  view.addEventListener('click', (e) => {
+    const byte = e.target.closest('.byte[title]');
+    if (!byte) return;
+    const m = /^([0-9A-F]+)/i.exec(byte.getAttribute('title') || '');
+    if (m) gotoAddr(parseInt(m[1], 16));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() !== 'g' || !(e.ctrlKey || e.metaKey)) return;
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    e.preventDefault();
+    document.getElementById('hexdump')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    addrInput.focus();
+    addrInput.select();
+  });
+
+  fetch(ATLAS_URL)
+    .then((r) => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then((data) => {
+      atlas = data;
+      windows = (data.windows || []).map((w) => ({
+        start: w.start,
+        ori: b64ToBytes(w.ori),
+        ace: b64ToBytes(w.ace),
+      }));
+      if (jumpSel) {
+        const frag = document.createDocumentFragment();
+        (data.jumps || []).slice(0, 120).forEach((j) => {
+          const opt = document.createElement('option');
+          opt.value = hx(j.addr);
+          opt.textContent = hx(j.addr) + ' · ' + j.id + ' (' + j.changed + ' B)';
+          frag.appendChild(opt);
+        });
+        jumpSel.appendChild(frag);
+      }
+      setStatus('Atlas OK · ' + data.windowCount + ' zones');
+      const prio = (data.priority && data.priority[0] && data.priority[0].addr) || 0x1CF9C0;
+      gotoAddr(prio);
+    })
+    .catch((err) => {
+      setStatus('Échec chargement atlas');
+      view.innerHTML = '<div class="hx-empty">Impossible de charger <code>data/hex-atlas.json</code> — ' + (err.message || err) + '</div>';
+    });
+})();
+/* /hex-dump-js */
 </script>
 </body>
 </html>
