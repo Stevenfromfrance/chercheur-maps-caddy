@@ -8,11 +8,14 @@
   const ctx = canvas.getContext('2d');
   let mode = 'right'; // left | right | diff
   let mapId = '';
-  let rotY = -0.65;
-  let rotX = 0.55;
+  // WinOLS-like default: look down at the carpet, origin (low X / low Y) near-left
+  let rotY = -0.72;
+  let rotX = 0.58;
   let zoom = 1;
   let drag = null;
   let hover = null;
+  // flipDepth: reverse RPM/row along depth (Y axis of the map)
+  let flipDepth = false;
 
   function grids() {
     return (typeof MAP_GRIDS !== 'undefined' && MAP_GRIDS) || window.MAP_GRIDS || [];
@@ -100,13 +103,15 @@
   }
 
   function project(x, y, z, W, H) {
-    // rotate around Y then X
+    // Model: X right, Y up (value), Z depth (map Y / RPM).
+    // Pitch sign must put the NEAR ground edge at the BOTTOM of the canvas
+    // (previous +pitch foreshortening put near at the top → “à l’envers”).
     const cy = Math.cos(rotY), sy = Math.sin(rotY);
     const cx = Math.cos(rotX), sx = Math.sin(rotX);
     let x1 = x * cy + z * sy;
     let z1 = -x * sy + z * cy;
-    let y1 = y * cx - z1 * sx;
-    z1 = y * sx + z1 * cx;
+    let y1 = y * cx + z1 * sx;
+    z1 = -y * sx + z1 * cx;
     const persp = 2.8 / (2.8 + z1);
     const s = 180 * zoom * persp;
     return {
@@ -115,6 +120,16 @@
       z: z1,
       p: persp,
     };
+  }
+
+  /** Column → world X in [-1, 1] (pedal / axisX), left → right like Grille 2D. */
+  function colToX(c, cols) {
+    return (c / Math.max(1, cols - 1)) * 2 - 1;
+  }
+  /** Row → world Z depth. Default: row 0 (top of Grille 2D) at near edge (z=-1). */
+  function rowToZ(r, rows) {
+    const z = (r / Math.max(1, rows - 1)) * 2 - 1;
+    return flipDepth ? -z : z;
   }
 
   function valuesForMode(g) {
@@ -203,6 +218,9 @@
 
     // build quads with average depth for painter's algorithm
     const quads = [];
+    const scaleElev = isDiff ? (maxAbs || 1) : (maxV - minV || 1);
+    const baseElev = isDiff ? 0 : minV;
+    function elev(v) { return ((v - baseElev) / scaleElev) * 0.9; }
     for (let r = 0; r < rows - 1; r++) {
       for (let c = 0; c < cols - 1; c++) {
         const i00 = r * cols + c;
@@ -210,18 +228,8 @@
         const i01 = (r + 1) * cols + c;
         const i11 = (r + 1) * cols + (c + 1);
         if (i11 >= n) continue;
-        const nx = (c / Math.max(1, cols - 1)) * 2 - 1;
-        const nz = (r / Math.max(1, rows - 1)) * 2 - 1;
-        const scaleZ = isDiff ? (maxAbs || 1) : (maxV - minV || 1);
-        const base = isDiff ? 0 : minV;
-        function elev(v) { return ((v - base) / scaleZ) * 0.9; }
-        const p00 = project(nx, elev(out[i00]), nz, W, H);
-        const p10 = project(nx + 2 / Math.max(1, cols - 1), elev(out[i10]), nz, W, H);
-        const p01 = project(nx, elev(out[i01]), nz + 2 / Math.max(1, rows - 1), W, H);
-        const p11 = project(nx + 2 / Math.max(1, cols - 1), elev(out[i11]), nz + 2 / Math.max(1, rows - 1), W, H);
-        // fix x/z for actual cell corners
-        const xs = [-1, 1].map((_, k) => ((c + k) / Math.max(1, cols - 1)) * 2 - 1);
-        const zs = [-1, 1].map((_, k) => ((r + k) / Math.max(1, rows - 1)) * 2 - 1);
+        const xs = [colToX(c, cols), colToX(c + 1, cols)];
+        const zs = [rowToZ(r, rows), rowToZ(r + 1, rows)];
         const pts = [
           project(xs[0], elev(out[i00]), zs[0], W, H),
           project(xs[1], elev(out[i10]), zs[0], W, H),
@@ -273,11 +281,9 @@
     if (hover && hover.r < rows && hover.c < cols) {
       const i = hover.r * cols + hover.c;
       if (i < n) {
-        const x = (hover.c / Math.max(1, cols - 1)) * 2 - 1;
-        const z = (hover.r / Math.max(1, rows - 1)) * 2 - 1;
-        const scaleZ = isDiff ? (maxAbs || 1) : (maxV - minV || 1);
-        const base = isDiff ? 0 : minV;
-        const p = project(x, ((out[i] - base) / scaleZ) * 0.9, z, W, H);
+        const x = colToX(hover.c, cols);
+        const z = rowToZ(hover.r, rows);
+        const p = project(x, elev(out[i]), z, W, H);
         ctx.fillStyle = '#3ecf7a';
         ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#e8f0f8';
@@ -296,9 +302,10 @@
     ctx.textAlign = 'left';
     const ax = g.axisXName || 'X';
     const ay = g.axisYName || 'Y';
-    ctx.fillText(ax + (g.axisXUnit ? ' (' + g.axisXUnit + ')' : ''), 16, H - 18);
-    ctx.fillText(ay + (g.axisYUnit ? ' (' + g.axisYUnit + ')' : '') + ' → profondeur', 16, H - 36);
-    ctx.fillText('Z = ' + (g.unit || 'valeur'), 16, H - 54);
+    const depthDir = flipDepth ? ' (inversée)' : '';
+    ctx.fillText(ax + (g.axisXUnit ? ' (' + g.axisXUnit + ')' : '') + ' → droite', 16, H - 18);
+    ctx.fillText(ay + (g.axisYUnit ? ' (' + g.axisYUnit + ')' : '') + ' → profondeur' + depthDir, 16, H - 36);
+    ctx.fillText('Z = ' + (g.unit || 'valeur') + ' (hauteur)', 16, H - 54);
 
     const Lk = keys[0], Rk = keys[1];
     if (metaEl) {
@@ -343,8 +350,17 @@
       draw();
     });
   });
+  function syncFlipButton() {
+    const btn = document.getElementById('v3d-flip');
+    if (btn) btn.classList.toggle('on', flipDepth);
+  }
   document.getElementById('v3d-reset')?.addEventListener('click', () => {
-    rotY = -0.65; rotX = 0.55; zoom = 1; draw();
+    rotY = -0.72; rotX = 0.58; zoom = 1; draw();
+  });
+  document.getElementById('v3d-flip')?.addEventListener('click', () => {
+    flipDepth = !flipDepth;
+    syncFlipButton();
+    draw();
   });
   document.getElementById('v3d-to-2d')?.addEventListener('click', () => {
     if (typeof openMap2d === 'function') openMap2d(mapId);
@@ -384,8 +400,8 @@
       for (let c = 0; c < g.cols; c++) {
         const i = r * g.cols + c;
         if (i >= n) continue;
-        const x = (c / Math.max(1, g.cols - 1)) * 2 - 1;
-        const z = (r / Math.max(1, g.rows - 1)) * 2 - 1;
+        const x = colToX(c, g.cols);
+        const z = rowToZ(r, g.rows);
         const scaleZ = isDiff ? (maxAbs || 1) : (maxV - minV || 1);
         const base = isDiff ? 0 : minV;
         const p = project(x, ((out[i] - base) / scaleZ) * 0.9, z, W, H);
@@ -420,6 +436,7 @@
 
   // initial after MAP_GRIDS exists
   syncModeButtons();
+  syncFlipButton();
   if (mapId) draw();
   else {
     const t = setInterval(() => {

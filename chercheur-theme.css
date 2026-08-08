@@ -1250,7 +1250,8 @@ table.winols td.cell.same { opacity: .72; }
   color: var(--ink);
   cursor: pointer;
 }
-.view3d .v3d-modes button.on {
+.view3d .v3d-modes button.on,
+.view3d .v3d-bar #v3d-flip.on {
   border-color: var(--accent);
   background: rgba(226,58,26,.18);
   color: #fff;
