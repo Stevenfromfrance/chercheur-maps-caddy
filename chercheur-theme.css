@@ -75,7 +75,7 @@ body.density-large {
   --radius: 6px;
 }
 
-/* Mode atelier : tableau d'abord */
+/* Mode atelier : tableau d'abord (legacy — remplacé par app-pages) */
 body.mode-work {
   display: flex;
   flex-direction: column;
@@ -93,6 +93,62 @@ body.mode-work > .toast { order: 20; }
 body.mode-work > #v2d-tip { order: 21; }
 body.mode-work .stats { display: none; }
 body.mode-work .sub { margin-bottom: 8px; font-size: 0.92em; }
+
+/* —— App multi-pages —— */
+body.app-pages {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body.app-pages .stats { display: none; }
+body.app-pages .quick-chips { display: none; }
+body.app-pages[data-page="all-maps"] .quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+body.app-pages .app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-bottom: 28px;
+}
+body.app-pages .page-panel {
+  display: none !important;
+  margin-left: var(--pad);
+  margin-right: var(--pad);
+  margin-top: 12px;
+}
+body.app-pages .page-panel.is-active {
+  display: block !important;
+}
+body.app-pages details.page-panel.is-active {
+  display: block !important;
+}
+body.app-pages details.page-panel.is-active > summary {
+  cursor: default;
+}
+body.app-pages details.page-panel.is-active > summary .sum-hint {
+  opacity: 0.65;
+}
+.nav-jump a.on {
+  background: rgba(226, 58, 26, 0.28);
+  color: #fff;
+  border-color: var(--accent);
+}
+body.app-pages .hex-view {
+  max-height: min(70vh, 720px);
+}
+body.app-pages .dtc-table-wrap {
+  max-height: min(68vh, 640px);
+}
+body.app-pages .dtc-reste-wrap {
+  max-height: min(40vh, 360px);
+}
+body.app-pages #all-maps .table-wrap {
+  max-height: min(70vh, 720px);
+}
 
 a { color: var(--accent-hot); }
 
