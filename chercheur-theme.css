@@ -1202,6 +1202,105 @@ table.winols td.cell.same { opacity: .72; }
   .hex-split-wrap.cols { grid-template-columns: 1fr 1fr; gap: 14px; }
 }
 
+/* —— Dump 2D (WinOLS dump graph) —— */
+.dump2d .d2-bar {
+  display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center;
+  margin: 10px 0 8px;
+}
+.dump2d .d2-zoom { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.9em; }
+.dump2d .d2-legend {
+  display: flex; flex-wrap: wrap; gap: 14px; margin: 6px 0 10px;
+  color: var(--muted); font-size: 0.88em;
+}
+.dump2d .d2-legend i {
+  display: inline-block; width: 14px; height: 10px; margin-right: 6px;
+  border-radius: 2px; vertical-align: middle;
+}
+.dump2d .d2-legend .d2-l { background: #d8e4ef; }
+.dump2d .d2-legend .d2-r { background: #e23a1a; }
+.dump2d .d2-legend .d2-diff { background: #f5d76e; }
+.dump2d .d2-legend .d2-cur { background: #3ecf7a; }
+.d2-canvas-wrap {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: #0a1014;
+  overflow: hidden;
+  cursor: crosshair;
+}
+#d2-canvas { display: block; width: 100%; height: 360px; touch-action: none; }
+.d2-hint { color: var(--muted); font-size: 0.85em; margin: 8px 0 0; }
+
+/* —— Map 3D surface —— */
+.view3d .v3d-bar {
+  display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center;
+  margin: 10px 0 8px;
+}
+.view3d .v3d-bar select { min-width: min(100%, 420px); }
+.view3d .v3d-modes { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.view3d .v3d-modes button,
+.view3d .v3d-bar .act {
+  font-family: var(--font);
+  font-size: 0.88em;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #121820;
+  color: var(--ink);
+  cursor: pointer;
+}
+.view3d .v3d-modes button.on {
+  border-color: var(--accent);
+  background: rgba(226,58,26,.18);
+  color: #fff;
+}
+.view3d .v3d-legend {
+  display: flex; flex-wrap: wrap; gap: 14px; margin: 6px 0 10px;
+  color: var(--muted); font-size: 0.88em;
+}
+.view3d .v3d-legend i {
+  display: inline-block; width: 28px; height: 10px; margin-right: 6px;
+  border-radius: 2px; vertical-align: middle;
+}
+.v3d-canvas-wrap {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: #06080c;
+  overflow: hidden;
+  cursor: grab;
+}
+.v3d-canvas-wrap:active { cursor: grabbing; }
+#v3d-canvas { display: block; width: 100%; height: 480px; touch-action: none; }
+.v3d-hint { color: var(--muted); font-size: 0.85em; margin: 8px 0 0; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+button.open3d, button.open2d.sec, .dtc-open3d {
+  font-family: var(--font);
+  font-size: 0.85em;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #141a22;
+  color: var(--ink);
+  cursor: pointer;
+}
+button.open3d:hover, .dtc-open3d:hover {
+  border-color: var(--accent);
+  color: #fff;
+}
+.v2d-bar .act.sec {
+  font-family: var(--font);
+  font-size: 0.88em;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #141a22;
+  color: var(--ink);
+  cursor: pointer;
+}
+
 @media (max-width: 720px) {
   body { --fs: 14px; }
   .stat { min-width: 100px; }
@@ -1211,4 +1310,6 @@ table.winols td.cell.same { opacity: .72; }
   .brand-mark { width: 40px; height: 40px; }
   .hex-line, .hex-line.split { grid-template-columns: 4.8rem 1fr; }
   .hex-line .ascii { display: none; }
+  #d2-canvas { height: 280px; }
+  #v3d-canvas { height: 360px; }
 }

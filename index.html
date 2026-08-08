@@ -31,7 +31,9 @@
       <a href="#maps-prio" data-nav="maps-prio">Top 12</a>
       <a href="#all-maps" data-nav="all-maps">Tableau</a>
       <a href="#view2d" data-nav="view2d">Grille 2D</a>
+      <a href="#view3d" data-nav="view3d">Map 3D</a>
       <a href="#hexdump" data-nav="hexdump">Hex</a>
+      <a href="#dump2d" data-nav="dump2d">Dump 2D</a>
       <a href="#dtc-atlas" data-nav="dtc-atlas">DTC</a>
       <a href="#guide" data-nav="guide">Guide</a>
       <a href="#vcds" data-nav="vcds">VCDS</a>
@@ -76,7 +78,7 @@
   <ol>
     <li><b>ACE</b> : monte couple / smoke / turbo / rail (Stage1 agressif ~350–400 Nm wish) + deletes DTC FAP/EGR/EGT (masques → 00).</li>
     <li><b>V1</b> : part de ACE, mais <b>adoucit les partiels</b>, plafonne le WOT à ~<b>350 Nm</b>, rail ~1620 bar, smoke progressive (cap 360), hardcut <b>4800 rpm</b>. Turbo / nm2iq / SOI / deletes = <b>inchangés vs ACE</b>.</li>
-    <li>Clique une adresse bleue → copie Ctrl+G WinOLS. Page <a href="#view2d" data-nav="view2d">Grille 2D</a> = maps A2L + masques DTC OFF.</li>
+    <li>Clique une adresse bleue → copie Ctrl+G WinOLS. <a href="#view2d" data-nav="view2d">Grille 2D</a> / <a href="#view3d" data-nav="view3d">Map 3D</a> = maps A2L + DTC. <a href="#dump2d" data-nav="dump2d">Dump 2D</a> = courbe du binaire.</li>
   </ol>
 
   <h3 class="guide-h">Top 12 — résumé concret (ORI → ACE → V1)</h3>
@@ -188,36 +190,36 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <table class="dtc-table" id="dtc-cards">
     <thead><tr><th>Famille</th><th>Code</th><th>Libellé</th><th>Zones</th><th>Octets</th><th>Adresses (Ctrl+G)</th></tr></thead>
     <tbody>
-<tr class="dtc-row" data-fam="EGR" data-text="p0400 exhaust gas recirculation flow egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0400</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0935">1A0935</button> → <button class="addr big" data-addr="1A095B">1A095B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0400">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p0401 exhaust gas recirculation flow insufficient detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0401</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Insufficient Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0725">1A0725</button> → <button class="addr big" data-addr="1A074B">1A074B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0401">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p0402 exhaust gas recirculation flow excessive detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0402</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Excessive Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0751">1A0751</button> → <button class="addr big" data-addr="1A0777">1A0777</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0402">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p0403 exhaust gas recirculation control circuit egr 1 zone(s) · 83 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0403</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Control Circuit</td><td class="num">1</td><td class="num">83</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0885">1A0885</button> → <button class="addr big" data-addr="1A08D7">1A08D7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0403">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p0407 exhaust gas recirculation sensor b circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0407</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0407">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p0408 exhaust gas recirculation sensor b circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0408</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0408">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR/DPF" data-text="p046c transmetteur 1 de recyclage des gaz d'echappement egr/dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR/DPF</span></td><td class="dtc-code-cell"><b>P046C</b></td><td class="dtc-name-cell">Transmetteur 1 de recyclage des gaz d'echappement</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32CD">1A32CD</button> → <button class="addr big" data-addr="1A32F3">1A32F3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P046C">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p0471 exhaust pressure sensor range performance dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P0471</b></td><td class="dtc-name-cell">Exhaust Pressure Sensor Range Performance</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A01D1">1A01D1</button> → <button class="addr big" data-addr="1A01F7">1A01F7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0471">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGT" data-text="p0544 exhaust gas temperature sensor circuit bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0544</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2CC9">1A2CC9</button> → <button class="addr big" data-addr="1A2CEF">1A2CEF</button> · +<button class="addr" data-addr="1A2D4D">1A2D4D</button>, <button class="addr" data-addr="1A2D73">1A2D73</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0544">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGT" data-text="p0545 exhaust gas temperature sensor circuit low bank 1 sensor 1 egt 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0545</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DD1">1A2DD1</button> → <button class="addr big" data-addr="1A2DF7">1A2DF7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0545">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p1400 egr related egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1400</b></td><td class="dtc-name-cell">EGR related</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0961">1A0961</button> → <button class="addr big" data-addr="1A0987">1A0987</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P1400">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p1428 egr / vacuum egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1428</b></td><td class="dtc-name-cell">EGR / vacuum</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P1428">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p147a egr related (with p1428) egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P147A</b></td><td class="dtc-name-cell">EGR related (with P1428)</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P147A">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2002 particulate trap efficiency below threshold bank 1 dpf 4 zone(s) · 109 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2002</b></td><td class="dtc-name-cell">Particulate Trap Efficiency Below Threshold Bank 1</td><td class="num">4</td><td class="num">109</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0071">1A0071</button> → <button class="addr big" data-addr="1A0097">1A0097</button> · +<button class="addr" data-addr="1A014D">1A014D</button>, <button class="addr" data-addr="1A0173">1A0173</button>, <button class="addr" data-addr="1A01A5">1A01A5</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2002">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGT" data-text="p2080 exhaust gas temperature sensor circuit range performance bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P2080</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE09">19FE09</button> → <button class="addr big" data-addr="19FE2F">19FE2F</button> · +<button class="addr" data-addr="19FE8D">19FE8D</button>, <button class="addr" data-addr="19FEB3">19FEB3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2080">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p2425 exhaust gas recirculation cooling valve control circuitopen egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2425</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control CircuitOpen</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06A1">1A06A1</button> → <button class="addr big" data-addr="1A06C7">1A06C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2425">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p2426 exhaust gas recirculation cooling valve control circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2426</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06CD">1A06CD</button> → <button class="addr big" data-addr="1A06F3">1A06F3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2426">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR" data-text="p2427 exhaust gas recirculation cooling valve control circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2427</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06F9">1A06F9</button> → <button class="addr big" data-addr="1A071F">1A071F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2427">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGT" data-text="p242b exhaust gas temperature sensor circuit bank 1 sensor 3 range performance egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P242B</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE35">19FE35</button> → <button class="addr big" data-addr="19FE5B">19FE5B</button> · +<button class="addr" data-addr="19FEB9">19FEB9</button>, <button class="addr" data-addr="19FEDF">19FEDF</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P242B">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2453 dpf pressure sensor a circuit range performance dpf 2 zone(s) · 166 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2453</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit range performance</td><td class="num">2</td><td class="num">166</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A009D">1A009D</button> → <button class="addr big" data-addr="1A011B">1A011B</button> · +<button class="addr" data-addr="1A0255">1A0255</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2453">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2454 dpf pressure sensor a circuit low dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2454</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2454">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2455 dpf pressure sensor a circuit high dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2455</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit high</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2455">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2456 dpf pressure sensor dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2456</b></td><td class="dtc-name-cell">DPF pressure sensor</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0229">1A0229</button> → <button class="addr big" data-addr="1A024F">1A024F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2456">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2458 dpf regeneration duration dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2458</b></td><td class="dtc-name-cell">DPF regeneration duration</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2959">1A2959</button> → <button class="addr big" data-addr="1A297F">1A297F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2458">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p2463 dpf restriction - soot accumulation dpf 3 zone(s) · 117 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2463</b></td><td class="dtc-name-cell">DPF Restriction - Soot accumulation</td><td class="num">3</td><td class="num">117</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1409">1A1409</button> → <button class="addr big" data-addr="1A142F">1A142F</button> · +<button class="addr" data-addr="1A1B99">1A1B99</button>, <button class="addr" data-addr="1A3065">1A3065</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2463">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGT" data-text="p246e egt / dpf related egt 2 zone(s) · 25 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P246E</b></td><td class="dtc-name-cell">EGT / DPF related</td><td class="num">2</td><td class="num">25</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DA5">1A2DA5</button> → <button class="addr big" data-addr="1A2DBB">1A2DBB</button> · +<button class="addr" data-addr="1A2DCA">1A2DCA</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P246E">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF/O2" data-text="p2626 o2=sensor pumping current trim circuit open bank 1 sensor 1 dpf/o2 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF/O2</span></td><td class="dtc-code-cell"><b>P2626</b></td><td class="dtc-name-cell">O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1931">1A1931</button> → <button class="addr big" data-addr="1A1957">1A1957</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2626">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p3004 dpf related dpf 4 zone(s) · 54 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3004</b></td><td class="dtc-name-cell">DPF related</td><td class="num">4</td><td class="num">54</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A22A5">1A22A5</button> → <button class="addr big" data-addr="1A22BE">1A22BE</button> · +<button class="addr" data-addr="1A22CB">1A22CB</button>, <button class="addr" data-addr="1A22FD">1A22FD</button>, <button class="addr" data-addr="1A2323">1A2323</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P3004">2D</button></td></tr>
-<tr class="dtc-row" data-fam="DPF" data-text="p3005 dpf related dpf 2 zone(s) · 27 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3005</b></td><td class="dtc-name-cell">DPF related</td><td class="num">2</td><td class="num">27</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2381">1A2381</button> → <button class="addr big" data-addr="1A239A">1A239A</button> · +<button class="addr" data-addr="1A23A7">1A23A7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P3005">2D</button></td></tr>
-<tr class="dtc-row" data-fam="EGR com" data-text="u1112 lost communication (egr) egr com 13 zone(s) · 348 octets → 00"><td><span class="dtc-fam">EGR com</span></td><td class="dtc-code-cell"><b>U1112</b></td><td class="dtc-name-cell">Lost communication (EGR)</td><td class="num">13</td><td class="num">348</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E1AD">19E1AD</button> → <button class="addr big" data-addr="19E1FF">19E1FF</button> · +<button class="addr" data-addr="19E759">19E759</button>, <button class="addr" data-addr="19EFC5">19EFC5</button>, <button class="addr" data-addr="19EFEA">19EFEA</button> (+9) <button type="button" class="open2d dtc-open2d" data-map-id="DTC_U1112">2D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0400 exhaust gas recirculation flow egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0400</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0935">1A0935</button> → <button class="addr big" data-addr="1A095B">1A095B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0400">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0400">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0401 exhaust gas recirculation flow insufficient detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0401</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Insufficient Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0725">1A0725</button> → <button class="addr big" data-addr="1A074B">1A074B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0401">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0401">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0402 exhaust gas recirculation flow excessive detected egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0402</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Flow Excessive Detected</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0751">1A0751</button> → <button class="addr big" data-addr="1A0777">1A0777</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0402">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0402">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0403 exhaust gas recirculation control circuit egr 1 zone(s) · 83 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0403</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Control Circuit</td><td class="num">1</td><td class="num">83</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0885">1A0885</button> → <button class="addr big" data-addr="1A08D7">1A08D7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0403">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0403">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0407 exhaust gas recirculation sensor b circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0407</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0407">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0407">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p0408 exhaust gas recirculation sensor b circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P0408</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Sensor B Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0408">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0408">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR/DPF" data-text="p046c transmetteur 1 de recyclage des gaz d'echappement egr/dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR/DPF</span></td><td class="dtc-code-cell"><b>P046C</b></td><td class="dtc-name-cell">Transmetteur 1 de recyclage des gaz d'echappement</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32CD">1A32CD</button> → <button class="addr big" data-addr="1A32F3">1A32F3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P046C">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P046C">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p0471 exhaust pressure sensor range performance dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P0471</b></td><td class="dtc-name-cell">Exhaust Pressure Sensor Range Performance</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A01D1">1A01D1</button> → <button class="addr big" data-addr="1A01F7">1A01F7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0471">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0471">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p0544 exhaust gas temperature sensor circuit bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0544</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2CC9">1A2CC9</button> → <button class="addr big" data-addr="1A2CEF">1A2CEF</button> · +<button class="addr" data-addr="1A2D4D">1A2D4D</button>, <button class="addr" data-addr="1A2D73">1A2D73</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0544">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0544">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p0545 exhaust gas temperature sensor circuit low bank 1 sensor 1 egt 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P0545</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DD1">1A2DD1</button> → <button class="addr big" data-addr="1A2DF7">1A2DF7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P0545">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P0545">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p1400 egr related egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1400</b></td><td class="dtc-name-cell">EGR related</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0961">1A0961</button> → <button class="addr big" data-addr="1A0987">1A0987</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P1400">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P1400">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p1428 egr / vacuum egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P1428</b></td><td class="dtc-name-cell">EGR / vacuum</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P1428">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P1428">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p147a egr related (with p1428) egr 2 zone(s) · 24 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P147A</b></td><td class="dtc-name-cell">EGR related (with P1428)</td><td class="num">2</td><td class="num">24</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button> · +<button class="addr" data-addr="19E82F">19E82F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P147A">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P147A">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2002 particulate trap efficiency below threshold bank 1 dpf 4 zone(s) · 109 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2002</b></td><td class="dtc-name-cell">Particulate Trap Efficiency Below Threshold Bank 1</td><td class="num">4</td><td class="num">109</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0071">1A0071</button> → <button class="addr big" data-addr="1A0097">1A0097</button> · +<button class="addr" data-addr="1A014D">1A014D</button>, <button class="addr" data-addr="1A0173">1A0173</button>, <button class="addr" data-addr="1A01A5">1A01A5</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2002">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2002">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p2080 exhaust gas temperature sensor circuit range performance bank 1 sensor 1 egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P2080</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE09">19FE09</button> → <button class="addr big" data-addr="19FE2F">19FE2F</button> · +<button class="addr" data-addr="19FE8D">19FE8D</button>, <button class="addr" data-addr="19FEB3">19FEB3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2080">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2080">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2425 exhaust gas recirculation cooling valve control circuitopen egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2425</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control CircuitOpen</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06A1">1A06A1</button> → <button class="addr big" data-addr="1A06C7">1A06C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2425">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2425">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2426 exhaust gas recirculation cooling valve control circuit low egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2426</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit Low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06CD">1A06CD</button> → <button class="addr big" data-addr="1A06F3">1A06F3</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2426">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2426">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR" data-text="p2427 exhaust gas recirculation cooling valve control circuit high egr 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">EGR</span></td><td class="dtc-code-cell"><b>P2427</b></td><td class="dtc-name-cell">Exhaust Gas Recirculation Cooling Valve Control Circuit High</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A06F9">1A06F9</button> → <button class="addr big" data-addr="1A071F">1A071F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2427">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2427">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p242b exhaust gas temperature sensor circuit bank 1 sensor 3 range performance egt 3 zone(s) · 63 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P242B</b></td><td class="dtc-name-cell">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance</td><td class="num">3</td><td class="num">63</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19FE35">19FE35</button> → <button class="addr big" data-addr="19FE5B">19FE5B</button> · +<button class="addr" data-addr="19FEB9">19FEB9</button>, <button class="addr" data-addr="19FEDF">19FEDF</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P242B">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P242B">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2453 dpf pressure sensor a circuit range performance dpf 2 zone(s) · 166 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2453</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit range performance</td><td class="num">2</td><td class="num">166</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A009D">1A009D</button> → <button class="addr big" data-addr="1A011B">1A011B</button> · +<button class="addr" data-addr="1A0255">1A0255</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2453">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2453">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2454 dpf pressure sensor a circuit low dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2454</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit low</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2454">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2454">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2455 dpf pressure sensor a circuit high dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2455</b></td><td class="dtc-name-cell">DPF pressure sensor A circuit high</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2455">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2455">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2456 dpf pressure sensor dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2456</b></td><td class="dtc-name-cell">DPF pressure sensor</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A0229">1A0229</button> → <button class="addr big" data-addr="1A024F">1A024F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2456">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2456">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2458 dpf regeneration duration dpf 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2458</b></td><td class="dtc-name-cell">DPF regeneration duration</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2959">1A2959</button> → <button class="addr big" data-addr="1A297F">1A297F</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2458">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2458">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p2463 dpf restriction - soot accumulation dpf 3 zone(s) · 117 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P2463</b></td><td class="dtc-name-cell">DPF Restriction - Soot accumulation</td><td class="num">3</td><td class="num">117</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1409">1A1409</button> → <button class="addr big" data-addr="1A142F">1A142F</button> · +<button class="addr" data-addr="1A1B99">1A1B99</button>, <button class="addr" data-addr="1A3065">1A3065</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2463">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2463">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGT" data-text="p246e egt / dpf related egt 2 zone(s) · 25 octets → 00"><td><span class="dtc-fam">EGT</span></td><td class="dtc-code-cell"><b>P246E</b></td><td class="dtc-name-cell">EGT / DPF related</td><td class="num">2</td><td class="num">25</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2DA5">1A2DA5</button> → <button class="addr big" data-addr="1A2DBB">1A2DBB</button> · +<button class="addr" data-addr="1A2DCA">1A2DCA</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P246E">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P246E">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF/O2" data-text="p2626 o2=sensor pumping current trim circuit open bank 1 sensor 1 dpf/o2 1 zone(s) · 39 octets → 00"><td><span class="dtc-fam">DPF/O2</span></td><td class="dtc-code-cell"><b>P2626</b></td><td class="dtc-name-cell">O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1</td><td class="num">1</td><td class="num">39</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A1931">1A1931</button> → <button class="addr big" data-addr="1A1957">1A1957</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P2626">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P2626">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p3004 dpf related dpf 4 zone(s) · 54 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3004</b></td><td class="dtc-name-cell">DPF related</td><td class="num">4</td><td class="num">54</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A22A5">1A22A5</button> → <button class="addr big" data-addr="1A22BE">1A22BE</button> · +<button class="addr" data-addr="1A22CB">1A22CB</button>, <button class="addr" data-addr="1A22FD">1A22FD</button>, <button class="addr" data-addr="1A2323">1A2323</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P3004">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P3004">3D</button></td></tr>
+<tr class="dtc-row" data-fam="DPF" data-text="p3005 dpf related dpf 2 zone(s) · 27 octets → 00"><td><span class="dtc-fam">DPF</span></td><td class="dtc-code-cell"><b>P3005</b></td><td class="dtc-name-cell">DPF related</td><td class="num">2</td><td class="num">27</td><td class="dtc-addr-cell"><button class="addr big" data-addr="1A2381">1A2381</button> → <button class="addr big" data-addr="1A239A">1A239A</button> · +<button class="addr" data-addr="1A23A7">1A23A7</button> <button type="button" class="open2d dtc-open2d" data-map-id="DTC_P3005">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_P3005">3D</button></td></tr>
+<tr class="dtc-row" data-fam="EGR com" data-text="u1112 lost communication (egr) egr com 13 zone(s) · 348 octets → 00"><td><span class="dtc-fam">EGR com</span></td><td class="dtc-code-cell"><b>U1112</b></td><td class="dtc-name-cell">Lost communication (EGR)</td><td class="num">13</td><td class="num">348</td><td class="dtc-addr-cell"><button class="addr big" data-addr="19E1AD">19E1AD</button> → <button class="addr big" data-addr="19E1FF">19E1FF</button> · +<button class="addr" data-addr="19E759">19E759</button>, <button class="addr" data-addr="19EFC5">19EFC5</button>, <button class="addr" data-addr="19EFEA">19EFEA</button> (+9) <button type="button" class="open2d dtc-open2d" data-map-id="DTC_U1112">2D</button> <button type="button" class="open3d dtc-open3d" data-map-id="DTC_U1112">3D</button></td></tr>
     </tbody>
   </table>
   <p class="note" id="dtc-count"></p>
@@ -280,7 +282,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>256</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>293.7</b> → ACE <b>380.0</b> <span class="up">+86.3</span></p>
   <p class="tiny">153 octets changes · 60%</p>
-  <button type="button" class="open2d" data-map-id="AccPed_trq4A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="AccPed_trq4A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="AccPed_trq4A">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="tqlim_base_pu_4A">
   <div class="badge">Stage 1</div>
@@ -291,7 +293,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>416</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>239.0</b> → ACE <b>350.0</b> <span class="up">+111.0</span></p>
   <p class="tiny">280 octets changes · 67%</p>
-  <button type="button" class="open2d" data-map-id="tqlim_base_pu_4A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_base_pu_4A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_base_pu_4A">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="smoke_mapA">
   <div class="badge">Stage 1</div>
@@ -302,7 +304,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>684</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>310.0</b> → ACE <b>400.0</b> <span class="up">+90.0</span></p>
   <p class="tiny">659 octets changes · 96%</p>
-  <button type="button" class="open2d" data-map-id="smoke_mapA">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="smoke_mapA">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="smoke_mapA">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="turbo_base3B">
   <div class="badge">Stage 1</div>
@@ -313,7 +315,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>640</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>2420.1</b> → ACE <b>2504.6</b> <span class="up">+84.6</span></p>
   <p class="tiny">312 octets changes · 49%</p>
-  <button type="button" class="open2d" data-map-id="turbo_base3B">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="turbo_base3B">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="turbo_base3B">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="turbo_atm6A">
   <div class="badge">Stage 1</div>
@@ -324,7 +326,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>256</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>2500.0</b> → ACE <b>2650.0</b> <span class="up">+150.0</span></p>
   <p class="tiny">256 octets changes · 100%</p>
-  <button type="button" class="open2d" data-map-id="turbo_atm6A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="turbo_atm6A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="turbo_atm6A">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="rail_base_int_trq2B">
   <div class="badge">Stage 1</div>
@@ -335,7 +337,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>1600.0</b> → ACE <b>1656.0</b> <span class="up">+56.0</span></p>
   <p class="tiny">181 octets changes · 35%</p>
-  <button type="button" class="open2d" data-map-id="rail_base_int_trq2B">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="rail_base_int_trq2B">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="rail_base_int_trq2B">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="nm2iq_base_mg3A">
   <div class="badge">Stage 1</div>
@@ -346,7 +348,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>640</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>52.3</b> → ACE <b>54.9</b> <span class="up">+2.6</span></p>
   <p class="tiny">170 octets changes · 27%</p>
-  <button type="button" class="open2d" data-map-id="nm2iq_base_mg3A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="nm2iq_base_mg3A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="nm2iq_base_mg3A">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="tqlim_tegt_temp">
   <div class="badge">Stage 1</div>
@@ -357,7 +359,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>290.0</b> → ACE <b>350.0</b> <span class="up">+60.0</span></p>
   <p class="tiny">386 octets changes · 75%</p>
-  <button type="button" class="open2d" data-map-id="tqlim_tegt_temp">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_tegt_temp">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_tegt_temp">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="tqlim_speed2A">
   <div class="badge">Stage 1</div>
@@ -368,7 +370,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>96</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>300.0</b> → ACE <b>350.0</b> <span class="up">+50.0</span></p>
   <p class="tiny">96 octets changes · 100%</p>
-  <button type="button" class="open2d" data-map-id="tqlim_speed2A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_speed2A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_speed2A">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="airctl_hysteresisC">
   <div class="badge">EGR</div>
@@ -379,7 +381,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>32</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>234.0</b> → ACE <b>0.0</b> <span class="down">-234.0</span></p>
   <p class="tiny">21 octets changes · 66%</p>
-  <button type="button" class="open2d" data-map-id="airctl_hysteresisC">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="vmax3">
   <div class="badge">Limiteur</div>
@@ -390,7 +392,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
   <p class="tiny">2 octets changes · 100%</p>
-  <button type="button" class="open2d" data-map-id="vmax3">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="soi_base_int_trq2A">
   <div class="badge">Timing</div>
@@ -401,7 +403,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>8.9</b> → ACE <b>8.9</b> <span class="">+0.0</span></p>
   <p class="tiny">146 octets changes · 29%</p>
-  <button type="button" class="open2d" data-map-id="soi_base_int_trq2A">Voir grille 2D ORI / ACE</button>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="soi_base_int_trq2A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="soi_base_int_trq2A">Map 3D</button></div>
 </article>
   </div>
 </section>
@@ -438,6 +440,49 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div id="hex-view" class="hex-view" tabindex="0" aria-label="Dump hexadécimal"></div>
 </section>
 
+<section id="dump2d" class="dump2d page-panel">
+  <h2>Dump 2D type WinOLS — graphique du binaire</h2>
+  <div class="guide">
+    <b>Comme la vue 2D du dump WinOLS</b> : les valeurs du fichier (8 ou 16 bits) dessinées en courbe le long des adresses.
+    Code / padding = bruit ; maps = formes lisses. Courbe claire = gauche, courbe accent = droite (paire en haut).
+    Zones jaunes = différences. Clic sur le graphique = adresse + sync Hex.
+  </div>
+  <div class="d2-bar">
+    <label class="hex-goto">Adresse
+      <input id="d2-addr" type="text" spellcheck="false" placeholder="1CF9C0" maxlength="8" autocomplete="off">
+    </label>
+    <button type="button" class="act" id="d2-go">Aller</button>
+    <button type="button" class="act sec" id="d2-prev">←</button>
+    <button type="button" class="act sec" id="d2-next">→</button>
+    <div class="hex-modes" role="group" aria-label="Largeur données">
+      <button type="button" data-d2-width="16" class="on">16-bit LoHi</button>
+      <button type="button" data-d2-width="8">8-bit</button>
+    </div>
+    <label class="d2-zoom">Fenêtre
+      <select id="d2-span">
+        <option value="128">128</option>
+        <option value="256" selected>256</option>
+        <option value="512">512</option>
+        <option value="1024">1024</option>
+        <option value="0">Zone entière</option>
+      </select>
+    </label>
+    <button type="button" class="act sec" id="d2-to-hex">Ouvrir Hex</button>
+    <span class="note" id="d2-status">…</span>
+  </div>
+  <div class="d2-legend">
+    <span><i class="d2-l"></i> Gauche (ORI / …)</span>
+    <span><i class="d2-r"></i> Droite (ACE / V1)</span>
+    <span><i class="d2-diff"></i> Différence</span>
+    <span><i class="d2-cur"></i> Curseur</span>
+  </div>
+  <div id="d2-meta" class="hex-meta"></div>
+  <div class="d2-canvas-wrap">
+    <canvas id="d2-canvas" width="1200" height="360" aria-label="Graphique dump 2D"></canvas>
+  </div>
+  <p class="d2-hint">Molette = zoom horizontal · glisser = défiler · double-clic = recentrer sur le curseur</p>
+</section>
+
 <section id="view2d" class="view2d page-panel">
   <h2>Vue 2D type WinOLS — comparaison</h2>
   <div class="guide">
@@ -453,6 +498,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
       <button type="button" data-mode="diff" class="on" id="v2d-mode-diff">Écart</button>
       <button type="button" data-mode="split" id="v2d-mode-split">Côte à côte</button>
     </div>
+    <button type="button" class="act sec" id="v2d-to-3d">Ouvrir Map 3D</button>
   </div>
   <div class="v2d-legend">
     <span><i style="background:linear-gradient(90deg,#14285a,#28aa5a,#dc3c32)"></i> Valeurs : froid → chaud</span>
@@ -464,6 +510,35 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div id="v2d-grids" class="v2d-wrap"></div>
 </section>
 <div id="v2d-tip"></div>
+<section id="view3d" class="view3d page-panel">
+  <h2>Map 3D type WinOLS — surface</h2>
+  <div class="guide">
+    <b>Comme la vue 3D WinOLS</b> : la grille de la map devient une surface (X/Y + Z valeurs).
+    Modes gauche / droite / écart selon la paire en haut. Contours jaunes = cellules modifiées.
+    Glisser pour orbit · molette pour zoomer.
+  </div>
+  <div class="v3d-bar">
+    <select id="v3d-map" aria-label="Choisir une map 3D"></select>
+    <div class="v3d-modes" role="group" aria-label="Mode 3D">
+      <button type="button" data-mode="left" id="v3d-mode-left">ORI</button>
+      <button type="button" data-mode="right" class="on" id="v3d-mode-right">ACE</button>
+      <button type="button" data-mode="diff" id="v3d-mode-diff">Écart</button>
+    </div>
+    <button type="button" class="act" id="v3d-reset">Reset vue</button>
+    <button type="button" class="act sec" id="v3d-to-2d">Grille 2D</button>
+  </div>
+  <div class="v3d-legend">
+    <span><i style="background:linear-gradient(90deg,#14285a,#28aa5a,#dc3c32)"></i> Hauteur / chaleur</span>
+    <span><i style="background:#1a2430;outline:2px solid #f5d76e"></i> Contour jaune = case modifiée</span>
+    <span><i style="background:#c8b028"></i> Écart +</span>
+    <span><i style="background:#b03232"></i> Écart −</span>
+  </div>
+  <div id="v3d-meta" class="v2d-meta"></div>
+  <div class="v3d-canvas-wrap">
+    <canvas id="v3d-canvas" width="1200" height="480" aria-label="Surface 3D de la map"></canvas>
+  </div>
+  <p class="v3d-hint">Astuce : ouvre une map depuis Top 12 (bouton 3D) ou depuis la Grille 2D.</p>
+</section>
 <section id="all-maps" class="page-panel">
   <h2>Toutes les maps changees <span class=hint>Filtre par famille ou cherche un nom / adresse</span></h2>
   <div class="toolbar">
@@ -780,7 +855,7 @@ document.getElementById('quick-chips')?.addEventListener('click', (e) => {
 });
 
 /* —— Navigation multi-pages —— */
-const PAGE_IDS = ['maps-prio', 'all-maps', 'view2d', 'hexdump', 'dtc-atlas', 'guide', 'vcds', 'downloads'];
+const PAGE_IDS = ['maps-prio', 'all-maps', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'downloads'];
 function showPage(id, opts) {
   opts = opts || {};
   if (!PAGE_IDS.includes(id)) id = 'maps-prio';
@@ -1465,8 +1540,11 @@ function syncPairLabels() {
   setTxt('hex-mode-left', L);
   setTxt('hex-mode-right', R);
   setTxt('hex-mode-split', L + ' | ' + R);
-  document.querySelectorAll('button.open2d').forEach((b) => {
-    b.textContent = 'Voir grille 2D ' + L + ' / ' + R;
+  document.querySelectorAll('button.open2d:not(.dtc-open2d)').forEach((b) => {
+    b.textContent = 'Grille 2D ' + L + ' / ' + R;
+  });
+  document.querySelectorAll('button.open3d:not(.dtc-open3d)').forEach((b) => {
+    b.textContent = 'Map 3D';
   });
   document.querySelectorAll('#maps-prio article').forEach((art) => {
     const btn = art.querySelector('button.open2d');
@@ -1539,6 +1617,8 @@ function applyComparePair(pair) {
   syncPairLabels();
   renderView2d();
   if (typeof window.hexRefreshPair === 'function') window.hexRefreshPair();
+  if (typeof window.dump2dRefreshPair === 'function') window.dump2dRefreshPair();
+  if (typeof window.view3dRefreshPair === 'function') window.view3dRefreshPair();
   try { localStorage.setItem('chercheur-compare-pair', pair); } catch (_) {}
 }
 
@@ -1593,16 +1673,17 @@ function applyComparePair(pair) {
   let saved = 'ori-ace';
   try { saved = localStorage.getItem('chercheur-compare-pair') || 'ori-ace'; } catch (_) {}
   applyComparePair(saved);
+  document.getElementById('v2d-to-3d')?.addEventListener('click', () => {
+    if (typeof window.openMap3d === 'function') window.openMap3d(v2dId);
+  });
+  window.openMap2d = openMap2d;
 })();
 
 
 </script>
 
-<script>
-</script>
-
-<script>
-</script>
+<script src="dump2d.js" defer></script>
+<script src="view3d.js" defer></script>
 
 <script>
 /* dtc-atlas-js */
@@ -1912,6 +1993,7 @@ function applyComparePair(pair) {
     }
   }
   window.hexGoto = gotoAddr;
+  window.hexRefreshPair = function () { render(); };
 
   document.getElementById('hex-go')?.addEventListener('click', () => {
     const a = parseAddr(addrInput.value);
@@ -1975,6 +2057,8 @@ function applyComparePair(pair) {
         ace: b64ToBytes(w.ace),
         v1: b64ToBytes(w.v1 || w.ace),
       }));
+      window.__hexAtlasData = data;
+      try { window.dispatchEvent(new CustomEvent('hex-atlas-ready', { detail: data })); } catch (_) {}
       if (jumpSel) {
         const frag = document.createDocumentFragment();
         (data.jumps || []).slice(0, 120).forEach((j) => {
@@ -1988,6 +2072,7 @@ function applyComparePair(pair) {
       setStatus('Atlas OK · ' + data.windowCount + ' zones');
       const prio = (data.priority && data.priority[0] && data.priority[0].addr) || 0x1CF9C0;
       gotoAddr(prio);
+      if (typeof window.dump2dGoto === 'function') window.dump2dGoto(prio, { silent: true });
     })
     .catch((err) => {
       setStatus('Échec chargement atlas');
