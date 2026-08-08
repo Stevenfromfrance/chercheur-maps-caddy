@@ -459,6 +459,43 @@ details.howto[open], details.vcds[open], details.downloads[open], details.dtc-at
   margin-left: var(--pad);
   margin-right: var(--pad);
 }
+.howto .guide-h {
+  margin: 16px 12px 8px;
+  font-family: var(--display);
+  font-size: 0.95em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-hot);
+}
+.howto .guide-p {
+  margin: 0 12px 10px;
+  color: var(--muted);
+  font-size: 0.95em;
+  line-height: 1.45;
+}
+.howto .guide-p b { color: var(--ink); }
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 8px;
+  margin: 0 12px 14px;
+}
+.guide-cards article {
+  background: rgba(0,0,0,.28);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 0.9em;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.guide-cards article b { color: var(--ink); }
+.dtc-open2d {
+  margin-left: 6px !important;
+  font-size: 0.72em !important;
+  padding: 2px 7px !important;
+}
+
 .howto {
   margin-top: 12px;
   background: linear-gradient(145deg, #1a1210, #121212);
@@ -1032,7 +1069,7 @@ button.open2d:hover {
 }
 .view2d .guide b { color: var(--ink); }
 .v2d-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
-.v2d-bar select { min-width: 240px; }
+.v2d-bar select { min-width: min(420px, 100%); max-width: 100%; }
 .v2d-modes { display: flex; flex-wrap: wrap; gap: 6px; }
 .v2d-modes button {
   background: #0d0d0d; color: var(--muted); border: 1px solid var(--line); border-radius: var(--radius);
