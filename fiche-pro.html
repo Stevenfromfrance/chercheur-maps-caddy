@@ -146,11 +146,11 @@
   }
   .sheet.story .top-stripe { margin: -72px -64px 40px; height: 6px; }
 
-  /* Hero brand */
+  /* Hero brand — full square lockup (not MHH avatar) */
   .hero {
     display: grid;
-    grid-template-columns: 118px 1fr;
-    gap: 22px;
+    grid-template-columns: 168px 1fr;
+    gap: 26px;
     align-items: center;
     margin-bottom: 28px;
   }
@@ -163,59 +163,32 @@
   }
 
   .logo-frame {
-    width: 118px;
-    height: 118px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,.18);
+    width: 168px;
+    height: 168px;
+    border-radius: 10px;
+    border: 1px solid rgba(226,58,26,.45);
     box-shadow:
-      0 0 0 1px rgba(226,58,26,.35),
+      0 0 0 1px rgba(255,255,255,.08),
       0 18px 40px rgba(0,0,0,.45);
     overflow: hidden;
-    background: #000;
+    background: #050505;
+    flex-shrink: 0;
   }
   .sheet.story .logo-frame {
-    width: 280px;
-    height: 280px;
-    border-radius: 10px;
+    width: 340px;
+    height: 340px;
+    border-radius: 14px;
   }
   .logo-frame img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
   }
 
-  .brand-name {
-    margin: 0;
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 42px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    line-height: 1;
-    color: #fff;
-  }
-  .brand-name span {
-    border-bottom: 3px solid var(--accent);
-    padding-bottom: 2px;
-    margin: 0 1px;
-    display: inline-block;
-  }
-  .sheet.story .brand-name { font-size: 64px; letter-spacing: 0.16em; }
-
-  .brand-tag {
-    margin: 10px 0 0;
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-  .sheet.story .brand-tag { font-size: 22px; margin-top: 16px; }
-
   .headline {
-    margin: 18px 0 0;
+    margin: 0;
     font-family: var(--display);
     font-weight: 600;
     font-size: 26px;
@@ -246,30 +219,51 @@
 
   .focus {
     margin: 22px 0 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px 8px 10px;
+    display: block;
+    padding: 12px 14px 12px 12px;
     border-left: 3px solid var(--accent);
     background: linear-gradient(90deg, var(--soft), transparent 85%);
-    font-size: 13.5px;
     color: #e8e4df;
     letter-spacing: 0.02em;
   }
-  .focus b {
+  .focus-title {
+    margin: 0;
     font-family: var(--display);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent2);
+    font-size: 13px;
+  }
+  .focus-sub {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #f3f1ef;
+    line-height: 1.35;
+  }
+  .focus-models {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 4px;
     font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--muted);
+  }
+  .focus-models li strong {
+    color: #e8e4df;
+    font-weight: 600;
   }
   .sheet.story .focus {
     margin: 32px auto 0;
-    font-size: 20px;
-    padding: 14px 18px;
+    max-width: 34ch;
+    text-align: left;
+    padding: 16px 18px;
   }
-  .sheet.story .focus b { font-size: 18px; }
+  .sheet.story .focus-title { font-size: 18px; }
+  .sheet.story .focus-sub { font-size: 20px; }
+  .sheet.story .focus-models { font-size: 17px; gap: 6px; margin-top: 12px; }
 
   .divider {
     margin: 26px 0 20px;
@@ -417,12 +411,12 @@
     }
     .top-stripe { margin: -22px -20px 18px; }
     .hero {
-      grid-template-columns: 88px 1fr;
+      grid-template-columns: 112px 1fr;
       gap: 14px;
     }
-    .logo-frame { width: 88px; height: 88px; }
-    .brand-name { font-size: 28px; letter-spacing: 0.1em; }
+    .logo-frame { width: 112px; height: 112px; }
     .headline { font-size: 22px; max-width: none; }
+    .focus-models { font-size: 12px; }
     .sheet.story {
       width: 100%;
       min-height: auto;
@@ -432,8 +426,7 @@
       padding: 28px 22px 24px;
     }
     .sheet.story .top-stripe { margin: -28px -22px 24px; }
-    .sheet.story .logo-frame { width: 160px; height: 160px; }
-    .sheet.story .brand-name { font-size: 36px; }
+    .sheet.story .logo-frame { width: 200px; height: 200px; }
     .sheet.story .headline { font-size: 28px; }
     .sheet.story .svc-title { font-size: 22px; }
     .sheet.story .svc-desc { font-size: 15px; }
@@ -484,22 +477,24 @@
 
         <header class="hero">
           <div class="logo-frame">
-            <img src="avatar-savagesear.png" width="118" height="118" alt="SAVAGESEAR Reprog">
+            <img src="logo-savagesear-reprog.png" width="168" height="168" alt="SAVAGESEAR Reprog — Volkswagen, Audi, SEAT">
           </div>
           <div>
-            <p class="brand-name" aria-label="SAVAGESEAR">
-              <span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span>
-            </p>
-            <p class="brand-tag">Reprog</p>
             <h1 class="headline">Cartographie moteur, claire et soignée</h1>
             <p class="lead">Plus de couple, une réponse plus nette — sans jargon inutile. On te dit ce qui est fait, et pourquoi.</p>
           </div>
         </header>
 
-        <p class="focus">
-          <b>Focus atelier</b>
-          Diesel VAG · PCR&nbsp;2.1 (Caddy &amp; proches) — autres calculateurs sur étude
-        </p>
+        <div class="focus">
+          <p class="focus-title">Spécialiste PCR&nbsp;2.1 — 1.6&nbsp;TDI</p>
+          <p class="focus-sub">Diag / carto VAG · Continental PCR&nbsp;2.1 (CR)</p>
+          <ul class="focus-models">
+            <li><strong>Volkswagen</strong> — Polo, Golf&nbsp;VI, Caddy, Touran, Passat, Jetta</li>
+            <li><strong>Audi</strong> — A1, A3</li>
+            <li><strong>SEAT</strong> — Ibiza, Leon, Altea</li>
+            <li><strong>Škoda</strong> — Fabia, Rapid, Octavia, Roomster, Yeti</li>
+          </ul>
+        </div>
 
         <div class="divider" aria-hidden="true"></div>
 
@@ -555,11 +550,11 @@
             </div>
             <div>
               <dt>Contact</dt>
-              <dd>[TON TEL]</dd>
+              <dd><a href="tel:+594694907130">0694&nbsp;90&nbsp;71&nbsp;30</a></dd>
             </div>
             <div>
               <dt>Zone</dt>
-              <dd>[TA ZONE]</dd>
+              <dd>Guyane</dd>
             </div>
             <div>
               <dt>Pseudo</dt>
@@ -579,22 +574,23 @@
 
         <header class="hero">
           <div class="logo-frame">
-            <img src="avatar-savagesear.png" width="280" height="280" alt="SAVAGESEAR Reprog">
+            <img src="logo-savagesear-reprog.png" width="340" height="340" alt="SAVAGESEAR Reprog — Volkswagen, Audi, SEAT">
           </div>
           <div>
-            <p class="brand-name" aria-label="SAVAGESEAR">
-              <span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span>
-            </p>
-            <p class="brand-tag">Reprog</p>
             <h2 class="headline">Cartographie moteur</h2>
             <p class="lead">Couple, réponse, deletes — en langage simple.</p>
           </div>
         </header>
 
-        <p class="focus">
-          <b>Focus</b>
-          Diesel VAG · PCR&nbsp;2.1
-        </p>
+        <div class="focus">
+          <p class="focus-title">Spécialiste PCR&nbsp;2.1 — 1.6&nbsp;TDI</p>
+          <p class="focus-sub">Diag / carto VAG · Conti PCR&nbsp;2.1</p>
+          <ul class="focus-models">
+            <li><strong>VW</strong> — Polo, Golf&nbsp;VI, Caddy, Touran, Passat</li>
+            <li><strong>Audi</strong> — A1, A3 · <strong>SEAT</strong> — Ibiza, Leon</li>
+            <li><strong>Škoda</strong> — Fabia, Rapid, Octavia, Roomster</li>
+          </ul>
+        </div>
 
         <div class="divider" aria-hidden="true"></div>
 
@@ -650,7 +646,7 @@
             </div>
             <div>
               <dt>Contact</dt>
-              <dd>[TON TEL] · [TA ZONE]</dd>
+              <dd><a href="tel:+594694907130">0694&nbsp;90&nbsp;71&nbsp;30</a> · Guyane</dd>
             </div>
           </dl>
           <p class="legal">Usage piste / hors contrôle pollution selon législation.</p>
