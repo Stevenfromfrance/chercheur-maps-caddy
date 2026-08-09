@@ -51,7 +51,7 @@
   <div class="stats">
     <div class="stat">Octets changes <b>25778</b></div>
     <div class="stat">Maps A2L touchees <b>139</b></div>
-    <div class="stat">Hors A2L (suite rail + lim.) <b>2912</b></div>
+    <div class="stat">Hors A2L = suite rail + lim. (pas FAP) <b>2912</b></div>
     <div class="stat">Clusters hex <b>1510</b></div>
     <div class="stat">Taille <b>2097152</b></div>
     <div class="stat">DTC OFF cartographies <b>30</b></div>
@@ -100,7 +100,11 @@
   <h3 class="guide-h">DTC OFF (DaVinci)</h3>
   <p class="guide-p">Ce ne sont <b>pas</b> des maps couple : ce sont des <b>masques défaut</b> (~39–348 octets) mis à <b>00</b> pour ne plus lever P040x / P2002 / P245x / U1112… Couverture DPF+EGR ≈ 91%. Voir page <a href="#dtc-atlas" data-nav="dtc-atlas">DTC</a> et grilles <code>DTC_Pxxxx</code> en 2D (octets ORI vs 00).</p>
   <p class="guide-p">Reste <code>0x180xxx</code> = flags / seuils hors table DTC (FFFF off, enable→0, patches mixtes) — aussi dans DaVinci DPF+EGR.</p>
-  <p class="guide-p"><b>Zones hors A2L</b> (bas du Tableau) = suite Stage1 <b>rail request</b> non labellisée + <b>limiteurs rail</b> — pas des deletes FAP. Les DTC FAP/EGR restent sous Deletes ACE / page DTC.</p>
+  <p class="guide-p"><b>Zones hors A2L</b> (bas du Tableau) = suite Stage1 <b>rail + limiteurs</b>, pas des deletes FAP/EGR.
+  Juste après la dernière map nommée <code>rail_base_int_trq2B</code> (fin <code>1EA167</code>) : 14 banques de 512 octets sans nom DAMOS (dès <code>1EA168</code>), même facteur bar et même hausse 1600→1656 / 1450→1500.7.
+  Puis deux limiteurs jumeaux <code>1EBDD8</code> / <code>1EBE58</code> (ORI 1600/300 → ACE 1656/310.5 bar).
+  Les vrais deletes restent sous Deletes ACE / page DTC / <code>0x180xxx</code> / zone <code>19E–1A4</code>.</p>
+  <p class="guide-p"><b>Comment on sait</b> : comparé sur bin ORI vs ACE Caddy 9979, puis contre-épreuve Passat FAP-only (même soft) — <b>0 octet</b> touché sur rail Stage1 + limiteurs, alors que la zone DTC <code>19E000–1A4000</code> change bien. Sans A2L complet, pas d’IdNames OEM exacts.</p>
 
   <h3 class="guide-h">Comment lire le site</h3>
   <ol>
@@ -227,7 +231,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </div>
 
   <details class="dtc-reste collapsible">
-    <summary><b>Reste fonction <code>0x180xxx</code></b> <span class="sum-hint">135 B · flags / seuils · hors A2L</span></summary>
+    <summary><b>Reste fonction <code>0x180xxx</code></b> <span class="sum-hint">135 B · flags / seuils · delete FAP/EGR</span></summary>
   <div class="table-wrap dtc-reste-wrap">
   <table>
     <thead><tr><th>Début</th><th>Fin</th><th>Octets</th><th>Pattern</th><th>ORI → DAV</th></tr></thead>
@@ -733,80 +737,81 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </tbody>
   </table>
   </div>
-</section>
-<section>
+
   <h2>Zones hors A2L (suite rail + lim.)</h2>
-  <p class="note"><b>Important :</b> ce tableau n’est <b>pas</b> un delete FAP/EGR.
-  Les spans <code>1EA1DA…1EAD67</code> (bande <code>1EA168–1EBD67</code>) sont des banques <b>rail pressure request</b> sans label A2L — même famille que <code>rail_base_int_trq2B</code> (suite Stage1 rail).
-  Les blocs <code>1EBDD8–1EBE46</code> et <code>1EBE58–1EBEC6</code> sont des <b>limiteurs pression rail</b> (2 copies ; ORI 1600/300 → ACE 1656/310.5 bar) — pas des seuils FAP.
-  Les vrais <b>DTC FAP/EGR/EGT off</b> restent dans le tableau ci-dessus (filtre <b>Deletes ACE</b>, zone <code>0x19E–0x1A4</code>) et les flags <code>0x180xxx</code>. EGR nommé = <code>airctl_hysteresisC</code> @ 1D0100.</p>
+  <p class="note"><b>Preuve (bins réels) :</b> ce tableau = suite Stage1 <b>rail request + limiteurs</b> — <b>pas</b> un delete FAP/EGR.
+  Après la dernière <code>rail_base_int_trq2B</code> (fin <code>1EA167</code>), les banques sans nom démarrent à <code>1EA168</code> (14 × 512 octets, facteur 0.0610359 bar ≈ 0.006104 MPa, même bump 1600→1656 / 1450→1500.7, ~91 cellules/banque comme les maps nommées).
+  Limiteurs jumeaux <code>1EBDD8</code> / <code>1EBE58</code> : ORI <code>0x6666</code>/<code>0x1333</code> → 1600/300 bar ; ACE <code>0x69FB</code>/<code>0x13DF</code> → 1656/310.5 ; masque zéro → <code>0000</code>.
+  Contre-épreuve <b>Passat FAP-only</b> (même soft) : <b>0 octet</b> changé ici, alors que la zone DTC <code>19E000–1A4000</code> change bien — donc hors-A2L ≠ delete FAP.
+  Deletes réels = filtre <b>Deletes ACE</b> / page DTC / <code>0x180xxx</code> / <code>19E–1A4</code>. Noms DAMOS exacts inconnus sans A2L complet. EGR nommé = <code>airctl_hysteresisC</code> @ 1D0100.</p>
   <div class="table-wrap">
   <table>
     <thead><tr><th>Debut</th><th>Fin</th><th>Rôle</th><th>Span</th><th>Octets changes</th></tr></thead>
     <tbody>
-<tr><td><button class="addr" data-addr="1EBDD8">1EBDD8</button></td><td><button class="addr" data-addr="1EBE46">1EBE46</button></td><td>Limiteur pression rail (×2)</td><td class="num">111</td><td class="num">88</td></tr>
-<tr><td><button class="addr" data-addr="1EBE58">1EBE58</button></td><td><button class="addr" data-addr="1EBEC6">1EBEC6</button></td><td>Limiteur pression rail (×2)</td><td class="num">111</td><td class="num">88</td></tr>
-<tr><td><button class="addr" data-addr="1EA1DA">1EA1DA</button></td><td><button class="addr" data-addr="1EA1E7">1EA1E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA1FA">1EA1FA</button></td><td><button class="addr" data-addr="1EA207">1EA207</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA21A">1EA21A</button></td><td><button class="addr" data-addr="1EA227">1EA227</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA23A">1EA23A</button></td><td><button class="addr" data-addr="1EA247">1EA247</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA25A">1EA25A</button></td><td><button class="addr" data-addr="1EA267">1EA267</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA27A">1EA27A</button></td><td><button class="addr" data-addr="1EA287">1EA287</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA29A">1EA29A</button></td><td><button class="addr" data-addr="1EA2A7">1EA2A7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA2BA">1EA2BA</button></td><td><button class="addr" data-addr="1EA2C7">1EA2C7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA2DA">1EA2DA</button></td><td><button class="addr" data-addr="1EA2E7">1EA2E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA2FA">1EA2FA</button></td><td><button class="addr" data-addr="1EA307">1EA307</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA31A">1EA31A</button></td><td><button class="addr" data-addr="1EA327">1EA327</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA33A">1EA33A</button></td><td><button class="addr" data-addr="1EA347">1EA347</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA35A">1EA35A</button></td><td><button class="addr" data-addr="1EA367">1EA367</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA3DA">1EA3DA</button></td><td><button class="addr" data-addr="1EA3E7">1EA3E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA3FA">1EA3FA</button></td><td><button class="addr" data-addr="1EA407">1EA407</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA41A">1EA41A</button></td><td><button class="addr" data-addr="1EA427">1EA427</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA43A">1EA43A</button></td><td><button class="addr" data-addr="1EA447">1EA447</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA45A">1EA45A</button></td><td><button class="addr" data-addr="1EA467">1EA467</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA47A">1EA47A</button></td><td><button class="addr" data-addr="1EA487">1EA487</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA49A">1EA49A</button></td><td><button class="addr" data-addr="1EA4A7">1EA4A7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA4BA">1EA4BA</button></td><td><button class="addr" data-addr="1EA4C7">1EA4C7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA4DA">1EA4DA</button></td><td><button class="addr" data-addr="1EA4E7">1EA4E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA4FA">1EA4FA</button></td><td><button class="addr" data-addr="1EA507">1EA507</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA51A">1EA51A</button></td><td><button class="addr" data-addr="1EA527">1EA527</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA53A">1EA53A</button></td><td><button class="addr" data-addr="1EA547">1EA547</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA55A">1EA55A</button></td><td><button class="addr" data-addr="1EA567">1EA567</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA5DA">1EA5DA</button></td><td><button class="addr" data-addr="1EA5E7">1EA5E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA5FA">1EA5FA</button></td><td><button class="addr" data-addr="1EA607">1EA607</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA61A">1EA61A</button></td><td><button class="addr" data-addr="1EA627">1EA627</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA63A">1EA63A</button></td><td><button class="addr" data-addr="1EA647">1EA647</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA65A">1EA65A</button></td><td><button class="addr" data-addr="1EA667">1EA667</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA67A">1EA67A</button></td><td><button class="addr" data-addr="1EA687">1EA687</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA69A">1EA69A</button></td><td><button class="addr" data-addr="1EA6A7">1EA6A7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA6BA">1EA6BA</button></td><td><button class="addr" data-addr="1EA6C7">1EA6C7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA6DA">1EA6DA</button></td><td><button class="addr" data-addr="1EA6E7">1EA6E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA6FA">1EA6FA</button></td><td><button class="addr" data-addr="1EA707">1EA707</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA71A">1EA71A</button></td><td><button class="addr" data-addr="1EA727">1EA727</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA73A">1EA73A</button></td><td><button class="addr" data-addr="1EA747">1EA747</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA75A">1EA75A</button></td><td><button class="addr" data-addr="1EA767">1EA767</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA7DA">1EA7DA</button></td><td><button class="addr" data-addr="1EA7E7">1EA7E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA7FA">1EA7FA</button></td><td><button class="addr" data-addr="1EA807">1EA807</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA81A">1EA81A</button></td><td><button class="addr" data-addr="1EA827">1EA827</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA83A">1EA83A</button></td><td><button class="addr" data-addr="1EA847">1EA847</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA85A">1EA85A</button></td><td><button class="addr" data-addr="1EA867">1EA867</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA87A">1EA87A</button></td><td><button class="addr" data-addr="1EA887">1EA887</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA89A">1EA89A</button></td><td><button class="addr" data-addr="1EA8A7">1EA8A7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA8BA">1EA8BA</button></td><td><button class="addr" data-addr="1EA8C7">1EA8C7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA8DA">1EA8DA</button></td><td><button class="addr" data-addr="1EA8E7">1EA8E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA8FA">1EA8FA</button></td><td><button class="addr" data-addr="1EA907">1EA907</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA91A">1EA91A</button></td><td><button class="addr" data-addr="1EA927">1EA927</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA93A">1EA93A</button></td><td><button class="addr" data-addr="1EA947">1EA947</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA95A">1EA95A</button></td><td><button class="addr" data-addr="1EA967">1EA967</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA9DA">1EA9DA</button></td><td><button class="addr" data-addr="1EA9E7">1EA9E7</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EA9FA">1EA9FA</button></td><td><button class="addr" data-addr="1EAA07">1EAA07</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EAA1A">1EAA1A</button></td><td><button class="addr" data-addr="1EAA27">1EAA27</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EAA3A">1EAA3A</button></td><td><button class="addr" data-addr="1EAA47">1EAA47</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EAA5A">1EAA5A</button></td><td><button class="addr" data-addr="1EAA67">1EAA67</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
-<tr><td><button class="addr" data-addr="1EAA7A">1EAA7A</button></td><td><button class="addr" data-addr="1EAA87">1EAA87</button></td><td>Suite rail request (sans label A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EBDD8">1EBDD8</button></td><td><button class="addr" data-addr="1EBE46">1EBE46</button></td><td>Limiteur rail Stage1 (jumeau 1600→1656 / 300→310.5)</td><td class="num">111</td><td class="num">88</td></tr>
+<tr><td><button class="addr" data-addr="1EBE58">1EBE58</button></td><td><button class="addr" data-addr="1EBEC6">1EBEC6</button></td><td>Limiteur rail Stage1 (jumeau 1600→1656 / 300→310.5)</td><td class="num">111</td><td class="num">88</td></tr>
+<tr><td><button class="addr" data-addr="1EA1DA">1EA1DA</button></td><td><button class="addr" data-addr="1EA1E7">1EA1E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA1FA">1EA1FA</button></td><td><button class="addr" data-addr="1EA207">1EA207</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA21A">1EA21A</button></td><td><button class="addr" data-addr="1EA227">1EA227</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA23A">1EA23A</button></td><td><button class="addr" data-addr="1EA247">1EA247</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA25A">1EA25A</button></td><td><button class="addr" data-addr="1EA267">1EA267</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA27A">1EA27A</button></td><td><button class="addr" data-addr="1EA287">1EA287</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA29A">1EA29A</button></td><td><button class="addr" data-addr="1EA2A7">1EA2A7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA2BA">1EA2BA</button></td><td><button class="addr" data-addr="1EA2C7">1EA2C7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA2DA">1EA2DA</button></td><td><button class="addr" data-addr="1EA2E7">1EA2E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA2FA">1EA2FA</button></td><td><button class="addr" data-addr="1EA307">1EA307</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA31A">1EA31A</button></td><td><button class="addr" data-addr="1EA327">1EA327</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA33A">1EA33A</button></td><td><button class="addr" data-addr="1EA347">1EA347</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA35A">1EA35A</button></td><td><button class="addr" data-addr="1EA367">1EA367</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA3DA">1EA3DA</button></td><td><button class="addr" data-addr="1EA3E7">1EA3E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA3FA">1EA3FA</button></td><td><button class="addr" data-addr="1EA407">1EA407</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA41A">1EA41A</button></td><td><button class="addr" data-addr="1EA427">1EA427</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA43A">1EA43A</button></td><td><button class="addr" data-addr="1EA447">1EA447</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA45A">1EA45A</button></td><td><button class="addr" data-addr="1EA467">1EA467</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA47A">1EA47A</button></td><td><button class="addr" data-addr="1EA487">1EA487</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA49A">1EA49A</button></td><td><button class="addr" data-addr="1EA4A7">1EA4A7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA4BA">1EA4BA</button></td><td><button class="addr" data-addr="1EA4C7">1EA4C7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA4DA">1EA4DA</button></td><td><button class="addr" data-addr="1EA4E7">1EA4E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA4FA">1EA4FA</button></td><td><button class="addr" data-addr="1EA507">1EA507</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA51A">1EA51A</button></td><td><button class="addr" data-addr="1EA527">1EA527</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA53A">1EA53A</button></td><td><button class="addr" data-addr="1EA547">1EA547</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA55A">1EA55A</button></td><td><button class="addr" data-addr="1EA567">1EA567</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA5DA">1EA5DA</button></td><td><button class="addr" data-addr="1EA5E7">1EA5E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA5FA">1EA5FA</button></td><td><button class="addr" data-addr="1EA607">1EA607</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA61A">1EA61A</button></td><td><button class="addr" data-addr="1EA627">1EA627</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA63A">1EA63A</button></td><td><button class="addr" data-addr="1EA647">1EA647</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA65A">1EA65A</button></td><td><button class="addr" data-addr="1EA667">1EA667</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA67A">1EA67A</button></td><td><button class="addr" data-addr="1EA687">1EA687</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA69A">1EA69A</button></td><td><button class="addr" data-addr="1EA6A7">1EA6A7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA6BA">1EA6BA</button></td><td><button class="addr" data-addr="1EA6C7">1EA6C7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA6DA">1EA6DA</button></td><td><button class="addr" data-addr="1EA6E7">1EA6E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA6FA">1EA6FA</button></td><td><button class="addr" data-addr="1EA707">1EA707</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA71A">1EA71A</button></td><td><button class="addr" data-addr="1EA727">1EA727</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA73A">1EA73A</button></td><td><button class="addr" data-addr="1EA747">1EA747</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA75A">1EA75A</button></td><td><button class="addr" data-addr="1EA767">1EA767</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA7DA">1EA7DA</button></td><td><button class="addr" data-addr="1EA7E7">1EA7E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA7FA">1EA7FA</button></td><td><button class="addr" data-addr="1EA807">1EA807</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA81A">1EA81A</button></td><td><button class="addr" data-addr="1EA827">1EA827</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA83A">1EA83A</button></td><td><button class="addr" data-addr="1EA847">1EA847</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA85A">1EA85A</button></td><td><button class="addr" data-addr="1EA867">1EA867</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA87A">1EA87A</button></td><td><button class="addr" data-addr="1EA887">1EA887</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA89A">1EA89A</button></td><td><button class="addr" data-addr="1EA8A7">1EA8A7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA8BA">1EA8BA</button></td><td><button class="addr" data-addr="1EA8C7">1EA8C7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA8DA">1EA8DA</button></td><td><button class="addr" data-addr="1EA8E7">1EA8E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA8FA">1EA8FA</button></td><td><button class="addr" data-addr="1EA907">1EA907</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA91A">1EA91A</button></td><td><button class="addr" data-addr="1EA927">1EA927</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA93A">1EA93A</button></td><td><button class="addr" data-addr="1EA947">1EA947</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA95A">1EA95A</button></td><td><button class="addr" data-addr="1EA967">1EA967</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA9DA">1EA9DA</button></td><td><button class="addr" data-addr="1EA9E7">1EA9E7</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EA9FA">1EA9FA</button></td><td><button class="addr" data-addr="1EAA07">1EAA07</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EAA1A">1EAA1A</button></td><td><button class="addr" data-addr="1EAA27">1EAA27</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EAA3A">1EAA3A</button></td><td><button class="addr" data-addr="1EAA47">1EAA47</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EAA5A">1EAA5A</button></td><td><button class="addr" data-addr="1EAA67">1EAA67</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
+<tr><td><button class="addr" data-addr="1EAA7A">1EAA7A</button></td><td><button class="addr" data-addr="1EAA87">1EAA87</button></td><td>Suite Stage1 rail (banque s. nom A2L)</td><td class="num">14</td><td class="num">14</td></tr>
     </tbody>
   </table>
   </div>
+  <p class="note"><b>Rôle (colonne) :</b> « Suite Stage1 rail » = octets modifiés dans les banques contigues après <code>1EA167</code> (même famille que <code>rail_base_int_trq2B</code>, pas de nom OEM sans A2L). « Limiteur rail Stage1 » = les deux copies en <code>1EBDD8</code> / <code>1EBE58</code>. Ce n’est pas la zone DTC FAP/EGR.</p>
 </section>
 </main>
 <div class="toast" id="toast">Adresse copiee</div>
