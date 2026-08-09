@@ -272,8 +272,8 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 
 <section class="maps-prio page-panel is-active" id="maps-prio">
   <div class="sec-head">
-    <h2>Top 12 maps Stage 1</h2>
-    <p class="sec-lead">Les 12 cartes prioritaires seulement — pas toute la liste.</p>
+    <h2>Top 12 · Stage 1</h2>
+    <p class="sec-lead">Les 12 cartes prioritaires seulement — pas toute la liste A2L.</p>
   </div>
   <p class="prio-note">Il y a <b>139 maps A2L</b> touchées + <b>16 provisoires</b> (hors A2L) dans Toutes maps.
     <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Voir toutes les maps (Toutes maps)</a>
@@ -414,7 +414,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </div>
 </section>
 <section id="hexdump" class="hexdump page-panel">
-  <h2>Dump hex type WinOLS — adresses + octets</h2>
+  <h2>Hex · WinOLS <span class="hint">adresses + octets</span></h2>
   <div class="guide">
     <b>Comme le dump WinOLS</b> : adresse à gauche, 16 octets/ligne, ASCII à droite.
     Jaune = octet différent gauche → droite (selon la paire choisie). Clique une adresse bleue ailleurs sur le site, ou saisis-en une ici (Ctrl+G).
@@ -447,7 +447,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </section>
 
 <section id="dump2d" class="dump2d page-panel">
-  <h2>Dump 2D type WinOLS — graphique du binaire</h2>
+  <h2>Dump 2D · WinOLS <span class="hint">courbe du binaire</span></h2>
   <div class="guide">
     <b>Comme la vue 2D du dump WinOLS</b> : les valeurs du fichier (8 ou 16 bits) dessinées en courbe le long des adresses.
     Code / padding = bruit ; maps = formes lisses. Courbe claire = gauche, courbe accent = droite (paire en haut).
@@ -490,7 +490,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </section>
 
 <section id="view2d" class="view2d page-panel">
-  <h2>Vue 2D type WinOLS — comparaison</h2>
+  <h2>Grille 2D · WinOLS <span class="hint">comparaison case par case</span></h2>
   <div class="guide">
     <b>Comme dans WinOLS</b> : axes en en-tête, valeurs physiques (Nm, mbar…) pour les maps A2L.
     Le menu liste le <b>Top 12</b>, les <b>autres maps touchées</b>, et les <b>masques DTC OFF</b> (octets / hex).
@@ -517,7 +517,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </section>
 <div id="v2d-tip"></div>
 <section id="view3d" class="view3d page-panel">
-  <h2>Map 3D type WinOLS — surface</h2>
+  <h2>Map 3D · WinOLS <span class="hint">surface</span></h2>
   <div class="guide">
     <b>Comme la vue 3D WinOLS</b> : la grille de la map devient une surface (X/Y + Z valeurs).
     Modes gauche / droite / écart selon la paire en haut. Contours jaunes = cellules modifiées.
@@ -548,7 +548,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 </section>
 <section id="all-maps" class="page-panel">
   <div class="sec-head">
-    <h2>Toutes les maps <span class="hint">liste complète · 139 A2L + 16 provisoires</span></h2>
+    <h2>Toutes les maps <span class="hint">139 A2L + 16 provisoires · filtre + recherche</span></h2>
     <p class="sec-lead">Ici = les <b>139 maps A2L</b> + <b>16 maps provisoires</b> (suite rail / limiteurs hors A2L), plus les deletes DTC via le filtre.
       Colonne <b>Source</b> : <code>A2L</code> = vrai nom OEM ; <code>provisoire (bin)</code> = nom donné par nous (pas un IdName DAMOS). Défaut = tout afficher.</p>
   </div>
