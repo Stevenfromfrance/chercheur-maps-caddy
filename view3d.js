@@ -72,6 +72,7 @@
     const groups = [
       { key: 'priority', label: 'Top 12 Stage 1' },
       { key: 'a2l', label: 'Autres maps A2L touchées' },
+      { key: 'provisoire', label: 'Hors A2L / provisoire (bin)' },
       { key: 'dtc', label: 'DTC OFF (masques)' },
     ];
     sel.innerHTML = groups.map((gr) => {
