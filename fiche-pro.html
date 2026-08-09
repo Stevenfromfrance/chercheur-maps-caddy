@@ -505,9 +505,10 @@
       page-break-after: always;
       break-after: page;
     }
-    .sheet.story {
+    .sheet.story:not(.status) {
       display: none !important;
     }
+    .sheet.status { display: none !important; }
     .inner { min-height: 297mm; }
     a { color: inherit; text-decoration: none; }
   }
@@ -515,16 +516,303 @@
   body.print-story @page { size: 1080px 1920px; margin: 0; }
   body.print-story .sheet:not(.story) { display: none !important; }
   body.print-story .sheet.story { display: block !important; }
+
+  /* —— WhatsApp Status slides (9:16) —— */
+  .wa-intro {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 8px 16px 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .wa-intro strong { color: var(--ink); }
+  .wa-intro .hint { margin: 6px 0 0; font-size: 13px; }
+  .wa-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .wa-actions button,
+  .wa-actions a.btn {
+    font: inherit;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 11px;
+    border: 1px solid rgba(226, 58, 26, 0.55);
+    background: rgba(226, 58, 26, 0.16);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .wa-actions button:hover,
+  .wa-actions a.btn:hover { background: rgba(226, 58, 26, 0.32); }
+  .wa-actions button:disabled { opacity: 0.5; cursor: wait; }
+  .wa-actions a.png-link {
+    color: var(--accent2);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    align-self: center;
+  }
+
+  .status-stage {
+    display: flex;
+    justify-content: center;
+    padding: 20px 16px 36px;
+  }
+  .status-scale {
+    width: 1080px;
+    max-width: 100%;
+  }
+
+  .sheet.status {
+    width: 1080px;
+    height: 1920px;
+    min-height: 1920px;
+    max-width: none;
+    flex-shrink: 0;
+  }
+  .sheet.status .inner {
+    min-height: 1920px;
+    height: 1920px;
+    padding: 64px 56px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  .sheet.status .top-stripe {
+    margin: -64px -56px 36px;
+    height: 8px;
+  }
+
+  .slide-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .slide-meta .count { color: var(--accent2); letter-spacing: 0.12em; }
+
+  .sheet.status .logo-frame {
+    width: 520px;
+    height: 520px;
+    border-radius: 18px;
+    margin: 0 auto;
+  }
+  .sheet.status .hero-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+    flex: 1;
+    justify-content: center;
+  }
+  .sheet.status .headline {
+    margin: 0;
+    font-size: 52px;
+    max-width: 14ch;
+    line-height: 1.1;
+  }
+  .sheet.status .lead {
+    margin: 18px 0 0;
+    font-size: 28px;
+    max-width: 18ch;
+    line-height: 1.35;
+  }
+  .sheet.status .focus {
+    margin: 40px 0 0;
+    max-width: 22ch;
+    text-align: left;
+    padding: 22px 24px;
+    width: 100%;
+  }
+  .sheet.status .focus-title { font-size: 26px; }
+  .sheet.status .focus-sub { font-size: 24px; margin-top: 10px; }
+  .sheet.status .focus-models { font-size: 20px; gap: 8px; margin-top: 14px; }
+
+  .sheet.status .section-label {
+    font-size: 22px;
+    margin-bottom: 36px;
+    letter-spacing: 0.32em;
+  }
+  .sheet.status .services { gap: 0; }
+  .sheet.status .services li {
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 28px 0;
+  }
+  .sheet.status .svc-num { font-size: 26px; }
+  .sheet.status .svc-title { font-size: 40px; }
+  .sheet.status .svc-desc { font-size: 24px; margin-top: 8px; }
+
+  .sheet.status .fleet {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 8px 0 0;
+    flex: 1;
+    align-content: center;
+  }
+  .sheet.status .fleet figure {
+    border-radius: 10px;
+    aspect-ratio: 16 / 11;
+  }
+  .sheet.status .fleet figcaption {
+    font-size: 22px;
+    padding: 36px 14px 12px;
+    letter-spacing: 0.16em;
+  }
+  .sheet.status .models-note {
+    margin: 28px 0 0;
+    font-size: 22px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .sheet.status .contact-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+    text-align: center;
+  }
+  .sheet.status .contact-hero .logo-frame {
+    width: 360px;
+    height: 360px;
+  }
+  .sheet.status .big-phone {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .sheet.status .big-phone a { color: inherit; text-decoration: none; }
+  .sheet.status .contact-line {
+    margin: 0;
+    font-size: 32px;
+    color: var(--muted);
+  }
+  .sheet.status .contact-line strong {
+    color: var(--accent2);
+    font-weight: 600;
+  }
+  .sheet.status .cta {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .sheet.status .slide-foot {
+    margin-top: auto;
+    padding-top: 24px;
+    font-size: 18px;
+    color: #6f6a63;
+    text-align: center;
+  }
+
+  /* Phone / narrow: real 9:16 frames (easy screenshot, no transform) */
+  @media (max-width: 1100px) {
+    .status-stage {
+      padding: 12px 12px 28px;
+      overflow: visible;
+    }
+    .status-scale {
+      width: min(100%, 480px);
+      margin: 0 auto;
+      transform: none !important;
+    }
+    .sheet.status {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 9 / 16;
+    }
+    .sheet.status .inner {
+      min-height: 0;
+      height: 100%;
+      padding: 7% 7% 6%;
+    }
+    .sheet.status .top-stripe {
+      margin: -7% -7% 4%;
+      height: 5px;
+    }
+    .sheet.status .logo-frame {
+      width: min(58vw, 280px);
+      height: min(58vw, 280px);
+    }
+    .sheet.status .contact-hero .logo-frame {
+      width: min(42vw, 200px);
+      height: min(42vw, 200px);
+    }
+    .sheet.status .headline { font-size: clamp(28px, 7vw, 40px); }
+    .sheet.status .lead { font-size: clamp(16px, 4.2vw, 22px); }
+    .sheet.status .focus-title { font-size: clamp(15px, 4vw, 20px); }
+    .sheet.status .focus-sub { font-size: clamp(14px, 3.6vw, 18px); }
+    .sheet.status .section-label { font-size: clamp(14px, 3.6vw, 18px); margin-bottom: 18px; }
+    .sheet.status .svc-num { font-size: clamp(16px, 4vw, 20px); }
+    .sheet.status .svc-title { font-size: clamp(22px, 5.5vw, 30px); }
+    .sheet.status .svc-desc { font-size: clamp(13px, 3.4vw, 17px); }
+    .sheet.status .services li {
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding: 14px 0;
+    }
+    .sheet.status .fleet { gap: 10px; }
+    .sheet.status .fleet figcaption { font-size: 13px; padding: 22px 8px 8px; }
+    .sheet.status .models-note { font-size: 14px; margin-top: 16px; }
+    .sheet.status .big-phone { font-size: clamp(32px, 8vw, 44px); }
+    .sheet.status .contact-line { font-size: clamp(18px, 4.5vw, 24px); }
+    .sheet.status .cta { font-size: clamp(16px, 4vw, 22px); }
+    .sheet.status .slide-meta { font-size: 13px; margin-bottom: 14px; }
+    .sheet.status .slide-foot { font-size: 12px; }
+  }
+
+  @media print {
+    .wa-intro,
+    .status-chrome { display: none !important; }
+    body.print-status .screen-bar,
+    body.print-status .stage { display: none !important; }
+    body.print-status .sheet:not(.status) { display: none !important; }
+    body.print-status .sheet.status {
+      display: block !important;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+    }
+    body.print-status .status-scale {
+      transform: none !important;
+      margin-bottom: 0 !important;
+      width: 1080px;
+    }
+    body.print-status .status-stage { padding: 0; }
+  }
+  body.print-status @page { size: 1080px 1920px; margin: 0; }
 </style>
 </head>
 <body>
   <div class="screen-bar">
     <div>
-      <strong>Fiche SAVAGESEAR</strong> — A4 prêt à imprimer / PDF
+      <strong>Fiche SAVAGESEAR</strong> — A4 + Stories WhatsApp
     </div>
     <div class="actions">
-      <button type="button" onclick="window.print()">Imprimer / PDF</button>
-      <a class="btn" href="#story">Voir format story</a>
+      <button type="button" onclick="window.print()">Imprimer A4 / PDF</button>
+      <a class="btn" href="#wa-status">Stories WhatsApp</a>
       <a class="link" href="./">← Retour atelier</a>
     </div>
   </div>
@@ -641,111 +929,199 @@
     </article>
   </div>
 
-  <div class="stage" id="story">
-    <article class="sheet story" aria-label="Fiche story 9:16 SAVAGESEAR Reprog">
-      <div class="inner">
-        <div class="top-stripe" aria-hidden="true"></div>
-
-        <header class="hero">
-          <div class="logo-frame">
-            <img src="logo-savagesear-reprog.png" width="460" height="460" alt="SAVAGESEAR Reprog — Volkswagen, Audi, SEAT">
-          </div>
-          <div>
-            <h2 class="headline">Cartographie moteur</h2>
-            <p class="lead">Couple, réponse, deletes — en langage simple.</p>
-          </div>
-        </header>
-
-        <div class="focus">
-          <p class="focus-title">Spécialiste PCR&nbsp;2.1 — 1.6&nbsp;TDI</p>
-          <p class="focus-sub">Diag / carto VAG · Conti PCR&nbsp;2.1</p>
-          <ul class="focus-models">
-            <li><strong>VW</strong> — Polo, Golf&nbsp;VI, Caddy, Touran, Passat</li>
-            <li><strong>Audi</strong> — A1, A3 · <strong>SEAT</strong> — Ibiza, Leon</li>
-            <li><strong>Škoda</strong> — Fabia, Rapid, Octavia, Roomster</li>
-          </ul>
-        </div>
-
-        <div class="fleet" aria-label="Modèles phares">
-          <figure>
-            <img src="fiche-assets/polo.jpg" alt="Volkswagen Polo" loading="lazy">
-            <figcaption>Polo</figcaption>
-          </figure>
-          <figure>
-            <img src="fiche-assets/golf.jpg" alt="Volkswagen Golf" loading="lazy">
-            <figcaption>Golf</figcaption>
-          </figure>
-          <figure>
-            <img src="fiche-assets/caddy.jpg" alt="Volkswagen Caddy" loading="lazy">
-            <figcaption>Caddy</figcaption>
-          </figure>
-          <figure>
-            <img src="fiche-assets/a1.jpg" alt="Audi A1" loading="lazy">
-            <figcaption>Audi A1</figcaption>
-          </figure>
-        </div>
-
-        <div class="divider" aria-hidden="true"></div>
-
-        <p class="section-label">Au menu</p>
-        <ul class="services">
-          <li>
-            <span class="svc-num">01</span>
-            <div>
-              <p class="svc-title">Stage 1</p>
-              <p class="svc-desc">Couple &amp; réponse pédale, calibrage réaliste.</p>
-            </div>
-          </li>
-          <li>
-            <span class="svc-num">02</span>
-            <div>
-              <p class="svc-title">Hardcut</p>
-              <p class="svc-desc">Coupe franche au régime choisi.</p>
-            </div>
-          </li>
-          <li>
-            <span class="svc-num">03</span>
-            <div>
-              <p class="svc-title">Vmax off</p>
-              <p class="svc-desc">Limiteur de vitesse désactivé.</p>
-            </div>
-          </li>
-          <li>
-            <span class="svc-num">04</span>
-            <div>
-              <p class="svc-title">FAP / EGR off</p>
-              <p class="svc-desc">Deletes logiciels, selon usage légal.</p>
-            </div>
-          </li>
-          <li>
-            <span class="svc-num">05</span>
-            <div>
-              <p class="svc-title">DTC liés off</p>
-              <p class="svc-desc">Masques défauts associés.</p>
-            </div>
-          </li>
-        </ul>
-
-        <p class="process">
-          <span>Atelier</span><br>
-          Lecture / sauvegarde ORI · banc avant flash.
-        </p>
-
-        <footer class="footer">
-          <dl class="contact">
-            <div>
-              <dt>Instagram</dt>
-              <dd>@savagesear</dd>
-            </div>
-            <div>
-              <dt>Contact</dt>
-              <dd><a href="tel:+594694907130">0694&nbsp;90&nbsp;71&nbsp;30</a> · Guyane</dd>
-            </div>
-          </dl>
-          <p class="legal">Usage piste / hors contrôle pollution selon législation.</p>
-        </footer>
+  <div id="wa-status">
+    <div class="wa-intro status-chrome">
+      <strong>Stories WhatsApp</strong> — 4 slides 9:16, une idée par image.
+      <p class="hint">Ordre&nbsp;: 1 logo → 2 prestations → 3 modèles → 4 contact. Sur téléphone&nbsp;: ouvre la page, cadre chaque slide plein écran, capture d’écran, puis poste dans WhatsApp Status dans cet ordre.</p>
+      <div class="wa-actions">
+        <a class="btn" href="#status-1">Slide 1</a>
+        <a class="btn" href="#status-2">Slide 2</a>
+        <a class="btn" href="#status-3">Slide 3</a>
+        <a class="btn" href="#status-4">Slide 4</a>
+        <button type="button" id="export-status-pngs">Export PNG (navigateur)</button>
+        <button type="button" id="print-status">PDF 4 pages</button>
       </div>
-    </article>
+    </div>
+
+    <!-- 1/4 Logo + hook -->
+    <div class="status-stage">
+      <div class="status-scale">
+        <article class="sheet status story" id="status-1" data-status="1" aria-label="Status WhatsApp 1 sur 4">
+          <div class="inner">
+            <div class="top-stripe" aria-hidden="true"></div>
+            <div class="slide-meta"><span>SAVAGESEAR</span><span class="count">1 / 4</span></div>
+            <div class="hero-status">
+              <div class="logo-frame">
+                <img src="logo-savagesear-reprog.png" width="520" height="520" alt="SAVAGESEAR Reprog — Volkswagen, Audi, SEAT">
+              </div>
+              <div>
+                <h2 class="headline">Cartographie moteur</h2>
+                <p class="lead">Couple, réponse, deletes — en langage simple.</p>
+                <div class="focus">
+                  <p class="focus-title">Spécialiste PCR&nbsp;2.1 — 1.6&nbsp;TDI</p>
+                  <p class="focus-sub">Diag / carto VAG · Guyane</p>
+                </div>
+              </div>
+            </div>
+            <p class="slide-foot">Suite → Prestations</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 2/4 Prestations -->
+    <div class="status-stage">
+      <div class="status-scale">
+        <article class="sheet status story" id="status-2" data-status="2" aria-label="Status WhatsApp 2 sur 4">
+          <div class="inner">
+            <div class="top-stripe" aria-hidden="true"></div>
+            <div class="slide-meta"><span>Prestations</span><span class="count">2 / 4</span></div>
+            <p class="section-label">Au menu</p>
+            <ul class="services">
+              <li>
+                <span class="svc-num">01</span>
+                <div>
+                  <p class="svc-title">Stage 1</p>
+                  <p class="svc-desc">Couple &amp; réponse pédale, calibrage réaliste.</p>
+                </div>
+              </li>
+              <li>
+                <span class="svc-num">02</span>
+                <div>
+                  <p class="svc-title">Hardcut</p>
+                  <p class="svc-desc">Coupe franche au régime choisi.</p>
+                </div>
+              </li>
+              <li>
+                <span class="svc-num">03</span>
+                <div>
+                  <p class="svc-title">Vmax off</p>
+                  <p class="svc-desc">Limiteur de vitesse désactivé.</p>
+                </div>
+              </li>
+              <li>
+                <span class="svc-num">04</span>
+                <div>
+                  <p class="svc-title">FAP / EGR off</p>
+                  <p class="svc-desc">Deletes logiciels, selon usage légal.</p>
+                </div>
+              </li>
+              <li>
+                <span class="svc-num">05</span>
+                <div>
+                  <p class="svc-title">DTC liés off</p>
+                  <p class="svc-desc">Masques défauts associés.</p>
+                </div>
+              </li>
+            </ul>
+            <p class="slide-foot">Lecture / sauvegarde ORI · écriture sur banc</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 3/4 Modèles -->
+    <div class="status-stage">
+      <div class="status-scale">
+        <article class="sheet status story" id="status-3" data-status="3" aria-label="Status WhatsApp 3 sur 4">
+          <div class="inner">
+            <div class="top-stripe" aria-hidden="true"></div>
+            <div class="slide-meta"><span>Modèles</span><span class="count">3 / 4</span></div>
+            <p class="section-label">PCR&nbsp;2.1 · 1.6&nbsp;TDI</p>
+            <div class="fleet" aria-label="Modèles phares">
+              <figure>
+                <img src="fiche-assets/polo.jpg" alt="Volkswagen Polo">
+                <figcaption>Polo</figcaption>
+              </figure>
+              <figure>
+                <img src="fiche-assets/golf.jpg" alt="Volkswagen Golf">
+                <figcaption>Golf</figcaption>
+              </figure>
+              <figure>
+                <img src="fiche-assets/caddy.jpg" alt="Volkswagen Caddy">
+                <figcaption>Caddy</figcaption>
+              </figure>
+              <figure>
+                <img src="fiche-assets/a1.jpg" alt="Audi A1">
+                <figcaption>Audi A1</figcaption>
+              </figure>
+            </div>
+            <p class="models-note">Aussi Touran, Passat, A3, Ibiza, Leon, Octavia…</p>
+            <p class="slide-foot">Suite → Contact</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- 4/4 Contact -->
+    <div class="status-stage">
+      <div class="status-scale">
+        <article class="sheet status story" id="status-4" data-status="4" aria-label="Status WhatsApp 4 sur 4">
+          <div class="inner">
+            <div class="top-stripe" aria-hidden="true"></div>
+            <div class="slide-meta"><span>Contact</span><span class="count">4 / 4</span></div>
+            <div class="contact-hero">
+              <div class="logo-frame">
+                <img src="logo-savagesear-reprog.png" width="360" height="360" alt="SAVAGESEAR Reprog">
+              </div>
+              <div>
+                <p class="cta">Écris-moi</p>
+                <p class="big-phone"><a href="tel:+594694907130">0694&nbsp;90&nbsp;71&nbsp;30</a></p>
+                <p class="contact-line"><strong>@savagesear</strong> · Guyane</p>
+              </div>
+            </div>
+            <p class="slide-foot">Usage piste / hors contrôle pollution selon législation.</p>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script>
+    (function () {
+      var printBtn = document.getElementById('print-status');
+      if (printBtn) {
+        printBtn.addEventListener('click', function () {
+          document.body.classList.add('print-status');
+          window.print();
+          setTimeout(function () { document.body.classList.remove('print-status'); }, 500);
+        });
+      }
+
+      var exportBtn = document.getElementById('export-status-pngs');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', async function () {
+          if (typeof html2canvas !== 'function') {
+            alert('Export PNG indisponible. Capture chaque slide (1→4) sur téléphone à la place.');
+            return;
+          }
+          exportBtn.disabled = true;
+          exportBtn.textContent = 'Export…';
+          var slides = document.querySelectorAll('.sheet.status');
+          try {
+            for (var i = 0; i < slides.length; i++) {
+              var canvas = await html2canvas(slides[i], {
+                backgroundColor: '#0b0a09',
+                scale: 2,
+                useCORS: true,
+                logging: false
+              });
+              var a = document.createElement('a');
+              a.download = 'savagesear-status-0' + (i + 1) + '.png';
+              a.href = canvas.toDataURL('image/png');
+              a.click();
+              await new Promise(function (r) { setTimeout(r, 400); });
+            }
+          } catch (err) {
+            console.error(err);
+            alert('Export échoué — capture chaque slide à l’écran.');
+          }
+          exportBtn.disabled = false;
+          exportBtn.textContent = 'Export PNG (navigateur)';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
