@@ -29,7 +29,7 @@
     </div>
     <nav class="nav-jump" aria-label="Pages">
       <a href="#maps-prio" data-nav="maps-prio">Top 12</a>
-      <a href="#all-maps" data-nav="all-maps">Tableau</a>
+      <a href="#all-maps" data-nav="all-maps">Toutes maps</a>
       <a href="#view2d" data-nav="view2d">Grille 2D</a>
       <a href="#view3d" data-nav="view3d">Map 3D</a>
       <a href="#hexdump" data-nav="hexdump">Hex</a>
@@ -100,7 +100,7 @@
   <h3 class="guide-h">DTC OFF (DaVinci)</h3>
   <p class="guide-p">Ce ne sont <b>pas</b> des maps couple : ce sont des <b>masques défaut</b> (~39–348 octets) mis à <b>00</b> pour ne plus lever P040x / P2002 / P245x / U1112… Couverture DPF+EGR ≈ 91%. Voir page <a href="#dtc-atlas" data-nav="dtc-atlas">DTC</a> et grilles <code>DTC_Pxxxx</code> en 2D (octets ORI vs 00).</p>
   <p class="guide-p">Reste <code>0x180xxx</code> = flags / seuils hors table DTC (FFFF off, enable→0, patches mixtes) — aussi dans DaVinci DPF+EGR.</p>
-  <p class="guide-p"><b>Zones hors A2L</b> (bas du Tableau) = suite Stage1 <b>rail + limiteurs</b>, pas des deletes FAP/EGR.
+  <p class="guide-p"><b>Zones hors A2L</b> (bas de <a href="#all-maps" data-nav="all-maps">Toutes maps</a>, §2) = suite Stage1 <b>rail + limiteurs</b>, pas des deletes FAP/EGR.
   Juste après la dernière map nommée <code>rail_base_int_trq2B</code> (fin <code>1EA167</code>) : 14 banques de 512 octets sans nom DAMOS (dès <code>1EA168</code>), même facteur bar et même hausse 1600→1656 / 1450→1500.7.
   Puis deux limiteurs jumeaux <code>1EBDD8</code> / <code>1EBE58</code> (ORI 1600/300 → ACE 1656/310.5 bar).
   Les vrais deletes restent sous Deletes ACE / page DTC / <code>0x180xxx</code> / zone <code>19E–1A4</code>.</p>
@@ -275,8 +275,11 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <section class="maps-prio page-panel is-active" id="maps-prio">
   <div class="sec-head">
     <h2>Top 12 maps Stage 1</h2>
-    <p class="sec-lead">Cartes prioritaires — adresse bleue = début · clic = copie Ctrl+G</p>
+    <p class="sec-lead">Les 12 cartes prioritaires seulement — pas toute la liste.</p>
   </div>
+  <p class="prio-note">Il y a <b>139 maps A2L</b> touchées (+ zones hors A2L en bas de page).
+    <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Voir toutes les maps (Toutes maps)</a>
+  </p>
   <div class="cards">
 <article class="card" data-map-id="AccPed_trq4A">
   <div class="badge">Stage 1</div>
@@ -546,10 +549,17 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="v3d-hint">Astuce : ouvre une map depuis Top 12 (bouton 3D) ou depuis la Grille 2D.</p>
 </section>
 <section id="all-maps" class="page-panel">
-  <h2>Toutes les maps changees <span class=hint>Filtre par famille ou cherche un nom / adresse</span></h2>
+  <div class="sec-head">
+    <h2>Toutes les maps <span class="hint">liste complète · 139 A2L</span></h2>
+    <p class="sec-lead">Ici = <b>toutes</b> les maps nommées A2L touchées (pas seulement le Top 12).
+      Filtre par famille ou cherche un nom / adresse. Défaut = tout afficher.</p>
+  </div>
+
+  <h3 class="maps-block-h" id="maps-a2l">1) Maps A2L (139)</h3>
+  <p class="note maps-block-lead">Maps avec un nom dans le fichier A2L / DAMOS. Le filtre « Deletes ACE » ajoute les masques DTC FAP/EGR (34 lignes).</p>
   <div class="toolbar">
     <input id="q" type="search" placeholder="Chercher nom, id, adresse...">
-    <select id="folder"><option value="">Toutes les familles</option><option value="Air control">Air control (4)</option><option value="Engine torque limiters">Engine torque limiters (7)</option><option value="Engine torque request">Engine torque request (12)</option><option value="Injection system">Injection system (35)</option><option value="Rail pressure">Rail pressure (7)</option><option value="Smoke limitation">Smoke limitation (5)</option><option value="Start of injection SOI">Start of injection SOI (33)</option><option value="Turbo boost pressure">Turbo boost pressure (29)</option><option value="Vehicle speed limiters">Vehicle speed limiters (7)</option><option value="Deletes ACE">Deletes ACE DTC FAP/EGR/EGT (34)</option></select>
+    <select id="folder"><option value="">Toutes les familles (défaut)</option><option value="Air control">Air control (4)</option><option value="Engine torque limiters">Engine torque limiters (7)</option><option value="Engine torque request">Engine torque request (12)</option><option value="Injection system">Injection system (35)</option><option value="Rail pressure">Rail pressure (7)</option><option value="Smoke limitation">Smoke limitation (5)</option><option value="Start of injection SOI">Start of injection SOI (33)</option><option value="Turbo boost pressure">Turbo boost pressure (29)</option><option value="Vehicle speed limiters">Vehicle speed limiters (7)</option><option value="Deletes ACE">Deletes ACE DTC FAP/EGR/EGT (34)</option></select>
     <span id="count" class="note"></span>
   </div>
   <div class="table-wrap">
@@ -738,8 +748,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </table>
   </div>
 
-  <h2>Zones hors A2L (suite rail + lim.)</h2>
-  <p class="note"><b>Preuve (bins réels) :</b> ce tableau = suite Stage1 <b>rail request + limiteurs</b> — <b>pas</b> un delete FAP/EGR.
+  <h3 class="maps-block-h" id="hors-a2l">2) Hors A2L — suite rail + limiteurs</h3>
+  <p class="note maps-block-lead"><b>Même page</b>, juste en dessous : octets changés <b>sans nom A2L</b> (pas dans le tableau du §1).
+    Ce n’est <b>pas</b> une autre page du menu.</p>
+  <p class="note"><b>Preuve (bins réels) :</b> suite Stage1 <b>rail request + limiteurs</b> — <b>pas</b> un delete FAP/EGR.
   Après la dernière <code>rail_base_int_trq2B</code> (fin <code>1EA167</code>), les banques sans nom démarrent à <code>1EA168</code> (14 × 512 octets, facteur 0.0610359 bar ≈ 0.006104 MPa, même bump 1600→1656 / 1450→1500.7, ~91 cellules/banque comme les maps nommées).
   Limiteurs jumeaux <code>1EBDD8</code> / <code>1EBE58</code> : ORI <code>0x6666</code>/<code>0x1333</code> → 1600/300 bar ; ACE <code>0x69FB</code>/<code>0x13DF</code> → 1656/310.5 ; masque zéro → <code>0000</code>.
   Contre-épreuve <b>Passat FAP-only</b> (même soft) : <b>0 octet</b> changé ici, alors que la zone DTC <code>19E000–1A4000</code> change bien — donc hors-A2L ≠ delete FAP.
@@ -846,7 +858,12 @@ function filter() {
     tr.style.display = show ? '' : 'none';
     if (show) n++;
   }
-  count.textContent = n + ' map(s)';
+  const total = rows.length;
+  if (!text && !fam) {
+    count.textContent = total + ' lignes (toutes · 139 A2L + deletes DTC)';
+  } else {
+    count.textContent = n + ' / ' + total + ' ligne(s) (filtre actif)';
+  }
   document.querySelectorAll('#quick-chips .chip').forEach(c => {
     c.classList.toggle('on', c.dataset.folder === fam);
   });
@@ -893,7 +910,14 @@ document.addEventListener('click', (e) => {
 
 function pageFromHash() {
   const raw = (location.hash || '#maps-prio').replace(/^#/, '').split('?')[0];
+  if (raw === 'hors-a2l' || raw === 'maps-a2l') return 'all-maps';
   return PAGE_IDS.includes(raw) ? raw : 'maps-prio';
+}
+function scrollHashTarget(hashId) {
+  const raw = hashId || (location.hash || '').replace(/^#/, '').split('?')[0];
+  if (raw !== 'hors-a2l' && raw !== 'maps-a2l') return;
+  const el = document.getElementById(raw);
+  if (el) requestAnimationFrame(() => el.scrollIntoView({ block: 'start' }));
 }
 document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
   const a = e.target.closest('a[data-nav]');
@@ -901,8 +925,16 @@ document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
   e.preventDefault();
   showPage(a.getAttribute('data-nav'));
 });
-window.addEventListener('hashchange', () => showPage(pageFromHash(), { updateHash: false }));
-showPage(pageFromHash(), { updateHash: true, scrollTop: false });
+window.addEventListener('hashchange', () => {
+  const raw = (location.hash || '').replace(/^#/, '').split('?')[0];
+  showPage(pageFromHash(), { updateHash: false, scrollTop: false });
+  scrollHashTarget(raw);
+});
+{
+  const bootHash = (location.hash || '').replace(/^#/, '').split('?')[0];
+  showPage(pageFromHash(), { updateHash: true, scrollTop: false });
+  scrollHashTarget(bootHash);
+}
 
 /* Densité */
 const LS_DENSITY = 'chercheur-density';
@@ -1322,7 +1354,7 @@ function renderVcds(result) {
     }
     html += '</ul>';
     if (egr.length || dpf.length) {
-      html += '<p class="note"><b>Que faire :</b> codes EGR/FAP alors que méca retirée → le soft delete est incomplet, ou un capteur encore branché ment. Scan moteur après flash + compare le filtre Deletes ACE / page DTC (masques 0x19E–0x1A4) — pas le tableau « Zones hors A2L » (suite rail + lim.).</p>';
+      html += '<p class="note"><b>Que faire :</b> codes EGR/FAP alors que méca retirée → le soft delete est incomplet, ou un capteur encore branché ment. Scan moteur après flash + compare le filtre Deletes ACE / page DTC (masques 0x19E–0x1A4) — pas le bloc « 2) Hors A2L » (suite rail + lim.).</p>';
     } else {
       html += '<p class="note">Pas de DTC EGR/FAP typiques dans ce collage — bon signe si c’est un scan post FAP/EGR off.</p>';
     }
