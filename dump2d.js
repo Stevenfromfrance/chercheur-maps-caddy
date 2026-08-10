@@ -43,6 +43,7 @@
     return [lab(k[0]), lab(k[1])];
   }
   function sideBytes(w, key) {
+    if (key === 'v2') return w.v2 || w.v1 || w.ace;
     if (key === 'v1') return w.v1 || w.ace;
     return w[key];
   }
@@ -365,6 +366,7 @@
       ori: typeof w.ori === 'string' ? b64ToBytes(w.ori) : w.ori,
       ace: typeof w.ace === 'string' ? b64ToBytes(w.ace) : w.ace,
       v1: typeof w.v1 === 'string' ? b64ToBytes(w.v1 || w.ace) : (w.v1 || w.ace),
+      v2: typeof w.v2 === 'string' ? b64ToBytes(w.v2 || w.v1 || w.ace) : (w.v2 || w.v1 || w.ace),
     }));
     setStatus('Atlas OK · ' + data.windowCount + ' zones');
     const prio = (data.priority && data.priority[0] && data.priority[0].addr) || 0x1CF9C0;

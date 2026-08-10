@@ -33,6 +33,7 @@
   }
   function series(g, key) {
     if (!g) return [];
+    if (key === 'v2') return g.v2 || g.v1 || g.ace || [];
     if (key === 'v1') return g.v1 || g.ace || [];
     return g[key] || [];
   }
