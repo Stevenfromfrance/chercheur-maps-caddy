@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Aide log VCDS</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<style>
+  :root {
+    --bg: #0f1419;
+    --card: #1a2330;
+    --line: #2a3a4d;
+    --txt: #e8eef5;
+    --muted: #9aabbc;
+    --acc: #3d9cfd;
+    --ok: #3ecf8e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--txt);
+    min-height: 100vh; padding: 1.25rem;
+  }
+  h1 { font-size: 1.25rem; margin: 0 0 .35rem; }
+  .sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; }
+  .btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+  button {
+    appearance: none; border: 1px solid var(--line); background: var(--card);
+    color: var(--txt); padding: .7rem 1rem; border-radius: 10px; font-weight: 600;
+    cursor: pointer;
+  }
+  button.on { border-color: var(--acc); background: #1a2f4a; color: #9fd0ff; }
+  article {
+    display: none; background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1rem 1.1rem; line-height: 1.45;
+  }
+  article.show { display: block; }
+  h2 { margin: 0 0 .6rem; font-size: 1.1rem; }
+  h3 { margin: 1rem 0 .4rem; font-size: .95rem; color: var(--acc); }
+  ul, ol { margin: .3rem 0 .6rem 1.1rem; padding: 0; }
+  li { margin: .25rem 0; }
+  code, .ide {
+    font-family: ui-monospace, Consolas, monospace; font-size: .88rem;
+    background: #0d1218; padding: .1rem .35rem; border-radius: 4px;
+  }
+  .ide-list { display: grid; gap: .35rem; }
+  .ide-list div { display: flex; gap: .5rem; align-items: baseline; }
+  .ok { color: var(--ok); }
+  a { color: var(--acc); }
+  .copy {
+    margin-top: .8rem; width: 100%; border-style: dashed;
+  }
+</style>
+</head>
+<body>
+  <h1>Aide log VCDS · Caddy 9979</h1>
+  <p class="sub">Choisis le type d’essai → suis la fiche → exporte le CSV. <a href="LOG-PROCEDURES.md">Doc complète</a></p>
+
+  <div class="btns" role="group" aria-label="Type de log">
+    <button type="button" class="on" data-log="ville">Log VILLE</button>
+    <button type="button" data-log="route">Log ROUTE</button>
+    <button type="button" data-log="depart">Log DEPART</button>
+    <button type="button" data-log="harcut">Log HARCUT</button>
+  </div>
+
+  <article id="ville" class="show">
+    <h2>Log VILLE — confort / partiels</h2>
+    <h3>But</h3>
+    <p>Vérifier conduite douce (pas on/off ACE).</p>
+    <h3>IDE</h3>
+    <div class="ide-list" data-ides></div>
+    <h3>Conditions</h3>
+    <ul>
+      <li>15–20 min ville</li>
+      <li>ASR ON</li>
+      <li>Pas de WOT long</li>
+    </ul>
+    <h3>Séquence</h3>
+    <ol>
+      <li>01-Engine → Advanced Measuring Values</li>
+      <li>Coche les IDE → Log Start</li>
+      <li>Conduite normale</li>
+      <li>Stop → Save → <code>CADDY_VILLE_YYYYMMDD.CSV</code></li>
+    </ol>
+  </article>
+
+  <article id="route">
+    <h2>Log ROUTE — Stage1 / rail / turbo</h2>
+    <h3>But</h3>
+    <p class="ok">Couple ~320–340 · rail réel ≤1650–1670 · MAP cohérent</p>
+    <h3>IDE</h3>
+    <div class="ide-list" data-ides></div>
+    <h3>Conditions</h3>
+    <ul>
+      <li>3ᵉ ou 4ᵉ, moteur chaud</li>
+      <li>Route dégagée</li>
+      <li>ASR ON</li>
+    </ul>
+    <h3>Séquence</h3>
+    <ol>
+      <li>Coche IDE → Log Start</li>
+      <li>Plein gaz ~1800 → 3500–4000 en charge</li>
+      <li>1–2 runs</li>
+      <li>Stop → Save → <code>CADDY_ROUTE_WOT_YYYYMMDD.CSV</code></li>
+    </ol>
+    <p><strong>Interdit :</strong> seulement frein moteur / décélération.</p>
+  </article>
+
+  <article id="depart">
+    <h2>Log DEPART — launch frein à main</h2>
+    <h3>But</h3>
+    <p>Hold régime + MAP/couple au hold + comportement au départ.</p>
+    <h3>IDE</h3>
+    <div class="ide-list" data-ides></div>
+    <h3>Conditions</h3>
+    <ul>
+      <li>Endroit sûr</li>
+      <li><strong>ASR OFF</strong></li>
+      <li>1ʳᵉ + frein à main + en prise (pas débrayé au hold)</li>
+    </ul>
+    <h3>Séquence</h3>
+    <ol>
+      <li>Log Start</li>
+      <li>Plein gaz 2–3 s (noter hold RPM)</li>
+      <li>Départ contrôlé</li>
+      <li>Stop → Save → <code>CADDY_DEPART_LAUNCH_YYYYMMDD.CSV</code></li>
+    </ol>
+  </article>
+
+  <article id="harcut">
+    <h2>Log HARCUT — ~4800 en roulant</h2>
+    <h3>But</h3>
+    <p>Couple → 0 vers ~4800 avec vitesse &gt; 0.</p>
+    <h3>IDE</h3>
+    <div class="ide-list" data-ides></div>
+    <h3>Conditions</h3>
+    <ul>
+      <li>3ᵉ/4ᵉ, pas launch</li>
+      <li>Vitesse &gt; 0</li>
+    </ul>
+    <h3>Séquence</h3>
+    <ol>
+      <li>Log Start</li>
+      <li>Montée franche jusqu’à zone 4500–4800</li>
+      <li>Stop → Save → <code>CADDY_HARCUT_YYYYMMDD.CSV</code></li>
+    </ol>
+  </article>
+
+  <button type="button" class="copy" id="copy-ides">Copier la liste IDE</button>
+
+<script>
+const IDES = [
+  ['IDE00021', 'Engine RPM'],
+  ['IDE00075', 'Vehicle speed'],
+  ['IDE00086', 'Accelerator pedal'],
+  ['IDE00100', 'Engine torque TQI'],
+  ['IDE00188', 'Rail pressure actual'],
+  ['IDE00201', 'Rail pressure specified'],
+  ['IDE00190', 'MAP specified'],
+  ['IDE00191', 'MAP actual'],
+  ['IDE00347', 'Air mass'],
+];
+const ideHtml = IDES.map(([id, n]) =>
+  `<div><span class="ide">${id}</span> <span>${n}</span></div>`
+).join('');
+document.querySelectorAll('[data-ides]').forEach((el) => { el.innerHTML = ideHtml; });
+
+const buttons = document.querySelectorAll('[data-log]');
+const articles = document.querySelectorAll('article');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    buttons.forEach((b) => b.classList.toggle('on', b === btn));
+    articles.forEach((a) => a.classList.toggle('show', a.id === btn.dataset.log));
+  });
+});
+
+document.getElementById('copy-ides').addEventListener('click', async () => {
+  const text = IDES.map(([id, n]) => `${id} — ${n}`).join('\n');
+  await navigator.clipboard.writeText(text);
+  const b = document.getElementById('copy-ides');
+  b.textContent = 'IDE copiés';
+  setTimeout(() => { b.textContent = 'Copier la liste IDE'; }, 1500);
+});
+</script>
+</body>
+</html>
