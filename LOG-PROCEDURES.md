@@ -1,124 +1,83 @@
-# Procédures log VCDS — Caddy CAYE PCR2.1 soft 9979
+# Guide logs VCDS — banc route (Caddy 9979)
 
 ECU : `03L 906 023 TB` · Soft `9979`  
-Outil : VCDS → **01-Engine** → **Advanced Measuring Values** (pas les groupes 08)
+Page interactive : [log-aide.html](log-aide.html)
 
----
+## Principe
 
-## IDE à cocher (tous les types de log)
+- **1 log = 1 question** (rail, turbo, ville, hardcut, launch…)
+- **Même route / même rapport** pour comparer les cartos (mini banc)
+- Max **~12 IDE** dans VCDS (sinon sampling trop lent)
+- CSV brut + soft flashé (`V2` / `V3`…) + ASR ON/OFF
 
-Tape chaque numéro dans le filtre VCDS et coche :
+## IDE core (toujours)
 
 | IDE | Nom |
 |---|---|
-| **IDE00021** | Engine RPM |
-| **IDE00075** | Vehicle speed |
-| **IDE00086** | Accelerator pedal position |
-| **IDE00100** | Engine torque (TQI_SP) |
-| **IDE00188** | Fuel rail pressure actual |
-| **IDE00201** | Fuel rail pressure specified |
-| **IDE00190** | MAP / charge air specified |
-| **IDE00191** | MAP / charge air actual |
-| **IDE00347** | Air mass actual |
+| IDE00021 | Engine RPM |
+| IDE00075 | Vehicle speed |
+| IDE00086 | Accelerator pedal |
+| IDE00100 | Engine torque TQI |
+| IDE00188 | Rail pressure actual |
+| IDE00201 | Rail pressure specified |
+| IDE00190 | MAP specified |
+| IDE00191 | MAP actual |
+| IDE00347 | Air mass |
 
-Option utile : chercher `Torque limit` si dispo.
+Extras utiles si place : Coolant temp · Injection quantity · Torque limitation.
 
----
+## Roadmap validation mappack
 
-## 1) LOG VILLE (confort / partiels)
+1. **ROUTE_RAIL** (priorité) — couple + rail
+2. **ROUTE_TURBO** (priorité) — MAP consigne/réel
+3. **VILLE** (priorité) — confort partiels
+4. **HARCUT** — cut ~4800 en roulant
+5. **DEPART** — launch (bonus V2/V3)
+6. **ROUTE_INJ** — injection / smoke (bonus)
 
-**But :** vérifier que la carto reste douce (pas on/off), pas de fumée / à-coups.
+## Noms de fichiers
 
-**Conditions**
-- Trafic normal, 15–20 min
-- ASR ON (usage réel)
-- Pas de WOT prolongé
+```
+CADDY_{SOFT}_ROUTE_RAIL_YYYYMMDD.csv
+CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv
+CADDY_{SOFT}_VILLE_YYYYMMDD.csv
+CADDY_{SOFT}_HARCUT_YYYYMMDD.csv
+CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv
+CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv
+```
 
-**Séquence**
-1. Contact + moteur chaud idéalement
-2. Advanced Measuring Values → cocher les IDE ci-dessus
-3. **Log → Start**
-4. Conduite ville normale (arrêts, 2ᵉ/3ᵉ, légers coups d’accélérateur)
-5. **Stop** → Save
+Exemple : `CADDY_V3_ROUTE_RAIL_20260812.csv`
 
-**Nom fichier suggéré :** `CADDY_VILLE_YYYYMMDD.CSV`
+## Détail des runs
 
-**Réussite si :** couple progressif, pas de pics rail fous, conduite agréable.
+Utilise la page **log-aide.html** (boutons + copie IDE).  
+Résumé :
 
----
+### ROUTE_RAIL
+- 3ᵉ/4ᵉ, WOT 1800→3500–4000 en charge
+- Prouver : couple ~320–340, rail consigne ~1620, réel ≤~1650–1670 si possible
 
-## 2) LOG ROUTE (Stage1 / rail / turbo)
+### ROUTE_TURBO
+- Même route si possible
+- Prouver : MAP specified vs actual sous charge
 
-**But :** valider couple, rail consigne/réel, MAP sous charge.
+### VILLE
+- 15–20 min, ASR ON, pas de WOT long
+- Prouver : douceur vs ACE on/off
 
-**Conditions**
-- Route dégagée, légal
-- 3ᵉ ou 4ᵉ
-- ASR ON
-- Moteur chaud
+### HARCUT
+- En roulant seulement, montée ~4800
+- Prouver : couple → 0 zone 4800
 
-**Séquence**
-1. Coche IDE → **Log Start**
-2. Accélération franche (plein gaz) de ~1800 jusqu’à ~3500–4000 tr/min **en charge**
-3. Relâche, recommence 1–2 fois si possible
-4. **Stop** → Save
+### DEPART
+- ASR OFF, frein à main, en prise
+- Prouver : hold RPM + MAP/couple au hold + départ
 
-**Nom fichier suggéré :** `CADDY_ROUTE_WOT_YYYYMMDD.CSV`
+### ROUTE_INJ
+- Pull WOT + IQ si trouvé
+- Prouver : air/IQ/fumée
 
-**Réussite si :**
-- couple pic ~320–340 Nm (Stage1 V1/V2)
-- rail consigne ~1620 ; réel de préférence ≤ ~1650–1670
-- MAP suit la consigne (pas d’écart énorme)
+## Après le log
 
-**Interdit :** log seulement en décélération / frein moteur.
-
----
-
-## 3) LOG DEPART (launch / frein à main)
-
-**But :** voir hold régime + MAP/couple au hold + trou au départ.
-
-**Conditions**
-- Endroit sûr
-- **ASR OFF** (test)
-- 1ʳᵉ , frein à main, **en prise** (sans débrayer au hold)
-- Puis départ contrôlé
-
-**Séquence**
-1. Coche IDE → **Log Start**
-2. Plein gaz, frein à main : tenir 2–3 s (noter le régime hold)
-3. Lâcher frein à main / démarrer proprement
-4. **Stop** → Save
-
-**Nom fichier suggéré :** `CADDY_DEPART_LAUNCH_YYYYMMDD.CSV`
-
-**Réussite si :** régime hold stable (V2 ~2500 / V3 ~2700–3000), CSV avec speed≈0 puis speed>0.
-
-**Interdit :** mélanger avec un test hardcut 4800 dans le même fichier (sinon le préciser).
-
----
-
-## 4) LOG HARCUT (~4800)
-
-**But :** confirmer coupure couple haute régime **en roulant**.
-
-**Conditions**
-- 3ᵉ ou 4ᵉ, vitesse > 0
-- ASR ON ou OFF (noter lequel)
-- Pas frein à main / pas launch
-
-**Séquence**
-1. **Log Start**
-2. Montée régime franche jusqu’à la zone 4500–4800
-3. **Stop** → Save
-
-**Nom fichier suggéré :** `CADDY_HARCUT_YYYYMMDD.CSV`
-
-**Réussite si :** couple qui tombe vers 0 près de ~4800 avec pédale encore haute (si possible).
-
----
-
-## Envoi du log
-
-- Envoyer le **CSV brut** (pas une photo d’écran)
-- Indiquer : soft flashé (V2 / V3 / …) + type de log + ASR ON/OFF
+1. Page chercheur → **VCDS** / **Logs** pour analyser
+2. Ou envoi CSV dans le chat avec : soft + type de run + ASR + ressenti 1 ligne

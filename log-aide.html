@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SAVAGESEAR · Aide log VCDS</title>
+<title>SAVAGESEAR · Guide logs VCDS (banc route)</title>
 <link rel="icon" href="avatar-savagesear.png" type="image/png">
 <style>
   :root {
@@ -14,142 +14,134 @@
     --muted: #9aabbc;
     --acc: #3d9cfd;
     --ok: #3ecf8e;
+    --warn: #e6b84d;
+    --bad: #e85d5d;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; font-family: "Segoe UI", system-ui, sans-serif;
     background: var(--bg); color: var(--txt);
-    min-height: 100vh; padding: 1.25rem;
+    min-height: 100vh; padding: 1.1rem 1.25rem 2.5rem;
+    max-width: 820px;
   }
-  h1 { font-size: 1.25rem; margin: 0 0 .35rem; }
-  .sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.25rem; }
-  .btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+  a { color: var(--acc); }
+  h1 { font-size: 1.3rem; margin: 0 0 .35rem; }
+  .sub { color: var(--muted); font-size: .92rem; margin: 0 0 1rem; line-height: 1.4; }
+  .nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+  .nav a {
+    text-decoration: none; border: 1px solid var(--line); background: var(--card);
+    padding: .45rem .75rem; border-radius: 8px; font-size: .85rem; color: var(--txt);
+  }
+  .panel {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; line-height: 1.45;
+  }
+  .panel h2 { margin: 0 0 .55rem; font-size: 1.05rem; }
+  .panel h3 { margin: .9rem 0 .35rem; font-size: .92rem; color: var(--acc); }
+  ol.roadmap { margin: .4rem 0 .2rem 1.15rem; padding: 0; }
+  ol.roadmap li { margin: .45rem 0; }
+  .tag {
+    display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .03em;
+    padding: .15rem .45rem; border-radius: 999px; vertical-align: middle;
+  }
+  .tag.need { background: #3a2a12; color: var(--warn); }
+  .tag.opt { background: #122a1c; color: var(--ok); }
+  .tag.bonus { background: #1a2438; color: #9fd0ff; }
+  .btns { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 1rem; }
   button {
-    appearance: none; border: 1px solid var(--line); background: var(--card);
-    color: var(--txt); padding: .7rem 1rem; border-radius: 10px; font-weight: 600;
-    cursor: pointer;
+    appearance: none; border: 1px solid var(--line); background: #121a24;
+    color: var(--txt); padding: .65rem .9rem; border-radius: 10px; font-weight: 600;
+    cursor: pointer; font-size: .88rem;
   }
   button.on { border-color: var(--acc); background: #1a2f4a; color: #9fd0ff; }
-  article {
+  button.act { width: 100%; margin-top: .55rem; border-style: dashed; }
+  article.run {
     display: none; background: var(--card); border: 1px solid var(--line);
     border-radius: 14px; padding: 1rem 1.1rem; line-height: 1.45;
   }
-  article.show { display: block; }
-  h2 { margin: 0 0 .6rem; font-size: 1.1rem; }
-  h3 { margin: 1rem 0 .4rem; font-size: .95rem; color: var(--acc); }
-  ul, ol { margin: .3rem 0 .6rem 1.1rem; padding: 0; }
-  li { margin: .25rem 0; }
-  code, .ide {
-    font-family: ui-monospace, Consolas, monospace; font-size: .88rem;
+  article.run.show { display: block; }
+  .ide-list { display: grid; gap: .3rem; margin: .35rem 0 .6rem; }
+  .ide-list div { display: flex; gap: .5rem; flex-wrap: wrap; align-items: baseline; }
+  .ide {
+    font-family: ui-monospace, Consolas, monospace; font-size: .84rem;
+    background: #0d1218; padding: .12rem .4rem; border-radius: 4px;
+  }
+  .muted { color: var(--muted); font-size: .88rem; }
+  .ok { color: var(--ok); }
+  .warn { color: var(--warn); }
+  .bad { color: var(--bad); }
+  code {
+    font-family: ui-monospace, Consolas, monospace; font-size: .84rem;
     background: #0d1218; padding: .1rem .35rem; border-radius: 4px;
   }
-  .ide-list { display: grid; gap: .35rem; }
-  .ide-list div { display: flex; gap: .5rem; align-items: baseline; }
-  .ok { color: var(--ok); }
-  a { color: var(--acc); }
-  .copy {
-    margin-top: .8rem; width: 100%; border-style: dashed;
+  .box {
+    border: 1px dashed var(--line); border-radius: 10px; padding: .7rem .8rem;
+    margin: .6rem 0; background: #121820;
   }
+  ul, ol { margin: .25rem 0 .55rem 1.1rem; padding: 0; }
+  li { margin: .28rem 0; }
+  .meta { font-size: .82rem; color: var(--muted); margin-top: 1.2rem; }
 </style>
 </head>
 <body>
-  <h1>Aide log VCDS · Caddy 9979</h1>
-  <p class="sub">Choisis le type d’essai → suis la fiche → exporte le CSV. <a href="LOG-PROCEDURES.md">Doc complète</a></p>
-
-  <div class="btns" role="group" aria-label="Type de log">
-    <button type="button" class="on" data-log="ville">Log VILLE</button>
-    <button type="button" data-log="route">Log ROUTE</button>
-    <button type="button" data-log="depart">Log DEPART</button>
-    <button type="button" data-log="harcut">Log HARCUT</button>
+  <div class="nav">
+    <a href="index.html">← Chercheur</a>
+    <a href="index.html#vcds">Analyser CSV</a>
+    <a href="index.html#log-compare">Comparer logs</a>
+    <a href="LOG-PROCEDURES.md">Doc MD</a>
   </div>
 
-  <article id="ville" class="show">
-    <h2>Log VILLE — confort / partiels</h2>
-    <h3>But</h3>
-    <p>Vérifier conduite douce (pas on/off ACE).</p>
-    <h3>IDE</h3>
-    <div class="ide-list" data-ides></div>
-    <h3>Conditions</h3>
-    <ul>
-      <li>15–20 min ville</li>
-      <li>ASR ON</li>
-      <li>Pas de WOT long</li>
-    </ul>
-    <h3>Séquence</h3>
-    <ol>
-      <li>01-Engine → Advanced Measuring Values</li>
-      <li>Coche les IDE → Log Start</li>
-      <li>Conduite normale</li>
-      <li>Stop → Save → <code>CADDY_VILLE_YYYYMMDD.CSV</code></li>
-    </ol>
-  </article>
+  <h1>Guide logs VCDS · banc route 9979</h1>
+  <p class="sub">
+    Un log = <b>une question</b>. Même route, même rapport, même portion → comme un mini banc.
+    Envoie le CSV + le type de run + soft flashé (V2 / V3…).
+  </p>
 
-  <article id="route">
-    <h2>Log ROUTE — Stage1 / rail / turbo</h2>
-    <h3>But</h3>
-    <p class="ok">Couple ~320–340 · rail réel ≤1650–1670 · MAP cohérent</p>
-    <h3>IDE</h3>
-    <div class="ide-list" data-ides></div>
-    <h3>Conditions</h3>
-    <ul>
-      <li>3ᵉ ou 4ᵉ, moteur chaud</li>
-      <li>Route dégagée</li>
-      <li>ASR ON</li>
-    </ul>
-    <h3>Séquence</h3>
-    <ol>
-      <li>Coche IDE → Log Start</li>
-      <li>Plein gaz ~1800 → 3500–4000 en charge</li>
-      <li>1–2 runs</li>
-      <li>Stop → Save → <code>CADDY_ROUTE_WOT_YYYYMMDD.CSV</code></li>
+  <section class="panel">
+    <h2>Roadmap validation mappack</h2>
+    <p class="muted">Ordre conseillé pour valider Stage1 daily (launch = bonus).</p>
+    <ol class="roadmap">
+      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_RAIL</b> — couple + rail consigne/réel</li>
+      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_TURBO</b> — MAP consigne/réel sous charge</li>
+      <li><span class="tag need">PRIORITÉ</span> <b>VILLE</b> — confort partiels (pas on/off)</li>
+      <li><span class="tag opt">OK SI RESSENTI</span> <b>HARCUT</b> — cut ~4800 en roulant</li>
+      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V2/V3</li>
+      <li><span class="tag bonus">BONUS</span> <b>ROUTE_INJ</b> — air mass / fumée / IQ si canal trouvé</li>
     </ol>
-    <p><strong>Interdit :</strong> seulement frein moteur / décélération.</p>
-  </article>
+    <div class="box">
+      <b>Avant chaque session</b>
+      <ul>
+        <li>Note soft flashé : <code>V2</code> / <code>V3</code> / autre</li>
+        <li>Moteur chaud</li>
+        <li>Route fixe (même départ / même fin)</li>
+        <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b></li>
+        <li>Max ~12 canaux (sinon échantillonnage trop lent)</li>
+      </ul>
+    </div>
+  </section>
 
-  <article id="depart">
-    <h2>Log DEPART — launch frein à main</h2>
-    <h3>But</h3>
-    <p>Hold régime + MAP/couple au hold + comportement au départ.</p>
-    <h3>IDE</h3>
-    <div class="ide-list" data-ides></div>
-    <h3>Conditions</h3>
+  <section class="panel">
+    <h2>Règles anti-log pourri</h2>
     <ul>
-      <li>Endroit sûr</li>
-      <li><strong>ASR OFF</strong></li>
-      <li>1ʳᵉ + frein à main + en prise (pas débrayé au hold)</li>
+      <li>1 fichier = 1 type de run (ne mélange pas launch + hardcut)</li>
+      <li>Plein gaz = <b>en charge</b> (pas frein moteur)</li>
+      <li>Nomme le CSV comme indiqué sur la fiche</li>
+      <li>Envoie le <b>CSV brut</b>, pas une photo d’écran</li>
+      <li>Précise ASR ON/OFF</li>
     </ul>
-    <h3>Séquence</h3>
-    <ol>
-      <li>Log Start</li>
-      <li>Plein gaz 2–3 s (noter hold RPM)</li>
-      <li>Départ contrôlé</li>
-      <li>Stop → Save → <code>CADDY_DEPART_LAUNCH_YYYYMMDD.CSV</code></li>
-    </ol>
-  </article>
+  </section>
 
-  <article id="harcut">
-    <h2>Log HARCUT — ~4800 en roulant</h2>
-    <h3>But</h3>
-    <p>Couple → 0 vers ~4800 avec vitesse &gt; 0.</p>
-    <h3>IDE</h3>
-    <div class="ide-list" data-ides></div>
-    <h3>Conditions</h3>
-    <ul>
-      <li>3ᵉ/4ᵉ, pas launch</li>
-      <li>Vitesse &gt; 0</li>
-    </ul>
-    <h3>Séquence</h3>
-    <ol>
-      <li>Log Start</li>
-      <li>Montée franche jusqu’à zone 4500–4800</li>
-      <li>Stop → Save → <code>CADDY_HARCUT_YYYYMMDD.CSV</code></li>
-    </ol>
-  </article>
+  <p class="muted" style="margin:.2rem 0 .5rem">Choisis le run → copie les IDE → fais l’essai → Save CSV</p>
+  <div class="btns" id="run-btns" role="tablist" aria-label="Type de run"></div>
+  <div id="runs"></div>
 
-  <button type="button" class="copy" id="copy-ides">Copier la liste IDE</button>
+  <p class="meta">
+    Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB ·
+    Après CSV → <a href="index.html#vcds">Analyser</a> ou envoie le fichier dans le chat.
+  </p>
 
 <script>
-const IDES = [
+const CORE = [
   ['IDE00021', 'Engine RPM'],
   ['IDE00075', 'Vehicle speed'],
   ['IDE00086', 'Accelerator pedal'],
@@ -160,26 +152,261 @@ const IDES = [
   ['IDE00191', 'MAP actual'],
   ['IDE00347', 'Air mass'],
 ];
-const ideHtml = IDES.map(([id, n]) =>
-  `<div><span class="ide">${id}</span> <span>${n}</span></div>`
-).join('');
-document.querySelectorAll('[data-ides]').forEach((el) => { el.innerHTML = ideHtml; });
+const EXTRA = {
+  coolant: ['Coolant temp', 'Température liquide (cherche Coolant / Coolant temperature)'],
+  iq: ['Injection quantity', 'Quantité injectée (cherche Injection quantity / IQ)'],
+  tqlim: ['Torque limitation', 'Limiteur couple (cherche Torque limit / Limitation)'],
+};
 
-const buttons = document.querySelectorAll('[data-log]');
-const articles = document.querySelectorAll('article');
-buttons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    buttons.forEach((b) => b.classList.toggle('on', b === btn));
-    articles.forEach((a) => a.classList.toggle('show', a.id === btn.dataset.log));
+const RUNS = [
+  {
+    id: 'route_rail',
+    label: 'ROUTE_RAIL',
+    title: 'Run ROUTE_RAIL — Stage1 + pression rail',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Prouver couple Stage1 et que le rail réel ne dépasse pas trop la consigne.',
+    prove: [
+      'Couple pic ~320–340 Nm (V1/V2/V3)',
+      'Rail consigne ~1620 bar',
+      'Rail réel de préférence ≤ 1650–1670 bar (pic court OK à surveiller)',
+      'Pédale haute pendant le pull',
+    ],
+    conditions: [
+      'Route fixe dégagée',
+      '3ᵉ ou 4ᵉ, moteur chaud',
+      'ASR ON',
+      'Même portion à chaque fois (banc route)',
+    ],
+    steps: [
+      'Coche IDE (core + coolant si place)',
+      'Log → Start avant le pull',
+      'Plein gaz ~1800 → 3500–4000 tr/min EN CHARGE',
+      'Relâche, 1 run suffit si propre (2 max)',
+      'Stop → Save',
+    ],
+    forbid: 'Décélération seule / frein moteur / mélange avec launch.',
+    file: 'CADDY_{SOFT}_ROUTE_RAIL_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft + ASR ON + rapport utilisé (3 ou 4).',
+  },
+  {
+    id: 'route_turbo',
+    label: 'ROUTE_TURBO',
+    title: 'Run ROUTE_TURBO — MAP / boost',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Voir si le turbo suit la consigne sous charge (pas d’écart fou).',
+    prove: [
+      'MAP specified vs MAP actual pendant WOT',
+      'Pas d’écart énorme durable (under/overboost)',
+      'RPM + pédale + vitesse présents',
+    ],
+    conditions: [
+      'Même route / même rapport que ROUTE_RAIL si possible',
+      '3ᵉ ou 4ᵉ',
+      'ASR ON',
+      'Moteur chaud',
+    ],
+    steps: [
+      'Coche IDE core (MAP déjà dedans)',
+      'Log Start',
+      '1 pull franc 1800 → 3500–4000',
+      'Stop → Save',
+    ],
+    forbid: 'Changer de portion / de rapport entre deux comparaisons ACE vs V3.',
+    file: 'CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft. Idéal : même route que le run rail.',
+  },
+  {
+    id: 'ville',
+    label: 'VILLE',
+    title: 'Run VILLE — confort partiels',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Confirmer que V1/V2/V3 reste agréable vs ACE on/off.',
+    prove: [
+      'Couple progressif à bas régime',
+      'Pas d’à-coups étranges',
+      'Usage réel (ASR ON)',
+    ],
+    conditions: [
+      '15–20 min ville',
+      'ASR ON',
+      'Pas de WOT long',
+    ],
+    steps: [
+      'Coche IDE core',
+      'Log Start',
+      'Conduite normale (2ᵉ/3ᵉ, stops)',
+      'Stop → Save',
+    ],
+    forbid: 'Transformer le log ville en session launch.',
+    file: 'CADDY_{SOFT}_VILLE_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft + “ressenti OK / encore on-off”.',
+  },
+  {
+    id: 'harcut',
+    label: 'HARCUT',
+    title: 'Run HARCUT — cut ~4800',
+    priority: 'Validation dossier',
+    goal: 'Montrer couple qui tombe vers 0 près de 4800 en roulant.',
+    prove: [
+      'Vitesse > 0',
+      'Régime zone 4500–4800',
+      'Couple bas / 0 avec pédale encore haute si possible',
+    ],
+    conditions: [
+      '3ᵉ ou 4ᵉ',
+      'Pas frein à main / pas mode launch',
+      'Noter ASR ON ou OFF',
+    ],
+    steps: [
+      'Coche IDE core (+ torque limit si trouvé)',
+      'Log Start',
+      'Montée franche jusqu’à ~4800',
+      'Stop → Save',
+    ],
+    forbid: 'Test à l’arrêt (ça devient launch / clutch-prot).',
+    file: 'CADDY_{SOFT}_HARCUT_YYYYMMDD.csv',
+    extras: ['tqlim'],
+    send: 'CSV + soft + ASR + “ressenti cut net ?”.',
+  },
+  {
+    id: 'depart',
+    label: 'DEPART',
+    title: 'Run DEPART — launch',
+    priority: 'BONUS (V2/V3)',
+    goal: 'Hold régime + MAP/couple au hold + trou au départ.',
+    prove: [
+      'Speed ≈ 0 pendant hold',
+      'RPM hold (V2 ~2500 / V3 ~2700–3000)',
+      'MAP et couple pendant hold',
+      'Puis speed > 0 au départ',
+    ],
+    conditions: [
+      'Endroit sûr',
+      'ASR OFF',
+      '1ʳᵉ + frein à main + en prise (pas débrayé au hold)',
+    ],
+    steps: [
+      'Coche IDE core',
+      'Log Start',
+      'Plein gaz 2–3 s (hold)',
+      'Départ contrôlé',
+      'Stop → Save',
+    ],
+    forbid: 'Mélanger hardcut 4800 dans le même fichier.',
+    file: 'CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv',
+    extras: ['tqlim'],
+    send: 'CSV + soft (V2 ou V3) + ASR OFF + ressenti trou oui/non.',
+  },
+  {
+    id: 'route_inj',
+    label: 'ROUTE_INJ',
+    title: 'Run ROUTE_INJ — injection / smoke',
+    priority: 'BONUS famille',
+    goal: 'Croiser couple / air / quantité injectée sous charge.',
+    prove: [
+      'Air mass monte avec la charge',
+      'IQ (si dispo) cohérent avec couple',
+      'Pas de fumée noire grosse ressentie',
+    ],
+    conditions: [
+      'Même route banc',
+      '3ᵉ/4ᵉ WOT',
+      'ASR ON',
+    ],
+    steps: [
+      'Coche IDE core + Injection quantity si trouvé',
+      'Log Start → 1 pull 1800–4000',
+      'Stop → Save',
+    ],
+    forbid: 'Oublier de noter s’il y a fumée visuelle.',
+    file: 'CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
+    extras: ['iq'],
+    send: 'CSV + soft + fumée oui/non.',
+  },
+];
+
+function ideHtml(list, extras) {
+  let html = list.map(([id, n]) =>
+    `<div><span class="ide">${id}</span> <span>${n}</span></div>`
+  ).join('');
+  (extras || []).forEach((k) => {
+    const e = EXTRA[k];
+    if (e) html += `<div><span class="ide">${e[0]}</span> <span class="muted">${e[1]}</span></div>`;
   });
+  return html;
+}
+
+const btns = document.getElementById('run-btns');
+const runsEl = document.getElementById('runs');
+
+RUNS.forEach((r, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = r.label;
+  b.dataset.run = r.id;
+  if (i === 0) b.classList.add('on');
+  b.addEventListener('click', () => selectRun(r.id));
+  btns.appendChild(b);
+
+  const art = document.createElement('article');
+  art.className = 'run' + (i === 0 ? ' show' : '');
+  art.id = r.id;
+  art.innerHTML = `
+    <h2 style="margin:0 0 .35rem;font-size:1.08rem">${r.title}</h2>
+    <p class="muted" style="margin:0 0 .5rem">${r.priority}</p>
+    <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">But</h3>
+    <p style="margin:.2rem 0">${r.goal}</p>
+    <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">Ce que le log doit prouver</h3>
+    <ul>${r.prove.map((x) => `<li class="ok">${x}</li>`).join('')}</ul>
+    <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">IDE à cocher</h3>
+    <div class="ide-list">${ideHtml(CORE, r.extras)}</div>
+    <button type="button" class="act" data-copy="${r.id}">Copier IDE + nom fichier</button>
+    <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">Conditions</h3>
+    <ul>${r.conditions.map((x) => `<li>${x}</li>`).join('')}</ul>
+    <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">Séquence</h3>
+    <ol>${r.steps.map((x) => `<li>${x}</li>`).join('')}</ol>
+    <p><b class="bad">Interdit :</b> ${r.forbid}</p>
+    <div class="box">
+      <b>Nom fichier</b><br>
+      <code>${r.file}</code><br>
+      <span class="muted">Remplace {SOFT} par V2 / V3 / ACE…</span>
+    </div>
+    <p><b>À m’envoyer :</b> ${r.send}</p>
+  `;
+  runsEl.appendChild(art);
 });
 
-document.getElementById('copy-ides').addEventListener('click', async () => {
-  const text = IDES.map(([id, n]) => `${id} — ${n}`).join('\n');
-  await navigator.clipboard.writeText(text);
-  const b = document.getElementById('copy-ides');
-  b.textContent = 'IDE copiés';
-  setTimeout(() => { b.textContent = 'Copier la liste IDE'; }, 1500);
+function selectRun(id) {
+  document.querySelectorAll('#run-btns button').forEach((b) => {
+    b.classList.toggle('on', b.dataset.run === id);
+  });
+  document.querySelectorAll('article.run').forEach((a) => {
+    a.classList.toggle('show', a.id === id);
+  });
+}
+
+runsEl.addEventListener('click', async (e) => {
+  const btn = e.target.closest('[data-copy]');
+  if (!btn) return;
+  const r = RUNS.find((x) => x.id === btn.dataset.copy);
+  if (!r) return;
+  const lines = [
+    `RUN: ${r.label}`,
+    `FILE: ${r.file}`,
+    '',
+    'IDE:',
+    ...CORE.map(([id, n]) => `${id} — ${n}`),
+    ...(r.extras || []).map((k) => EXTRA[k] ? `${EXTRA[k][0]} — ${EXTRA[k][1]}` : ''),
+    '',
+    `SEND: ${r.send}`,
+  ].filter(Boolean);
+  await navigator.clipboard.writeText(lines.join('\n'));
+  const old = btn.textContent;
+  btn.textContent = 'Copié ✓';
+  setTimeout(() => { btn.textContent = old; }, 1400);
 });
 </script>
 </body>

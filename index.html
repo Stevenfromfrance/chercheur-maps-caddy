@@ -130,11 +130,15 @@
     Après (ou avant) une reprog, tu enregistres ce que l’ECU mesure en roulant.
     Ici on compare les <b>pics du log</b> aux <b>plafonds du fichier ACE</b> (valeurs max des maps Stage 1).
     Vert = dans les clous · Orange = limite · Rouge = dépassement à traiter.
+    <p class="guide-p"><b>Nouveau :</b> suis le protocole banc-route (1 run = 1 famille) →
+      <a href="log-aide.html"><b>Guide fiches log</b></a>
+      (ROUTE_RAIL, ROUTE_TURBO, VILLE, HARCUT, DEPART, ROUTE_INJ).</p>
     <ol>
-      <li>Dans VCDS → module moteur → <b>Advanced Measuring Values</b> → coche RPM, couple, MAP consigne/réel, rail consigne/réel, air mass.</li>
-      <li>Fais un essai : accélérations franches (plein gaz en montée de régime), puis Log → Save as CSV.</li>
-      <li>Ici : <b>Charger fichier…</b> (ex. <code>STEVENCADDYLOG1.CSV</code>) ou colle le contenu → <b>Analyser</b>.</li>
-      <li>Lis le <b>bilan atelier</b> en bas : il te dit quoi vérifier dans WinOLS ensuite.</li>
+      <li>Ouvre <a href="log-aide.html">log-aide.html</a> → choisis le run → copie les IDE.</li>
+      <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b> → coche la liste → Log Start.</li>
+      <li>Fais <b>un seul</b> type d’essai (même route si possible), Stop → Save CSV avec le nom indiqué.</li>
+      <li>Ici : <b>Charger fichier…</b> ou colle le contenu → <b>Analyser</b>.</li>
+      <li>Lis le <b>bilan atelier</b> : quoi vérifier ensuite dans WinOLS.</li>
     </ol>
     <div class="legend">
       <span class="l-ok">Vert = OK sous plafond ACE</span>
