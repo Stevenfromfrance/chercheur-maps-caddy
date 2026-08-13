@@ -32,7 +32,7 @@
       <div class="nav-group" data-nav-group="maps">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
         <div class="nav-sub" role="menu">
-          <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Top 12</a>
+          <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Top 12 · pack</a>
           <a href="#all-maps" data-nav="all-maps" role="menuitem">Toutes</a>
           <a href="#dtc-atlas" data-nav="dtc-atlas" role="menuitem">DTC</a>
           <a href="#guide" data-nav="guide" role="menuitem">Guide</a>
@@ -102,7 +102,7 @@
     <a class="home-card" href="#maps-prio" data-nav="maps-prio">
       <span class="home-kicker">1 · Comparer</span>
       <h3>ORI vs ACE vs V1 vs V2</h3>
-      <p>Top 12 des maps qui bougent. Clique une adresse → Ctrl+G WinOLS.</p>
+      <p>Stage 1, DPF, EGR, launch, hardcut, limiteur — une carte par map. Clique une adresse → Ctrl+G WinOLS.</p>
     </a>
     <a class="home-card" href="#all-maps" data-nav="all-maps">
       <span class="home-kicker">2 · Chercher</span>
@@ -200,7 +200,8 @@
     <li>Clique une adresse bleue → copie Ctrl+G WinOLS. <a href="#view2d" data-nav="view2d">Grille 2D</a> / <a href="#view3d" data-nav="view3d">Map 3D</a> = maps A2L + provisoires + DTC. <a href="#dump2d" data-nav="dump2d">Dump 2D</a> = courbe du binaire.</li>
   </ol>
 
-  <h3 class="guide-h">Top 12 — résumé concret (ORI → ACE → V1)</h3>
+  <h3 class="guide-h">Pack carto — résumé par fonction</h3>
+  <p class="guide-p">L’onglet <a href="#maps-prio" data-nav="maps-prio">Top 12</a> n’est plus une liste de 12 cartes mélangées : Stage 1, DPF off, EGR off, launch, hardcut, limiteur — chaque bloc liste les maps (même format En clair / ORI→ACE→V1 / WinOLS).</p>
   <div class="guide-cards">
     <article><b>1. AccPed_trq4A</b> — Drivers wish (pédale→Nm).<br>ACE pousse jusqu’à <b>380 Nm</b>. V1 : partiels plus calmes + WOT plafonné <b>350 Nm</b> + ligne 4800 rpm à 0.</article>
     <article><b>2. tqlim_base_pu_4A</b> — Limiteur couple principal.<br>ACE ~<b>350 Nm</b>. V1 aligné ~348 Nm avec le même hardcut 4800.</article>
@@ -495,13 +496,25 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 
 <section class="maps-prio page-panel" id="maps-prio">
   <div class="sec-head">
-    <h2>Top 12 · Stage 1</h2>
-    <p class="sec-lead">Les 12 cartes prioritaires — en clair, les chiffres, puis WinOLS.</p>
+    <h2>Pack carto · par fonction</h2>
+    <p class="sec-lead">Tout ce qui concerne chaque levier — mêmes cartes, regroupées. Clique une adresse → Ctrl+G WinOLS.</p>
   </div>
-  <p class="prio-note">Il y a <b>139 maps A2L</b> touchées + <b>16 provisoires</b> (hors A2L) dans Toutes maps.
-    <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Voir toutes les maps (Toutes maps)</a>
+  <nav class="prio-jump" aria-label="Fonctions">
+    <a href="#maps-prio" data-jump="prio-stage1" class="on">Stage 1 <span class="n">10</span></a>
+    <a href="#maps-prio" data-jump="prio-dpf">DPF off <span class="n">16</span></a>
+    <a href="#maps-prio" data-jump="prio-egr">EGR off <span class="n">18</span></a>
+    <a href="#maps-prio" data-jump="prio-launch">Launch <span class="n">1</span></a>
+    <a href="#maps-prio" data-jump="prio-hardcut">Hardcut <span class="n">1</span></a>
+    <a href="#maps-prio" data-jump="prio-vmax">Limiteur vitesse <span class="n">7</span></a>
+  </nav>
+  <p class="prio-note">Les banques supplémentaires (turbo, rail, SOI…) restent dans
+    <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Toutes maps</a>.
   </p>
-  <div class="cards">
+
+  <div class="prio-block" id="prio-stage1">
+    <h3>Stage 1</h3>
+    <p class="prio-block-lead">Couple, smoke, turbo, rail, injection. ACE pousse ; V1 adoucit partiels / WOT 350 / rail 1620 / smoke cap 360.</p>
+    <div class="cards">
 <article class="card" data-map-id="AccPed_trq4A">
   <div class="badge">Stage 1</div>
   <h3>1. AccPed_trq4A</h3>
@@ -528,18 +541,18 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">280 octets changes · 67%</p>
   <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_base_pu_4A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_base_pu_4A">Map 3D</button></div>
 </article>
-<article class="card" data-map-id="smoke_mapA">
+<article class="card" data-map-id="smoke_mapA@1D2270">
   <div class="badge">Stage 1</div>
   <h3>3. smoke_mapA</h3>
   <p class="learn-plain"><b>En clair.</b> Limite le couple selon l’air (MAP) pour ne pas trop fumer.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> 310 → 400 plat → V1 ORI×1.20 progressif, cap 360.</p>
-  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D2270">1D2270</button> — ACE trop plat en haut = fumée ; V1 plus progressif.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D2270">1D2270</button> — ACE trop plat en haut = fumée ; V1 plus progressif. Autres banques dans Toutes maps.</p>
   <p class="meta">Smoke limitation by MAP · 19×18 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1D2270">1D2270</button> → <button class="addr big" data-addr="1D251B">1D251B</button></p>
   <p class="tiny">Taille map = <b>684</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>310.0</b> → ACE <b>400.0</b> <span class="up">+90.0</span></p>
   <p class="tiny">659 octets changes · 96%</p>
-  <div class="card-actions"><button type="button" class="open2d" data-map-id="smoke_mapA">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="smoke_mapA">Map 3D</button></div>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="smoke_mapA@1D2270">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="smoke_mapA@1D2270">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="turbo_base3B">
   <div class="badge">Stage 1</div>
@@ -554,18 +567,18 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">312 octets changes · 49%</p>
   <div class="card-actions"><button type="button" class="open2d" data-map-id="turbo_base3B">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="turbo_base3B">Map 3D</button></div>
 </article>
-<article class="card" data-map-id="turbo_atm6A">
+<article class="card" data-map-id="turbo_atm6A@1C6A2C">
   <div class="badge">Stage 1</div>
   <h3>5. turbo_atm6A</h3>
   <p class="learn-plain"><b>En clair.</b> Limiteur turbo ATM — le plafond au-dessus de la consigne.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> 2500 → 2650 mbar. V1 = ACE.</p>
-  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1C6A2C">1C6A2C</button> — doit rester au-dessus de turbo_base.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1C6A2C">1C6A2C</button> — doit rester au-dessus de turbo_base. Copie 1C692C dans Toutes maps.</p>
   <p class="meta">Turbo boost pressure limiter by ATM · 8×16 · mbar</p>
   <p class="range"><button class="addr big" data-addr="1C6A2C">1C6A2C</button> → <button class="addr big" data-addr="1C6B2B">1C6B2B</button></p>
   <p class="tiny">Taille map = <b>256</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>2500.0</b> → ACE <b>2650.0</b> <span class="up">+150.0</span></p>
   <p class="tiny">256 octets changes · 100%</p>
-  <div class="card-actions"><button type="button" class="open2d" data-map-id="turbo_atm6A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="turbo_atm6A">Map 3D</button></div>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="turbo_atm6A@1C6A2C">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="turbo_atm6A@1C6A2C">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="rail_base_int_trq2B">
   <div class="badge">Stage 1</div>
@@ -619,45 +632,608 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <p class="tiny">96 octets changes · 100%</p>
   <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_speed2A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_speed2A">Map 3D</button></div>
 </article>
-<article class="card" data-map-id="airctl_hysteresisC">
-  <div class="badge">EGR</div>
-  <h3>10. airctl_hysteresisC</h3>
-  <p class="learn-plain"><b>En clair.</b> Hystérésis EGR. ACE à 0 = delete partiel, avec les masques DTC.</p>
-  <p class="learn-path"><b>ORI → ACE → V1.</b> 234 → 0. V1 = ACE.</p>
-  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0100">1D0100</button> — compléter avec la page DTC (P040x).</p>
-  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
-  <p class="range"><button class="addr big" data-addr="1D0100">1D0100</button> → <button class="addr big" data-addr="1D011F">1D011F</button></p>
-  <p class="tiny">Taille map = <b>32</b> octets (fin = debut + taille − 1)</p>
-  <p class="vals">ORI max <b>234.0</b> → ACE <b>0.0</b> <span class="down">-234.0</span></p>
-  <p class="tiny">21 octets changes · 66%</p>
-  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC">Map 3D</button></div>
-</article>
-<article class="card" data-map-id="vmax3">
-  <div class="badge">Limiteur</div>
-  <h3>11. vmax3</h3>
-  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h).</p>
-  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
-  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18047C">18047C</button> — 2 octets. FFFF = désactivé.</p>
-  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
-  <p class="range"><button class="addr big" data-addr="18047C">18047C</button> → <button class="addr big" data-addr="18047D">18047D</button></p>
-  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
-  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
-  <p class="tiny">2 octets changes · 100%</p>
-  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3">Map 3D</button></div>
-</article>
-<article class="card" data-map-id="soi_base_int_trq2A">
-  <div class="badge">Timing</div>
-  <h3>12. soi_base_int_trq2A</h3>
+<article class="card" data-map-id="soi_base_int_trq2A@18CB80">
+  <div class="badge">Stage 1</div>
+  <h3>10. soi_base_int_trq2A</h3>
   <p class="learn-plain"><b>En clair.</b> Timing début d’injection. Ne monte pas le couple tout seul.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> max 8.9 inchangé. V1 ne force pas le timing.</p>
-  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18CB80">18CB80</button> — souvent inchangé ou léger ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18CB80">18CB80</button> — souvent inchangé ou léger ACE. Autres banques SOI dans Toutes maps.</p>
   <p class="meta">Start of Injection · 16×16 · deg CrS</p>
   <p class="range"><button class="addr big" data-addr="18CB80">18CB80</button> → <button class="addr big" data-addr="18CD7F">18CD7F</button></p>
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>8.9</b> → ACE <b>8.9</b> <span class="">+0.0</span></p>
   <p class="tiny">146 octets changes · 29%</p>
-  <div class="card-actions"><button type="button" class="open2d" data-map-id="soi_base_int_trq2A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="soi_base_int_trq2A">Map 3D</button></div>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="soi_base_int_trq2A@18CB80">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="soi_base_int_trq2A@18CB80">Map 3D</button></div>
 </article>
+    </div>
+  </div>
+
+  <div class="prio-block" id="prio-dpf">
+    <h3>DPF off</h3>
+    <p class="prio-block-lead">Masques défaut FAP / pression / sondes EGT et O2 → 00. Ce ne sont pas des maps couple. Couverture avec EGR ≈ 91%.</p>
+    <div class="cards">
+<article class="card" data-map-id="DTC_P0471">
+  <div class="badge">DPF off</div>
+  <h3>P0471</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Pressure Sensor Range Performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A01D1">1A01D1</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Pressure Sensor Range Performance<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A01D1">1A01D1</button> → <button class="addr big" data-addr="1A01F7">1A01F7</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0471">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0471">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0544">
+  <div class="badge">DPF off</div>
+  <h3>P0544</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A2CC9">1A2CC9</button> — 3 zone(s), 63 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A2CC9">1A2CC9</button> → <button class="addr big" data-addr="1A2CEF">1A2CEF</button></p>
+  <p class="tiny">Masque DTC · <b>63</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">3 zone(s) · famille EGT</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0544">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0544">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0545">
+  <div class="badge">DPF off</div>
+  <h3>P0545</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A2DD1">1A2DD1</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A2DD1">1A2DD1</button> → <button class="addr big" data-addr="1A2DF7">1A2DF7</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGT</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0545">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0545">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2002">
+  <div class="badge">DPF off</div>
+  <h3>P2002</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Particulate Trap Efficiency Below Threshold Bank 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0071">1A0071</button> — 4 zone(s), 109 octets. Pas une map couple.</p>
+  <p class="meta">Particulate Trap Efficiency Below Threshold Bank 1<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0071">1A0071</button> → <button class="addr big" data-addr="1A0097">1A0097</button></p>
+  <p class="tiny">Masque DTC · <b>109</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">4 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2002">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2002">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2080">
+  <div class="badge">DPF off</div>
+  <h3>P2080</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="19FE09">19FE09</button> — 3 zone(s), 63 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="19FE09">19FE09</button> → <button class="addr big" data-addr="19FE2F">19FE2F</button></p>
+  <p class="tiny">Masque DTC · <b>63</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">3 zone(s) · famille EGT</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2080">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2080">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P242B">
+  <div class="badge">DPF off</div>
+  <h3>P242B</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="19FE35">19FE35</button> — 3 zone(s), 63 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="19FE35">19FE35</button> → <button class="addr big" data-addr="19FE5B">19FE5B</button></p>
+  <p class="tiny">Masque DTC · <b>63</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">3 zone(s) · famille EGT</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P242B">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P242B">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2453">
+  <div class="badge">DPF off</div>
+  <h3>P2453</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit range performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A009D">1A009D</button> — 2 zone(s), 166 octets. Pas une map couple.</p>
+  <p class="meta">DPF pressure sensor A circuit range performance<br>16×8 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A009D">1A009D</button> → <button class="addr big" data-addr="1A011B">1A011B</button></p>
+  <p class="tiny">Masque DTC · <b>166</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">2 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2453">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2453">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2454">
+  <div class="badge">DPF off</div>
+  <h3>P2454</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit low. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A32A1">1A32A1</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">DPF pressure sensor A circuit low<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2454">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2454">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2455">
+  <div class="badge">DPF off</div>
+  <h3>P2455</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit high. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A32A1">1A32A1</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">DPF pressure sensor A circuit high<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A32A1">1A32A1</button> → <button class="addr big" data-addr="1A32C7">1A32C7</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2455">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2455">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2456">
+  <div class="badge">DPF off</div>
+  <h3>P2456</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0229">1A0229</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">DPF pressure sensor<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0229">1A0229</button> → <button class="addr big" data-addr="1A024F">1A024F</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2456">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2456">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2458">
+  <div class="badge">DPF off</div>
+  <h3>P2458</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF regeneration duration. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A2959">1A2959</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">DPF regeneration duration<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A2959">1A2959</button> → <button class="addr big" data-addr="1A297F">1A297F</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2458">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2458">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2463">
+  <div class="badge">DPF off</div>
+  <h3>P2463</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF Restriction - Soot accumulation. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A1409">1A1409</button> — 3 zone(s), 117 octets. Pas une map couple.</p>
+  <p class="meta">DPF Restriction - Soot accumulation<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A1409">1A1409</button> → <button class="addr big" data-addr="1A142F">1A142F</button></p>
+  <p class="tiny">Masque DTC · <b>117</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">3 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2463">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2463">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P246E">
+  <div class="badge">DPF off</div>
+  <h3>P246E</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut EGT / DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A2DA5">1A2DA5</button> — 2 zone(s), 25 octets. Pas une map couple.</p>
+  <p class="meta">EGT / DPF related<br>16×2 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A2DA5">1A2DA5</button> → <button class="addr big" data-addr="1A2DBB">1A2DBB</button></p>
+  <p class="tiny">Masque DTC · <b>25</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">2 zone(s) · famille EGT</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P246E">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P246E">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2626">
+  <div class="badge">DPF off</div>
+  <h3>P2626</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A1931">1A1931</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A1931">1A1931</button> → <button class="addr big" data-addr="1A1957">1A1957</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille DPF/O2</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2626">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2626">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P3004">
+  <div class="badge">DPF off</div>
+  <h3>P3004</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A22A5">1A22A5</button> — 4 zone(s), 54 octets. Pas une map couple.</p>
+  <p class="meta">DPF related<br>16×2 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A22A5">1A22A5</button> → <button class="addr big" data-addr="1A22BE">1A22BE</button></p>
+  <p class="tiny">Masque DTC · <b>54</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">4 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P3004">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P3004">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P3005">
+  <div class="badge">DPF off</div>
+  <h3>P3005</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A2381">1A2381</button> — 2 zone(s), 27 octets. Pas une map couple.</p>
+  <p class="meta">DPF related<br>16×2 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A2381">1A2381</button> → <button class="addr big" data-addr="1A239A">1A239A</button></p>
+  <p class="tiny">Masque DTC · <b>27</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">2 zone(s) · famille DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P3005">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P3005">Map 3D</button></div>
+</article>
+    </div>
+  </div>
+
+  <div class="prio-block" id="prio-egr">
+    <h3>EGR off</h3>
+    <p class="prio-block-lead">Hystérésis EGR à 0 + masques P040x / U1112. V1 = ACE (deletes inchangés).</p>
+    <div class="cards">
+<article class="card" data-map-id="airctl_hysteresisC">
+  <div class="badge">EGR off</div>
+  <h3>airctl_hysteresisC · banque 1</h3>
+  <p class="learn-plain"><b>En clair.</b> Hystérésis EGR. ACE à 0 = delete partiel, avec les masques DTC.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 234.0 → 0.0. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0100">1D0100</button> — compléter avec les masques P040x ci-dessous.</p>
+  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0100">1D0100</button> → <button class="addr big" data-addr="1D011F">1D011F</button></p>
+  <p class="tiny">Taille map = <b>32</b> octets</p>
+  <p class="vals">ORI max <b>234.0</b> → ACE <b>0.0</b> <span class="down">-234.0</span></p>
+  <p class="tiny">21 octets changés · 66%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="airctl_hysteresisC@1D0120">
+  <div class="badge">EGR off</div>
+  <h3>airctl_hysteresisC · banque 2</h3>
+  <p class="learn-plain"><b>En clair.</b> Copie hystérésis EGR. Le max reste 1024 (plafond) — le delete à 0 est sur les banques 1 et 4.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> max 1024 inchangé, mais des octets bougent quand même. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0120">1D0120</button> — comparer à la banque 1 (1D0100) qui passe à 0.</p>
+  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0120">1D0120</button> → <button class="addr big" data-addr="1D013F">1D013F</button></p>
+  <p class="tiny">Taille map = <b>32</b> octets</p>
+  <p class="vals">ORI max <b>1024.0</b> → ACE <b>1024.0</b> <span class="">+0.0</span></p>
+  <p class="tiny">30 octets changés · 94%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC@1D0120">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC@1D0120">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="airctl_hysteresisC@1D0180">
+  <div class="badge">EGR off</div>
+  <h3>airctl_hysteresisC · banque 3</h3>
+  <p class="learn-plain"><b>En clair.</b> Copie hystérésis EGR. Le max reste 1024 (plafond) — le delete à 0 est sur les banques 1 et 4.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> max 1024 inchangé, mais des octets bougent quand même. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0180">1D0180</button> — comparer à la banque 1 (1D0100) qui passe à 0.</p>
+  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0180">1D0180</button> → <button class="addr big" data-addr="1D019F">1D019F</button></p>
+  <p class="tiny">Taille map = <b>32</b> octets</p>
+  <p class="vals">ORI max <b>1024.0</b> → ACE <b>1024.0</b> <span class="">+0.0</span></p>
+  <p class="tiny">30 octets changés · 94%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC@1D0180">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC@1D0180">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="airctl_hysteresisC@1D0160">
+  <div class="badge">EGR off</div>
+  <h3>airctl_hysteresisC · banque 4</h3>
+  <p class="learn-plain"><b>En clair.</b> Hystérésis EGR. ACE à 0 = delete partiel, avec les masques DTC.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 229.0 → 0.0. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0160">1D0160</button> — compléter avec les masques P040x ci-dessous.</p>
+  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0160">1D0160</button> → <button class="addr big" data-addr="1D017F">1D017F</button></p>
+  <p class="tiny">Taille map = <b>32</b> octets</p>
+  <p class="vals">ORI max <b>229.0</b> → ACE <b>0.0</b> <span class="down">-229.0</span></p>
+  <p class="tiny">20 octets changés · 62%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="airctl_hysteresisC@1D0160">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="airctl_hysteresisC@1D0160">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0400">
+  <div class="badge">EGR off</div>
+  <h3>P0400</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Flow. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0935">1A0935</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Flow<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0935">1A0935</button> → <button class="addr big" data-addr="1A095B">1A095B</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0400">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0400">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0401">
+  <div class="badge">EGR off</div>
+  <h3>P0401</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Flow Insufficient Detected. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0725">1A0725</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Flow Insufficient Detected<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0725">1A0725</button> → <button class="addr big" data-addr="1A074B">1A074B</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0401">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0401">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0402">
+  <div class="badge">EGR off</div>
+  <h3>P0402</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Flow Excessive Detected. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0751">1A0751</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Flow Excessive Detected<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0751">1A0751</button> → <button class="addr big" data-addr="1A0777">1A0777</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0402">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0402">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0403">
+  <div class="badge">EGR off</div>
+  <h3>P0403</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Control Circuit. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0885">1A0885</button> — 1 zone(s), 83 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Control Circuit<br>16×6 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0885">1A0885</button> → <button class="addr big" data-addr="1A08D7">1A08D7</button></p>
+  <p class="tiny">Masque DTC · <b>83</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0403">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0403">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0407">
+  <div class="badge">EGR off</div>
+  <h3>P0407</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Sensor B Circuit Low. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A3325">1A3325</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Sensor B Circuit Low<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0407">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0407">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P0408">
+  <div class="badge">EGR off</div>
+  <h3>P0408</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Sensor B Circuit High. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A3325">1A3325</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Sensor B Circuit High<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A3325">1A3325</button> → <button class="addr big" data-addr="1A334B">1A334B</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0408">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0408">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P046C">
+  <div class="badge">EGR off</div>
+  <h3>P046C</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Transmetteur 1 de recyclage des gaz d'echappement. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A32CD">1A32CD</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Transmetteur 1 de recyclage des gaz d'echappement<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A32CD">1A32CD</button> → <button class="addr big" data-addr="1A32F3">1A32F3</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR/DPF</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P046C">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P046C">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P1400">
+  <div class="badge">EGR off</div>
+  <h3>P1400</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut EGR related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A0961">1A0961</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">EGR related<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A0961">1A0961</button> → <button class="addr big" data-addr="1A0987">1A0987</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P1400">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P1400">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P1428">
+  <div class="badge">EGR off</div>
+  <h3>P1428</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut EGR / vacuum. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="19E809">19E809</button> — 2 zone(s), 24 octets. Pas une map couple.</p>
+  <p class="meta">EGR / vacuum<br>16×2 · hex</p>
+  <p class="range"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button></p>
+  <p class="tiny">Masque DTC · <b>24</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">2 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P1428">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P1428">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P147A">
+  <div class="badge">EGR off</div>
+  <h3>P147A</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut EGR related (with P1428). DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="19E809">19E809</button> — 2 zone(s), 24 octets. Pas une map couple.</p>
+  <p class="meta">EGR related (with P1428)<br>16×2 · hex</p>
+  <p class="range"><button class="addr big" data-addr="19E809">19E809</button> → <button class="addr big" data-addr="19E81F">19E81F</button></p>
+  <p class="tiny">Masque DTC · <b>24</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">2 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P147A">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P147A">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2425">
+  <div class="badge">EGR off</div>
+  <h3>P2425</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Cooling Valve Control CircuitOpen. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A06A1">1A06A1</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Cooling Valve Control CircuitOpen<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A06A1">1A06A1</button> → <button class="addr big" data-addr="1A06C7">1A06C7</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2425">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2425">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2426">
+  <div class="badge">EGR off</div>
+  <h3>P2426</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Cooling Valve Control Circuit Low. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A06CD">1A06CD</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Cooling Valve Control Circuit Low<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A06CD">1A06CD</button> → <button class="addr big" data-addr="1A06F3">1A06F3</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2426">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2426">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_P2427">
+  <div class="badge">EGR off</div>
+  <h3>P2427</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Recirculation Cooling Valve Control Circuit High. DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1A06F9">1A06F9</button> — 1 zone(s), 39 octets. Pas une map couple.</p>
+  <p class="meta">Exhaust Gas Recirculation Cooling Valve Control Circuit High<br>16×3 · hex</p>
+  <p class="range"><button class="addr big" data-addr="1A06F9">1A06F9</button> → <button class="addr big" data-addr="1A071F">1A071F</button></p>
+  <p class="tiny">Masque DTC · <b>39</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">1 zone(s) · famille EGR</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2427">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2427">Map 3D</button></div>
+</article>
+<article class="card" data-map-id="DTC_U1112">
+  <div class="badge">EGR off</div>
+  <h3>U1112</h3>
+  <p class="learn-plain"><b>En clair.</b> Masque défaut Lost communication (EGR). DaVinci met les octets à 00 pour ne plus lever le code.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="19E1AD">19E1AD</button> — 13 zone(s), 348 octets. Pas une map couple.</p>
+  <p class="meta">Lost communication (EGR)<br>16×6 · hex</p>
+  <p class="range"><button class="addr big" data-addr="19E1AD">19E1AD</button> → <button class="addr big" data-addr="19E1FF">19E1FF</button></p>
+  <p class="tiny">Masque DTC · <b>348</b> octets → 00</p>
+  <p class="vals">ORI masque <b>actif</b> → ACE <b>0000 / off</b> <span class="down">off</span></p>
+  <p class="tiny">13 zone(s) · famille EGR com</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_U1112">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_U1112">Map 3D</button></div>
+</article>
+    </div>
+  </div>
+
+  <div class="prio-block" id="prio-launch">
+    <h3>Launch control</h3>
+    <p class="prio-block-lead">V2 seulement (ami). Même map <code>tqlim_cluth_prot</code> que le hardcut. Hold ~2500 rpm à l’arrêt — à valider au log DEPART.</p>
+    <div class="cards">
+<article class="card" data-map-id="tqlim_cluth_prot">
+  <div class="badge">Launch</div>
+  <h3>tqlim_cluth_prot</h3>
+  <p class="learn-plain"><b>En clair.</b> Même map que le hardcut. En V2, au ratio vitesse/régime ≈ 0 (à l’arrêt / embrayage), le couple tombe vers 0 autour de 2500–2501 rpm = launch test.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> ORI/ACE/V1 : pas de launch. V2 : hold ~2500 à tester au log VCDS — pas encore validé en route.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0860">1D0860</button> — paire V1 vs V2. Log DEPART (ASR OFF, 1re, frein à main). Ne pas mélanger avec un run hardcut.</p>
+  <p class="meta">Torque limiter for clutch protection · 8×8 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0860">1D0860</button> → <button class="addr big" data-addr="1D08DF">1D08DF</button></p>
+  <p class="tiny">Taille map = <b>128</b> octets</p>
+  <p class="vals">V2 launch test <b>~2500 rpm</b> (ratio ≈ 0) <span class="up">à valider</span></p>
+  <p class="tiny">Même map que Hardcut · 272 octets V1→V2 au total</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_cluth_prot">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_cluth_prot">Map 3D</button></div>
+</article>
+    </div>
+  </div>
+
+  <div class="prio-block" id="prio-hardcut">
+    <h3>Hardcut 4800</h3>
+    <p class="prio-block-lead">V2 : vrai cut via clutch-prot (4801 rpm = 0 Nm). V1 coupait en soft via AccPed / tqlim_base. Passe la paire <b>V1 vs V2</b> pour voir uniquement ça.</p>
+    <div class="cards">
+<article class="card" data-map-id="tqlim_cluth_prot">
+  <div class="badge">Hardcut</div>
+  <h3>tqlim_cluth_prot</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur couple « clutch protection ». En V2 c’est le vrai hardcut : à 4800/4801 rpm → 0 Nm sur toute la map.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> ORI/ACE/V1 = pas ce cut (max 1024, map peu touchée). V2 : axe RPM remappé, ligne 4801 = 0 Nm.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0860">1D0860</button> — adresse 1D0860 · axe Y 1A612A. Paire V1 vs V2 pour voir uniquement les 272 octets de l’ami.</p>
+  <p class="meta">Torque limiter for clutch protection · 8×8 · Nm</p>
+  <p class="range"><button class="addr big" data-addr="1D0860">1D0860</button> → <button class="addr big" data-addr="1D08DF">1D08DF</button></p>
+  <p class="tiny">Taille map = <b>128</b> octets</p>
+  <p class="vals">ORI/ACE max <b>1024</b> → V2 hardcut <b>0 Nm à 4801</b> <span class="up">V2</span></p>
+  <p class="tiny">24/128 octets vs ACE · 19% — le cut se voit en paire V1 vs V2</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="tqlim_cluth_prot">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="tqlim_cluth_prot">Map 3D</button></div>
+</article>
+    </div>
+  </div>
+
+  <div class="prio-block" id="prio-vmax">
+    <h3>Limiteur de vitesse</h3>
+    <p class="prio-block-lead">Toutes les copies vmax2 / vmax3. ACE = FFFF = off (plus de 190 km/h). V1 = ACE. Il faut les toucher toutes.</p>
+    <div class="cards">
+<article class="card" data-map-id="vmax3">
+  <div class="badge">Vmax off</div>
+  <h3>vmax3 · copie 1</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18047C">18047C</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="18047C">18047C</button> → <button class="addr big" data-addr="18047D">18047D</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax2">
+  <div class="badge">Vmax off</div>
+  <h3>vmax2 · copie 2</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18048A">18048A</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="18048A">18048A</button> → <button class="addr big" data-addr="18048B">18048B</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax2">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax2">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax2@18048C">
+  <div class="badge">Vmax off</div>
+  <h3>vmax2 · copie 3</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18048C">18048C</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="18048C">18048C</button> → <button class="addr big" data-addr="18048D">18048D</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax2@18048C">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax2@18048C">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax3@18047E">
+  <div class="badge">Vmax off</div>
+  <h3>vmax3 · copie 4</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18047E">18047E</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="18047E">18047E</button> → <button class="addr big" data-addr="18047F">18047F</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3@18047E">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3@18047E">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax3@18049E">
+  <div class="badge">Vmax off</div>
+  <h3>vmax3 · copie 5</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18049E">18049E</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="18049E">18049E</button> → <button class="addr big" data-addr="18049F">18049F</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3@18049E">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3@18049E">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax3@1804A0">
+  <div class="badge">Vmax off</div>
+  <h3>vmax3 · copie 6</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1804A0">1804A0</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="1804A0">1804A0</button> → <button class="addr big" data-addr="1804A1">1804A1</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3@1804A0">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3@1804A0">Map 3D</button></div>
+</article><article class="card" data-map-id="vmax3@1804A2">
+  <div class="badge">Vmax off</div>
+  <h3>vmax3 · copie 7</h3>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h). Plusieurs copies du même plafond.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1804A2">1804A2</button> — 2 octets. FFFF = désactivé. Toucher toutes les copies.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
+  <p class="range"><button class="addr big" data-addr="1804A2">1804A2</button> → <button class="addr big" data-addr="1804A3">1804A3</button></p>
+  <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
+  <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
+  <p class="tiny">2 octets changés · 100%</p>
+  <div class="card-actions"><button type="button" class="open2d" data-map-id="vmax3@1804A2">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="vmax3@1804A2">Map 3D</button></div>
+</article>
+    </div>
   </div>
 </section>
 <section id="hexdump" class="hexdump page-panel">
@@ -740,7 +1316,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <h2>Grille 2D · WinOLS <span class="hint">comparaison case par case</span></h2>
   <div class="guide">
     <b>Comme dans WinOLS</b> : axes en en-tête, valeurs physiques (Nm, mbar…) pour les maps A2L.
-    Le menu liste le <b>Top 12</b>, les <b>autres maps touchées</b>, et les <b>masques DTC OFF</b> (octets / hex).
+    Le menu liste le <b>pack par fonction</b> (Top 12), les <b>autres maps touchées</b>, et les <b>masques DTC OFF</b> (octets / hex).
     Jaune = case différente selon la paire. Mode Écart = droite − gauche.
   </div>
   <div class="v2d-bar">
@@ -791,7 +1367,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="v3d-canvas-wrap">
     <canvas id="v3d-canvas" width="1200" height="480" aria-label="Surface 3D de la map"></canvas>
   </div>
-  <p class="v3d-hint">Astuce : ouvre une map depuis Top 12 (bouton 3D) ou depuis la Grille 2D.</p>
+  <p class="v3d-hint">Astuce : ouvre une map depuis le pack Top 12 (bouton 3D) ou depuis la Grille 2D.</p>
 </section>
 <section id="all-maps" class="page-panel">
   <div class="sec-head">
@@ -1158,6 +1734,15 @@ window.addEventListener('hashchange', () => {
   scrollHashTarget(bootHash);
 }
 
+document.querySelector('.prio-jump')?.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-jump]');
+  if (!a) return;
+  e.preventDefault();
+  const el = document.getElementById(a.getAttribute('data-jump'));
+  document.querySelectorAll('.prio-jump [data-jump]').forEach((x) => x.classList.toggle('on', x === a));
+  if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+});
+
 /* Densité */
 const LS_DENSITY = 'chercheur-density';
 function applyDensity(density) {
@@ -1227,7 +1812,7 @@ filter();
     }
     if (fd.get('vmax')) {
       items.push('Vmax off');
-      maps.set('vmax3', 'FFFF = plus de 190 km/h');
+      maps.set('vmax3', 'FFFF = plus de 190 km/h · 7 copies (vmax2/vmax3)');
     }
     if (fd.get('hardcut')) {
       items.push('Hardcut 4800');
@@ -1916,8 +2501,9 @@ function syncPairLabels() {
     const btn = art.querySelector('button.open2d');
     if (!btn) return;
     const id = btn.getAttribute('data-map-id');
+    if (!id || id.indexOf('DTC_') === 0 || id === 'tqlim_cluth_prot') return;
     const g = findGrid(id);
-    if (!g) return;
+    if (!g || g.id !== id) return;
     const vals = art.querySelector('.vals');
     if (!vals) return;
     const lo = seriesMax(g, Lk), hi = seriesMax(g, Rk);
@@ -1925,7 +2511,7 @@ function syncPairLabels() {
     const cls = d > 0.05 ? 'up' : (d < -0.05 ? 'down' : '');
     let dTxt = (d >= 0 ? '+' : '') + Number(d).toFixed(1);
     let hiTxt = String(hi);
-    if (g.id === 'vmax3' && hi > 500) { hiTxt = 'desactive (FFFF)'; dTxt = 'off'; }
+    if (String(g.id).indexOf('vmax') === 0 && hi > 500) { hiTxt = 'desactive (FFFF)'; dTxt = 'off'; }
     vals.innerHTML = L + ' max <b>' + lo + '</b> → ' + R + ' <b>' + hiTxt + '</b> <span class="' + cls + '">' + dTxt + '</span>';
   });
 }
@@ -1992,7 +2578,7 @@ function applyComparePair(pair) {
   const sel = document.getElementById('v2d-map');
   if (!sel || !MAP_GRIDS.length) return;
   const groups = [
-    { key: 'priority', label: 'Top 12 Stage 1' },
+    { key: 'priority', label: 'Stage 1 (pack)' },
     { key: 'a2l', label: 'Autres maps A2L touchées' },
     { key: 'provisoire', label: 'Hors A2L / provisoire (bin)' },
     { key: 'dtc', label: 'DTC OFF (masques → 00)' }

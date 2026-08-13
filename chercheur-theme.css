@@ -530,6 +530,77 @@ details.howto[open], details.vcds[open], details.log-compare[open], details.down
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+.prio-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 8px 0 2px;
+}
+.prio-jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px 10px;
+  font-family: var(--display);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.prio-jump a:hover,
+.prio-jump a.on {
+  border-color: var(--line-hot);
+  background: var(--soft);
+  color: var(--accent-hot);
+}
+.prio-jump a .n {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.prio-jump a.on .n,
+.prio-jump a:hover .n { color: var(--accent2); }
+.prio-block {
+  margin: 18px 0 8px;
+  padding-top: 4px;
+  scroll-margin-top: 9rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.prio-block:first-of-type {
+  margin-top: 4px;
+  border-top: 0;
+}
+.prio-block > h3 {
+  margin: 0 0 4px;
+  font-family: var(--display);
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-hot);
+}
+.prio-block-lead {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.92em;
+  line-height: 1.45;
+  max-width: 85ch;
+}
+.prio-block-lead code {
+  font-family: var(--mono);
+  font-size: 0.92em;
+  color: var(--accent2);
+}
 .maps-prio .cards {
   padding: 4px 0 0;
 }
