@@ -42,6 +42,7 @@
       <div class="nav-group" data-nav-group="voir">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Voir</button>
         <div class="nav-sub" role="menu">
+          <a href="#valeurs" data-nav="valeurs" role="menuitem">Valeurs</a>
           <a href="#view2d" data-nav="view2d" role="menuitem">2D</a>
           <a href="#view3d" data-nav="view3d" role="menuitem">3D</a>
           <a href="#hexdump" data-nav="hexdump" role="menuitem">Hex</a>
@@ -103,6 +104,11 @@
       <span class="home-kicker">1 · Comparer</span>
       <h3>Fiches par fonction</h3>
       <p>Stage 1, FAP/DPF, EGR, launch, hardcut, limiteur. Clique une fiche → aperçu 3D.</p>
+    </a>
+    <a class="home-card" href="#valeurs" data-nav="valeurs">
+      <span class="home-kicker">Lire</span>
+      <h3>Valeurs écrites</h3>
+      <p>Comme un logiciel : choisis ACE / V2 / V3 ITALIE, lis en grand les chiffres de chaque map modifiée.</p>
     </a>
     <a class="home-card" href="#all-maps" data-nav="all-maps">
       <span class="home-kicker">2 · Chercher</span>
@@ -197,7 +203,7 @@
     <li><b>ACE Tuning</b> : monte couple / smoke / turbo / rail (Stage1 agressif ~350–400 Nm wish) + deletes DTC FAP/EGR/EGT (masques → 00).</li>
     <li><b>V2</b> (toi) : part de ACE, mais <b>adoucit les partiels</b>, plafonne le WOT à ~<b>350 Nm</b>, rail ~1620 bar, smoke progressive (cap 360). Turbo / nm2iq / SOI / deletes = <b>inchangés vs ACE</b>.</li>
     <li><b>V3 ITALIE</b> (pote) : part de <b>V2</b>. Vrai <b>hardcut</b> via <code>tqlim_cluth_prot</code> (4800/4801 = 0 Nm) + <b>launch ~2500 rpm</b>. C’est la meilleure carto actuelle. À valider au log VCDS pour le launch.</li>
-    <li>Clique une adresse bleue → copie Ctrl+G WinOLS. <a href="#view2d" data-nav="view2d">Grille 2D</a> / <a href="#view3d" data-nav="view3d">Map 3D</a> = maps A2L + provisoires + DTC. <a href="#dump2d" data-nav="dump2d">Dump 2D</a> = courbe du binaire.</li>
+    <li>Clique une adresse bleue → copie Ctrl+G WinOLS. <a href="#valeurs" data-nav="valeurs">Valeurs</a> = lecture en gros des cases écrites. <a href="#view2d" data-nav="view2d">Grille 2D</a> / <a href="#view3d" data-nav="view3d">Map 3D</a> = maps A2L + provisoires + DTC. <a href="#dump2d" data-nav="dump2d">Dump 2D</a> = courbe du binaire.</li>
   </ol>
 
   <h3 class="guide-h">Fiches par fonction</h3>
@@ -1328,6 +1334,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
       <button type="button" data-mode="split" id="v2d-mode-split">Côte à côte</button>
     </div>
     <button type="button" class="act sec" id="v2d-to-3d">Ouvrir Map 3D</button>
+    <button type="button" class="act sec" id="v2d-to-vals">Lire les valeurs</button>
   </div>
   <div class="v2d-legend">
     <span><i style="background:linear-gradient(90deg,#14285a,#28aa5a,#dc3c32)"></i> Valeurs : froid → chaud</span>
@@ -1356,6 +1363,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
     <button type="button" class="act" id="v3d-reset">Reset vue</button>
     <button type="button" class="act" id="v3d-flip" title="Inverse l’axe profondeur (RPM / Y) — utile si la map paraît à l’envers vs WinOLS">Inverser profondeur</button>
     <button type="button" class="act sec" id="v3d-to-2d">Grille 2D</button>
+    <button type="button" class="act sec" id="v3d-to-vals">Lire les valeurs</button>
   </div>
   <div class="v3d-legend">
     <span><i style="background:linear-gradient(90deg,#14285a,#28aa5a,#dc3c32)"></i> Hauteur / chaleur</span>
@@ -1369,6 +1377,54 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </div>
   <p class="v3d-hint">Astuce : dans Fiches, clique une carte pour l’aperçu 3D. Ou ouvre depuis la Grille 2D.</p>
 </section>
+
+<section id="valeurs" class="valeurs page-panel">
+  <h2>Valeurs · lecture carto <span class="hint">chiffres en gros, comme un logiciel</span></h2>
+  <div class="guide">
+    Choisis la <b>carto</b> (ACE, V2 ou V3 ITALIE). À gauche = uniquement les maps <b>modifiées vs ORI</b>.
+    Clique une map → la grille s’affiche en grand. Jaune = case différente de l’ORI. Survole une case pour la lire encore plus gros en bas.
+  </div>
+  <div class="vals-bar">
+    <span class="vals-bar-label">Carto</span>
+    <div class="vals-cartos" role="group" aria-label="Carto à lire">
+      <button type="button" class="vals-carto-btn" data-carto="ace">ACE</button>
+      <button type="button" class="vals-carto-btn on" data-carto="v1">V2</button>
+      <button type="button" class="vals-carto-btn" data-carto="v2">V3 ITALIE</button>
+    </div>
+    <label class="vals-check"><input type="checkbox" id="vals-only-chg" checked> Modifiées seulement</label>
+    <label class="vals-check"><input type="checkbox" id="vals-dtc"> Inclure DTC</label>
+    <input type="search" id="vals-q" placeholder="Filtrer une map…" autocomplete="off">
+  </div>
+  <div class="vals-shell">
+    <aside class="vals-side" aria-label="Maps modifiées">
+      <div class="vals-side-h">
+        <b id="vals-count">0</b> maps
+      </div>
+      <div id="vals-list" class="vals-list"></div>
+    </aside>
+    <div class="vals-main">
+      <div class="vals-readout" id="vals-readout">
+        <div class="vals-readout-map">
+          <span class="vals-kicker" id="vals-kicker">—</span>
+          <h3 id="vals-title">Choisis une map</h3>
+          <p class="vals-meta" id="vals-meta"></p>
+        </div>
+        <div class="vals-readout-max">
+          <span class="vals-kicker">Max écrit</span>
+          <p class="vals-big" id="vals-big">—</p>
+          <p class="vals-unit" id="vals-unit"></p>
+        </div>
+      </div>
+      <div id="vals-grid" class="vals-grid"></div>
+      <div class="vals-hover" id="vals-hover" aria-live="polite">
+        <span class="vals-hover-hint">Survole une case</span>
+        <span class="vals-hover-val" id="vals-hover-val">—</span>
+        <span class="vals-hover-cmp" id="vals-hover-cmp"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="all-maps" class="page-panel">
   <div class="sec-head">
     <h2>Toutes les maps <span class="hint">139 A2L + 16 provisoires · filtre + recherche</span></h2>
@@ -1643,10 +1699,10 @@ document.getElementById('quick-chips')?.addEventListener('click', (e) => {
 });
 
 /* —— Navigation multi-pages —— */
-const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
+const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
 const NAV_GROUP_PAGES = {
   maps: ['maps-prio', 'all-maps', 'dtc-atlas', 'guide', 'composer'],
-  voir: ['view2d', 'view3d', 'hexdump', 'dump2d'],
+  voir: ['valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d'],
   logs: ['vcds', 'log-compare'],
 };
 function closeNavGroups() {
@@ -1803,6 +1859,7 @@ document.querySelector('.prio-cats')?.addEventListener('click', (e) => {
           '<button type="button" data-pv-mode="right" class="on">' + lab(keys[1]) + '</button>' +
           '<button type="button" data-pv-mode="diff">Écart</button>' +
           '<button type="button" class="open2d" data-map-id="' + id + '">Grille 2D</button>' +
+          '<button type="button" class="open-vals" data-map-id="' + id + '">Lire les valeurs</button>' +
         '</div>' +
         '<canvas class="card-preview-canvas" width="800" height="340" aria-label="Aperçu 3D"></canvas>' +
         '<p class="card-preview-axes"></p>' +
@@ -1829,7 +1886,7 @@ document.querySelector('.prio-cats')?.addEventListener('click', (e) => {
   host.addEventListener('click', (e) => {
     const card = e.target.closest('#maps-prio article.card');
     if (!card) return;
-    if (e.target.closest('.addr, .open2d, a, .prio-cats')) return;
+    if (e.target.closest('.addr, .open2d, .open3d, .open-vals, a, .prio-cats, button')) return;
     if (e.target.closest('[data-pv-mode]')) {
       e.preventDefault();
       const mode = e.target.closest('[data-pv-mode]').getAttribute('data-pv-mode');
@@ -2745,7 +2802,284 @@ function applyComparePair(pair) {
   document.getElementById('v2d-to-3d')?.addEventListener('click', () => {
     if (typeof window.openMap3d === 'function') window.openMap3d(v2dId);
   });
+  document.getElementById('v2d-to-vals')?.addEventListener('click', () => {
+    if (typeof window.openValeurs === 'function') window.openValeurs(v2dId);
+  });
   window.openMap2d = openMap2d;
+})();
+
+/* —— Lecture carto (valeurs en gros) —— */
+(function initValeurs() {
+  const listEl = document.getElementById('vals-list');
+  const gridEl = document.getElementById('vals-grid');
+  if (!listEl || !gridEl || !MAP_GRIDS.length) return;
+
+  let valsCarto = 'v1';
+  let valsId = '';
+  let onlyChg = true;
+  let includeDtc = false;
+  let q = '';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'
+    }[c]));
+  }
+  function isDtc(g) {
+    return String(g.id).indexOf('DTC_') === 0 || g.kind === 'mask' || g.group === 'dtc' || g.type === 'mask';
+  }
+  function countVsOri(g, key) {
+    const L = series(g, 'ori');
+    const R = series(g, key);
+    if (!L || !R) return 0;
+    let n = 0;
+    const len = Math.min(L.length, R.length);
+    for (let i = 0; i < len; i++) if (L[i] !== R[i]) n++;
+    return n;
+  }
+  function fmtRead(g, v) {
+    const prec = g.precision != null ? g.precision : 1;
+    if (String(g.id).indexOf('vmax') === 0 && Number(v) > 500) return 'FFFF';
+    if (g.kind === 'mask' || g.unit === 'hex' || g.type === 'mask') return fmtHex(v);
+    return fmt(v, prec);
+  }
+  function cartoFromPair() {
+    const r = window.COMPARE && window.COMPARE.sides ? window.COMPARE.sides()[1] : 'v1';
+    return (r === 'ace' || r === 'v1' || r === 'v2') ? r : 'v1';
+  }
+  function groupRank(g) {
+    const k = g.group || (isDtc(g) ? 'dtc' : 'a2l');
+    return ({ priority: 0, a2l: 1, provisoire: 2, dtc: 3 })[k] != null ? ({ priority: 0, a2l: 1, provisoire: 2, dtc: 3 })[k] : 4;
+  }
+  function filteredMaps() {
+    const needle = q.trim().toLowerCase();
+    const rows = [];
+    for (let i = 0; i < MAP_GRIDS.length; i++) {
+      const g = MAP_GRIDS[i];
+      if (!includeDtc && isDtc(g)) continue;
+      const n = countVsOri(g, valsCarto);
+      if (onlyChg && n === 0) continue;
+      const blob = (g.id + ' ' + (g.name || '') + ' ' + (g.addr || '') + ' ' + (g.folder || '')).toLowerCase();
+      if (needle && blob.indexOf(needle) < 0) continue;
+      rows.push({ g: g, n: n });
+    }
+    rows.sort((a, b) => {
+      const ra = groupRank(a.g), rb = groupRank(b.g);
+      if (ra !== rb) return ra - rb;
+      if (b.n !== a.n) return b.n - a.n;
+      return String(a.g.id).localeCompare(String(b.g.id));
+    });
+    return rows;
+  }
+  function buildReadTable(g, cartoKey) {
+    const vals = series(g, cartoKey);
+    const ori = series(g, 'ori');
+    const lab = window.COMPARE.label(cartoKey);
+    const cols = g.cols || 1;
+    const rows = Math.max(1, Math.ceil((vals || []).length / cols));
+    const isMask = g.kind === 'mask' || g.unit === 'hex' || g.type === 'mask';
+    let minV = Infinity, maxV = -Infinity;
+    for (let i = 0; i < vals.length; i++) {
+      minV = Math.min(minV, vals[i]);
+      maxV = Math.max(maxV, vals[i]);
+    }
+    if (!(maxV > minV)) { minV = 0; maxV = 1; }
+    const axisYUse = (cartoKey === 'v2' && g.axisY_v2 && g.axisY_v2.length) ? g.axisY_v2 : g.axisY;
+    let html = '<table class="winols vals-winols"><thead><tr>';
+    html += '<th class="corner">' + esc((g.axisYName || 'Y') + ' \\ ' + (g.axisXName || 'X')) + '</th>';
+    for (let c = 0; c < cols; c++) {
+      const xv = g.axisX && g.axisX[c] != null ? g.axisX[c] : c;
+      const xu = g.axisXUnit ? ' ' + g.axisXUnit : '';
+      html += '<th title="X[' + c + ']">' + esc(xv + xu) + '</th>';
+    }
+    html += '</tr></thead><tbody>';
+    for (let r = 0; r < rows; r++) {
+      const yv = axisYUse && axisYUse[r] != null ? axisYUse[r] : r;
+      const yu = g.axisYUnit ? ' ' + g.axisYUnit : '';
+      html += '<tr><td class="axis" title="Y[' + r + ']">' + esc(yv + yu) + '</td>';
+      for (let c = 0; c < cols; c++) {
+        const i = r * cols + c;
+        if (i >= vals.length) { html += '<td class="cell"> </td>'; continue; }
+        const a = vals[i], o = ori[i];
+        const chg = o !== a;
+        const show = fmtRead(g, a);
+        const bg = heatColor((a - minV) / (maxV - minV || 1));
+        const unit = isMask ? 'h' : (' ' + (g.unit || ''));
+        const tip = lab + ' ' + show + unit + (chg ? '  ·  ORI ' + fmtRead(g, o) + unit : '  ·  = ORI');
+        const cls = 'cell' + (chg ? ' chg' : ' same');
+        html += '<td class="' + cls + '" style="background:' + bg + '"'
+          + ' data-tip="' + esc(tip) + '"'
+          + ' data-show="' + esc(show) + '"'
+          + ' data-unit="' + esc(isMask ? 'hex' : (g.unit || '')) + '"'
+          + ' data-ori="' + esc(fmtRead(g, o)) + '"'
+          + ' data-chg="' + (chg ? '1' : '0') + '"'
+          + ' data-x="' + c + '" data-y="' + r + '"'
+          + '>' + esc(show) + '</td>';
+      }
+      html += '</tr>';
+    }
+    html += '</tbody></table>';
+    return html;
+  }
+  function setHover(td) {
+    const valEl = document.getElementById('vals-hover-val');
+    const cmpEl = document.getElementById('vals-hover-cmp');
+    const hint = document.querySelector('.vals-hover-hint');
+    if (!td || !td.dataset.show) {
+      if (valEl) valEl.textContent = '—';
+      if (cmpEl) cmpEl.textContent = '';
+      if (hint) hint.textContent = 'Survole une case';
+      return;
+    }
+    const lab = window.COMPARE.label(valsCarto);
+    const unit = td.dataset.unit || '';
+    if (hint) {
+      const g = findGrid(valsId);
+      const xName = (g && g.axisXName) || 'X';
+      const yName = (g && g.axisYName) || 'Y';
+      hint.textContent = yName + ' ' + (td.dataset.y || '') + ' · ' + xName + ' ' + (td.dataset.x || '');
+    }
+    if (valEl) valEl.textContent = td.dataset.show + (unit && unit !== 'hex' ? ' ' + unit : '');
+    if (cmpEl) {
+      if (td.dataset.chg === '1') cmpEl.textContent = 'ORI ' + td.dataset.ori + '  →  ' + lab + ' ' + td.dataset.show;
+      else cmpEl.textContent = '= ORI';
+    }
+  }
+  function renderList() {
+    const rows = filteredMaps();
+    const countEl = document.getElementById('vals-count');
+    if (countEl) countEl.textContent = String(rows.length);
+    if (!rows.length) {
+      listEl.innerHTML = '<p class="vals-empty">Aucune map pour ce filtre.</p>';
+      return rows;
+    }
+    if (!valsId || !rows.some((r) => r.g.id === valsId)) valsId = rows[0].g.id;
+    listEl.innerHTML = rows.map((r) => {
+      const g = r.g;
+      const on = g.id === valsId ? ' on' : '';
+      return '<button type="button" class="vals-item' + on + '" data-map-id="' + esc(g.id) + '">'
+        + '<span class="vals-item-id">' + esc(g.id) + '</span>'
+        + '<span class="vals-item-name">' + esc(g.name || '') + '</span>'
+        + '<span class="vals-item-n">' + r.n + ' ≠</span>'
+        + '</button>';
+    }).join('');
+    return rows;
+  }
+  function renderGrid() {
+    const g = findGrid(valsId);
+    const kicker = document.getElementById('vals-kicker');
+    const title = document.getElementById('vals-title');
+    const meta = document.getElementById('vals-meta');
+    const big = document.getElementById('vals-big');
+    const unitEl = document.getElementById('vals-unit');
+    const lab = window.COMPARE.label(valsCarto);
+    if (!g) {
+      if (title) title.textContent = 'Choisis une map';
+      gridEl.innerHTML = '';
+      return;
+    }
+    const n = countVsOri(g, valsCarto);
+    const mx = seriesMax(g, valsCarto);
+    const mn = (function () {
+      const arr = series(g, valsCarto) || [];
+      let m = Infinity;
+      for (let i = 0; i < arr.length; i++) m = Math.min(m, arr[i]);
+      return m;
+    })();
+    if (kicker) kicker.textContent = lab + ' · ' + (g.folder || g.group || '');
+    if (title) title.textContent = g.id;
+    if (meta) {
+      meta.innerHTML = esc(g.name || '')
+        + ' · <button class="addr" data-addr="' + esc(g.addr) + '">' + esc(g.addr) + '</button> → '
+        + '<button class="addr" data-addr="' + esc(g.end) + '">' + esc(g.end) + '</button>'
+        + ' · ' + g.cols + '×' + g.rows
+        + ' · <b>' + n + '</b> cases ≠ ORI / ' + (g.ori ? g.ori.length : 0);
+    }
+    let maxTxt = fmtRead(g, mx);
+    if (String(g.id).indexOf('vmax') === 0 && mx > 500) maxTxt = 'off';
+    if (big) big.textContent = maxTxt;
+    if (unitEl) unitEl.textContent = (g.unit && maxTxt !== 'off' && maxTxt !== 'FFFF') ? g.unit : '';
+    gridEl.innerHTML = buildReadTable(g, valsCarto);
+    setHover(null);
+  }
+  function render() {
+    renderList();
+    renderGrid();
+  }
+  function setCarto(key) {
+    valsCarto = key;
+    document.querySelectorAll('.vals-carto-btn').forEach((b) => {
+      b.classList.toggle('on', b.getAttribute('data-carto') === key);
+    });
+    render();
+  }
+  function openValeurs(id, cartoKey) {
+    if (cartoKey) valsCarto = cartoKey;
+    else valsCarto = cartoFromPair();
+    if (id && findGrid(id)) valsId = id;
+    document.querySelectorAll('.vals-carto-btn').forEach((b) => {
+      b.classList.toggle('on', b.getAttribute('data-carto') === valsCarto);
+    });
+    if (typeof window.showPage === 'function') window.showPage('valeurs');
+    render();
+  }
+
+  document.querySelector('.vals-cartos')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-carto]');
+    if (btn) setCarto(btn.getAttribute('data-carto'));
+  });
+  document.getElementById('vals-only-chg')?.addEventListener('change', (e) => {
+    onlyChg = !!e.target.checked;
+    render();
+  });
+  document.getElementById('vals-dtc')?.addEventListener('change', (e) => {
+    includeDtc = !!e.target.checked;
+    render();
+  });
+  document.getElementById('vals-q')?.addEventListener('input', (e) => {
+    q = e.target.value || '';
+    renderList();
+  });
+  listEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-map-id]');
+    if (!btn) return;
+    valsId = btn.getAttribute('data-map-id');
+    render();
+  });
+  gridEl.addEventListener('mousemove', (e) => {
+    const td = e.target.closest('td.cell');
+    setHover(td);
+  });
+  gridEl.addEventListener('mouseleave', () => setHover(null));
+
+  document.querySelectorAll('#maps-prio .card-actions').forEach((bar) => {
+    const id = bar.closest('[data-map-id]')?.getAttribute('data-map-id')
+      || bar.querySelector('[data-map-id]')?.getAttribute('data-map-id');
+    if (!id || bar.querySelector('.open-vals')) return;
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'open-vals';
+    b.setAttribute('data-map-id', id);
+    b.textContent = 'Lire les valeurs';
+    bar.appendChild(b);
+  });
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button.open-vals');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    openValeurs(btn.getAttribute('data-map-id'));
+  });
+  document.getElementById('v3d-to-vals')?.addEventListener('click', () => {
+    const sel = document.getElementById('v3d-map');
+    openValeurs(sel && sel.value ? sel.value : valsId);
+  });
+  window.addEventListener('pagechange', (e) => {
+    if (e.detail && e.detail.page === 'valeurs') render();
+  });
+
+  window.openValeurs = openValeurs;
+  setCarto(valsCarto);
 })();
 
 
