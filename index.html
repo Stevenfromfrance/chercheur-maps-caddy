@@ -10,35 +10,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="chercheur-theme.css">
 </head>
-<body class="app-pages density-compact" data-page="maps-prio">
+<body class="app-pages density-compact" data-page="home">
 <header>
   <div class="header-stripe" aria-hidden="true"></div>
   <div class="header-inner">
   <div class="brand-row">
-    <div class="brand-lockup">
+    <a class="brand-lockup" href="#home" data-nav="home">
       <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
       <div class="brand-text">
         <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
         <p class="brand-tag">Reprog</p>
         <h1>Chercheur maps · ORI / ACE / V1 / V2</h1>
       </div>
-    </div>
+    </a>
     <div class="work-controls" role="group" aria-label="Densité d'affichage">
       <button type="button" class="mode-btn on" id="btn-compact" title="Texte et lignes plus petits">Compact</button>
       <button type="button" class="mode-btn" id="btn-comfortable" title="Texte plus grand">Large</button>
     </div>
     <nav class="nav-jump" aria-label="Pages">
-      <a href="#maps-prio" data-nav="maps-prio">Top 12</a>
-      <a href="#all-maps" data-nav="all-maps">Toutes maps</a>
-      <a href="#view2d" data-nav="view2d">Grille 2D</a>
-      <a href="#view3d" data-nav="view3d">Map 3D</a>
-      <a href="#hexdump" data-nav="hexdump">Hex</a>
-      <a href="#dump2d" data-nav="dump2d">Dump 2D</a>
-      <a href="#dtc-atlas" data-nav="dtc-atlas">DTC</a>
-      <a href="#guide" data-nav="guide">Guide</a>
-      <a href="#vcds" data-nav="vcds">VCDS</a>
-      <a href="#log-compare" data-nav="log-compare">Logs</a>
-      <a href="log-aide.html">Fiches log</a>
+      <a href="#home" data-nav="home">Accueil</a>
+      <div class="nav-group" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Top 12</a>
+          <a href="#all-maps" data-nav="all-maps" role="menuitem">Toutes</a>
+          <a href="#dtc-atlas" data-nav="dtc-atlas" role="menuitem">DTC</a>
+          <a href="#guide" data-nav="guide" role="menuitem">Guide</a>
+          <a href="#composer" data-nav="composer" role="menuitem">Recette</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="voir">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Voir</button>
+        <div class="nav-sub" role="menu">
+          <a href="#view2d" data-nav="view2d" role="menuitem">2D</a>
+          <a href="#view3d" data-nav="view3d" role="menuitem">3D</a>
+          <a href="#hexdump" data-nav="hexdump" role="menuitem">Hex</a>
+          <a href="#dump2d" data-nav="dump2d" role="menuitem">Dump</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="logs">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Logs</button>
+        <div class="nav-sub" role="menu">
+          <a href="#vcds" data-nav="vcds" role="menuitem">VCDS</a>
+          <a href="#log-compare" data-nav="log-compare" role="menuitem">Comparer</a>
+          <a href="log-aide.html" role="menuitem">Fiches</a>
+        </div>
+      </div>
       <a href="#downloads" data-nav="downloads">Pack</a>
     </nav>
   </div>
@@ -70,13 +87,107 @@
     <button type="button" class="chip" data-folder="Engine torque limiters">Couple lim.</button>
     <button type="button" class="chip" data-folder="Rail pressure">Rail</button>
     <button type="button" class="chip" data-folder="Hors A2L / provisoire">Hors A2L / provisoire</button>
-    <button type="button" class="chip" data-folder="Hors A2L / provisoire">Hors A2L / provisoire</button>
     <button type="button" class="chip" data-folder="Injection system">Injection</button>
     <button type="button" class="chip" data-folder="Start of injection SOI">SOI</button>
   </div>
   </div>
 </header>
 <main class="app-main">
+<section class="page-panel home-page is-active" id="home">
+  <div class="sec-head">
+    <h2>Atelier Caddy 9979</h2>
+    <p class="sec-lead">Comparer, comprendre, puis faire la carto. Un écran = une action.</p>
+  </div>
+  <div class="home-actions">
+    <a class="home-card" href="#maps-prio" data-nav="maps-prio">
+      <span class="home-kicker">1 · Comparer</span>
+      <h3>ORI vs ACE vs V1 vs V2</h3>
+      <p>Top 12 des maps qui bougent. Clique une adresse → Ctrl+G WinOLS.</p>
+    </a>
+    <a class="home-card" href="#all-maps" data-nav="all-maps">
+      <span class="home-kicker">2 · Chercher</span>
+      <h3>Une map, une adresse</h3>
+      <p>139 A2L + provisoires + deletes. Raccourci <kbd>/</kbd>.</p>
+    </a>
+    <a class="home-card" href="#vcds" data-nav="vcds">
+      <span class="home-kicker">3 · Valider</span>
+      <h3>Logs VCDS</h3>
+      <p>Pics vs plafonds, comparateur A/B, fiches banc-route.</p>
+    </a>
+    <a class="home-card" href="#composer" data-nav="composer">
+      <span class="home-kicker">4 · Recette</span>
+      <h3>Composer la carto</h3>
+      <p>Coche couple, FAP/EGR, vmax, hardcut, launch… le site dit quelles maps toucher.</p>
+    </a>
+  </div>
+  <p class="home-foot">Caddy CAYE · PCR2.1 · SW 9979 · SM2G0P2000000 · clic adresse = Ctrl+G</p>
+</section>
+
+<section class="page-panel composer-page" id="composer">
+  <div class="sec-head">
+    <h2>Recette carto</h2>
+    <p class="sec-lead">Coche ce que tu veux dans la carto. Le récap dit quelles maps ouvrir. Pas de patch auto — liste atelier (plus tard le client cochera la même chose).</p>
+  </div>
+  <form id="recipe-form" class="recipe-form">
+    <fieldset class="recipe-block">
+      <legend>Stage couple</legend>
+      <div class="recipe-choices">
+        <label class="recipe-opt">
+          <input type="radio" name="stage" value="v1">
+          <span>Doux (V1)<small>Partiels calmes, WOT ~350 Nm</small></span>
+        </label>
+        <label class="recipe-opt">
+          <input type="radio" name="stage" value="ace">
+          <span>Agressif (ACE)<small>Wish ~380 Nm, limiteur ~350</small></span>
+        </label>
+      </div>
+    </fieldset>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="dpf" value="1">
+        <span>FAP / EGR off (DTC)<small>Masques DaVinci → 00 + hystérésis EGR à 0</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="vmax" value="1">
+        <span>Vmax off<small>Plus de plafond 190 km/h (FFFF)</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="hardcut" value="1">
+        <span>Hardcut 4800<small>Vrai cut via tqlim_cluth_prot (axe RPM → 0 Nm)</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="launch" value="1">
+        <span>Launch test ~2500<small>Même map clutch-prot, ratio vitesse/régime ≈ 0 — à valider au log</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="rail" value="1">
+        <span>Rail V1 (~1620 bar)<small>Entre ORI 1600 et ACE 1656</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="smoke" value="1">
+        <span>Smoke progressif (cap 360)<small>Moins plat qu’ACE 400 — moins de fumée</small></span>
+      </label>
+    </div>
+    <div class="recipe-block">
+      <label class="recipe-check">
+        <input type="checkbox" name="turbo" value="1">
+        <span>Turbo ACE<small>Consigne +~85 mbar, limiteur ATM 2650</small></span>
+      </label>
+    </div>
+  </form>
+  <div class="recipe-recap" id="recipe-recap" aria-live="polite"></div>
+</section>
+
 <details class="howto collapsible page-panel" id="guide">
   <summary><b>Guide atelier — ce qui a été fait</b> <span class="sum-hint">résumé par carto</span></summary>
   <p class="lead">Quatre fichiers : <b>ORI</b> (stock), <b>ACE</b> (Stage1 + FAP/EGR off), <b>V1</b> (ta carto soft), <b>V2</b> (ami : hardcut clutch-prot 4800 + launch 2500 à tester). Paire <b>V1 vs V2</b> = uniquement les 272 octets de l’ami.</p>
@@ -382,10 +493,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </details>
 </details>
 
-<section class="maps-prio page-panel is-active" id="maps-prio">
+<section class="maps-prio page-panel" id="maps-prio">
   <div class="sec-head">
     <h2>Top 12 · Stage 1</h2>
-    <p class="sec-lead">Les 12 cartes prioritaires seulement — pas toute la liste A2L.</p>
+    <p class="sec-lead">Les 12 cartes prioritaires — en clair, les chiffres, puis WinOLS.</p>
   </div>
   <p class="prio-note">Il y a <b>139 maps A2L</b> touchées + <b>16 provisoires</b> (hors A2L) dans Toutes maps.
     <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Voir toutes les maps (Toutes maps)</a>
@@ -394,8 +505,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="AccPed_trq4A">
   <div class="badge">Stage 1</div>
   <h3>1. AccPed_trq4A</h3>
-  <p class="why">Drivers wish / pedale → couple (ACE haut — cible atelier ~250-270 Nm)</p>
-  <p class="meta">Drivers wish torque<br>8×16 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Couple que l’ECU « souhaite » selon la pédale (drivers wish).</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 294 → 380 → 350 Nm au WOT. V1 adoucit aussi les partiels + ligne 4800 à 0.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1CF9C0">1CF9C0</button> — WOT (dernière colonne pédale), partiels, ligne 4800 rpm.</p>
+  <p class="meta">Drivers wish torque · 8×16 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1CF9C0">1CF9C0</button> → <button class="addr big" data-addr="1CFABF">1CFABF</button></p>
   <p class="tiny">Taille map = <b>256</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>293.7</b> → ACE <b>380.0</b> <span class="up">+86.3</span></p>
@@ -405,8 +518,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="tqlim_base_pu_4A">
   <div class="badge">Stage 1</div>
   <h3>2. tqlim_base_pu_4A</h3>
-  <p class="why">Limiteur couple principal</p>
-  <p class="meta">Torque limiter<br>8×26 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Plafond de sécurité couple. Même si la pédale demande 380, ce limiteur peut couper plus bas.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 239 → 350 → ~348 Nm, avec hardcut 4800.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D3190">1D3190</button> — plateau WOT et chute à 4800.</p>
+  <p class="meta">Torque limiter · 8×26 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1D3190">1D3190</button> → <button class="addr big" data-addr="1D332F">1D332F</button></p>
   <p class="tiny">Taille map = <b>416</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>239.0</b> → ACE <b>350.0</b> <span class="up">+111.0</span></p>
@@ -416,8 +531,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="smoke_mapA">
   <div class="badge">Stage 1</div>
   <h3>3. smoke_mapA</h3>
-  <p class="why">Limiteur fumee MAP</p>
-  <p class="meta">Smoke limitation by MAP<br>19×18 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Limite le couple selon l’air (MAP) pour ne pas trop fumer.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 310 → 400 plat → V1 ORI×1.20 progressif, cap 360.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D2270">1D2270</button> — ACE trop plat en haut = fumée ; V1 plus progressif.</p>
+  <p class="meta">Smoke limitation by MAP · 19×18 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1D2270">1D2270</button> → <button class="addr big" data-addr="1D251B">1D251B</button></p>
   <p class="tiny">Taille map = <b>684</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>310.0</b> → ACE <b>400.0</b> <span class="up">+90.0</span></p>
@@ -427,8 +544,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="turbo_base3B">
   <div class="badge">Stage 1</div>
   <h3>4. turbo_base3B</h3>
-  <p class="why">Consigne turbo</p>
-  <p class="meta">Turbo boost pressure request<br>16×20 · mbar</p>
+  <p class="learn-plain"><b>En clair.</b> Consigne turbo : ce que l’ECU demande, pas le limiteur.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 2420 → 2505 mbar. V1 = ACE (non retouché).</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1C04AC">1C04AC</button> — comparer à turbo_atm6A et au log MAP.</p>
+  <p class="meta">Turbo boost pressure request · 16×20 · mbar</p>
   <p class="range"><button class="addr big" data-addr="1C04AC">1C04AC</button> → <button class="addr big" data-addr="1C072B">1C072B</button></p>
   <p class="tiny">Taille map = <b>640</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>2420.1</b> → ACE <b>2504.6</b> <span class="up">+84.6</span></p>
@@ -438,8 +557,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="turbo_atm6A">
   <div class="badge">Stage 1</div>
   <h3>5. turbo_atm6A</h3>
-  <p class="why">Limiteur turbo ATM</p>
-  <p class="meta">Turbo boost pressure limiter by ATM<br>8×16 · mbar</p>
+  <p class="learn-plain"><b>En clair.</b> Limiteur turbo ATM — le plafond au-dessus de la consigne.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 2500 → 2650 mbar. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1C6A2C">1C6A2C</button> — doit rester au-dessus de turbo_base.</p>
+  <p class="meta">Turbo boost pressure limiter by ATM · 8×16 · mbar</p>
   <p class="range"><button class="addr big" data-addr="1C6A2C">1C6A2C</button> → <button class="addr big" data-addr="1C6B2B">1C6B2B</button></p>
   <p class="tiny">Taille map = <b>256</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>2500.0</b> → ACE <b>2650.0</b> <span class="up">+150.0</span></p>
@@ -449,8 +570,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="rail_base_int_trq2B">
   <div class="badge">Stage 1</div>
   <h3>6. rail_base_int_trq2B</h3>
-  <p class="why">Consigne pression rail</p>
-  <p class="meta">Rail pressure request<br>16×16 · bar</p>
+  <p class="learn-plain"><b>En clair.</b> Consigne pression rail (gasoil haute pression).</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 1600 → 1656 → ~1620 bar.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1E9368">1E9368</button> — V1 entre ORI et ACE. Valider au log réel vs consigne.</p>
+  <p class="meta">Rail pressure request · 16×16 · bar</p>
   <p class="range"><button class="addr big" data-addr="1E9368">1E9368</button> → <button class="addr big" data-addr="1E9567">1E9567</button></p>
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>1600.0</b> → ACE <b>1656.0</b> <span class="up">+56.0</span></p>
@@ -460,8 +583,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="nm2iq_base_mg3A">
   <div class="badge">Stage 1</div>
   <h3>7. nm2iq_base_mg3A</h3>
-  <p class="why">Couple → quantite injectee</p>
-  <p class="meta">Torque to fuel quantity injected conversion<br>16×20 · mg/hub</p>
+  <p class="learn-plain"><b>En clair.</b> Convertit le couple demandé en mg injectés.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 52.3 → 54.9. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D7E38">1D7E38</button> — léger + ACE. Ne pas pousser seul sans smoke / air.</p>
+  <p class="meta">Torque to fuel quantity injected conversion · 16×20 · mg/hub</p>
   <p class="range"><button class="addr big" data-addr="1D7E38">1D7E38</button> → <button class="addr big" data-addr="1D80B7">1D80B7</button></p>
   <p class="tiny">Taille map = <b>640</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>52.3</b> → ACE <b>54.9</b> <span class="up">+2.6</span></p>
@@ -471,8 +596,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="tqlim_tegt_temp">
   <div class="badge">Stage 1</div>
   <h3>8. tqlim_tegt_temp</h3>
-  <p class="why">Limiteur couple EGT</p>
-  <p class="meta">Torque limiter by EGT temperature<br>16×16 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Limiteur couple si EGT trop chaud (sécurité température).</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 290 → 350 Nm. Suivi Stage1.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D35A8">1D35A8</button> — trop bas = ça bride le Stage1 à chaud.</p>
+  <p class="meta">Torque limiter by EGT temperature · 16×16 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1D35A8">1D35A8</button> → <button class="addr big" data-addr="1D37A7">1D37A7</button></p>
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>290.0</b> → ACE <b>350.0</b> <span class="up">+60.0</span></p>
@@ -482,8 +609,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="tqlim_speed2A">
   <div class="badge">Stage 1</div>
   <h3>9. tqlim_speed2A</h3>
-  <p class="why">Limiteur couple vs vitesse</p>
-  <p class="meta">Torque limiter by vehicle speed<br>6×8 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Limiteur couple selon la vitesse véhicule.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 300 → 350 Nm sur toute la map.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1CEED4">1CEED4</button> — ACE monte à 350 partout.</p>
+  <p class="meta">Torque limiter by vehicle speed · 6×8 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1CEED4">1CEED4</button> → <button class="addr big" data-addr="1CEF33">1CEF33</button></p>
   <p class="tiny">Taille map = <b>96</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>300.0</b> → ACE <b>350.0</b> <span class="up">+50.0</span></p>
@@ -493,8 +622,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="airctl_hysteresisC">
   <div class="badge">EGR</div>
   <h3>10. airctl_hysteresisC</h3>
-  <p class="why">Hysteresis EGR (delete partiel)</p>
-  <p class="meta">EGR hysteresis<br>16×1 · Nm</p>
+  <p class="learn-plain"><b>En clair.</b> Hystérésis EGR. ACE à 0 = delete partiel, avec les masques DTC.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 234 → 0. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="1D0100">1D0100</button> — compléter avec la page DTC (P040x).</p>
+  <p class="meta">EGR hysteresis · 16×1 · Nm</p>
   <p class="range"><button class="addr big" data-addr="1D0100">1D0100</button> → <button class="addr big" data-addr="1D011F">1D011F</button></p>
   <p class="tiny">Taille map = <b>32</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>234.0</b> → ACE <b>0.0</b> <span class="down">-234.0</span></p>
@@ -504,8 +635,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="vmax3">
   <div class="badge">Limiteur</div>
   <h3>11. vmax3</h3>
-  <p class="why">Limiteur vitesse max (ACE = FFFF = off)</p>
-  <p class="meta">Maximum vehicle speed<br>1×1 · km/h</p>
+  <p class="learn-plain"><b>En clair.</b> Limiteur vitesse max. ACE = FFFF = off (plus de 190 km/h).</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> 190 → off. V1 = ACE.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18047C">18047C</button> — 2 octets. FFFF = désactivé.</p>
+  <p class="meta">Maximum vehicle speed · 1×1 · km/h</p>
   <p class="range"><button class="addr big" data-addr="18047C">18047C</button> → <button class="addr big" data-addr="18047D">18047D</button></p>
   <p class="tiny">Taille map = <b>2</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>190.0</b> → ACE <b>desactive (FFFF)</b> <span class="up">off</span></p>
@@ -515,8 +648,10 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <article class="card" data-map-id="soi_base_int_trq2A">
   <div class="badge">Timing</div>
   <h3>12. soi_base_int_trq2A</h3>
-  <p class="why">Timing SOI (repartition) — ne monte PAS le couple</p>
-  <p class="meta">Start of Injection<br>16×16 · deg CrS</p>
+  <p class="learn-plain"><b>En clair.</b> Timing début d’injection. Ne monte pas le couple tout seul.</p>
+  <p class="learn-path"><b>ORI → ACE → V1.</b> max 8.9 inchangé. V1 ne force pas le timing.</p>
+  <p class="learn-winols"><b>WinOLS.</b> Ctrl+G <button class="addr" data-addr="18CB80">18CB80</button> — souvent inchangé ou léger ACE.</p>
+  <p class="meta">Start of Injection · 16×16 · deg CrS</p>
   <p class="range"><button class="addr big" data-addr="18CB80">18CB80</button> → <button class="addr big" data-addr="18CD7F">18CD7F</button></p>
   <p class="tiny">Taille map = <b>512</b> octets (fin = debut + taille − 1)</p>
   <p class="vals">ORI max <b>8.9</b> → ACE <b>8.9</b> <span class="">+0.0</span></p>
@@ -932,10 +1067,21 @@ document.getElementById('quick-chips')?.addEventListener('click', (e) => {
 });
 
 /* —— Navigation multi-pages —— */
-const PAGE_IDS = ['maps-prio', 'all-maps', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
+const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
+const NAV_GROUP_PAGES = {
+  maps: ['maps-prio', 'all-maps', 'dtc-atlas', 'guide', 'composer'],
+  voir: ['view2d', 'view3d', 'hexdump', 'dump2d'],
+  logs: ['vcds', 'log-compare'],
+};
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
 function showPage(id, opts) {
   opts = opts || {};
-  if (!PAGE_IDS.includes(id)) id = 'maps-prio';
+  if (!PAGE_IDS.includes(id)) id = 'home';
   document.body.dataset.page = id;
   document.querySelectorAll('.page-panel').forEach((el) => {
     const on = el.id === id;
@@ -944,6 +1090,11 @@ function showPage(id, opts) {
   });
   document.querySelectorAll('.nav-jump a[data-nav]').forEach((a) => {
     a.classList.toggle('on', a.getAttribute('data-nav') === id);
+  });
+  document.querySelectorAll('.nav-group').forEach((g) => {
+    const key = g.getAttribute('data-nav-group');
+    const pages = NAV_GROUP_PAGES[key] || [];
+    g.classList.toggle('on', pages.includes(id));
   });
   if (opts.updateHash !== false) {
     const want = '#' + id;
@@ -961,9 +1112,9 @@ document.addEventListener('click', (e) => {
 });
 
 function pageFromHash() {
-  const raw = (location.hash || '#maps-prio').replace(/^#/, '').split('?')[0];
+  const raw = (location.hash || '#home').replace(/^#/, '').split('?')[0];
   if (raw === 'hors-a2l' || raw === 'maps-a2l') return 'all-maps';
-  return PAGE_IDS.includes(raw) ? raw : 'maps-prio';
+  return PAGE_IDS.includes(raw) ? raw : 'home';
 }
 function scrollHashTarget(hashId) {
   const raw = hashId || (location.hash || '').replace(/^#/, '').split('?')[0];
@@ -972,10 +1123,29 @@ function scrollHashTarget(hashId) {
   if (el) requestAnimationFrame(() => el.scrollIntoView({ block: 'start' }));
 }
 document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (groupBtn) {
+    e.preventDefault();
+    const group = groupBtn.closest('.nav-group');
+    const open = group.classList.contains('open');
+    closeNavGroups();
+    if (!open) {
+      group.classList.add('open');
+      groupBtn.setAttribute('aria-expanded', 'true');
+    }
+    return;
+  }
   const a = e.target.closest('a[data-nav]');
   if (!a) return;
   e.preventDefault();
   showPage(a.getAttribute('data-nav'));
+  closeNavGroups();
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeNavGroups();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNavGroups();
 });
 window.addEventListener('hashchange', () => {
   const raw = (location.hash || '').replace(/^#/, '').split('?')[0];
@@ -1013,6 +1183,98 @@ document.addEventListener('keydown', (e) => {
 });
 
 filter();
+
+/* —— Recette carto —— */
+(function () {
+  const form = document.getElementById('recipe-form');
+  const recap = document.getElementById('recipe-recap');
+  if (!form || !recap) return;
+
+  const MAPS = {
+    AccPed_trq4A: 'Wish pédale → Nm',
+    tqlim_base_pu_4A: 'Limiteur couple principal',
+    tqlim_speed2A: 'Limiteur couple vs vitesse',
+    airctl_hysteresisC: 'Hystérésis EGR',
+    vmax3: 'Limiteur vitesse',
+    tqlim_cluth_prot: 'Hardcut / launch (clutch-prot)',
+    rail_base_int_trq2B: 'Consigne rail',
+    smoke_mapA: 'Limiteur fumée',
+    turbo_base3B: 'Consigne turbo',
+    turbo_atm6A: 'Limiteur turbo ATM',
+  };
+
+  function collect() {
+    const fd = new FormData(form);
+    const items = [];
+    const maps = new Map();
+    const extras = [];
+    const stage = fd.get('stage');
+    if (stage === 'v1') {
+      items.push('Stage couple doux (V1)');
+      maps.set('AccPed_trq4A', 'Wish 350 + partiels calmes');
+      maps.set('tqlim_base_pu_4A', 'Limiteur ~348 + hardcut 4800');
+      maps.set('tqlim_speed2A', '350 Nm vs vitesse');
+    } else if (stage === 'ace') {
+      items.push('Stage couple agressif (ACE)');
+      maps.set('AccPed_trq4A', 'Wish ~380 Nm');
+      maps.set('tqlim_base_pu_4A', 'Limiteur 350 Nm');
+      maps.set('tqlim_speed2A', '350 Nm partout');
+    }
+    if (fd.get('dpf')) {
+      items.push('FAP / EGR off');
+      maps.set('airctl_hysteresisC', 'Hystérésis EGR = 0');
+      extras.push({ href: '#dtc-atlas', nav: 'dtc-atlas', label: 'Atlas DTC (30 codes)' });
+    }
+    if (fd.get('vmax')) {
+      items.push('Vmax off');
+      maps.set('vmax3', 'FFFF = plus de 190 km/h');
+    }
+    if (fd.get('hardcut')) {
+      items.push('Hardcut 4800');
+      maps.set('tqlim_cluth_prot', 'Axe RPM → 4800/4801 = 0 Nm');
+    }
+    if (fd.get('launch')) {
+      items.push('Launch test ~2500');
+      maps.set('tqlim_cluth_prot', (maps.get('tqlim_cluth_prot') ? maps.get('tqlim_cluth_prot') + ' · ' : '') + 'ratio vitesse/régime ≈ 0');
+    }
+    if (fd.get('rail')) {
+      items.push('Rail V1 ~1620 bar');
+      maps.set('rail_base_int_trq2B', 'Entre ORI 1600 et ACE 1656');
+    }
+    if (fd.get('smoke')) {
+      items.push('Smoke progressif cap 360');
+      maps.set('smoke_mapA', 'ORI×1.20, pas le plat ACE 400');
+    }
+    if (fd.get('turbo')) {
+      items.push('Turbo ACE');
+      maps.set('turbo_base3B', 'Consigne +~85 mbar');
+      maps.set('turbo_atm6A', 'Limiteur ATM 2650 mbar');
+    }
+    return { items, maps, extras };
+  }
+
+  function render() {
+    const { items, maps, extras } = collect();
+    if (!items.length) {
+      recap.innerHTML = '<h3>À toucher</h3><p class="recipe-empty">Coche au moins une option. Le récap listera les maps à ouvrir en 2D.</p>';
+      return;
+    }
+    let html = '<h3>À toucher</h3><p>' + items.join(' · ') + '</p><div class="recipe-maps">';
+    maps.forEach((note, id) => {
+      const label = MAPS[id] || id;
+      html += '<div class="recipe-item"><button type="button" class="open2d" data-map-id="' + id + '">' + id + '</button>';
+      html += '<span class="tiny">' + label + ' — ' + note + '</span></div>';
+    });
+    extras.forEach((x) => {
+      html += '<div class="recipe-item"><a class="act sec" href="' + x.href + '" data-nav="' + x.nav + '">' + x.label + '</a></div>';
+    });
+    html += '</div>';
+    recap.innerHTML = html;
+  }
+
+  form.addEventListener('change', render);
+  render();
+})();
 
 /* —— Validation log VCDS vs plafonds ACE —— */
 const ACE_CEIL = {
