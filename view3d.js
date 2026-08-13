@@ -423,10 +423,10 @@
 
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('button.open3d');
-    if (btn) {
-      e.preventDefault();
-      openMap3d(btn.dataset.mapId);
-    }
+    if (!btn) return;
+    if (btn.closest('#maps-prio')) return;
+    e.preventDefault();
+    openMap3d(btn.dataset.mapId);
   });
 
   window.openMap3d = openMap3d;
@@ -451,3 +451,255 @@
     setTimeout(() => clearInterval(t), 5000);
   }
 })();
+
+/* Aperçu 3D dans une fiche (canvas dédié, sans quitter l’onglet) */
+window.mountMap3dPreview = function (canvas, mapId) {
+  if (!canvas || !mapId) return { draw: function () {}, setMode: function () {}, destroy: function () {} };
+  const ctx = canvas.getContext('2d');
+  let rotY = -0.72;
+  let rotX = 0.58;
+  let zoom = 1.05;
+  let mode = 'right';
+  let drag = null;
+  let destroyed = false;
+
+  function grids() {
+    return (typeof MAP_GRIDS !== 'undefined' && MAP_GRIDS) || window.MAP_GRIDS || [];
+  }
+  function findGrid(id) {
+    const list = grids();
+    return list.find((g) => g.id === id) || null;
+  }
+  function pairKeys() {
+    if (window.COMPARE && window.COMPARE.sides) return window.COMPARE.sides();
+    return ['ori', 'ace'];
+  }
+  function series(g, key) {
+    if (!g) return [];
+    if (key === 'v2') return g.v2 || g.v1 || g.ace || [];
+    if (key === 'v1') return g.v1 || g.ace || [];
+    return g[key] || [];
+  }
+  function heatColor(t) {
+    t = Math.max(0, Math.min(1, t));
+    const stops = [[20, 40, 90], [40, 170, 90], [220, 200, 40], [220, 60, 50]];
+    const x = t * (stops.length - 1);
+    const i = Math.floor(x);
+    const f = x - i;
+    const a = stops[Math.min(i, stops.length - 1)];
+    const b = stops[Math.min(i + 1, stops.length - 1)];
+    return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * f) + ',' +
+      Math.round(a[1] + (b[1] - a[1]) * f) + ',' +
+      Math.round(a[2] + (b[2] - a[2]) * f) + ')';
+  }
+  function diffColor(d, maxAbs) {
+    const t = Math.max(-1, Math.min(1, d / (maxAbs || 1)));
+    if (Math.abs(t) < 0.02) return 'rgb(40,48,56)';
+    if (t > 0) return 'rgb(' + Math.round(40 + 180 * t) + ',' + Math.round(48 + 140 * t) + ',' + Math.round(56 - 20 * t) + ')';
+    const k = -t;
+    return 'rgb(' + Math.round(40 + 160 * k) + ',' + Math.round(48 - 10 * k) + ',' + Math.round(56 + 10 * k) + ')';
+  }
+  function project(x, y, z, W, H) {
+    const cy = Math.cos(rotY), sy = Math.sin(rotY);
+    const cx = Math.cos(rotX), sx = Math.sin(rotX);
+    let x1 = x * cy + z * sy;
+    let z1 = -x * sy + z * cy;
+    let y1 = y * cx + z1 * sx;
+    z1 = -y * sx + z1 * cx;
+    const persp = 2.8 / (2.8 + z1);
+    const s = 160 * zoom * persp;
+    return { x: W * 0.5 + x1 * s, y: H * 0.55 - y1 * s, z: z1 };
+  }
+  function colToX(c, cols) { return (c / Math.max(1, cols - 1)) * 2 - 1; }
+  function rowToZ(r, rows) { return (r / Math.max(1, rows - 1)) * 2 - 1; }
+
+  function valuesFor(g) {
+    const keys = pairKeys();
+    const L = series(g, keys[0]);
+    const R = series(g, keys[1]);
+    const n = Math.min(L.length, R.length, (g.cols || 1) * (g.rows || 1));
+    const out = new Float64Array(n);
+    let minV = Infinity, maxV = -Infinity, maxAbs = 0;
+    for (let i = 0; i < n; i++) {
+      const v = mode === 'left' ? +L[i] : (mode === 'right' ? +R[i] : +R[i] - +L[i]);
+      out[i] = v;
+      if (Number.isFinite(v)) {
+        minV = Math.min(minV, v);
+        maxV = Math.max(maxV, v);
+        maxAbs = Math.max(maxAbs, Math.abs(v));
+      }
+    }
+    if (!Number.isFinite(minV)) { minV = 0; maxV = 1; }
+    if (maxV <= minV) maxV = minV + 1;
+    return { out, minV, maxV, maxAbs, L, R, n };
+  }
+
+  function resize() {
+    const wrap = canvas.parentElement;
+    const cssW = Math.max(280, (wrap && wrap.clientWidth) || 480);
+    const cssH = 280;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(cssW * dpr);
+    canvas.height = Math.floor(cssH * dpr);
+    canvas.style.width = '100%';
+    canvas.style.height = cssH + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw() {
+    if (destroyed) return;
+    resize();
+    const W = canvas.clientWidth;
+    const H = canvas.clientHeight;
+    ctx.clearRect(0, 0, W, H);
+    const grd = ctx.createLinearGradient(0, 0, 0, H);
+    grd.addColorStop(0, '#0c1218');
+    grd.addColorStop(1, '#06080c');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+
+    const g = findGrid(mapId);
+    if (!g) {
+      ctx.fillStyle = '#8a9aaa';
+      ctx.font = '13px Barlow, sans-serif';
+      ctx.fillText('Map introuvable', 16, H / 2);
+      return;
+    }
+
+    let cols = g.cols | 0;
+    let rows = g.rows | 0;
+    let { out, minV, maxV, maxAbs, L, R, n } = valuesFor(g);
+    if (rows < 2 || cols < 2) {
+      const src = out, srcL = L, srcR = R;
+      if (rows < 2) {
+        rows = 2;
+        const next = new Float64Array(cols * 2);
+        const L2 = [], R2 = [];
+        for (let r = 0; r < 2; r++) for (let c = 0; c < cols; c++) {
+          next[r * cols + c] = src[c] || 0;
+          L2.push(srcL[c]); R2.push(srcR[c]);
+        }
+        out = next; L = L2; R = R2; n = out.length;
+      } else {
+        cols = 2;
+        const next = new Float64Array(rows * 2);
+        const L2 = [], R2 = [];
+        for (let r = 0; r < rows; r++) {
+          next[r * 2] = src[r] || 0;
+          next[r * 2 + 1] = src[r] || 0;
+          L2.push(srcL[r], srcL[r]);
+          R2.push(srcR[r], srcR[r]);
+        }
+        out = next; L = L2; R = R2; n = out.length;
+      }
+    }
+
+    const isDiff = mode === 'diff';
+    const scaleElev = isDiff ? (maxAbs || 1) : (maxV - minV || 1);
+    const baseElev = isDiff ? 0 : minV;
+    function elev(v) { return ((v - baseElev) / scaleElev) * 0.9; }
+
+    const quads = [];
+    for (let r = 0; r < rows - 1; r++) {
+      for (let c = 0; c < cols - 1; c++) {
+        const i00 = r * cols + c;
+        const i10 = r * cols + (c + 1);
+        const i01 = (r + 1) * cols + c;
+        const i11 = (r + 1) * cols + (c + 1);
+        if (i11 >= n) continue;
+        const pts = [
+          project(colToX(c, cols), elev(out[i00]), rowToZ(r, rows), W, H),
+          project(colToX(c + 1, cols), elev(out[i10]), rowToZ(r, rows), W, H),
+          project(colToX(c + 1, cols), elev(out[i11]), rowToZ(r + 1, rows), W, H),
+          project(colToX(c, cols), elev(out[i01]), rowToZ(r + 1, rows), W, H),
+        ];
+        const avgZ = (pts[0].z + pts[1].z + pts[2].z + pts[3].z) / 4;
+        const avgV = (out[i00] + out[i10] + out[i01] + out[i11]) / 4;
+        const chg = Math.abs((R[i00] || 0) - (L[i00] || 0)) > 1e-9 ||
+          Math.abs((R[i10] || 0) - (L[i10] || 0)) > 1e-9 ||
+          Math.abs((R[i01] || 0) - (L[i01] || 0)) > 1e-9 ||
+          Math.abs((R[i11] || 0) - (L[i11] || 0)) > 1e-9;
+        quads.push({ pts, avgZ, avgV, chg });
+      }
+    }
+    quads.sort((a, b) => b.avgZ - a.avgZ);
+
+    ctx.strokeStyle = 'rgba(80,100,120,0.22)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const t = (i / 4) * 2 - 1;
+      const a = project(t, 0, -1, W, H);
+      const b = project(t, 0, 1, W, H);
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      const c = project(-1, 0, t, W, H);
+      const d = project(1, 0, t, W, H);
+      ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.lineTo(d.x, d.y); ctx.stroke();
+    }
+
+    for (const q of quads) {
+      const t = isDiff
+        ? (q.avgV / (maxAbs || 1) + 1) / 2
+        : (q.avgV - minV) / (maxV - minV || 1);
+      ctx.beginPath();
+      ctx.moveTo(q.pts[0].x, q.pts[0].y);
+      for (let k = 1; k < 4; k++) ctx.lineTo(q.pts[k].x, q.pts[k].y);
+      ctx.closePath();
+      ctx.fillStyle = isDiff ? diffColor(q.avgV, maxAbs || 1) : heatColor(t);
+      ctx.globalAlpha = 0.92;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = q.chg ? 'rgba(245,215,110,0.85)' : 'rgba(0,0,0,0.35)';
+      ctx.lineWidth = q.chg ? 1.2 : 0.5;
+      ctx.stroke();
+    }
+  }
+
+  function onDown(e) {
+    const p = e.touches ? e.touches[0] : e;
+    drag = { x: p.clientX, y: p.clientY, rotX, rotY };
+  }
+  function onMove(e) {
+    if (!drag) return;
+    const p = e.touches ? e.touches[0] : e;
+    rotY = drag.rotY + (p.clientX - drag.x) * 0.008;
+    rotX = Math.max(0.15, Math.min(1.35, drag.rotX + (p.clientY - drag.y) * 0.008));
+    draw();
+  }
+  function onUp() { drag = null; }
+  function onWheel(e) {
+    e.preventDefault();
+    zoom = Math.max(0.45, Math.min(2.8, zoom * (e.deltaY > 0 ? 0.92 : 1.08)));
+    draw();
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    onMove(e);
+  }
+  canvas.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  canvas.addEventListener('touchstart', onDown, { passive: true });
+  canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+  canvas.addEventListener('touchend', onUp);
+  canvas.addEventListener('wheel', onWheel, { passive: false });
+  const onWinResize = () => draw();
+  window.addEventListener('resize', onWinResize);
+  requestAnimationFrame(draw);
+
+  return {
+    draw,
+    setMode: function (m) { mode = m; draw(); },
+    destroy: function () {
+      destroyed = true;
+      canvas.removeEventListener('mousedown', onDown);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      canvas.removeEventListener('touchstart', onDown);
+      canvas.removeEventListener('touchmove', onTouchMove);
+      canvas.removeEventListener('touchend', onUp);
+      canvas.removeEventListener('wheel', onWheel);
+      window.removeEventListener('resize', onWinResize);
+    }
+  };
+};
