@@ -1594,7 +1594,7 @@ table.winols td.cell.same { opacity: .72; }
 .card-preview-canvas {
   display: block;
   width: 100%;
-  height: 280px;
+  height: 340px;
   background: #06080c;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1602,6 +1602,18 @@ table.winols td.cell.same { opacity: .72; }
   cursor: grab;
 }
 .card-preview-canvas:active { cursor: grabbing; }
+.card-preview-axes b {
+  font-family: var(--display);
+  letter-spacing: 0.04em;
+}
+  margin: 8px 0 0;
+  color: var(--ink);
+  font-size: 0.88em;
+  line-height: 1.45;
+}
+.card-preview-axes b:nth-of-type(1) { color: #ff6a4a; }
+.card-preview-axes b:nth-of-type(2) { color: #5ee09a; }
+.card-preview-axes b:nth-of-type(3) { color: #f5c542; }
 .card-preview-hint {
   margin: 6px 0 0;
   color: var(--muted);
