@@ -497,21 +497,21 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 <section class="maps-prio page-panel" id="maps-prio">
   <div class="sec-head">
     <h2>Fiches carto · par fonction</h2>
-    <p class="sec-lead">Clique une fiche pour l’ouvrir et voir la map en <b>3D</b>. Adresse bleue → Ctrl+G WinOLS.</p>
+    <p class="sec-lead">Choisis une <b>catégorie</b> en haut : tu ne vois que ses fiches. Clique une fiche → aperçu <b>3D</b>.</p>
   </div>
-  <nav class="prio-jump" aria-label="Fonctions">
-    <a href="#maps-prio" data-jump="prio-stage1" class="on">Stage 1 <span class="n">10</span></a>
-    <a href="#maps-prio" data-jump="prio-dpf">FAP / DPF off <span class="n">16</span></a>
-    <a href="#maps-prio" data-jump="prio-egr">EGR off <span class="n">18</span></a>
-    <a href="#maps-prio" data-jump="prio-launch">Launch <span class="n">1</span></a>
-    <a href="#maps-prio" data-jump="prio-hardcut">Hardcut <span class="n">1</span></a>
-    <a href="#maps-prio" data-jump="prio-vmax">Limiteur vitesse <span class="n">7</span></a>
+  <nav class="prio-cats" role="tablist" aria-label="Catégorie de maps">
+    <button type="button" role="tab" aria-selected="true" data-cat="prio-stage1" class="on">Stage 1 <span class="n">10</span></button>
+    <button type="button" role="tab" aria-selected="false" data-cat="prio-dpf">FAP / DPF off <span class="n">16</span></button>
+    <button type="button" role="tab" aria-selected="false" data-cat="prio-egr">EGR off <span class="n">18</span></button>
+    <button type="button" role="tab" aria-selected="false" data-cat="prio-launch">Launch <span class="n">1</span></button>
+    <button type="button" role="tab" aria-selected="false" data-cat="prio-hardcut">Hardcut <span class="n">1</span></button>
+    <button type="button" role="tab" aria-selected="false" data-cat="prio-vmax">Limiteur vitesse <span class="n">7</span></button>
   </nav>
   <p class="prio-note">Les banques supplémentaires (turbo, rail, SOI…) restent dans
     <a href="#all-maps" data-nav="all-maps" class="prio-all-link">Toutes maps</a>.
   </p>
 
-  <div class="prio-block" id="prio-stage1">
+  <div class="prio-block is-on" id="prio-stage1">
     <h3>Stage 1</h3>
     <p class="prio-block-lead">Couple, smoke, turbo, rail, injection. ACE pousse ; V1 adoucit partiels / WOT 350 / rail 1620 / smoke cap 360.</p>
     <div class="cards">
@@ -1734,13 +1734,18 @@ window.addEventListener('hashchange', () => {
   scrollHashTarget(bootHash);
 }
 
-document.querySelector('.prio-jump')?.addEventListener('click', (e) => {
-  const a = e.target.closest('[data-jump]');
-  if (!a) return;
+document.querySelector('.prio-cats')?.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-cat]');
+  if (!btn) return;
   e.preventDefault();
-  const el = document.getElementById(a.getAttribute('data-jump'));
-  document.querySelectorAll('.prio-jump [data-jump]').forEach((x) => x.classList.toggle('on', x === a));
-  if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  const id = btn.getAttribute('data-cat');
+  document.querySelectorAll('.prio-block').forEach((b) => b.classList.toggle('is-on', b.id === id));
+  document.querySelectorAll('.prio-cats [data-cat]').forEach((x) => {
+    const on = x === btn;
+    x.classList.toggle('on', on);
+    x.setAttribute('aria-selected', on ? 'true' : 'false');
+  });
+  if (typeof window.closePrioCardPreview === 'function') window.closePrioCardPreview();
 });
 
 (function initPrioCardPreview() {
@@ -1774,6 +1779,10 @@ document.querySelector('.prio-jump')?.addEventListener('click', (e) => {
     if (hint) hint.textContent = 'Clique la fiche → aperçu 3D';
     if (active === card) active = null;
   }
+
+  window.closePrioCardPreview = function () {
+    if (active) closeCard(active);
+  };
 
   function openCard(card) {
     const id = card.getAttribute('data-map-id');
@@ -1819,7 +1828,7 @@ document.querySelector('.prio-jump')?.addEventListener('click', (e) => {
   host.addEventListener('click', (e) => {
     const card = e.target.closest('#maps-prio article.card');
     if (!card) return;
-    if (e.target.closest('.addr, .open2d, a, .prio-jump')) return;
+    if (e.target.closest('.addr, .open2d, a, .prio-cats')) return;
     if (e.target.closest('[data-pv-mode]')) {
       e.preventDefault();
       const mode = e.target.closest('[data-pv-mode]').getAttribute('data-pv-mode');
