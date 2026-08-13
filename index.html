@@ -32,7 +32,7 @@
       <div class="nav-group" data-nav-group="maps">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
         <div class="nav-sub" role="menu">
-          <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Top 12 · pack</a>
+          <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Fiches</a>
           <a href="#all-maps" data-nav="all-maps" role="menuitem">Toutes</a>
           <a href="#dtc-atlas" data-nav="dtc-atlas" role="menuitem">DTC</a>
           <a href="#guide" data-nav="guide" role="menuitem">Guide</a>
@@ -101,8 +101,8 @@
   <div class="home-actions">
     <a class="home-card" href="#maps-prio" data-nav="maps-prio">
       <span class="home-kicker">1 · Comparer</span>
-      <h3>ORI vs ACE vs V1 vs V2</h3>
-      <p>Stage 1, DPF, EGR, launch, hardcut, limiteur — une carte par map. Clique une adresse → Ctrl+G WinOLS.</p>
+      <h3>Fiches par fonction</h3>
+      <p>Stage 1, FAP/DPF, EGR, launch, hardcut, limiteur. Clique une fiche → aperçu 3D.</p>
     </a>
     <a class="home-card" href="#all-maps" data-nav="all-maps">
       <span class="home-kicker">2 · Chercher</span>
@@ -200,8 +200,8 @@
     <li>Clique une adresse bleue → copie Ctrl+G WinOLS. <a href="#view2d" data-nav="view2d">Grille 2D</a> / <a href="#view3d" data-nav="view3d">Map 3D</a> = maps A2L + provisoires + DTC. <a href="#dump2d" data-nav="dump2d">Dump 2D</a> = courbe du binaire.</li>
   </ol>
 
-  <h3 class="guide-h">Pack carto — résumé par fonction</h3>
-  <p class="guide-p">L’onglet <a href="#maps-prio" data-nav="maps-prio">Top 12</a> n’est plus une liste de 12 cartes mélangées : Stage 1, DPF off, EGR off, launch, hardcut, limiteur — chaque bloc liste les maps (même format En clair / ORI→ACE→V1 / WinOLS).</p>
+  <h3 class="guide-h">Fiches par fonction</h3>
+  <p class="guide-p">L’onglet <a href="#maps-prio" data-nav="maps-prio">Fiches</a> : Stage 1, FAP/DPF + DTC, EGR + DTC, launch, hardcut, limiteur. Clique une fiche → aperçu 3D de la map.</p>
   <div class="guide-cards">
     <article><b>1. AccPed_trq4A</b> — Drivers wish (pédale→Nm).<br>ACE pousse jusqu’à <b>380 Nm</b>. V1 : partiels plus calmes + WOT plafonné <b>350 Nm</b> + ligne 4800 rpm à 0.</article>
     <article><b>2. tqlim_base_pu_4A</b> — Limiteur couple principal.<br>ACE ~<b>350 Nm</b>. V1 aligné ~348 Nm avec le même hardcut 4800.</article>
@@ -496,12 +496,12 @@ Ou clique « Charger fichier… » et choisis ton .CSV
 
 <section class="maps-prio page-panel" id="maps-prio">
   <div class="sec-head">
-    <h2>Pack carto · par fonction</h2>
-    <p class="sec-lead">Tout ce qui concerne chaque levier — mêmes cartes, regroupées. Clique une adresse → Ctrl+G WinOLS.</p>
+    <h2>Fiches carto · par fonction</h2>
+    <p class="sec-lead">Clique une fiche pour l’ouvrir et voir la map en <b>3D</b>. Adresse bleue → Ctrl+G WinOLS.</p>
   </div>
   <nav class="prio-jump" aria-label="Fonctions">
     <a href="#maps-prio" data-jump="prio-stage1" class="on">Stage 1 <span class="n">10</span></a>
-    <a href="#maps-prio" data-jump="prio-dpf">DPF off <span class="n">16</span></a>
+    <a href="#maps-prio" data-jump="prio-dpf">FAP / DPF off <span class="n">16</span></a>
     <a href="#maps-prio" data-jump="prio-egr">EGR off <span class="n">18</span></a>
     <a href="#maps-prio" data-jump="prio-launch">Launch <span class="n">1</span></a>
     <a href="#maps-prio" data-jump="prio-hardcut">Hardcut <span class="n">1</span></a>
@@ -649,11 +649,11 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </div>
 
   <div class="prio-block" id="prio-dpf">
-    <h3>DPF off</h3>
-    <p class="prio-block-lead">Masques défaut FAP / pression / sondes EGT et O2 → 00. Ce ne sont pas des maps couple. Couverture avec EGR ≈ 91%.</p>
+    <h3>FAP / DPF off · DTC liées</h3>
+    <p class="prio-block-lead">FAP = DPF. Masques défaut filtre / pression / sondes EGT et O2 → 00. Ce ne sont pas des maps couple.</p>
     <div class="cards">
 <article class="card" data-map-id="DTC_P0471">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P0471</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Pressure Sensor Range Performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -666,7 +666,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0471">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0471">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P0544">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P0544</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -679,7 +679,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0544">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0544">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P0545">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P0545</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Low Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -692,7 +692,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P0545">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P0545">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2002">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2002</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Particulate Trap Efficiency Below Threshold Bank 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -705,7 +705,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2002">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2002">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2080">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2080</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Range Performance Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -718,7 +718,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2080">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2080">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P242B">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P242B</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut Exhaust Gas Temperature Sensor Circuit Bank 1 Sensor 3 Range Performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -731,7 +731,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P242B">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P242B">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2453">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2453</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit range performance. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -744,7 +744,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2453">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2453">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2454">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2454</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit low. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -757,7 +757,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2454">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2454">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2455">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2455</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor A circuit high. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -770,7 +770,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2455">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2455">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2456">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2456</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF pressure sensor. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -783,7 +783,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2456">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2456">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2458">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2458</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF regeneration duration. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -796,7 +796,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2458">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2458">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2463">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2463</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF Restriction - Soot accumulation. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -809,7 +809,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2463">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2463">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P246E">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P246E</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut EGT / DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -822,7 +822,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P246E">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P246E">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P2626">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P2626</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut O2=Sensor Pumping Current Trim Circuit Open Bank 1 Sensor 1. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -835,7 +835,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P2626">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P2626">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P3004">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P3004</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -848,7 +848,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="card-actions"><button type="button" class="open2d" data-map-id="DTC_P3004">Voir grille 2D ORI / ACE</button><button type="button" class="open3d" data-map-id="DTC_P3004">Map 3D</button></div>
 </article>
 <article class="card" data-map-id="DTC_P3005">
-  <div class="badge">DPF off</div>
+  <div class="badge">FAP/DPF</div>
   <h3>P3005</h3>
   <p class="learn-plain"><b>En clair.</b> Masque défaut DPF related. DaVinci met les octets à 00 pour ne plus lever le code.</p>
   <p class="learn-path"><b>ORI → ACE → V1.</b> masque actif → 00 (off). V1 = ACE.</p>
@@ -864,7 +864,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   </div>
 
   <div class="prio-block" id="prio-egr">
-    <h3>EGR off</h3>
+    <h3>EGR off · DTC liées</h3>
     <p class="prio-block-lead">Hystérésis EGR à 0 + masques P040x / U1112. V1 = ACE (deletes inchangés).</p>
     <div class="cards">
 <article class="card" data-map-id="airctl_hysteresisC">
@@ -1316,7 +1316,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <h2>Grille 2D · WinOLS <span class="hint">comparaison case par case</span></h2>
   <div class="guide">
     <b>Comme dans WinOLS</b> : axes en en-tête, valeurs physiques (Nm, mbar…) pour les maps A2L.
-    Le menu liste le <b>pack par fonction</b> (Top 12), les <b>autres maps touchées</b>, et les <b>masques DTC OFF</b> (octets / hex).
+    Le menu liste les <b>fiches par fonction</b>, les <b>autres maps touchées</b>, et les <b>masques DTC OFF</b> (octets / hex).
     Jaune = case différente selon la paire. Mode Écart = droite − gauche.
   </div>
   <div class="v2d-bar">
@@ -1367,7 +1367,7 @@ Ou clique « Charger fichier… » et choisis ton .CSV
   <div class="v3d-canvas-wrap">
     <canvas id="v3d-canvas" width="1200" height="480" aria-label="Surface 3D de la map"></canvas>
   </div>
-  <p class="v3d-hint">Astuce : ouvre une map depuis le pack Top 12 (bouton 3D) ou depuis la Grille 2D.</p>
+  <p class="v3d-hint">Astuce : dans Fiches, clique une carte pour l’aperçu 3D. Ou ouvre depuis la Grille 2D.</p>
 </section>
 <section id="all-maps" class="page-panel">
   <div class="sec-head">
@@ -1742,6 +1742,111 @@ document.querySelector('.prio-jump')?.addEventListener('click', (e) => {
   document.querySelectorAll('.prio-jump [data-jump]').forEach((x) => x.classList.toggle('on', x === a));
   if (el) el.scrollIntoView({ block: 'start', behavior: 'smooth' });
 });
+
+(function initPrioCardPreview() {
+  const host = document.getElementById('maps-prio');
+  if (!host) return;
+  let active = null;
+
+  function lab(k) {
+    return window.COMPARE && window.COMPARE.label ? window.COMPARE.label(k) : String(k).toUpperCase();
+  }
+  function pairKeys() {
+    return window.COMPARE && window.COMPARE.sides ? window.COMPARE.sides() : ['ori', 'ace'];
+  }
+
+  document.querySelectorAll('#maps-prio article.card').forEach((card) => {
+    if (card.querySelector('.card-open-hint')) return;
+    const hint = document.createElement('p');
+    hint.className = 'card-open-hint';
+    hint.textContent = 'Clique la fiche → aperçu 3D';
+    card.appendChild(hint);
+  });
+
+  function closeCard(card) {
+    if (!card) return;
+    if (card._map3d && card._map3d.destroy) card._map3d.destroy();
+    card._map3d = null;
+    card.classList.remove('is-open');
+    const box = card.querySelector('.card-preview');
+    if (box) box.remove();
+    const hint = card.querySelector('.card-open-hint');
+    if (hint) hint.textContent = 'Clique la fiche → aperçu 3D';
+    if (active === card) active = null;
+  }
+
+  function openCard(card) {
+    const id = card.getAttribute('data-map-id');
+    if (!id) return;
+    if (active && active !== card) closeCard(active);
+    card.classList.add('is-open');
+    const hint = card.querySelector('.card-open-hint');
+    if (hint) hint.textContent = 'Clique la fiche pour fermer';
+    let box = card.querySelector('.card-preview');
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'card-preview';
+      const keys = pairKeys();
+      box.innerHTML =
+        '<div class="card-preview-bar">' +
+          '<span class="card-preview-lab">Aperçu 3D</span>' +
+          '<button type="button" data-pv-mode="left">' + lab(keys[0]) + '</button>' +
+          '<button type="button" data-pv-mode="right" class="on">' + lab(keys[1]) + '</button>' +
+          '<button type="button" data-pv-mode="diff">Écart</button>' +
+          '<button type="button" class="open2d" data-map-id="' + id + '">Grille 2D</button>' +
+        '</div>' +
+        '<canvas class="card-preview-canvas" width="800" height="280" aria-label="Aperçu 3D"></canvas>' +
+        '<p class="card-preview-hint">Glisser = tourner · molette = zoom · contours jaunes = cases touchées</p>';
+      card.appendChild(box);
+    }
+    const canvas = box.querySelector('canvas');
+    if (typeof window.mountMap3dPreview === 'function') {
+      if (card._map3d && card._map3d.destroy) card._map3d.destroy();
+      card._map3d = window.mountMap3dPreview(canvas, id);
+    }
+    active = card;
+    requestAnimationFrame(() => {
+      card.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      if (card._map3d && card._map3d.draw) card._map3d.draw();
+    });
+  }
+
+  function toggleCard(card) {
+    if (card.classList.contains('is-open')) closeCard(card);
+    else openCard(card);
+  }
+
+  host.addEventListener('click', (e) => {
+    const card = e.target.closest('#maps-prio article.card');
+    if (!card) return;
+    if (e.target.closest('.addr, .open2d, a, .prio-jump')) return;
+    if (e.target.closest('[data-pv-mode]')) {
+      e.preventDefault();
+      const mode = e.target.closest('[data-pv-mode]').getAttribute('data-pv-mode');
+      card.querySelectorAll('[data-pv-mode]').forEach((b) => b.classList.toggle('on', b.getAttribute('data-pv-mode') === mode));
+      if (card._map3d && card._map3d.setMode) card._map3d.setMode(mode);
+      return;
+    }
+    if (e.target.closest('.card-preview-canvas')) return;
+    e.preventDefault();
+    toggleCard(card);
+  });
+
+  window.refreshPrioCardPreview = function () {
+    if (!active || !active.classList.contains('is-open')) return;
+    const keys = pairKeys();
+    const bar = active.querySelector('.card-preview-bar');
+    if (bar) {
+      const left = bar.querySelector('[data-pv-mode="left"]');
+      const right = bar.querySelector('[data-pv-mode="right"]');
+      const diff = bar.querySelector('[data-pv-mode="diff"]');
+      if (left) left.textContent = lab(keys[0]);
+      if (right) right.textContent = lab(keys[1]);
+      if (diff) diff.textContent = 'Écart';
+    }
+    if (active._map3d && active._map3d.draw) active._map3d.draw();
+  };
+})();
 
 /* Densité */
 const LS_DENSITY = 'chercheur-density';
@@ -2495,7 +2600,7 @@ function syncPairLabels() {
     b.textContent = 'Grille 2D ' + L + ' / ' + R;
   });
   document.querySelectorAll('button.open3d:not(.dtc-open3d)').forEach((b) => {
-    b.textContent = 'Map 3D';
+    b.textContent = b.closest('#maps-prio') ? 'Aperçu 3D' : 'Map 3D';
   });
   document.querySelectorAll('#maps-prio article').forEach((art) => {
     const btn = art.querySelector('button.open2d');
@@ -2571,6 +2676,7 @@ function applyComparePair(pair) {
   if (typeof window.hexRefreshPair === 'function') window.hexRefreshPair();
   if (typeof window.dump2dRefreshPair === 'function') window.dump2dRefreshPair();
   if (typeof window.view3dRefreshPair === 'function') window.view3dRefreshPair();
+  if (typeof window.refreshPrioCardPreview === 'function') window.refreshPrioCardPreview();
   try { localStorage.setItem('chercheur-compare-pair', pair); } catch (_) {}
 }
 

@@ -1528,6 +1528,82 @@ table.winols td.cell.same { opacity: .72; }
 #v3d-canvas { display: block; width: 100%; height: 480px; touch-action: none; }
 .v3d-hint { color: var(--muted); font-size: 0.85em; margin: 8px 0 0; }
 .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+#maps-prio .card {
+  cursor: pointer;
+}
+#maps-prio .card.is-open {
+  grid-column: 1 / -1;
+  cursor: default;
+  border-color: var(--line-hot);
+  box-shadow: 0 16px 36px rgba(226, 58, 26, 0.18);
+}
+#maps-prio .card.is-open:hover { transform: none; }
+.card-open-hint {
+  margin: 8px 0 0;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--display);
+  color: var(--accent2);
+}
+.card-preview {
+  display: none;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+#maps-prio .card.is-open .card-preview { display: block; }
+.card-preview-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.card-preview-lab {
+  font-family: var(--display);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-hot);
+  margin-right: 4px;
+}
+.card-preview-bar button {
+  background: #0d0b0a;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-family: var(--display);
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.card-preview-bar button.on,
+.card-preview-bar button:hover {
+  border-color: var(--line-hot);
+  color: var(--ink);
+  background: var(--soft);
+}
+.card-preview-canvas {
+  display: block;
+  width: 100%;
+  height: 280px;
+  background: #06080c;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  touch-action: none;
+  cursor: grab;
+}
+.card-preview-canvas:active { cursor: grabbing; }
+.card-preview-hint {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.82em;
+}
 button.open3d, button.open2d.sec, .dtc-open3d {
   font-family: var(--font);
   font-size: 0.85em;
