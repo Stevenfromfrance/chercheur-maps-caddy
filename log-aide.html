@@ -28,7 +28,7 @@
       <div class="nav-group" data-nav-group="maps">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
         <div class="nav-sub" role="menu">
-          <a href="index.html#maps-prio" role="menuitem">Top 12</a>
+          <a href="index.html#maps-prio" role="menuitem">Fiches</a>
           <a href="index.html#all-maps" role="menuitem">Toutes</a>
           <a href="index.html#dtc-atlas" role="menuitem">DTC</a>
           <a href="index.html#guide" role="menuitem">Guide</a>
@@ -60,7 +60,7 @@
 <main class="app-main log-aide-main">
   <div class="sec-head">
     <h2>Guide logs VCDS · banc route 9979</h2>
-    <p class="sec-lead">Un log = <b>une question</b>. Même route, même rapport, même portion → comme un mini banc. Envoie le CSV + le type de run + soft flashé (V2 / V3…).</p>
+    <p class="sec-lead">Un log = <b>une question</b>. Même route, même rapport, même portion → comme un mini banc. Envoie le CSV + le type de run + soft flashé (ORI / ACE / V2 / V3 ITALIE).</p>
   </div>
 
   <section class="panel">
@@ -71,13 +71,13 @@
       <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_TURBO</b> — MAP consigne/réel sous charge</li>
       <li><span class="tag need">PRIORITÉ</span> <b>VILLE</b> — confort partiels (pas on/off)</li>
       <li><span class="tag opt">OK SI RESSENTI</span> <b>HARCUT</b> — cut ~4800 en roulant</li>
-      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V2/V3</li>
+      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V3 ITALIE</li>
       <li><span class="tag bonus">BONUS</span> <b>ROUTE_INJ</b> — air mass / fumée / IQ si canal trouvé</li>
     </ol>
     <div class="box">
       <b>Avant chaque session</b>
       <ul>
-        <li>Note soft flashé : <code>V2</code> / <code>V3</code> / autre</li>
+        <li>Note soft flashé : <code>V2</code> / <code>V3 ITALIE</code> / ACE / ORI</li>
         <li>Moteur chaud</li>
         <li>Route fixe (même départ / même fin)</li>
         <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b></li>
@@ -158,7 +158,7 @@ const RUNS = [
     priority: 'PRIORITÉ mappack',
     goal: 'Prouver couple Stage1 et que le rail réel ne dépasse pas trop la consigne.',
     prove: [
-      'Couple pic ~320–340 Nm (V1/V2/V3)',
+      'Couple pic ~320–340 Nm (V2 / V3 ITALIE)',
       'Rail consigne ~1620 bar',
       'Rail réel de préférence ≤ 1650–1670 bar (pic court OK à surveiller)',
       'Pédale haute pendant le pull',
@@ -204,7 +204,7 @@ const RUNS = [
       '1 pull franc 1800 → 3500–4000',
       'Stop → Save',
     ],
-    forbid: 'Changer de portion / de rapport entre deux comparaisons ACE vs V3.',
+    forbid: 'Changer de portion / de rapport entre deux comparaisons ACE vs V2 / V3 ITALIE.',
     file: 'CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv',
     extras: ['coolant'],
     send: 'CSV + soft. Idéal : même route que le run rail.',
@@ -214,7 +214,7 @@ const RUNS = [
     label: 'VILLE',
     title: 'Run VILLE — confort partiels',
     priority: 'PRIORITÉ mappack',
-    goal: 'Confirmer que V1/V2/V3 reste agréable vs ACE on/off.',
+    goal: 'Confirmer que V2 / V3 ITALIE reste agréable vs ACE on/off.',
     prove: [
       'Couple progressif à bas régime',
       'Pas d’à-coups étranges',
@@ -267,11 +267,11 @@ const RUNS = [
     id: 'depart',
     label: 'DEPART',
     title: 'Run DEPART — launch',
-    priority: 'BONUS (V2/V3)',
+    priority: 'BONUS (V3 ITALIE)',
     goal: 'Hold régime + MAP/couple au hold + trou au départ.',
     prove: [
       'Speed ≈ 0 pendant hold',
-      'RPM hold (V2 ~2500 / V3 ~2700–3000)',
+      'RPM hold (V3 ITALIE ~2500)',
       'MAP et couple pendant hold',
       'Puis speed > 0 au départ',
     ],
@@ -290,7 +290,7 @@ const RUNS = [
     forbid: 'Mélanger hardcut 4800 dans le même fichier.',
     file: 'CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv',
     extras: ['tqlim'],
-    send: 'CSV + soft (V2 ou V3) + ASR OFF + ressenti trou oui/non.',
+    send: 'CSV + soft (V2 ou V3 ITALIE) + ASR OFF + ressenti trou oui/non.',
   },
   {
     id: 'route_inj',
@@ -364,7 +364,7 @@ RUNS.forEach((r, i) => {
     <div class="box">
       <b>Nom fichier</b><br>
       <code>${r.file}</code><br>
-      <span class="muted">Remplace {SOFT} par V2 / V3 / ACE…</span>
+      <span class="muted">Remplace {SOFT} par V2 / V3IT / ACE…</span>
     </div>
     <p><b>À m’envoyer :</b> ${r.send}</p>
   `;

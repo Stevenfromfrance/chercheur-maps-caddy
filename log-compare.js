@@ -565,7 +565,7 @@
     // RPM ceiling V2 story
     const rpmB = b.peaks.rpm;
     if (rpmB != null && rpmB >= 4700 && rpmB <= 4900 && hcB > 0) {
-      pos.push('RPM B plafonne ~' + fmt(rpmB) + ' avec hardcut — cohérent avec limiteur V2 @ 4800.');
+      pos.push('RPM B plafonne ~' + fmt(rpmB) + ' avec hardcut — cohérent avec limiteur V3 ITALIE @ 4800.');
     } else if (rpmB != null && rpmB > 5000) {
       neg.push('RPM B > 5000 — limiteur régime trop haut ou inactif.');
       actions.push('Vérifie limiteur régime / tqlim clutch prot.');
@@ -923,7 +923,7 @@
   function runCompare() {
     if (!state.a || !state.b) {
       const st = $('lc-compare-status');
-      if (st) st.textContent = 'Charge Log A et Log B (ou démo V2) avant de comparer.';
+      if (st) st.textContent = 'Charge Log A et Log B (ou démo V3 ITALIE) avant de comparer.';
       return;
     }
     state.pullA = 0;
@@ -990,7 +990,7 @@
   async function loadDemo() {
     const st = $('lc-compare-status');
     try {
-      if (st) st.textContent = 'Chargement démo V2…';
+      if (st) st.textContent = 'Chargement démo V3 ITALIE…';
       const res = await fetch(DEMO_URL);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
@@ -1003,7 +1003,7 @@
       setStatus('a', 'Démo · ' + describeLog(state.a));
       setStatus('b', 'Démo · ' + describeLog(state.b));
       runCompare();
-      if (st) st.textContent = 'Démo V2 chargée — session 18:52 vs 19:02 (hardcut/launch).';
+      if (st) st.textContent = 'Démo V3 ITALIE chargée — session 18:52 vs 19:02 (hardcut/launch).';
     } catch (err) {
       if (st) st.textContent = 'Échec démo : ' + (err.message || err);
     }
