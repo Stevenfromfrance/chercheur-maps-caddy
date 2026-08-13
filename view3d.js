@@ -1,4 +1,83 @@
 /* Map 3D — WinOLS-style surface from MAP_GRIDS (canvas 2D projection, no deps) */
+window.MAP3D_DEFAULT = { rotY: -1.08, rotX: 1.05, zoom: 1.12 };
+
+window.drawMapAxes3d = function (ctx, project, g, opts) {
+  opts = opts || {};
+  const W = opts.W;
+  const H = opts.H;
+  const cols = Math.max(2, opts.cols || 2);
+  const rows = Math.max(2, opts.rows || 2);
+  const minV = opts.minV;
+  const maxV = opts.maxV;
+  const colToX = opts.colToX || function (c, n) { return (c / Math.max(1, n - 1)) * 2 - 1; };
+  const rowToZ = opts.rowToZ || function (r, n) { return (r / Math.max(1, n - 1)) * 2 - 1; };
+  const xName = g.axisXName || 'X';
+  const yName = g.axisYName || 'Y';
+  const zName = g.unit || 'valeur';
+  const xUnit = g.axisXUnit ? ' ' + g.axisXUnit : '';
+  const yUnit = g.axisYUnit ? ' ' + g.axisYUnit : '';
+
+  function fmt(v) {
+    if (v == null || !Number.isFinite(+v)) return '—';
+    const n = +v;
+    if (Math.abs(n) >= 100) return String(Math.round(n));
+    return String(Math.round(n * 10) / 10);
+  }
+  function stroke(a, b, color, w) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = w || 2;
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+  }
+
+  const o = project(-1, 0, -1, W, H);
+  const px = project(1.18, 0, -1, W, H);
+  const py = project(-1, 0, 1.18, W, H);
+  const pz = project(-1, 1.08, -1, W, H);
+  stroke(o, px, '#e23a1a', 2.2);
+  stroke(o, py, '#3ecf7a', 2.2);
+  stroke(o, pz, '#f5c542', 2.2);
+
+  ctx.font = '600 12px Barlow, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#ff6a4a';
+  ctx.fillText('X  ' + xName + xUnit, px.x + 6, px.y + 3);
+  ctx.fillStyle = '#5ee09a';
+  ctx.fillText('Y  ' + yName + yUnit, py.x + 6, py.y - 4);
+  ctx.fillStyle = '#f5c542';
+  ctx.textAlign = 'right';
+  ctx.fillText('Z  ' + zName, pz.x - 6, pz.y - 6);
+
+  ctx.font = '11px IBM Plex Mono, Consolas, monospace';
+  ctx.fillStyle = '#c8bfb6';
+  const axisX = g.axisX || [];
+  const axisY = g.axisY || [];
+  const xIdx = [0, Math.floor((cols - 1) / 2), cols - 1].filter(function (v, i, a) { return a.indexOf(v) === i; });
+  xIdx.forEach(function (c) {
+    const p = project(colToX(c, cols), 0, -1, W, H);
+    stroke({ x: p.x, y: p.y }, { x: p.x, y: p.y + 7 }, '#e23a1a', 1.2);
+    ctx.textAlign = 'center';
+    ctx.fillText(fmt(axisX[c] != null ? axisX[c] : c) + xUnit, p.x, p.y + 20);
+  });
+  const yIdx = [0, Math.floor((rows - 1) / 2), rows - 1].filter(function (v, i, a) { return a.indexOf(v) === i; });
+  yIdx.forEach(function (r) {
+    const p = project(-1, 0, rowToZ(r, rows), W, H);
+    ctx.textAlign = 'right';
+    ctx.fillText(fmt(axisY[r] != null ? axisY[r] : r) + yUnit, p.x - 8, p.y + 4);
+  });
+  ctx.fillStyle = '#f5c542';
+  ctx.textAlign = 'right';
+  ctx.fillText(fmt(minV), o.x - 8, o.y + 4);
+  ctx.fillText(fmt(maxV), pz.x - 8, pz.y + 12);
+
+  ctx.textAlign = 'left';
+  ctx.font = '12px Barlow, sans-serif';
+  ctx.fillStyle = '#e8e0d8';
+  ctx.fillText('X ' + xName + xUnit + '   ·   Y ' + yName + yUnit + '   ·   Z ' + zName + ' (hauteur)', 12, 18);
+};
+
 (function () {
   const canvas = document.getElementById('v3d-canvas');
   const metaEl = document.getElementById('v3d-meta');
@@ -8,10 +87,10 @@
   const ctx = canvas.getContext('2d');
   let mode = 'right'; // left | right | diff
   let mapId = '';
-  // WinOLS-like default: look down at the carpet, origin (low X / low Y) near-left
-  let rotY = -0.72;
-  let rotX = 0.58;
-  let zoom = 1;
+  // 3/4 isometric: face of the map visible (not top-down carpet)
+  let rotY = window.MAP3D_DEFAULT.rotY;
+  let rotX = window.MAP3D_DEFAULT.rotX;
+  let zoom = window.MAP3D_DEFAULT.zoom;
   let drag = null;
   let hover = null;
   // flipDepth: reverse RPM/row along depth (Y axis of the map)
@@ -298,16 +377,12 @@
       }
     }
 
-    // axes labels
-    ctx.fillStyle = '#8a9aaa';
-    ctx.font = '12px Barlow, sans-serif';
-    ctx.textAlign = 'left';
-    const ax = g.axisXName || 'X';
-    const ay = g.axisYName || 'Y';
-    const depthDir = flipDepth ? ' (inversée)' : '';
-    ctx.fillText(ax + (g.axisXUnit ? ' (' + g.axisXUnit + ')' : '') + ' → droite', 16, H - 18);
-    ctx.fillText(ay + (g.axisYUnit ? ' (' + g.axisYUnit + ')' : '') + ' → profondeur' + depthDir, 16, H - 36);
-    ctx.fillText('Z = ' + (g.unit || 'valeur') + ' (hauteur)', 16, H - 54);
+    if (typeof window.drawMapAxes3d === 'function') {
+      window.drawMapAxes3d(ctx, project, g, {
+        W: W, H: H, cols: cols, rows: rows, minV: minV, maxV: maxV,
+        colToX: colToX, rowToZ: rowToZ
+      });
+    }
 
     const Lk = keys[0], Rk = keys[1];
     if (metaEl) {
@@ -357,7 +432,10 @@
     if (btn) btn.classList.toggle('on', flipDepth);
   }
   document.getElementById('v3d-reset')?.addEventListener('click', () => {
-    rotY = -0.72; rotX = 0.58; zoom = 1; draw();
+    rotY = window.MAP3D_DEFAULT.rotY;
+    rotX = window.MAP3D_DEFAULT.rotX;
+    zoom = window.MAP3D_DEFAULT.zoom;
+    draw();
   });
   document.getElementById('v3d-flip')?.addEventListener('click', () => {
     flipDepth = !flipDepth;
@@ -456,9 +534,9 @@
 window.mountMap3dPreview = function (canvas, mapId) {
   if (!canvas || !mapId) return { draw: function () {}, setMode: function () {}, destroy: function () {} };
   const ctx = canvas.getContext('2d');
-  let rotY = -0.72;
-  let rotX = 0.58;
-  let zoom = 1.05;
+  let rotY = (window.MAP3D_DEFAULT && window.MAP3D_DEFAULT.rotY) || -1.08;
+  let rotX = (window.MAP3D_DEFAULT && window.MAP3D_DEFAULT.rotX) || 1.05;
+  let zoom = (window.MAP3D_DEFAULT && window.MAP3D_DEFAULT.zoom) || 1.12;
   let mode = 'right';
   let drag = null;
   let destroyed = false;
@@ -537,7 +615,7 @@ window.mountMap3dPreview = function (canvas, mapId) {
   function resize() {
     const wrap = canvas.parentElement;
     const cssW = Math.max(280, (wrap && wrap.clientWidth) || 480);
-    const cssH = 280;
+    const cssH = 340;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.floor(cssW * dpr);
     canvas.height = Math.floor(cssH * dpr);
@@ -651,6 +729,24 @@ window.mountMap3dPreview = function (canvas, mapId) {
       ctx.strokeStyle = q.chg ? 'rgba(245,215,110,0.85)' : 'rgba(0,0,0,0.35)';
       ctx.lineWidth = q.chg ? 1.2 : 0.5;
       ctx.stroke();
+    }
+
+    if (typeof window.drawMapAxes3d === 'function') {
+      window.drawMapAxes3d(ctx, project, g, {
+        W: W, H: H, cols: cols, rows: rows, minV: minV, maxV: maxV,
+        colToX: colToX, rowToZ: rowToZ
+      });
+    }
+    const axesEl = canvas.parentElement && canvas.parentElement.querySelector('.card-preview-axes');
+    if (axesEl) {
+      const xu = g.axisXUnit ? ' (' + g.axisXUnit + ')' : '';
+      const yu = g.axisYUnit ? ' (' + g.axisYUnit + ')' : '';
+      axesEl.innerHTML =
+        '<b>X</b> ' + (g.axisXName || 'axe X') + xu +
+        ' &nbsp;·&nbsp; <b>Y</b> ' + (g.axisYName || 'axe Y') + yu +
+        ' &nbsp;·&nbsp; <b>Z</b> ' + (g.unit || 'valeur') + ' (hauteur)' +
+        ' &nbsp;·&nbsp; Z ' + (Number.isFinite(minV) ? minV.toFixed(1) : '—') +
+        ' → ' + (Number.isFinite(maxV) ? maxV.toFixed(1) : '—');
     }
   }
 
