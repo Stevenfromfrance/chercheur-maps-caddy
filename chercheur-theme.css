@@ -1091,10 +1091,13 @@ td.num {
   border: 1px solid var(--line);
   border-left: 3px solid var(--ok);
   border-radius: var(--radius);
-  padding: 0;
+  padding: 0 0 12px;
   box-shadow: 0 8px 28px rgba(0,0,0,.28);
   overflow: hidden;
 }
+.vcds .sec-head, .vcds .log-tabs { padding-left: 12px; padding-right: 12px; }
+.vcds .sec-head { padding-top: 12px; }
+.vcds .log-tabs { margin-top: 4px; }
 .vcds h2 { margin: 0; font-size: 1em; }
 .vcds .hint { color: var(--muted); font-size: 0.95em; margin: 0 0 12px; }
 .vcds .guide {
@@ -2194,6 +2197,8 @@ button.open-vals {
 }
 
 body.app-pages .pair-bar { display: none; }
+body.app-pages .sub { display: none; }
+body.app-pages .carto-bar { display: flex; }
 body.app-pages[data-page="maps-prio"] .pair-bar,
 body.app-pages[data-page="all-maps"] .pair-bar,
 body.app-pages[data-page="view2d"] .pair-bar,
@@ -2818,4 +2823,129 @@ body.density-large .valeurs table.winols td.cell {
   .vals-list { max-height: 220px; }
   .vals-grid { max-height: 70vh; }
   .vals-readout-max { text-align: left; }
+}
+
+/* —— Carto en cours + Job + Logs unifiés —— */
+.carto-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 2px;
+  padding: 8px 10px;
+  background: linear-gradient(90deg, rgba(226, 58, 26, 0.14), rgba(0, 0, 0, 0.22) 55%);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent2);
+  border-radius: var(--radius);
+}
+.carto-btn {
+  background: #0d0b0a;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-family: var(--display);
+  font-size: 0.8em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.carto-btn.on {
+  background: rgba(226, 58, 26, 0.28);
+  color: #fff;
+  border-color: var(--accent);
+}
+.carto-hint {
+  color: var(--muted);
+  font-size: 0.88em;
+}
+.job-page { max-width: 980px; }
+.job-table { display: flex; flex-direction: column; gap: 6px; }
+button.job-row {
+  display: grid;
+  grid-template-columns: 2rem minmax(7rem, 1fr) minmax(8rem, 1.4fr) 6.5rem minmax(6rem, 8rem);
+  gap: 8px 12px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(165deg, #1c1612, #100e0c);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: inherit;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+button.job-row:hover {
+  border-color: var(--accent);
+  background: rgba(226, 58, 26, 0.1);
+}
+.job-n {
+  font-family: var(--display);
+  color: var(--accent-hot);
+  font-weight: 700;
+}
+.job-id { font-family: var(--mono); font-size: 0.82em; color: #fff; }
+.job-role { font-size: 0.92em; }
+.job-role small { display: block; color: var(--muted); font-size: 0.82em; }
+.job-addr { font-family: var(--mono); font-size: 0.82em; color: var(--accent-hot); }
+.job-max { text-align: right; }
+.job-max b { font-size: 1.25em; color: #fff; font-variant-numeric: tabular-nums; }
+.job-max i { display: block; font-style: normal; color: var(--muted); font-size: 0.72em; letter-spacing: 0.06em; text-transform: uppercase; }
+.job-more { color: var(--muted); font-size: 0.9em; margin-top: 12px; }
+.log-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 12px;
+}
+a.log-tab {
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 6px 12px;
+  font-family: var(--display);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+a.log-tab.on, a.log-tab:hover { color: #fff; border-color: var(--accent); background: rgba(226, 58, 26, 0.2); }
+.run-btns { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 8px; }
+.run-btn {
+  background: #0d0d0d;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.run-btn.on { color: #fff; border-color: var(--accent); background: rgba(226, 58, 26, 0.22); }
+.run-fiche { color: var(--muted); font-size: 0.92em; }
+.run-pri {
+  font-family: var(--display);
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  color: var(--accent2);
+}
+.ide-copy-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 0; }
+.chk-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.chk-actions .open-vals { width: auto; margin-top: 0; }
+@media (max-width: 720px) {
+  button.job-row {
+    grid-template-columns: 1.5rem 1fr auto;
+    grid-template-areas:
+      "n id max"
+      "n role max"
+      "n addr max";
+  }
+  .job-n { grid-area: n; }
+  .job-id { grid-area: id; }
+  .job-role { grid-area: role; }
+  .job-addr { grid-area: addr; }
+  .job-max { grid-area: max; }
 }
