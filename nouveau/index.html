@@ -4,23 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SAVAGESEAR · Chercheur maps — Caddy 9979 ORI / ACE / V2 / V3 ITALIE</title>
-<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="icon" href="../avatar-savagesear.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="chercheur-theme.css?v=valeurs">
+<link rel="stylesheet" href="chercheur-theme.css?v=job">
 </head>
 <body class="app-pages density-compact" data-page="home">
+<p class="test-banner">Version test · l’atelier d’origine n’a pas bougé → <a href="../index.html">site actuel</a></p>
 <header>
   <div class="header-stripe" aria-hidden="true"></div>
   <div class="header-inner">
   <div class="brand-row">
     <a class="brand-lockup" href="#home" data-nav="home">
-      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <img class="brand-mark" src="../avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
       <div class="brand-text">
         <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
         <p class="brand-tag">Reprog</p>
-        <h1>Chercheur maps · ORI / ACE Tuning / V2 / V3 ITALIE</h1>
+        <h1>Caddy 9979 · PCR 2.1</h1>
       </div>
     </a>
     <div class="work-controls" role="group" aria-label="Densité d'affichage">
@@ -29,39 +30,35 @@
     </div>
     <nav class="nav-jump" aria-label="Pages">
       <a href="#home" data-nav="home">Accueil</a>
+      <a href="#job" data-nav="job">Job</a>
       <a href="#valeurs" data-nav="valeurs">Valeurs</a>
-      <div class="nav-group" data-nav-group="maps">
-        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+      <a href="#vcds" data-nav="vcds">Logs</a>
+      <div class="nav-group" data-nav-group="avance">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Avancé</button>
         <div class="nav-sub" role="menu">
           <a href="#maps-prio" data-nav="maps-prio" role="menuitem">Fiches</a>
-          <a href="#all-maps" data-nav="all-maps" role="menuitem">Toutes</a>
+          <a href="#all-maps" data-nav="all-maps" role="menuitem">Toutes maps</a>
+          <a href="#view2d" data-nav="view2d" role="menuitem">Grille 2D</a>
+          <a href="#view3d" data-nav="view3d" role="menuitem">Map 3D</a>
           <a href="#dtc-atlas" data-nav="dtc-atlas" role="menuitem">DTC</a>
-          <a href="#guide" data-nav="guide" role="menuitem">Guide</a>
           <a href="#composer" data-nav="composer" role="menuitem">Recette</a>
-        </div>
-      </div>
-      <div class="nav-group" data-nav-group="voir">
-        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Voir</button>
-        <div class="nav-sub" role="menu">
-          <a href="#valeurs" data-nav="valeurs" role="menuitem">Valeurs</a>
-          <a href="#view2d" data-nav="view2d" role="menuitem">2D</a>
-          <a href="#view3d" data-nav="view3d" role="menuitem">3D</a>
+          <a href="#guide" data-nav="guide" role="menuitem">Guide</a>
+          <a href="#log-compare" data-nav="log-compare" role="menuitem">Comparer logs</a>
           <a href="#hexdump" data-nav="hexdump" role="menuitem">Hex</a>
           <a href="#dump2d" data-nav="dump2d" role="menuitem">Dump</a>
+          <a href="#downloads" data-nav="downloads" role="menuitem">Pack</a>
         </div>
       </div>
-      <div class="nav-group" data-nav-group="logs">
-        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Logs</button>
-        <div class="nav-sub" role="menu">
-          <a href="#vcds" data-nav="vcds" role="menuitem">VCDS</a>
-          <a href="#log-compare" data-nav="log-compare" role="menuitem">Comparer</a>
-          <a href="log-aide.html" role="menuitem">Fiches</a>
-        </div>
-      </div>
-      <a href="#downloads" data-nav="downloads">Pack</a>
     </nav>
   </div>
-  <p class="sub">ORI · ACE Tuning · V2 (toi) · V3 ITALIE (pote) · SW 9979 · clic adresse = Ctrl+G · <kbd>/</kbd> chercher</p>
+  <p class="sub">SW 9979 · clic adresse = Ctrl+G WinOLS · <kbd>/</kbd> chercher</p>
+  <div class="carto-bar" role="group" aria-label="Carto en cours">
+    <span class="pair-label">Carto</span>
+    <button type="button" class="carto-btn" data-work="ace">ACE</button>
+    <button type="button" class="carto-btn" data-work="v1">V2</button>
+    <button type="button" class="carto-btn on" data-work="v2">V3 ITALIE</button>
+    <span class="carto-hint" id="carto-hint">V3 ITALIE · V2 + hardcut 4800 + launch 2500</span>
+  </div>
   <div class="pair-bar" role="group" aria-label="Paire de comparaison">
     <span class="pair-label">Comparer</span>
     <button type="button" class="pair-btn on" data-pair="ori-ace">ORI vs ACE</button>
@@ -98,36 +95,35 @@
 <section class="page-panel home-page is-active" id="home">
   <div class="sec-head">
     <h2>Atelier Caddy 9979</h2>
-    <p class="sec-lead">Comparer, comprendre, puis faire la carto. Un écran = une action.</p>
+    <p class="sec-lead">Choisis la <b>carto en haut</b>, puis : Job (les 10 maps) → Valeurs (chiffres) → Logs (preuve VCDS).</p>
   </div>
   <div class="home-actions">
-    <a class="home-card" href="#maps-prio" data-nav="maps-prio">
-      <span class="home-kicker">1 · Comparer</span>
-      <h3>Fiches par fonction</h3>
-      <p>Stage 1, FAP/DPF, EGR, launch, hardcut, limiteur. Clique une fiche → aperçu 3D.</p>
+    <a class="home-card" href="#job" data-nav="job">
+      <span class="home-kicker">1 · Job</span>
+      <h3>Les 10 maps qui comptent</h3>
+      <p>Wish, limiteur, smoke, turbo, rail, hardcut, EGR, vmax. Adresse + max écrit de la carto choisie.</p>
     </a>
     <a class="home-card" href="#valeurs" data-nav="valeurs">
-      <span class="home-kicker">Lire</span>
-      <h3>Valeurs écrites</h3>
-      <p>Comme un logiciel : choisis ACE / V2 / V3 ITALIE, lis en grand les chiffres de chaque map modifiée.</p>
-    </a>
-    <a class="home-card" href="#all-maps" data-nav="all-maps">
-      <span class="home-kicker">2 · Chercher</span>
-      <h3>Une map, une adresse</h3>
-      <p>139 A2L + provisoires + deletes. Raccourci <kbd>/</kbd>.</p>
+      <span class="home-kicker">2 · Valeurs</span>
+      <h3>Lire les cases</h3>
+      <p>Grille type logiciel. Jaune = différent de l’ORI.</p>
     </a>
     <a class="home-card" href="#vcds" data-nav="vcds">
-      <span class="home-kicker">3 · Valider</span>
-      <h3>Logs VCDS</h3>
-      <p>Pics vs plafonds, comparateur A/B, fiches banc-route.</p>
-    </a>
-    <a class="home-card" href="#composer" data-nav="composer">
-      <span class="home-kicker">4 · Recette</span>
-      <h3>Composer la carto</h3>
-      <p>Coche couple, FAP/EGR, vmax, hardcut, launch… le site dit quelles maps toucher.</p>
+      <span class="home-kicker">3 · Logs</span>
+      <h3>Valider au VCDS</h3>
+      <p>Pics du log vs les plafonds de <b>la carto choisie</b> — plus les IDE à copier.</p>
     </a>
   </div>
-  <p class="home-foot">ORI · ACE Tuning · V2 (toi) · V3 ITALIE (pote) · Caddy CAYE · SW 9979</p>
+  <p class="home-foot">ORI · ACE · V2 · V3 ITALIE · CAYE · PCR2.1 · SW 9979. Fiches, 2D/3D, hex : menu <b>Avancé</b>.</p>
+</section>
+
+<section class="page-panel job-page" id="job">
+  <div class="sec-head">
+    <h2>Job · maps maîtres</h2>
+    <p class="sec-lead">Pas les 185 grilles : uniquement ce que tu touches pour Stage 1 + deletes + hardcut. Les chiffres suivent la <b>carto</b> en haut. Clique une ligne → Valeurs.</p>
+  </div>
+  <div id="job-table" class="job-table"></div>
+  <p class="job-more">Copies turbo / rail / SOI / vmax et masques DTC : <a href="#maps-prio" data-nav="maps-prio">Fiches</a> ou <a href="#all-maps" data-nav="all-maps">Toutes maps</a>.</p>
 </section>
 
 <section class="page-panel composer-page" id="composer">
@@ -242,33 +238,27 @@
 </details>
 
 
-<details class="vcds collapsible page-panel" id="vcds">
-  <summary><h2>Validation log VCDS</h2> <span class="sum-hint">replié — ouvrir si tu as un CSV</span></summary>
-  <div class="guide">
-    <b>À quoi ça sert ?</b>
-    Après (ou avant) une reprog, tu enregistres ce que l’ECU mesure en roulant.
-    Ici on compare les <b>pics du log</b> aux <b>plafonds du fichier ACE</b> (valeurs max des maps Stage 1).
-    Vert = dans les clous · Orange = limite · Rouge = dépassement à traiter.
-    <p class="guide-p"><b>Nouveau :</b> suis le protocole banc-route (1 run = 1 famille) →
-      <a href="log-aide.html"><b>Guide fiches log</b></a>
-      (ROUTE_RAIL, ROUTE_TURBO, VILLE, HARCUT, DEPART, ROUTE_INJ).</p>
-    <ol>
-      <li>Ouvre <a href="log-aide.html">log-aide.html</a> → choisis le run → copie les IDE.</li>
-      <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b> → coche la liste → Log Start.</li>
-      <li>Fais <b>un seul</b> type d’essai (même route si possible), Stop → Save CSV avec le nom indiqué.</li>
-      <li>Ici : <b>Charger fichier…</b> ou colle le contenu → <b>Analyser</b>.</li>
-      <li>Lis le <b>bilan atelier</b> : quoi vérifier ensuite dans WinOLS.</li>
-    </ol>
-    <div class="legend">
-      <span class="l-ok">Vert = OK sous plafond ACE</span>
-      <span class="l-warn">Orange = proche / un peu au-dessus → regarder la map</span>
-      <span class="l-bad">Rouge = dépassement clair → risque / map ou méca</span>
-    </div>
+<section class="vcds page-panel" id="vcds">
+  <div class="sec-head">
+    <h2>Logs VCDS</h2>
+    <p class="sec-lead">Les pics du CSV sont jugés vs la <b>carto choisie en haut</b> — pas forcément ACE. Vert = sous le plafond de cette carto.</p>
   </div>
-  <textarea id="vcds-log" spellcheck="false" placeholder="Colle ici le contenu du CSV VCDS (pas le chemin du fichier).
+  <div class="log-tabs" role="tablist">
+    <a href="#vcds" data-nav="vcds" class="log-tab on">Valider un log</a>
+    <a href="#log-compare" data-nav="log-compare" class="log-tab">Comparer A / B</a>
+  </div>
+  <div class="guide log-proto">
+    <b>1 log = 1 question</b> · même route · max ~12 IDE · VCDS → 01-Engine → Advanced Measuring Values.
+    <div class="ide-copy-row">
+      <button type="button" class="act" id="ide-copy-core">Copier les IDE core</button>
+      <span class="note" id="ide-copy-status"></span>
+    </div>
+    <div class="run-btns" id="run-btns"></div>
+    <div id="run-fiche" class="run-fiche"></div>
+  </div>
+  <textarea id="vcds-log" spellcheck="false" placeholder="Colle le CSV VCDS, ou charge le fichier.
 
-Ou clique « Charger fichier… » et choisis ton .CSV
-(ex. STEVENCADDYLOG1.CSV dans le dossier Logs de VCDS)"></textarea>
+Les plafonds suivent la carto en haut (ACE / V2 / V3 ITALIE)."></textarea>
   <div class="bar">
     <button type="button" class="act" id="vcds-analyze">Analyser le log</button>
     <button type="button" class="act sec" id="vcds-clear">Effacer</button>
@@ -277,15 +267,23 @@ Ou clique « Charger fichier… » et choisis ton .CSV
     </span>
     <span class="note" id="vcds-status"></span>
   </div>
+  <div class="legend">
+    <span class="l-ok">Vert = sous le plafond de la carto</span>
+    <span class="l-warn">Orange = proche / un peu au-dessus</span>
+    <span class="l-bad">Rouge = dépassement clair</span>
+  </div>
   <div class="chk-grid" id="vcds-checks"></div>
   <div id="vcds-bilan"></div>
   <div id="vcds-dtc"></div>
   <div id="vcds-rawmeta"></div>
-  <p class="lc-crosslink">Tu as plusieurs essais ? → <a href="#log-compare" data-nav="log-compare">Comparateur de logs</a> (graphiques + résumé +/- + suivi).</p>
-</details>
+</section>
 
 <details class="log-compare collapsible page-panel" id="log-compare">
-  <summary><h2>Comparateur de logs VCDS</h2> <span class="sum-hint">A vs B · graphiques · résumé · suivi carto</span></summary>
+  <summary><h2>Comparateur de logs VCDS</h2> <span class="sum-hint">A vs B · graphiques · résumé</span></summary>
+  <div class="log-tabs" role="tablist">
+    <a href="#vcds" data-nav="vcds" class="log-tab">Valider un log</a>
+    <a href="#log-compare" data-nav="log-compare" class="log-tab on">Comparer A / B</a>
+  </div>
   <div class="guide">
     <b>À quoi ça sert ?</b>
     Après chaque nouvelle carto (V2, V3 ITALIE, tweak rail/turbo…), tu charges le log <b>avant (A)</b> et le log <b>après (B)</b>.
@@ -1663,6 +1661,56 @@ document.addEventListener('click', (e) => {
   const b = e.target.closest('button.addr');
   if (b) copyAddr(b.dataset.addr);
 });
+
+/* —— Carto en cours (source de vérité ACE / V2 / V3 ITALIE) —— */
+window.WORK = (function () {
+  const LS = 'chercheur-work-carto';
+  const HINTS = {
+    ace: 'ACE Tuning · Stage 1 préparateur · wish 380 · rail 1656',
+    v1: 'V2 · partiels soft · WOT 350 · rail 1620',
+    v2: 'V3 ITALIE · V2 + hardcut 4800 + launch 2500'
+  };
+  const PAIR = { ace: 'ori-ace', v1: 'ori-v1', v2: 'ori-v2' };
+  let carto = 'v2';
+  try {
+    const s = localStorage.getItem(LS);
+    if (s === 'ace' || s === 'v1' || s === 'v2') carto = s;
+  } catch (_) {}
+  function apply(key, opts) {
+    opts = opts || {};
+    if (key !== 'ace' && key !== 'v1' && key !== 'v2') key = 'v2';
+    carto = key;
+    try { localStorage.setItem(LS, key); } catch (_) {}
+    document.querySelectorAll('.carto-btn').forEach((b) => {
+      b.classList.toggle('on', b.getAttribute('data-work') === key);
+    });
+    const hint = document.getElementById('carto-hint');
+    if (hint) hint.textContent = HINTS[key] || '';
+    document.body.setAttribute('data-carto', key);
+    if (opts.syncPair !== false && typeof window.applyComparePair === 'function') {
+      window.applyComparePair(PAIR[key]);
+    }
+    if (typeof window.renderJob === 'function') window.renderJob();
+    if (opts.rerunLog && typeof window.runVcds === 'function') window.runVcds();
+    window.dispatchEvent(new CustomEvent('cartochange', { detail: { carto: key } }));
+  }
+  document.querySelector('.carto-bar')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-work]');
+    if (!btn) return;
+    apply(btn.getAttribute('data-work'), { rerunLog: true });
+  });
+  apply(carto, { syncPair: false });
+  return {
+    get carto() { return carto; },
+    set: apply,
+    hints: HINTS,
+    pair: PAIR,
+    label: function (k) {
+      return ({ ori: 'ORI', ace: 'ACE', v1: 'V2', v2: 'V3 ITALIE' })[k || carto] || String(k || carto).toUpperCase();
+    }
+  };
+})();
+
 const q = document.getElementById('q');
 const folder = document.getElementById('folder');
 const rows = [...document.querySelectorAll('#rows tr')];
@@ -1700,11 +1748,9 @@ document.getElementById('quick-chips')?.addEventListener('click', (e) => {
 });
 
 /* —— Navigation multi-pages —— */
-const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
+const PAGE_IDS = ['home', 'job', 'composer', 'maps-prio', 'all-maps', 'valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
 const NAV_GROUP_PAGES = {
-  maps: ['maps-prio', 'all-maps', 'dtc-atlas', 'guide', 'composer'],
-  voir: ['valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d'],
-  logs: ['vcds', 'log-compare'],
+  avance: ['maps-prio', 'all-maps', 'view2d', 'view3d', 'dtc-atlas', 'composer', 'guide', 'log-compare', 'hexdump', 'dump2d', 'downloads'],
 };
 function closeNavGroups() {
   document.querySelectorAll('.nav-group.open').forEach((g) => {
@@ -1722,6 +1768,12 @@ function showPage(id, opts) {
     if (el.tagName === 'DETAILS') el.open = on;
   });
   document.querySelectorAll('.nav-jump a[data-nav]').forEach((a) => {
+    const nav = a.getAttribute('data-nav');
+    let on = nav === id;
+    if (nav === 'vcds' && id === 'log-compare') on = true;
+    a.classList.toggle('on', on);
+  });
+  document.querySelectorAll('.log-tab').forEach((a) => {
     a.classList.toggle('on', a.getAttribute('data-nav') === id);
   });
   document.querySelectorAll('.nav-group').forEach((g) => {
@@ -2021,6 +2073,7 @@ filter();
     maps.forEach((note, id) => {
       const label = MAPS[id] || id;
       html += '<div class="recipe-item"><button type="button" class="open2d" data-map-id="' + id + '">' + id + '</button>';
+      html += '<button type="button" class="open-vals" data-map-id="' + id + '">Lire</button>';
       html += '<span class="tiny">' + label + ' — ' + note + '</span></div>';
     });
     extras.forEach((x) => {
@@ -2034,81 +2087,103 @@ filter();
   render();
 })();
 
-/* —— Validation log VCDS vs plafonds ACE —— */
+/* —— Validation log VCDS vs plafonds de la carto en cours —— */
 const ACE_CEIL = {
   torque_nm: {
     label: 'Couple demandé (Nm)',
-    ace: 380, map: 'AccPed_trq4A', addr: '1CF9C0', tol: 5,
-    why: 'C’est le couple que l’ECU « souhaite » selon la pédale. ACE monte ce plafond pour le Stage 1 (ORI ~294 → ACE 380).',
-    doOk: 'Ton essai n’a pas demandé plus que la map. Normal si tu n’as pas tiré à fond longtemps.',
-    doWarn: 'Tu touches le plafond pédale/couple. Vérifie AccPed_trq4A et tqlim dans WinOLS.',
-    doBad: 'Couple log > map ACE : soit log avec autre soft, soit map pas celle flashée. STOP et compare SW.',
+    ace: 380, ceil: { ace: 380, v1: 350, v2: 350 },
+    map: 'AccPed_trq4A', addr: '1CF9C0', tol: 5,
+    why: 'Couple « souhaité » selon la pédale (drivers wish).',
+    doOk: 'Essai sous le wish de la carto choisie.',
+    doWarn: 'Tu touches le plafond pédale. Ouvre AccPed_trq4A.',
+    doBad: 'Couple log > wish de cette carto : mauvais soft flashé, ou map pas celle-ci.',
   },
   tqlim_nm: {
     label: 'Limiteur couple (Nm)',
-    ace: 350, map: 'tqlim_base_pu_4A', addr: '1D3190', tol: 5,
-    why: 'Plafond de sécurité couple. Même si la pédale demande 380, le limiteur peut couper plus bas (ACE 350).',
+    ace: 350, ceil: { ace: 350, v1: 348, v2: 348 },
+    map: 'tqlim_base_pu_4A', addr: '1D3190', tol: 5,
+    why: 'Plafond de sécurité couple. Peut couper plus bas que le wish.',
     doOk: 'Pas de signe de butée limiteur dans ce log.',
-    doWarn: 'Proche du limiteur → à plein gaz tu peux sentir un « plafond ». Ouvre tqlim_base_pu_4A.',
-    doBad: 'Au-dessus du limiteur map : incohérent ou autre fichier. Revérifie le dump flashé.',
+    doWarn: 'Proche du limiteur. Ouvre tqlim_base_pu_4A.',
+    doBad: 'Au-dessus du limiteur de cette carto : incohérent ou autre fichier.',
   },
   boost_mbar: {
     label: 'Turbo réel MAP (mbar)',
-    ace: 2650, map: 'turbo_atm6A', addr: '1C6A2C', tol: 50,
-    why: 'Pression d’air réelle dans le collecteur (hPa = mbar). Trop haut = risque turbo / overboost.',
-    doOk: 'Boost réel sous le limiteur ACE. Marge correcte pour un Stage 1.',
-    doWarn: 'Proche du limiteur turbo. Surveille sifflement, fumée, limp. Map turbo_atm6A.',
-    doBad: 'Overboost vs map. Vérifie actuator, durites, et limiteur turbo avant de pousser plus.',
+    ace: 2650, ceil: { ace: 2650, v1: 2650, v2: 2650 },
+    map: 'turbo_atm6A@1C6A2C', addr: '1C6A2C', tol: 50,
+    why: 'Pression d’air réelle (hPa = mbar). Trop haut = overboost.',
+    doOk: 'Boost réel sous le limiteur ATM de cette carto.',
+    doWarn: 'Proche du limiteur turbo. Map turbo_atm6A.',
+    doBad: 'Overboost vs map. Vérifie actuator, durites, limiteur.',
   },
   boost_req: {
     label: 'Consigne turbo (mbar)',
-    ace: 2505, map: 'turbo_base3B', addr: '1C04AC', tol: 50,
-    why: 'Ce que l’ECU demande au turbo. Si consigne ≈ réel → régulation OK. Si consigne >> réel → turbo n’arrive pas.',
-    doOk: 'Consigne dans la map ACE. Compare avec le turbo réel (écart faible = bon).',
-    doWarn: 'Consigne au plafond map. Normal en full load Stage 1 — vérifie que le réel suit.',
-    doBad: 'Consigne au-dessus d’ACE : soft différent ou map mal lue.',
+    ace: 2505, ceil: { ace: 2505, v1: 2505, v2: 2505 },
+    map: 'turbo_base3B', addr: '1C04AC', tol: 50,
+    why: 'Ce que l’ECU demande. Si consigne ≈ réel → régulation OK.',
+    doOk: 'Consigne dans la map de cette carto.',
+    doWarn: 'Consigne au plafond map — vérifie que le réel suit.',
+    doBad: 'Consigne au-dessus de cette carto : soft différent.',
   },
   rail_bar: {
     label: 'Pression rail (bar)',
-    ace: 1656, map: 'rail_base_int_trq2B', addr: '1E9368', tol: 20,
-    why: 'Pression gasoil haute pression (VCDS en MPa/kPa → converti en bar). Trop haut use la pompe HP / injecteurs.',
-    doOk: 'Rail sous le plafond ACE.',
-    doWarn: 'Légèrement au-dessus du max map ACE. À contrôler : ouvre rail_base_int_trq2B, regarde si ACE est trop agressif pour un 75 ch CAYE, ou si un pic court (1 ligne) fausse le max.',
-    doBad: 'Rail clairement trop haut. Réduis la map rail / descends le Stage avant de re-flasher.',
+    ace: 1656, ceil: { ace: 1656, v1: 1620, v2: 1620 },
+    map: 'rail_base_int_trq2B', addr: '1E9368', tol: 20,
+    why: 'Pression gasoil HP. V2 / V3 ITALIE visent ~1620, ACE ~1656.',
+    doOk: 'Rail sous le plafond de cette carto.',
+    doWarn: 'Légèrement au-dessus. Pic court OK ; soutenu = revoir rail_base.',
+    doBad: 'Rail clairement trop haut. Réduis la map avant de re-flasher.',
   },
   iq_mg: {
     label: 'Quantité injectée (mg/hub)',
-    ace: 54.9, map: 'nm2iq_base_mg3A', addr: '1D7E38', tol: 2,
-    why: 'Combien de gasoil par coup. Lié au couple et à la fumée (smoke map).',
+    ace: 54.9, ceil: { ace: 54.9, v1: 54.9, v2: 54.9 },
+    map: 'nm2iq_base_mg3A', addr: '1D7E38', tol: 2,
+    why: 'Gasoil par coup. Lié au couple et à la fumée.',
     doOk: 'IQ dans les clous (si le canal est dans le log).',
     doWarn: 'IQ haute → fumée possible. Croise avec smoke_mapA.',
-    doBad: 'IQ > map : risque fumée / EGT. Revoir injection + smoke.',
+    doBad: 'IQ > map : risque fumée / EGT.',
   },
   rpm: {
     label: 'Régime max (rpm)',
-    ace: 5000, map: 'limiteur régime', addr: '', tol: 100,
-    why: 'Régime moteur max vu dans l’essai. Utile pour savoir si tu as bien chargé le moteur.',
-    doOk: 'Essai dans une plage normale. Pour valider le Stage 1, vise aussi des montées 2500–4000 tr/min en charge.',
-    doWarn: 'Très haut régime — vérifie limiteur et bruit moteur.',
-    doBad: 'Régime anormal vs limiteur.',
+    ace: 5000, ceil: { ace: 5000, v1: 5000, v2: 4850 },
+    map: 'tqlim_cluth_prot', addr: '1D0860', tol: 80,
+    why: 'Régime max de l’essai. V3 ITALIE : hardcut ~4800.',
+    doOk: 'Plage d’essai normale.',
+    doWarn: 'Très haut régime — vérifie le hardcut / limiteur.',
+    doBad: 'Régime au-dessus du cut prévu pour cette carto.',
   },
   speed: {
     label: 'Vitesse max (km/h)',
-    ace: 190, map: 'vmax (ORI 190)', addr: '18047C', tol: 5,
-    why: 'Vitesse véhicule. ACE enlève souvent le limiteur (vmax). ORI catalogue ~190 km/h.',
+    ace: 9999, ceil: { ace: 9999, v1: 9999, v2: 9999 },
+    map: 'vmax3', addr: '18047C', tol: 5,
+    why: 'Vitesse véhicule. ACE / V2 / V3 : vmax off (FFFF).',
     doOk: 'Vitesse d’essai notée (info).',
-    doWarn: 'Au-dessus du vmax ORI — normal si ACE a ouvert vmax, sinon vérifier.',
-    doBad: 'Incohérence vitesse / log.',
+    doWarn: '',
+    doBad: '',
   },
   maf: {
     label: 'Débitmasse air (g/s)',
-    ace: 9999, map: 'info MAF', addr: '', tol: 0,
-    why: 'Air entrant (g/s). Plus de couple Stage 1 ⇒ souvent plus d’air. Pas un plafond ACE direct.',
-    doOk: 'Info pour croiser avec le boost (plus d’air = turbo qui pousse).',
+    ace: 9999, ceil: { ace: 9999, v1: 9999, v2: 9999 },
+    map: 'info MAF', addr: '', tol: 0,
+    why: 'Air entrant. Pas un plafond map direct.',
+    doOk: 'Info pour croiser avec le boost.',
     doWarn: '',
     doBad: '',
   },
 };
+function workKey() {
+  return (window.WORK && window.WORK.carto) || 'v2';
+}
+function workLabel() {
+  return window.WORK && window.WORK.label ? window.WORK.label() : 'V3 ITALIE';
+}
+function ceilValue(id) {
+  const c = ACE_CEIL[id];
+  if (!c) return NaN;
+  const k = workKey();
+  if (c.ceil && c.ceil[k] != null) return c.ceil[k];
+  return c.ace;
+}
 /* Ordre important : patterns spécifiques avant génériques */
 const VCDS_KEYS = [
   { id: 'boost_req', re: /charge\s*air\s*pressure.*specif|MAP_SP|specified\s*charge|consigne\s*(turbo|boost|sural)|lade(druck)?.*soll/i },
@@ -2286,12 +2361,13 @@ function analyzeVcds(text) {
 }
 
 function verdict(peak, ace, tol) {
+  const lab = workLabel();
   if (peak == null || !Number.isFinite(peak)) return { cls: '', tag: 'ABSENT', txt: 'Canal non trouvé dans ce log' };
   if (ace >= 9999) return { cls: 'ok', tag: 'INFO', txt: 'Pas un plafond map — valeur informative' };
   const delta = peak - ace;
-  if (peak <= ace + tol) return { cls: 'ok', tag: 'OK', txt: 'Sous le plafond ACE (marge ' + (ace - peak).toFixed(1) + ')' };
-  if (peak <= ace + tol * 3) return { cls: 'warn', tag: 'ATTENTION', txt: 'Au-dessus d’ACE de +' + delta.toFixed(1) + ' — à vérifier dans WinOLS' };
-  return { cls: 'bad', tag: 'DÉPASSEMENT', txt: 'Net dépassement (+' + delta.toFixed(1) + ') — corriger avant de pousser' };
+  if (peak <= ace + tol) return { cls: 'ok', tag: 'OK', txt: 'Sous le plafond ' + lab + ' (marge ' + (ace - peak).toFixed(1) + ')' };
+  if (peak <= ace + tol * 3) return { cls: 'warn', tag: 'ATTENTION', txt: 'Au-dessus de ' + lab + ' de +' + delta.toFixed(1) + ' — ouvre la map' };
+  return { cls: 'bad', tag: 'DÉPASSEMENT', txt: 'Net dépassement vs ' + lab + ' (+' + delta.toFixed(1) + ')' };
 }
 
 function actionText(ceil, cls) {
@@ -2310,13 +2386,18 @@ function renderBilan(result, cards) {
   const bads = cards.filter(c => c.cls === 'bad');
   const oks = cards.filter(c => c.cls === 'ok' && c.id !== 'maf' && c.id !== 'speed');
 
+  const lab = workLabel();
+  const tqCeil = ceilValue('torque_nm');
+  const tqLim = ceilValue('tqlim_nm');
+  const railCeil = ceilValue('rail_bar');
+
   let verdictLine = '';
   if (bads.length) {
-    verdictLine = '<p class="verdict-line"><span class="down"><b>Bilan : problème à traiter</b></span> — au moins un canal dépasse clairement ACE.</p>';
+    verdictLine = '<p class="verdict-line"><span class="down"><b>Bilan : problème à traiter</b></span> — au moins un canal dépasse clairement ' + lab + '.</p>';
   } else if (warns.length) {
-    verdictLine = '<p class="verdict-line"><span style="color:#e6c35c"><b>Bilan : globalement bon, 1 point à surveiller</b></span> — Stage 1 tient, mais regarde le(s) canal(aux) orange.</p>';
+    verdictLine = '<p class="verdict-line"><span style="color:#e6c35c"><b>Bilan : globalement bon, point à surveiller</b></span> — ' + lab + ' tient, regarde le(s) canal(aux) orange.</p>';
   } else {
-    verdictLine = '<p class="verdict-line"><span class="up"><b>Bilan : essai cohérent avec ACE</b></span> — pics sous les plafonds Stage 1 de ce fichier.</p>';
+    verdictLine = '<p class="verdict-line"><span class="up"><b>Bilan : essai cohérent avec ' + lab + '</b></span> — pics sous les plafonds de cette carto.</p>';
   }
 
   const tq = result.peaks.torque_nm;
@@ -2329,10 +2410,10 @@ function renderBilan(result, cards) {
   steps += '<li><b>Lis les couleurs</b> : vert = laisse tranquille · orange = ouvre la map indiquée · rouge = ne re-flash pas plus agressif.</li>';
 
   if (tq != null) {
-    steps += '<li><b>Couple ' + tq.toFixed(0) + ' Nm</b> (plafond ACE 380) : ';
-    if (tq < 280) steps += 'essai plutôt léger — pour valider le Stage 1, refais un log avec accélérations franches en 3ᵉ/4ᵉ.</li>';
-    else if (tq < 350) steps += 'bonne charge partielle/pleine. Tu as sollicité le Stage 1 sans coller au plafond pédale.</li>';
-    else steps += 'forte demande couple — normal en full load ; croise avec limiteur tqlim (350 Nm).</li>';
+    steps += '<li><b>Couple ' + tq.toFixed(0) + ' Nm</b> (plafond ' + lab + ' ' + tqCeil + ') : ';
+    if (tq < 280) steps += 'essai plutôt léger — refais un pull franc en 3ᵉ/4ᵉ.</li>';
+    else if (tq < tqCeil - 5) steps += 'bonne charge. Tu as sollicité la carto sans coller au wish.</li>';
+    else steps += 'forte demande couple — croise avec limiteur tqlim (' + tqLim + ' Nm).</li>';
   }
 
   if (boostA != null && boostS != null) {
@@ -2344,10 +2425,10 @@ function renderBilan(result, cards) {
   }
 
   if (rail != null) {
-    steps += '<li><b>Rail ' + rail.toFixed(0) + ' bar</b> vs ACE 1656 : ';
-    if (rail <= 1656 + 20) steps += 'dans la tolérance.</li>';
-    else if (rail <= 1680) steps += 'pic légèrement au-dessus. <b>Action</b> : clique l’adresse <code>1E9368</code> (rail_base) → Ctrl+G WinOLS → regarde le max ACE. Un +20 bar sur un pic court n’est pas grave ; si c’est soutenu à plein gaz, baisse un peu la map rail.</li>';
-    else steps += 'trop haut pour rester serein sur pompe HP. Revois rail_base avant nouvel essai dur.</li>';
+    steps += '<li><b>Rail ' + rail.toFixed(0) + ' bar</b> vs ' + lab + ' ' + railCeil + ' : ';
+    if (rail <= railCeil + 20) steps += 'dans la tolérance.</li>';
+    else if (rail <= railCeil + 50) steps += 'pic légèrement au-dessus. Ouvre rail_base @ 1E9368. Un pic court n’est pas grave ; soutenu à plein gaz = baisse un peu.</li>';
+    else steps += 'trop haut pour la pompe HP. Revois rail_base avant nouvel essai dur.</li>';
   }
 
   if (rpm != null && rpm < 3000) {
@@ -2356,8 +2437,8 @@ function renderBilan(result, cards) {
     steps += '<li><b>Régime max ' + rpm.toFixed(0) + ' tr/min</b> : plage utile pour juger le Stage 1.</li>';
   }
 
-  steps += '<li><b>Suite apprentissage</b> : ouvre les 12 maps prioritaires (cartes ci-dessous), une par une, Original vs ACE. Note ce qui monte (couple, smoke, turbo, rail) et ce qui est mis à 0 (EGR).</li>';
-  steps += '<li><b>Méca</b> : ton Caddy a FAP retiré + EGR plaqué → le soft ACE doit coller (FAP/EGR off). Si DTC EGR/FAP reviennent → delete incomplet.</li>';
+  steps += '<li><b>Suite</b> : bouton <b>Lire</b> sur la carte orange/rouge → Valeurs de <b>' + lab + '</b>, puis Ctrl+G l’adresse dans WinOLS.</li>';
+  steps += '<li><b>Méca</b> : FAP retiré + EGR plaqué → le soft doit avoir les masques DTC à 00. Si codes EGR/FAP reviennent → delete incomplet.</li>';
   steps += '</ol>';
 
   let focus = '';
@@ -2388,27 +2469,31 @@ function renderVcds(result) {
     if (!ceil) continue;
     const peak = result.peaks[id];
     if (peak == null && !result.colsFound[id]) continue;
-    const v = verdict(peak, ceil.ace, ceil.tol);
+    const cap = ceilValue(id);
+    const v = verdict(peak, cap, ceil.tol);
     shown++;
     cards.push({ id, cls: v.cls, label: ceil.label, map: ceil.map, addr: ceil.addr || '' });
     const el = document.createElement('div');
     el.className = 'chk ' + v.cls;
     const peakTxt = peak == null ? '—' : peak.toFixed(1);
-    const aceTxt = ceil.ace >= 9999 ? '—' : String(ceil.ace);
+    const aceTxt = cap >= 9999 ? '—' : String(cap);
     const act = actionText(ceil, v.cls);
     let jump = '';
     if (ceil.addr) {
-      jump = '<button type="button" class="jump addr" data-addr="' + ceil.addr + '">Ouvrir map WinOLS → ' + ceil.addr + '</button>';
+      jump = '<button type="button" class="jump addr" data-addr="' + ceil.addr + '">Ctrl+G ' + ceil.addr + '</button>';
+    }
+    if (ceil.map && ceil.map.indexOf(' ') < 0) {
+      jump += '<button type="button" class="open-vals" data-map-id="' + ceil.map + '">Lire ' + workLabel() + '</button>';
     }
     el.innerHTML =
       '<div class="lab">' + ceil.label + '</div>' +
       '<div class="tag">' + v.tag + '</div>' +
-      '<div class="val">max log <b>' + peakTxt + '</b> · plafond ACE <b>' + aceTxt + '</b></div>' +
+      '<div class="val">max log <b>' + peakTxt + '</b> · plafond ' + workLabel() + ' <b>' + aceTxt + '</b></div>' +
       '<div class="cmp">' + v.txt + '</div>' +
-      '<div class="why"><b>Pourquoi c’est important :</b> ' + ceil.why + '</div>' +
+      '<div class="why"><b>Pourquoi :</b> ' + ceil.why + '</div>' +
       (act ? '<div class="do"><b>Que faire :</b> ' + act + '</div>' : '') +
       (result.colsFound[id] ? '<div class="cmp">Colonne VCDS : ' + result.colsFound[id] + '</div>' : '') +
-      jump;
+      (jump ? '<div class="chk-actions">' + jump + '</div>' : '');
     box.appendChild(el);
   }
 
@@ -2459,6 +2544,7 @@ function runVcds() {
   }
   renderVcds(analyzeVcds(text));
 }
+window.runVcds = runVcds;
 
 document.getElementById('vcds-analyze').addEventListener('click', runVcds);
 document.getElementById('vcds-clear').addEventListener('click', () => {
@@ -2584,7 +2670,11 @@ function fmt(v, prec) {
 }
 
 function findGrid(id) {
-  return MAP_GRIDS.find((g) => g.id === id) || MAP_GRIDS[0];
+  if (!id || !MAP_GRIDS.length) return MAP_GRIDS[0];
+  const exact = MAP_GRIDS.find((g) => g.id === id);
+  if (exact) return exact;
+  const base = String(id).split('@')[0];
+  return MAP_GRIDS.find((g) => g.id === base || String(g.id).split('@')[0] === base) || MAP_GRIDS[0];
 }
 
 function buildTable(g, mode, title) {
@@ -2797,8 +2887,7 @@ function applyComparePair(pair) {
     tip.style.top = (e.clientY + 14) + 'px';
   });
   document.getElementById('v2d-grids').addEventListener('mouseleave', () => { tip.style.display = 'none'; });
-  let saved = 'ori-ace';
-  try { saved = localStorage.getItem('chercheur-compare-pair') || 'ori-ace'; } catch (_) {}
+  let saved = (window.WORK && window.WORK.pair[window.WORK.carto]) || 'ori-v2';
   applyComparePair(saved);
   document.getElementById('v2d-to-3d')?.addEventListener('click', () => {
     if (typeof window.openMap3d === 'function') window.openMap3d(v2dId);
@@ -2815,7 +2904,7 @@ function applyComparePair(pair) {
   const gridEl = document.getElementById('vals-grid');
   if (!listEl || !gridEl || !MAP_GRIDS.length) return;
 
-  let valsCarto = 'v1';
+  let valsCarto = (window.WORK && window.WORK.carto) || 'v2';
   let valsId = '';
   let onlyChg = true;
   let includeDtc = false;
@@ -2845,8 +2934,9 @@ function applyComparePair(pair) {
     return fmt(v, prec);
   }
   function cartoFromPair() {
-    const r = window.COMPARE && window.COMPARE.sides ? window.COMPARE.sides()[1] : 'v1';
-    return (r === 'ace' || r === 'v1' || r === 'v2') ? r : 'v1';
+    if (window.WORK && window.WORK.carto) return window.WORK.carto;
+    const r = window.COMPARE && window.COMPARE.sides ? window.COMPARE.sides()[1] : 'v2';
+    return (r === 'ace' || r === 'v1' || r === 'v2') ? r : 'v2';
   }
   function groupRank(g) {
     const k = g.group || (isDtc(g) ? 'dtc' : 'a2l');
@@ -3007,20 +3097,24 @@ function applyComparePair(pair) {
     renderList();
     renderGrid();
   }
-  function setCarto(key) {
+  function setCarto(key, fromWork) {
     valsCarto = key;
     document.querySelectorAll('.vals-carto-btn').forEach((b) => {
       b.classList.toggle('on', b.getAttribute('data-carto') === key);
     });
+    if (!fromWork && window.WORK && typeof window.WORK.set === 'function') {
+      window.WORK.set(key);
+    }
     render();
   }
   function openValeurs(id, cartoKey) {
     if (cartoKey) valsCarto = cartoKey;
     else valsCarto = cartoFromPair();
-    if (id && findGrid(id)) valsId = id;
+    if (id && findGrid(id) && findGrid(id).id) valsId = findGrid(id).id;
     document.querySelectorAll('.vals-carto-btn').forEach((b) => {
       b.classList.toggle('on', b.getAttribute('data-carto') === valsCarto);
     });
+    if (cartoKey && window.WORK && typeof window.WORK.set === 'function') window.WORK.set(cartoKey);
     if (typeof window.showPage === 'function') window.showPage('valeurs');
     render();
   }
@@ -3078,9 +3172,107 @@ function applyComparePair(pair) {
   window.addEventListener('pagechange', (e) => {
     if (e.detail && e.detail.page === 'valeurs') render();
   });
+  window.addEventListener('cartochange', (e) => {
+    const k = e.detail && e.detail.carto;
+    if (k && k !== valsCarto) setCarto(k, true);
+  });
 
   window.openValeurs = openValeurs;
-  setCarto(valsCarto);
+  setCarto(valsCarto, true);
+})();
+
+/* —— Job : 10 maps maîtres —— */
+const JOB_MAPS = [
+  { id: 'AccPed_trq4A', role: 'Wish pédale', note: 'WOT = dernière colonne' },
+  { id: 'tqlim_base_pu_4A', role: 'Limiteur couple', note: 'Plafond sécurité' },
+  { id: 'smoke_mapA@1D2270', role: 'Smoke', note: 'Cap fumée' },
+  { id: 'turbo_base3B', role: 'Consigne turbo', note: 'MAP demandée' },
+  { id: 'turbo_atm6A@1C6A2C', role: 'Limiteur turbo', note: 'Au-dessus de la consigne' },
+  { id: 'rail_base_int_trq2B', role: 'Consigne rail', note: 'Pression HP' },
+  { id: 'nm2iq_base_mg3A', role: 'Couple → mg', note: 'Injection' },
+  { id: 'tqlim_cluth_prot', role: 'Hardcut / launch', note: 'V3 ITALIE : 4800 + 2500' },
+  { id: 'airctl_hysteresisC', role: 'Hystérésis EGR', note: '0 = delete partiel' },
+  { id: 'vmax3', role: 'Limiteur vitesse', note: 'FFFF = off' },
+];
+function renderJob() {
+  const host = document.getElementById('job-table');
+  if (!host || typeof MAP_GRIDS === 'undefined') return;
+  const key = workKey();
+  const lab = workLabel();
+  host.innerHTML = JOB_MAPS.map((row, i) => {
+    const g = findGrid(row.id);
+    const ok = g && (g.id === row.id || String(g.id).split('@')[0] === String(row.id).split('@')[0]);
+    const mx = ok ? seriesMax(g, key) : '—';
+    let mxTxt = String(mx);
+    if (ok && String(g.id).indexOf('vmax') === 0 && Number(mx) > 500) mxTxt = 'off';
+    const addr = ok ? g.addr : '—';
+    const unit = ok && mxTxt !== 'off' ? (g.unit || '') : '';
+    return '<button type="button" class="job-row open-vals" data-map-id="' + row.id + '">'
+      + '<span class="job-n">' + (i + 1) + '</span>'
+      + '<span class="job-id">' + row.id.split('@')[0] + '</span>'
+      + '<span class="job-role">' + row.role + '<small>' + row.note + '</small></span>'
+      + '<span class="job-addr"><span class="addr">' + addr + '</span></span>'
+      + '<span class="job-max"><b>' + mxTxt + '</b> ' + unit + '<i>' + lab + '</i></span>'
+      + '</button>';
+  }).join('');
+}
+window.renderJob = renderJob;
+window.addEventListener('cartochange', () => renderJob());
+window.addEventListener('pagechange', (e) => {
+  if (e.detail && e.detail.page === 'job') renderJob();
+});
+if (typeof MAP_GRIDS !== 'undefined') renderJob();
+
+/* —— Fiches IDE dans Logs —— */
+(function initLogProto() {
+  const CORE = [
+    ['IDE00021', 'Engine RPM'],
+    ['IDE00075', 'Vehicle speed'],
+    ['IDE00086', 'Accelerator pedal'],
+    ['IDE00100', 'Engine torque TQI'],
+    ['IDE00188', 'Rail pressure actual'],
+    ['IDE00201', 'Rail pressure specified'],
+    ['IDE00190', 'MAP specified'],
+    ['IDE00191', 'MAP actual'],
+    ['IDE00347', 'Air mass'],
+  ];
+  const RUNS = [
+    { id: 'rail', label: 'ROUTE_RAIL', pri: 'PRIORITÉ', goal: 'Couple + rail consigne/réel. 3ᵉ/4ᵉ WOT 1800→3500–4000.', file: 'CADDY_{SOFT}_ROUTE_RAIL_YYYYMMDD.csv' },
+    { id: 'turbo', label: 'ROUTE_TURBO', pri: 'PRIORITÉ', goal: 'MAP specified vs actual sous charge. Même route si possible.', file: 'CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv' },
+    { id: 'ville', label: 'VILLE', pri: 'PRIORITÉ', goal: '15–20 min, ASR ON, pas de WOT long. Confort partiels.', file: 'CADDY_{SOFT}_VILLE_YYYYMMDD.csv' },
+    { id: 'harcut', label: 'HARCUT', pri: 'DOSSIER', goal: 'En roulant, montée ~4800. Couple → 0 zone 4800.', file: 'CADDY_{SOFT}_HARCUT_YYYYMMDD.csv' },
+    { id: 'depart', label: 'DEPART', pri: 'BONUS', goal: 'Launch V3 ITALIE ~2500. ASR OFF, endroit sûr.', file: 'CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv' },
+    { id: 'inj', label: 'ROUTE_INJ', pri: 'BONUS', goal: 'Air / fumée / IQ si le canal est là.', file: 'CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv' },
+  ];
+  const btns = document.getElementById('run-btns');
+  const fiche = document.getElementById('run-fiche');
+  if (!btns || !fiche) return;
+  const ideText = CORE.map((x) => x[0] + ' — ' + x[1]).join('\n');
+  btns.innerHTML = RUNS.map((r, i) =>
+    '<button type="button" class="run-btn' + (i === 0 ? ' on' : '') + '" data-run="' + r.id + '">' + r.label + '</button>'
+  ).join('');
+  function showRun(id) {
+    const r = RUNS.find((x) => x.id === id) || RUNS[0];
+    const soft = workLabel().replace(/\s+/g, '');
+    btns.querySelectorAll('.run-btn').forEach((b) => b.classList.toggle('on', b.getAttribute('data-run') === r.id));
+    fiche.innerHTML = '<p><span class="run-pri">' + r.pri + '</span> <b>' + r.label + '</b> — ' + r.goal + '</p>'
+      + '<p class="tiny">Fichier : <code>' + r.file.replace('{SOFT}', soft) + '</code></p>';
+  }
+  btns.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-run]');
+    if (b) showRun(b.getAttribute('data-run'));
+  });
+  document.getElementById('ide-copy-core')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(ideText).then(() => {
+      const s = document.getElementById('ide-copy-status');
+      if (s) s.textContent = 'IDE copiés — colle dans VCDS Advanced Measuring Values.';
+    });
+  });
+  showRun('rail');
+  window.addEventListener('cartochange', () => {
+    const on = btns.querySelector('.run-btn.on');
+    showRun(on ? on.getAttribute('data-run') : 'rail');
+  });
 })();
 
 
@@ -3127,7 +3319,7 @@ function applyComparePair(pair) {
 <script>
 /* pack-download-js */
 (function () {
-  const PACK_URL = 'packs/atelier-caddy-9979.bin';
+  const PACK_URL = '../packs/atelier-caddy-9979.bin';
   const AAD = new TextEncoder().encode('SAVAGESEAR-PACK');
   const form = document.getElementById('dl-form');
   const passEl = document.getElementById('dl-pass');
@@ -3215,7 +3407,7 @@ function applyComparePair(pair) {
 <script>
 /* hex-dump-js */
 (function () {
-  const ATLAS_URL = 'data/hex-atlas.json';
+  const ATLAS_URL = '../data/hex-atlas.json';
   const ROWS = 24;
   const COLS = 16;
   const view = document.getElementById('hex-view');
