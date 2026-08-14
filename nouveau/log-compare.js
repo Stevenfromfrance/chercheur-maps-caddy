@@ -516,23 +516,23 @@
     if (laB > laA) pos.push('Plus de points launch-like sur B (pédale≥70, spd≤5, rpm≥2000) — ' + laB + ' pts.');
     else if (laA > 0 && laB === 0) changes.push({ label: 'Launch', a: laA, b: 0, d: -laA, unit: ' pts', cls: 'flat' });
 
-    // Safety vs ACE
+    // Safety vs FILE
     const railB = b.peaks.rail_bar;
     if (railB != null) {
       if (railB > ACE_RAIL_BAR + 40) {
-        neg.push('Rail B à ' + fmt(railB) + ' bar — au-dessus d’ACE (' + ACE_RAIL_BAR + '). Risque pompe HP / injecteurs.');
+        neg.push('Rail B à ' + fmt(railB) + ' bar — au-dessus de FILE (' + ACE_RAIL_BAR + '). Risque pompe HP / injecteurs.');
         actions.push('Ouvre rail_base_int_trq2B @ 1E9368 — baisse un peu avant nouvel essai dur.');
       } else if (railB > ACE_RAIL_BAR + 10) {
-        neg.push('Rail B légèrement au-dessus d’ACE (' + fmt(railB) + ' vs ' + ACE_RAIL_BAR + ' bar) — pic court acceptable, soutenu non.');
+        neg.push('Rail B légèrement au-dessus de FILE (' + fmt(railB) + ' vs ' + ACE_RAIL_BAR + ' bar) — pic court acceptable, soutenu non.');
         actions.push('Vérifie si le pic rail est 1–2 lignes ou soutenu à plein gaz.');
       } else {
-        pos.push('Rail B sous plafond ACE (' + fmt(railB) + ' ≤ ' + ACE_RAIL_BAR + ' bar).');
+        pos.push('Rail B sous plafond FILE (' + fmt(railB) + ' ≤ ' + ACE_RAIL_BAR + ' bar).');
       }
     }
 
     const tqB = b.peaks.torque_nm;
     if (tqB != null && tqB > ACE_TQ + 5) {
-      neg.push('Couple B > plafond ACE AccPed (' + fmt(tqB) + ' > ' + ACE_TQ + ' Nm) — soft différent ou log hors fichier.');
+      neg.push('Couple B > plafond FILE AccPed (' + fmt(tqB) + ' > ' + ACE_TQ + ' Nm) — soft différent ou log hors fichier.');
       actions.push('Compare AccPed_trq4A @ 1CF9C0 avec le dump flashé.');
     } else if (tqB != null && tqB >= 320) {
       pos.push('Couple B bien chargé (' + fmt(tqB) + ' Nm) — essai utile pour valider la carto.');
@@ -543,7 +543,7 @@
 
     const mapB = b.peaks.boost_mbar;
     if (mapB != null && mapB > ACE_MAP) {
-      neg.push('MAP B overboost vs limiteur ACE (' + fmt(mapB) + ' > ' + ACE_MAP + ' mbar).');
+      neg.push('MAP B overboost vs limiteur FILE (' + fmt(mapB) + ' > ' + ACE_MAP + ' mbar).');
       actions.push('Check turbo_atm6A @ 1C6A2C + durites / actuator.');
     }
 
@@ -562,10 +562,10 @@
       }
     }
 
-    // RPM ceiling V2 story
+    // RPM ceiling ATELIER story
     const rpmB = b.peaks.rpm;
     if (rpmB != null && rpmB >= 4700 && rpmB <= 4900 && hcB > 0) {
-      pos.push('RPM B plafonne ~' + fmt(rpmB) + ' avec hardcut — cohérent avec limiteur V3 ITALIE @ 4800.');
+      pos.push('RPM B plafonne ~' + fmt(rpmB) + ' avec hardcut — cohérent avec limiteur ITALIE @ 4800.');
     } else if (rpmB != null && rpmB > 5000) {
       neg.push('RPM B > 5000 — limiteur régime trop haut ou inactif.');
       actions.push('Vérifie limiteur régime / tqlim clutch prot.');
@@ -923,7 +923,7 @@
   function runCompare() {
     if (!state.a || !state.b) {
       const st = $('lc-compare-status');
-      if (st) st.textContent = 'Charge Log A et Log B (ou démo V3 ITALIE) avant de comparer.';
+      if (st) st.textContent = 'Charge Log A et Log B (ou démo ITALIE) avant de comparer.';
       return;
     }
     state.pullA = 0;
@@ -990,7 +990,7 @@
   async function loadDemo() {
     const st = $('lc-compare-status');
     try {
-      if (st) st.textContent = 'Chargement démo V3 ITALIE…';
+      if (st) st.textContent = 'Chargement démo ITALIE…';
       const res = await fetch(DEMO_URL);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
@@ -1003,7 +1003,7 @@
       setStatus('a', 'Démo · ' + describeLog(state.a));
       setStatus('b', 'Démo · ' + describeLog(state.b));
       runCompare();
-      if (st) st.textContent = 'Démo V3 ITALIE chargée — session 18:52 vs 19:02 (hardcut/launch).';
+      if (st) st.textContent = 'Démo ITALIE chargée — session 18:52 vs 19:02 (hardcut/launch).';
     } catch (err) {
       if (st) st.textContent = 'Échec démo : ' + (err.message || err);
     }

@@ -72,13 +72,13 @@
       <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_TURBO</b> — MAP consigne/réel sous charge</li>
       <li><span class="tag need">PRIORITÉ</span> <b>VILLE</b> — confort partiels (pas on/off)</li>
       <li><span class="tag opt">OK SI RESSENTI</span> <b>HARCUT</b> — cut ~4800 en roulant</li>
-      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V3 ITALIE</li>
+      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch ITALIE</li>
       <li><span class="tag bonus">BONUS</span> <b>ROUTE_INJ</b> — air mass / fumée / IQ si canal trouvé</li>
     </ol>
     <div class="box">
       <b>Avant chaque session</b>
       <ul>
-        <li>Note soft flashé : <code>V2</code> / <code>V3 ITALIE</code> / ACE / ORI</li>
+        <li>Note soft flashé : <code>ORI</code> / <code>FILE</code> / <code>ATELIER</code> / <code>ITALIE</code></li>
         <li>Moteur chaud</li>
         <li>Route fixe (même départ / même fin)</li>
         <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b></li>
@@ -159,7 +159,7 @@ const RUNS = [
     priority: 'PRIORITÉ mappack',
     goal: 'Prouver couple Stage1 et que le rail réel ne dépasse pas trop la consigne.',
     prove: [
-      'Couple pic ~320–340 Nm (V2 / V3 ITALIE)',
+      'Couple pic ~320–340 Nm (ATELIER / ITALIE)',
       'Rail consigne ~1620 bar',
       'Rail réel de préférence ≤ 1650–1670 bar (pic court OK à surveiller)',
       'Pédale haute pendant le pull',
@@ -205,7 +205,7 @@ const RUNS = [
       '1 pull franc 1800 → 3500–4000',
       'Stop → Save',
     ],
-    forbid: 'Changer de portion / de rapport entre deux comparaisons ACE vs V2 / V3 ITALIE.',
+    forbid: 'Changer de portion / de rapport entre deux comparaisons FILE vs ATELIER / ITALIE.',
     file: 'CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv',
     extras: ['coolant'],
     send: 'CSV + soft. Idéal : même route que le run rail.',
@@ -215,7 +215,7 @@ const RUNS = [
     label: 'VILLE',
     title: 'Run VILLE — confort partiels',
     priority: 'PRIORITÉ mappack',
-    goal: 'Confirmer que V2 / V3 ITALIE reste agréable vs ACE on/off.',
+    goal: 'Confirmer que ATELIER / ITALIE reste agréable vs FILE on/off.',
     prove: [
       'Couple progressif à bas régime',
       'Pas d’à-coups étranges',
@@ -268,11 +268,11 @@ const RUNS = [
     id: 'depart',
     label: 'DEPART',
     title: 'Run DEPART — launch',
-    priority: 'BONUS (V3 ITALIE)',
+    priority: 'BONUS (ITALIE)',
     goal: 'Hold régime + MAP/couple au hold + trou au départ.',
     prove: [
       'Speed ≈ 0 pendant hold',
-      'RPM hold (V3 ITALIE ~2500)',
+      'RPM hold (ITALIE ~2500)',
       'MAP et couple pendant hold',
       'Puis speed > 0 au départ',
     ],
@@ -291,7 +291,7 @@ const RUNS = [
     forbid: 'Mélanger hardcut 4800 dans le même fichier.',
     file: 'CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv',
     extras: ['tqlim'],
-    send: 'CSV + soft (V2 ou V3 ITALIE) + ASR OFF + ressenti trou oui/non.',
+    send: 'CSV + soft (ATELIER ou ITALIE) + ASR OFF + ressenti trou oui/non.',
   },
   {
     id: 'route_inj',
@@ -365,7 +365,7 @@ RUNS.forEach((r, i) => {
     <div class="box">
       <b>Nom fichier</b><br>
       <code>${r.file}</code><br>
-      <span class="muted">Remplace {SOFT} par V2 / V3IT / ACE…</span>
+      <span class="muted">Remplace {SOFT} par ATELIER / ITALIE / FILE…</span>
     </div>
     <p><b>À m’envoyer :</b> ${r.send}</p>
   `;
