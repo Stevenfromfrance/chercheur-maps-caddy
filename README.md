@@ -7,8 +7,7 @@ Outil atelier pour comparer les maps Caddy CAYE (PCR2.1 / SW 9979) :
 - **ACE vs V2** — écart de ta V2 sur la base ACE
 - **V2 vs V3 ITALIE** — carto du pote (hardcut `tqlim_cluth_prot` 4800 + launch 2500) — meilleure actuelle
 
-Page **Job** (`#job`) : les 10 maps maîtres de la carto choisie en haut (ACE / V2 / V3 ITALIE).
-**Logs** jugent le CSV vs les plafonds de **cette** carto (plus vs ACE seulement).
+Page **Valeurs** (`#valeurs`) : lecture type logiciel — une carto à la fois, maps modifiées à gauche, grille en gros à droite (jaune = case ≠ ORI).
 
 Pas de V3/V4 à refaire pour l’instant : elles seront remises plus tard.
 
