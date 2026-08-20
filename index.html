@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="chercheur-theme.css?v=valeurs">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
 </head>
 <body class="app-pages density-compact" data-page="home">
 <header>
@@ -30,6 +30,8 @@
     <nav class="nav-jump" aria-label="Pages">
       <a href="#home" data-nav="home">Accueil</a>
       <a href="#valeurs" data-nav="valeurs">Valeurs</a>
+      <a href="#ecu-maps" data-nav="ecu-maps" hidden>Maps ECU</a>
+      <a href="#guide-ecu" data-nav="guide-ecu" hidden>Guide ECU</a>
       <div class="nav-group" data-nav-group="maps">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
         <div class="nav-sub" role="menu">
@@ -61,7 +63,16 @@
       <a href="#downloads" data-nav="downloads">Pack</a>
     </nav>
   </div>
-  <p class="sub">ORI · ACE Tuning · V2 (toi) · V3 ITALIE (pote) · SW 9979 · clic adresse = Ctrl+G · <kbd>/</kbd> chercher</p>
+  <div class="ecu-bar" role="group" aria-label="Calculateur">
+    <span class="ecu-bar-label">Calculateur</span>
+    <div class="ecu-switch" id="ecu-switch">
+      <button type="button" class="ecu-btn on" data-ecu="pcr21-9979" disabled>
+        <span class="ecu-btn-label">PCR 2.1</span>
+        <span class="ecu-btn-meta">chargement…</span>
+      </button>
+    </div>
+  </div>
+  <p class="sub" id="ecu-subtitle">ORI · ACE Tuning · V2 (toi) · V3 ITALIE (pote) · SW 9979 · clic adresse = Ctrl+G · <kbd>/</kbd> chercher</p>
   <div class="pair-bar" role="group" aria-label="Paire de comparaison">
     <span class="pair-label">Comparer</span>
     <button type="button" class="pair-btn on" data-pair="ori-ace">ORI vs ACE</button>
@@ -95,6 +106,45 @@
   </div>
 </header>
 <main class="app-main">
+<section class="page-panel" id="ecu-maps">
+  <div class="sec-head">
+    <h2>Maps ECU <span class="hint">catalogue WinOLS · clic adresse = Ctrl+G</span></h2>
+    <p class="sec-lead" id="ecu-maps-meta">Sélectionne un calculateur dans la barre ci-dessus.</p>
+  </div>
+  <div class="toolbar">
+    <input id="ecu-q" type="search" placeholder="Chercher nom, dossier, adresse…">
+    <select id="ecu-folder"><option value="">Toutes les familles</option></select>
+    <span id="ecu-count" class="note"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Famille</th>
+          <th>Dims</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody id="ecu-rows"></tbody>
+    </table>
+  </div>
+</section>
+
+<details class="howto collapsible page-panel" id="guide-ecu">
+  <summary><b>Guide — Bosch MEVD 17.2.5</b> <span class="sum-hint">BMW 1 Series · 531049</span></summary>
+  <p class="lead">Import mappack WinOLS (<code>.ori</code> + <code>.kp</code>). Soft stampé : <b>MEVD17.2.5</b> / <b>531049</b> (pas un MD1.x).</p>
+  <ol>
+    <li>Choisis <b>MEVD 17.2.5</b> dans la barre Calculateur.</li>
+    <li>Cherche une map → clic adresse = copie pour WinOLS <kbd>Ctrl+G</kbd>.</li>
+    <li>Fichiers : <code>map-finder/ecu/mevd1725/531049/</code>.</li>
+    <li>Compare Stage BMW = prochaine étape (bins Stage requis).</li>
+  </ol>
+</details>
+
 <section class="page-panel home-page is-active" id="home">
   <div class="sec-head">
     <h2>Atelier Caddy 9979</h2>
@@ -209,6 +259,7 @@
 
   <h3 class="guide-h">Fiches par fonction</h3>
   <p class="guide-p">L’onglet <a href="#maps-prio" data-nav="maps-prio">Fiches</a> : Stage 1, FAP/DPF + DTC, EGR + DTC, launch, hardcut, limiteur. Clique une fiche → aperçu 3D de la map.</p>
+  <p class="guide-p">RE Golf 9980 — hubs MEDIUM Stage1 (pointeur <em>dans</em> une map connue, pas le début) : liste JSON <a href="map-finder/reports/golf9980-medium-stage1.json"><code>golf9980-medium-stage1.json</code></a> · page <a href="map-finder/reports/golf9980-medium-stage1.html">aperçu</a>. Commentaires Ghidra seulement (<code>NameHubMediumStage1.py</code>) — pas de rename AccPed.</p>
   <div class="guide-cards">
     <article><b>1. AccPed_trq4A</b> — Drivers wish (pédale→Nm).<br>ACE pousse jusqu’à <b>380 Nm</b>. V2 : partiels plus calmes + WOT plafonné <b>350 Nm</b> + ligne 4800 rpm à 0.</article>
     <article><b>2. tqlim_base_pu_4A</b> — Limiteur couple principal.<br>ACE ~<b>350 Nm</b>. V2 aligné ~348 Nm avec le même hardcut 4800.</article>
@@ -1700,7 +1751,7 @@ document.getElementById('quick-chips')?.addEventListener('click', (e) => {
 });
 
 /* —— Navigation multi-pages —— */
-const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'vcds', 'log-compare', 'downloads'];
+const PAGE_IDS = ['home', 'composer', 'maps-prio', 'all-maps', 'ecu-maps', 'valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d', 'dtc-atlas', 'guide', 'guide-ecu', 'vcds', 'log-compare', 'downloads'];
 const NAV_GROUP_PAGES = {
   maps: ['maps-prio', 'all-maps', 'dtc-atlas', 'guide', 'composer'],
   voir: ['valeurs', 'view2d', 'view3d', 'hexdump', 'dump2d'],
@@ -1934,9 +1985,15 @@ document.addEventListener('keydown', (e) => {
     const t = e.target;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     e.preventDefault();
-    showPage('all-maps');
-    q?.focus();
-    q?.select();
+    if (document.body.dataset.ecuMode === 'catalog') {
+      showPage('ecu-maps');
+      document.getElementById('ecu-q')?.focus();
+      document.getElementById('ecu-q')?.select();
+    } else {
+      showPage('all-maps');
+      q?.focus();
+      q?.select();
+    }
   }
 });
 
@@ -3089,6 +3146,7 @@ function applyComparePair(pair) {
 <script src="dump2d.js" defer></script>
 <script src="view3d.js" defer></script>
 <script src="log-compare.js" defer></script>
+<script src="ecu-switch.js" defer></script>
 
 <script>
 /* dtc-atlas-js */

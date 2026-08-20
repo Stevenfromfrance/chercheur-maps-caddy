@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "default": "pcr21-9979",
+  "ecus": [
+    {
+      "id": "pcr21-9979",
+      "label": "PCR 2.1",
+      "short": "PCR 2.1",
+      "ecu": "Siemens PCR2.1",
+      "soft": "9979",
+      "vehicle": "VW Caddy CAYE 1.6 TDI",
+      "family": "SM2G0P",
+      "hw": "03L906023TB",
+      "flash_size": 2097152,
+      "mode": "atelier",
+      "subtitle": "ORI · ACE Tuning · V2 · V3 ITALIE · PCR2.1 · SW 9979",
+      "maps_url": null,
+      "status": "ready",
+      "note": "Atelier complet ORI / ACE / V2 / V3 ITALIE + VCDS."
+    },
+    {
+      "id": "mevd1725-531049",
+      "label": "MEVD 17.2.5",
+      "short": "MEVD 17.2.5",
+      "ecu": "Bosch MEVD17.2.5",
+      "soft": "531049",
+      "vehicle": "BMW 1 Series",
+      "family": "MEVD1725",
+      "hw": null,
+      "flash_size": 4194304,
+      "mode": "catalog",
+      "subtitle": "BMW 1 Series · Bosch MEVD17.2.5 · SW 531049",
+      "maps_url": "data/mevd1725-531049/maps.json",
+      "status": "catalog",
+      "note": "Mappack WinOLS importé (180 maps). Pas encore de compare Stage ORI/ACE/V1 — en attente des bins Stage / PCR 2.1 sibling pack."
+    }
+  ]
+}
