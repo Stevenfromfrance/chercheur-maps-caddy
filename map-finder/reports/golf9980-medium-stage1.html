@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf 9980 — MEDIUM Stage1 hubs · SAVAGESEAR</title>
+<link rel="icon" href="../../avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0a09;
+  --panel: #181614;
+  --ink: #f3f1ef;
+  --muted: #a39e96;
+  --accent: #e23a1a;
+  --accent2: #f5c542;
+  --line: #2e2926;
+  --font: 'Barlow', system-ui, sans-serif;
+  --display: 'Oswald', Impact, sans-serif;
+  --mono: 'IBM Plex Mono', Consolas, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.45;
+  padding: 1.25rem clamp(1rem, 3vw, 2rem) 2.5rem;
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: .04em;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  margin: 0 0 .35rem;
+}
+.meta { color: var(--muted); font-size: .92rem; margin: 0 0 1rem; }
+.nav-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--accent2);
+  text-decoration: none;
+  font-size: .9rem;
+}
+.nav-back:hover { text-decoration: underline; }
+.warn {
+  border-left: 3px solid var(--accent2);
+  padding: .75rem 1rem;
+  background: var(--panel);
+  margin: 1rem 0;
+  max-width: 52rem;
+}
+.warn b { color: var(--accent2); }
+.box {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: .85rem 1rem;
+  margin: 1rem 0;
+  max-width: 52rem;
+}
+.box code, td code {
+  font-family: var(--mono);
+  font-size: .88em;
+  color: #c8e0d4;
+}
+a { color: #c9a227; }
+a:hover { color: var(--accent2); }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 64rem;
+  font-size: .9rem;
+  margin-top: .75rem;
+}
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: .4rem .5rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.addr-g { color: #8ecf9a; font-weight: 500; }
+.addr-w { color: #b8d4c8; }
+.badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: .12rem .4rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.badge.med { color: var(--accent2); border-color: rgba(245,197,66,.35); }
+.foot { color: var(--muted); font-size: .88rem; margin-top: 1.5rem; max-width: 52rem; }
+</style>
+</head>
+<body>
+<a class="nav-back" href="../../index.html#home">← Atelier chercheur</a>
+<h1>Golf 9980 — hubs MEDIUM × Stage1</h1>
+<p class="meta">Ref atlas 9979 · 196 candidats / 175 adresses uniques · medium total 256</p>
+
+<div class="warn">
+  <b>MEDIUM</b> = le pointeur hub tombe <em>dans</em> une map A2L/atlas connue, pas au début unique.
+  IdName = famille/zone probable — pas forcément l’origine exacte. Vérifier à la main (Ghidra <kbd>Ctrl+G</kbd>).
+  Commentaires seulement (<code>NameHubMediumStage1.py</code>) — pas de rename AccPed.
+</div>
+
+<div class="box">
+  <b>Adresses</b>
+  <ul style="margin:.4rem 0 0;padding-left:1.2rem">
+    <li><b>Ghidra</b> : toujours <code>80xxxxxx</code> — ex. <code>801D0AA8</code> (pas <code>1D0AA8</code>, pas <code>A01D0AA8</code>)</li>
+    <li><b>WinOLS</b> : offset flash — ex. <code>1D0AA8</code></li>
+    <li>Après vérif : <b>File → Save</b></li>
+  </ul>
+  <p style="margin:.65rem 0 0">Checklist prioritaire (AccPed → tqlim → smoke → turbo) :
+    <a href="../../stage1-hubs-golf9980.html">page site Top AccPed</a>
+    · <a href="../ghidra/TOP10_STAGE1_VALIDATE.md"><code>TOP10_STAGE1_VALIDATE.md</code></a>
+    · données <a href="golf9980-medium-stage1.json"><code>JSON</code></a>
+  </p>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>WinOLS</th>
+  <th>Ghidra (80…)</th>
+  <th>IdName</th>
+  <th>hub</th>
+  <th>delta</th>
+  <th>conf.</th>
+  <th>rôles</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><code class="addr-w">0x1D0AA8</code></td><td><code class="addr-g">0x801D0AA8</code></td><td>AccPed_trq4A</td><td>B</td><td>0x4C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>2</td><td><code class="addr-w">0x1D0ACC</code></td><td><code class="addr-g">0x801D0ACC</code></td><td>AccPed_trq4A</td><td>N</td><td>0x70</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>3</td><td><code class="addr-w">0x1CFA30</code></td><td><code class="addr-g">0x801CFA30</code></td><td>AccPed_trq4A</td><td>C</td><td>0x70</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>4</td><td><code class="addr-w">0x1CFA3C</code></td><td><code class="addr-g">0x801CFA3C</code></td><td>AccPed_trq4A</td><td>E</td><td>0x7C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>5</td><td><code class="addr-w">0x1CFE3C</code></td><td><code class="addr-g">0x801CFE3C</code></td><td>AccPed_trq4A</td><td>C</td><td>0x7C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>6</td><td><code class="addr-w">0x1D0ADC</code></td><td><code class="addr-g">0x801D0ADC</code></td><td>AccPed_trq4A</td><td>C</td><td>0x80</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>7</td><td><code class="addr-w">0x1D0AEC</code></td><td><code class="addr-g">0x801D0AEC</code></td><td>AccPed_trq4A</td><td>2d</td><td>0x90</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>8</td><td><code class="addr-w">0x1CFEB4</code></td><td><code class="addr-g">0x801CFEB4</code></td><td>AccPed_trq4A</td><td>E</td><td>0xF4</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>9</td><td><code class="addr-w">0x1D073A</code></td><td><code class="addr-g">0x801D073A</code></td><td>AccPed_trq4A</td><td>H</td><td>0xFA</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>10</td><td><code class="addr-w">0x1D32CC</code></td><td><code class="addr-g">0x801D32CC</code></td><td>tqlim_base_pu_4A</td><td>B</td><td>0x13C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>11</td><td><code class="addr-w">0x1D330C</code></td><td><code class="addr-g">0x801D330C</code></td><td>tqlim_base_pu_4A</td><td>C</td><td>0x17C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>12</td><td><code class="addr-w">0x1D332C</code></td><td><code class="addr-g">0x801D332C</code></td><td>tqlim_base_pu_4A</td><td>E</td><td>0x19C</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core</td></tr>
+<tr><td>13</td><td><code class="addr-w">0x1D0F34</code></td><td><code class="addr-g">0x801D0F34</code></td><td>smoke_mapA</td><td>C</td><td>0x8</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>14</td><td><code class="addr-w">0x1D0F80</code></td><td><code class="addr-g">0x801D0F80</code></td><td>smoke_mapA</td><td>I</td><td>0x54</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>15</td><td><code class="addr-w">0x1D282C</code></td><td><code class="addr-g">0x801D282C</code></td><td>smoke_mapA</td><td>I</td><td>0x64</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>16</td><td><code class="addr-w">0x1D287C</code></td><td><code class="addr-g">0x801D287C</code></td><td>smoke_mapA</td><td>2d</td><td>0xB4</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>17</td><td><code class="addr-w">0x1D232C</code></td><td><code class="addr-g">0x801D232C</code></td><td>smoke_mapA</td><td>C</td><td>0xBC</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>18</td><td><code class="addr-w">0x1D1040</code></td><td><code class="addr-g">0x801D1040</code></td><td>smoke_mapA</td><td>B</td><td>0x114</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>19</td><td><code class="addr-w">0x1D20E4</code></td><td><code class="addr-g">0x801D20E4</code></td><td>smoke_mapA</td><td>2d</td><td>0x120</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+<tr><td>20</td><td><code class="addr-w">0x1D2654</code></td><td><code class="addr-g">0x801D2654</code></td><td>smoke_mapA</td><td>K</td><td>0x138</td><td><span class="badge med">MEDIUM</span></td><td>stage1_core|support</td></tr>
+</tbody>
+</table>
+
+<p class="foot">Top 20 adresses uniques (tri utilité Stage1). Suite turbo / rail / clutch / SOI dans le <a href="golf9980-medium-stage1.json">JSON</a>. Pour commencer : <a href="../../stage1-hubs-golf9980.html">Top AccPed sur le site</a> (AccPed HIGH d’abord).</p>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Golf 9980 — Stage1 hubs / Top AccPed</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
+<style>
+body.stage1-page .pair-bar,
+body.stage1-page .quick-chips,
+body.stage1-page .stats,
+body.stage1-page .sub,
+body.stage1-page .work-controls { display: none; }
+.stage1-main .panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+  max-width: 58rem;
+}
+.stage1-main .warn {
+  border-left: 3px solid var(--accent2);
+  padding: .75rem 1rem;
+  background: rgba(0, 0, 0, .28);
+  margin: 0 0 1rem;
+  max-width: 58rem;
+}
+.stage1-main .warn b { color: var(--accent2); }
+.stage1-main .box {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: .7rem .8rem;
+  margin: .6rem 0;
+  background: rgba(0, 0, 0, .28);
+}
+.stage1-main .muted { color: var(--muted); }
+.stage1-main code {
+  font-family: var(--mono);
+  font-size: .84rem;
+  background: #0d0d0d;
+  padding: .1rem .35rem;
+  border-radius: 2px;
+}
+.stage1-main kbd {
+  font-family: var(--mono);
+  font-size: .85em;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0 5px;
+}
+.stage1-main table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .9rem;
+  margin-top: .5rem;
+}
+.stage1-main th,
+.stage1-main td {
+  border-bottom: 1px solid var(--line);
+  padding: .4rem .45rem;
+  text-align: left;
+  vertical-align: top;
+}
+.stage1-main th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.stage1-main .addr-g { color: #8ecf9a; font-weight: 500; font-family: var(--mono); font-size: .88em; }
+.stage1-main .addr-w { color: #b8d4c8; font-family: var(--mono); font-size: .88em; }
+.stage1-main .badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: .12rem .4rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.stage1-main .badge.high {
+  color: #8ecf9a;
+  border-color: rgba(142, 207, 154, .4);
+}
+.stage1-main .badge.med {
+  color: var(--accent2);
+  border-color: rgba(245, 197, 66, .35);
+}
+.stage1-main tr.prio td { background: rgba(245, 197, 66, .06); }
+.stage1-main .top3 {
+  display: grid;
+  gap: .55rem;
+  margin: .65rem 0 0;
+}
+.stage1-main .top3 div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .75rem;
+  align-items: baseline;
+  padding: .55rem .7rem;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.stage1-main .top3 .n {
+  font-family: var(--display);
+  letter-spacing: .04em;
+  color: var(--accent2);
+  min-width: 1.6rem;
+}
+.stage1-main ol.steps { margin: .35rem 0 .2rem 1.15rem; padding: 0; }
+.stage1-main ol.steps li { margin: .35rem 0; }
+.stage1-main .links { margin-top: .85rem; }
+.stage1-main .links a { margin-right: .75rem; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+</style>
+</head>
+<body class="stage1-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>Golf 9980 · Stage1 hubs / Top AccPed</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <div class="nav-group on" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#maps-prio" role="menuitem">Fiches</a>
+          <a href="index.html#all-maps" role="menuitem">Toutes</a>
+          <a href="index.html#dtc-atlas" role="menuitem">DTC</a>
+          <a href="index.html#guide" role="menuitem">Guide</a>
+          <a href="index.html#composer" role="menuitem">Recette</a>
+          <a href="stage1-hubs-golf9980.html" class="on" role="menuitem">Golf Stage1 hubs</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="voir">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Voir</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#view2d" role="menuitem">2D</a>
+          <a href="index.html#view3d" role="menuitem">3D</a>
+          <a href="index.html#hexdump" role="menuitem">Hex</a>
+          <a href="index.html#dump2d" role="menuitem">Dump</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="logs">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Logs</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#vcds" role="menuitem">VCDS</a>
+          <a href="index.html#log-compare" role="menuitem">Comparer</a>
+          <a href="log-aide.html" role="menuitem">Fiches</a>
+        </div>
+      </div>
+      <a href="index.html#downloads">Pack</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="app-main stage1-main">
+  <div class="sec-head">
+    <h2>Validation manuelle Stage1 · Golf 9980</h2>
+    <p class="sec-lead">Checklist débutant : ouvrir Ghidra → <kbd>Ctrl+G</kbd> → coller l’adresse <code>80…</code> → regarder la grille / le commentaire → <b>File → Save</b>.</p>
+  </div>
+
+  <div class="warn">
+    <b>Brouillon reverse</b> — repères pour lire le soft en Ghidra / WinOLS.
+    Ce n’est <b>pas</b> une carto à flasher. Ne pas écrire ces zones « au hasard » dans un bin véhicule.
+  </div>
+
+  <section class="panel">
+    <h2>Adresses : WinOLS vs Ghidra</h2>
+    <div class="box">
+      <ul style="margin:.2rem 0 0;padding-left:1.15rem">
+        <li><b>WinOLS</b> : offset flash (6 hex) — ex. <code>1CFFC0</code></li>
+        <li><b>Ghidra</b> : toujours <code>80xxxxxx</code> — ex. <code>801CFFC0</code> (pas <code>1CFFC0</code>, pas <code>A01CFFC0</code>)</li>
+        <li>Vue PFLASH <code>A0…</code> = axes / pointeurs TriCore — <b>ne pas</b> utiliser pour Ctrl+G</li>
+      </ul>
+    </div>
+    <p class="muted" style="margin:.55rem 0 0"><b>HIGH</b> = début de map probable. <b>MEDIUM</b> = pointeur <em>dans</em> une map connue (pas forcément le début) → commentaire seulement, surtout <b>ne pas rename AccPed</b>.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Top 3 AccPed (commencer ici)</h2>
+    <p class="muted">Ordre : AccPed HIGH → AccPed MEDIUM / tqlim / smoke → turbo HIGH.</p>
+    <div class="top3">
+      <div><span class="n">#1</span> <code class="addr-g">801CFFC0</code> <span class="muted">WinOLS</span> <code class="addr-w">1CFFC0</code> · AccPed_trq4A · <span class="badge high">HIGH</span></div>
+      <div><span class="n">#2</span> <code class="addr-g">801CFCE4</code> <span class="muted">WinOLS</span> <code class="addr-w">1CFCE4</code> · AccPed_trq4A · <span class="badge high">HIGH</span></div>
+      <div><span class="n">#3</span> <code class="addr-g">801CFAE4</code> <span class="muted">WinOLS</span> <code class="addr-w">1CFAE4</code> · AccPed_trq4A · <span class="badge high">HIGH</span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Checklist Top 14</h2>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Rôle</th>
+          <th>IdName</th>
+          <th>WinOLS</th>
+          <th>Ghidra (80…)</th>
+          <th>Hub</th>
+          <th>Conf.</th>
+          <th>À vérifier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="prio"><td>1</td><td>AccPed (wish)</td><td>AccPed_trq4A</td><td class="addr-w">1CFFC0</td><td class="addr-g">801CFFC0</td><td>2d</td><td><span class="badge high">HIGH</span></td><td>Début map AccPed ; grille couple/pédale</td></tr>
+        <tr class="prio"><td>2</td><td>AccPed</td><td>AccPed_trq4A</td><td class="addr-w">1CFCE4</td><td class="addr-g">801CFCE4</td><td>D/F/I/K</td><td><span class="badge high">HIGH</span></td><td>Autre instance AccPed HIGH ; comparer à #1</td></tr>
+        <tr class="prio"><td>3</td><td>AccPed</td><td>AccPed_trq4A</td><td class="addr-w">1CFAE4</td><td class="addr-g">801CFAE4</td><td>F</td><td><span class="badge high">HIGH</span></td><td>3ᵉ AccPed HIGH ; noter si soft ≠ 9979</td></tr>
+        <tr><td>4</td><td>AccPed</td><td>AccPed_trq4A</td><td class="addr-w">1D0AA8</td><td class="addr-g">801D0AA8</td><td>B</td><td><span class="badge med">MEDIUM</span></td><td>Dans map @1D0A5C+0x4C — ne pas rename</td></tr>
+        <tr><td>5</td><td>AccPed</td><td>AccPed_trq4A</td><td class="addr-w">1D0ACC</td><td class="addr-g">801D0ACC</td><td>N</td><td><span class="badge med">MEDIUM</span></td><td>Même famille AccPed +0x70</td></tr>
+        <tr><td>6</td><td>tqlim</td><td>tqlim_base_pu_4A</td><td class="addr-w">1D32CC</td><td class="addr-g">801D32CC</td><td>B</td><td><span class="badge med">MEDIUM</span></td><td>Zone limiteur @1D3190+0x13C</td></tr>
+        <tr><td>7</td><td>tqlim</td><td>tqlim_base_pu_4A</td><td class="addr-w">1D330C</td><td class="addr-g">801D330C</td><td>C</td><td><span class="badge med">MEDIUM</span></td><td>Autre hub limiteur +0x17C</td></tr>
+        <tr><td>8</td><td>tqlim</td><td>tqlim_base_pu_4A</td><td class="addr-w">1D332C</td><td class="addr-g">801D332C</td><td>E</td><td><span class="badge med">MEDIUM</span></td><td>+0x19C ; souvent aligné 9979</td></tr>
+        <tr><td>9</td><td>smoke</td><td>smoke_mapA</td><td class="addr-w">1D0F34</td><td class="addr-g">801D0F34</td><td>C</td><td><span class="badge med">MEDIUM</span></td><td>Presque début (+0x8) ; fumée/IQ</td></tr>
+        <tr><td>10</td><td>smoke</td><td>smoke_mapA</td><td class="addr-w">1D0F80</td><td class="addr-g">801D0F80</td><td>I</td><td><span class="badge med">MEDIUM</span></td><td>Même map smoke +0x54</td></tr>
+        <tr><td>11</td><td>smoke</td><td>smoke_mapA</td><td class="addr-w">1D282C</td><td class="addr-g">801D282C</td><td>I</td><td><span class="badge med">MEDIUM</span></td><td>Autre bloc smoke @1D27C8+0x64</td></tr>
+        <tr><td>12</td><td>turbo</td><td>turbo_base3B</td><td class="addr-w">1C09B0</td><td class="addr-g">801C09B0</td><td>D/G/I</td><td><span class="badge high">HIGH</span></td><td>Turbo HIGH ; boost vs RPM/charge</td></tr>
+        <tr><td>13</td><td>turbo</td><td>turbo_base3B</td><td class="addr-w">1C1B50</td><td class="addr-g">801C1B50</td><td>2d</td><td><span class="badge high">HIGH</span></td><td>2ᵉ turbo HIGH ; comparer atlas 9979</td></tr>
+        <tr><td>14</td><td>turbo</td><td>turbo_base3B</td><td class="addr-w">1C206C</td><td class="addr-g">801C206C</td><td>F/K</td><td><span class="badge high">HIGH</span></td><td>3ᵉ turbo HIGH si AccPed/tqlim/smoke OK</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Méthode courte</h2>
+    <ol class="steps">
+      <li>Valider <b>#1 → #3</b> (AccPed HIGH) : <code>801CFFC0</code>, <code>801CFCE4</code>, <code>801CFAE4</code>.</li>
+      <li>Si OK → enchaîner <b>#4–#11</b> (AccPed MEDIUM, tqlim, smoke).</li>
+      <li>Finir avec <b>#12–#14</b> (turbo HIGH) si tu bosses le boost.</li>
+      <li><b>File → Save</b> avant de fermer Ghidra.</li>
+    </ol>
+    <p class="links muted">
+      Liste MEDIUM complète :
+      <a href="map-finder/reports/golf9980-medium-stage1.html">hubs MEDIUM (HTML)</a>
+      <a href="map-finder/reports/golf9980-medium-stage1.json">JSON</a>
+      <a href="map-finder/ghidra/TOP10_STAGE1_VALIDATE.md">source MD</a>
+    </p>
+  </section>
+</main>
+
+<script>
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
+document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (!groupBtn) return;
+  e.preventDefault();
+  const group = groupBtn.closest('.nav-group');
+  const wasOpen = group.classList.contains('open');
+  closeNavGroups();
+  if (!wasOpen) {
+    group.classList.add('open');
+    groupBtn.setAttribute('aria-expanded', 'true');
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeNavGroups();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNavGroups();
+});
+</script>
+</body>
+</html>

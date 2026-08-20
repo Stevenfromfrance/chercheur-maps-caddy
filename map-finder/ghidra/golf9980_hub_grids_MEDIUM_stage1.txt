@@ -1,0 +1,47 @@
+Golf 9980 hub grids - MEDIUM x Stage1 (atlas 9979)
+Filtre: roles stage1_core / stage1_support (+ clutch_prot / speed_limiter)
+
+=== Qu'est-ce que MEDIUM ? ===
+Le pointeur hub tombe DANS l'etendue d'une map A2L/atlas connue,
+mais PAS au debut (souvent delta > ~0x40) et sans empreinte unique de start.
+- IdName = famille / zone probable, PAS forcement l'origine exacte de la map.
+- Ne PAS renommer auto (surtout AccPed). Commentaire plate seulement.
+- Verifier a la main dans Ghidra les 15-20 premiers (Ctrl+G adresse).
+
+counts: medium_total=256  stage1_related=196  unique_addrs=175
+par role: stage1_core=182, stage1_support=68, clutch_prot=3
+par famille (top): soi_base_int_trq2A=102, turbo_base3B=32, smoke_mapA=21, turbo_int_trq_correction2C=11, AccPed_trq4A=10, nm2iq_base_mg3A=4, tqlim_tegt_temp=4, tqlim_base_pu_4A=3, rail_base_int_trq2B=3, tqlim_cluth_prot=3, tqlim_speed2A=2, turbo_atm6A=1
+
+=== Top candidats (addr unique, tri utilite Stage1) ===
+rank  addr      id_name                        hub  delta   roles
+------------------------------------------------------------------------------
+ 1    0x1D0AA8  AccPed_trq4A                    B    0x4C    stage1_core
+ 2    0x1D0ACC  AccPed_trq4A                    N    0x70    stage1_core
+ 3    0x1CFA30  AccPed_trq4A                    C    0x70    stage1_core
+ 4    0x1CFA3C  AccPed_trq4A                    E    0x7C    stage1_core
+ 5    0x1CFE3C  AccPed_trq4A                    C    0x7C    stage1_core
+ 6    0x1D0ADC  AccPed_trq4A                    C    0x80    stage1_core
+ 7    0x1D0AEC  AccPed_trq4A                    2d   0x90    stage1_core
+ 8    0x1CFEB4  AccPed_trq4A                    E    0xF4    stage1_core
+ 9    0x1D073A  AccPed_trq4A                    H    0xFA    stage1_core
+10    0x1D32CC  tqlim_base_pu_4A                B    0x13C   stage1_core
+11    0x1D330C  tqlim_base_pu_4A                C    0x17C   stage1_core
+12    0x1D332C  tqlim_base_pu_4A                E    0x19C   stage1_core
+13    0x1D0F34  smoke_mapA                      C    0x8     stage1_core|stage1_support
+14    0x1D0F80  smoke_mapA                      I    0x54    stage1_core|stage1_support
+15    0x1D282C  smoke_mapA                      I    0x64    stage1_core|stage1_support
+16    0x1D287C  smoke_mapA                      2d   0xB4    stage1_core|stage1_support
+17    0x1D232C  smoke_mapA                      C    0xBC    stage1_core|stage1_support
+18    0x1D1040  smoke_mapA                      B    0x114   stage1_core|stage1_support
+19    0x1D20E4  smoke_mapA                      2d   0x120   stage1_core|stage1_support
+20    0x1D2654  smoke_mapA                      K    0x138   stage1_core|stage1_support
+21    0x1D1E64  smoke_mapA                      2d   0x14C   stage1_core|stage1_support
+22    0x1D10A0  smoke_mapA                      2d   0x174   stage1_core|stage1_support
+23    0x1D296C  smoke_mapA                      2d   0x1A4   stage1_core|stage1_support
+24    0x1D10DC  smoke_mapA                      2d   0x1B0   stage1_core|stage1_support
+25    0x1D26F4  smoke_mapA                      G    0x1D8   stage1_core|stage1_support
+
+Pourquoi MEDIUM (ex. rang 1): pointe DANS map_start+delta - pas le début.
+Script commentaires: NameHubMediumStage1.py (aucun rename).
+CSV: golf9980_hub_grids_MEDIUM_stage1.csv
+JSON site: map-finder/reports/golf9980-medium-stage1.json

@@ -21,3 +21,5 @@ Page **Valeurs** (`#valeurs`) : lecture type logiciel — une carto à la fois, 
 Fichiers : `map-finder/ecu/mevd1725/531049/` · registre `data/ecus.json` · `python tools/parse_winols_kp.py`
 
 Site : https://stevenfromfrance.github.io/chercheur-maps-caddy/
+
+RE Golf 9980 — validation Stage1 / Top AccPed : [`stage1-hubs-golf9980.html`](https://stevenfromfrance.github.io/chercheur-maps-caddy/stage1-hubs-golf9980.html)
