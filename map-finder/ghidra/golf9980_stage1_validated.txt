@@ -1,0 +1,193 @@
+Golf 9980 - Stage1 VALIDATED pack (auto)
+Source: hub grids identified vs atlas 9979 / A2L
+HIGH = rename OK (skip AccPed if already labeled) | MEDIUM = comment only
+
+counts: unique_addrs=226  high=14  medium=212
+
+=== CHECKLIST: HIGH (all) ===
+  conf   Ghidra      WinOLS     category      id_name
+  high   801CFFC0   1CFFC0     AccPed        AccPed_trq4A
+  high   801CFAE4   1CFAE4     AccPed        AccPed_trq4A
+  high   801CFCE4   1CFCE4     AccPed        AccPed_trq4A
+  high   801C09B0   1C09B0     turbo         turbo_base3B
+  high   801C1B50   1C1B50     turbo         turbo_base3B
+  high   801C206C   1C206C     turbo         turbo_base3B
+  high   801C43AC   1C43AC     turbo_corr    turbo_int_trq_correction2C
+  high   801C3ABC   1C3ABC     turbo_corr    turbo_int_trq_correction2C
+  high   801C3AC4   1C3AC4     turbo_corr    turbo_int_trq_correction2C
+  high   80195988   195988     soi           soi_base_int_trq2A
+  high   8018D998   18D998     soi           soi_base_int_trq2A
+  high   80195998   195998     soi           soi_base_int_trq2A
+  high   80197998   197998     soi           soi_base_int_trq2A
+  high   80196BC0   196BC0     soi           soi_base_int_trq2A
+
+=== CHECKLIST: best MEDIUM per family (clutch/rail/duration/soi/smoke/tqlim) ===
+  conf   Ghidra      WinOLS     category      id_name  delta
+  medium 801D086C   1D086C     clutch_prot   tqlim_cluth_prot  0xC
+  medium 801D3928   1D3928     tqlim         tqlim_base8A  0x0
+  medium 801D32CC   1D32CC     tqlim         tqlim_base_pu_4A  0x13C
+  medium 801D144C   1D144C     smoke_maf     smoke_maf_trqA  0x34
+  medium 801D0F34   1D0F34     smoke         smoke_mapA  0x8
+  medium 801EBDF0   1EBDF0     rail          rail_lim_horsA2L_A  0x18
+  medium 801EADB0   1EADB0     rail          rail_request_horsA2L_banque_07  0x48
+  medium 801E9BC8   1E9BC8     rail          rail_base_int_trq2B  0x60
+  medium 801EBBC8   1EBBC8     rail          rail_request_horsA2L_banque_14  0x60
+  medium 801EB840   1EB840     rail          rail_request_horsA2L_banque_12  0xD8
+  medium 801EACFC   1EACFC     rail          rail_request_horsA2L_banque_06  0x194
+  medium 8018E9A0   18E9A0     soi           soi_base_int_trq2A  0x20
+  medium 801CDE04   1CDE04     duration      duration_inj6A  0x180
+
+=== AccPed (12) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  high   801CFFC0   1CFFC0     AccPed_trq4A             8x16
+  high   801CFAE4   1CFAE4     AccPed_trq4A             8x16
+  high   801CFCE4   1CFCE4     AccPed_trq4A             8x16
+  medium 801D0AA8   1D0AA8     AccPed_trq4A             8x16
+  medium 801CFA30   1CFA30     AccPed_trq4A             8x16
+  medium 801D0ACC   1D0ACC     AccPed_trq4A             8x16
+  medium 801CFA3C   1CFA3C     AccPed_trq4A             8x16
+  medium 801CFE3C   1CFE3C     AccPed_trq4A             8x16
+  medium 801D0ADC   1D0ADC     AccPed_trq4A             8x16
+  medium 801D0AEC   1D0AEC     AccPed_trq4A             8x16
+  medium 801CFEB4   1CFEB4     AccPed_trq4A             8x16
+  medium 801D073A   1D073A     AccPed_trq4A             8x16
+
+=== clutch_prot (3) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801D086C   1D086C     tqlim_cluth_prot         8x8
+  medium 801D0878   1D0878     tqlim_cluth_prot         8x8
+  medium 801D08BC   1D08BC     tqlim_cluth_prot         8x8
+
+=== tqlim (4) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801D3928   1D3928     tqlim_base8A             
+  medium 801D32CC   1D32CC     tqlim_base_pu_4A         8x26
+  medium 801D330C   1D330C     tqlim_base_pu_4A         8x26
+  medium 801D332C   1D332C     tqlim_base_pu_4A         8x26
+
+=== tqlim_other (7) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801CEEF4   1CEEF4     tqlim_speed2A            6x8
+  medium 801CEF18   1CEF18     tqlim_speed2A            6x8
+  medium 801D33D8   1D33D8     tqlim_fuel_temp2A        16x16
+  medium 801D3618   1D3618     tqlim_tegt_temp          16x16
+  medium 801D3670   1D3670     tqlim_tegt_temp          16x16
+  medium 801D3712   1D3712     tqlim_tegt_temp          16x16
+  medium 801D3738   1D3738     tqlim_tegt_temp          16x16
+
+=== smoke (21) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801D0F34   1D0F34     smoke_mapA               19x18
+  medium 801D0F80   1D0F80     smoke_mapA               19x18
+  medium 801D282C   1D282C     smoke_mapA               19x18
+  medium 801D287C   1D287C     smoke_mapA               19x18
+  medium 801D232C   1D232C     smoke_mapA               19x18
+  medium 801D1040   1D1040     smoke_mapA               19x18
+  medium 801D20E4   1D20E4     smoke_mapA               19x18
+  medium 801D2654   1D2654     smoke_mapA               19x18
+  medium 801D1E64   1D1E64     smoke_mapA               19x18
+  medium 801D10A0   1D10A0     smoke_mapA               19x18
+  medium 801D296C   1D296C     smoke_mapA               19x18
+  medium 801D10DC   1D10DC     smoke_mapA               19x18
+  ... +9 more
+
+=== smoke_maf (17) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801D144C   1D144C     smoke_maf_trqA           
+  medium 801D1B24   1D1B24     smoke_maf_trqA           
+  medium 801D16F0   1D16F0     smoke_maf_trqA           
+  medium 801D193C   1D193C     smoke_maf_trqA           
+  medium 801D14C4   1D14C4     smoke_maf_trqA           
+  medium 801D1720   1D1720     smoke_maf_trqA           
+  medium 801D0DC4   1D0DC4     smoke_maf_trqA           
+  medium 801D12CC   1D12CC     smoke_maf_trqA           
+  medium 801D17A0   1D17A0     smoke_maf_trqA           
+  medium 801D19EC   1D19EC     smoke_maf_trqA           
+  medium 801D0E48   1D0E48     smoke_maf_trqA           
+  medium 801D1A44   1D1A44     smoke_maf_trqA           
+  ... +5 more
+
+=== turbo (27) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  high   801C09B0   1C09B0     turbo_base3B             16x20
+  high   801C1B50   1C1B50     turbo_base3B             16x20
+  high   801C206C   1C206C     turbo_base3B             16x20
+  medium 801C0A04   1C0A04     turbo_base3B             16x20
+  medium 801C0A44   1C0A44     turbo_base3B             16x20
+  medium 801C1950   1C1950     turbo_base3B             16x20
+  medium 801C197C   1C197C     turbo_base3B             16x20
+  medium 801C0A84   1C0A84     turbo_base3B             16x20
+  medium 801C0A98   1C0A98     turbo_base3B             16x20
+  medium 801C0AA4   1C0AA4     turbo_base3B             16x20
+  medium 801C37AC   1C37AC     turbo_base3B             16x20
+  medium 801C37BC   1C37BC     turbo_base3B             16x20
+  ... +15 more
+
+=== turbo_corr (13) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  high   801C43AC   1C43AC     turbo_int_trq_correction 12x16
+  high   801C3ABC   1C3ABC     turbo_int_trq_correction 12x16
+  high   801C3AC4   1C3AC4     turbo_int_trq_correction 12x16
+  medium 801C3B50   1C3B50     turbo_int_trq_correction 12x16
+  medium 801C4A50   1C4A50     turbo_int_trq_correction 12x16
+  medium 801C3B5C   1C3B5C     turbo_int_trq_correction 12x16
+  medium 801C59B0   1C59B0     turbo_int_trq_correction 12x16
+  medium 801C68D4   1C68D4     turbo_int_trq_correction 12x16
+  medium 801C68EC   1C68EC     turbo_int_trq_correction 12x16
+  medium 801C68FC   1C68FC     turbo_int_trq_correction 12x16
+  medium 801C5A04   1C5A04     turbo_int_trq_correction 12x16
+  medium 801C690C   1C690C     turbo_int_trq_correction 12x16
+  ... +1 more
+
+=== turbo_other (1) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801C6978   1C6978     turbo_atm6A              8x16
+
+=== rail (16) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801EBDF0   1EBDF0     rail_lim_horsA2L_A       55x1
+  medium 801EADB0   1EADB0     rail_request_horsA2L_ban 16x16
+  medium 801EADBC   1EADBC     rail_request_horsA2L_ban 16x16
+  medium 801E9BC8   1E9BC8     rail_base_int_trq2B      16x16
+  medium 801EBBC8   1EBBC8     rail_request_horsA2L_ban 16x16
+  medium 801E9DE0   1E9DE0     rail_base_int_trq2B      16x16
+  medium 801EADE8   1EADE8     rail_request_horsA2L_ban 16x16
+  medium 801EB840   1EB840     rail_request_horsA2L_ban 16x16
+  medium 801EBC4C   1EBC4C     rail_request_horsA2L_ban 16x16
+  medium 801EBC6C   1EBC6C     rail_request_horsA2L_ban 16x16
+  medium 801EB878   1EB878     rail_request_horsA2L_ban 16x16
+  medium 801EBC78   1EBC78     rail_request_horsA2L_ban 16x16
+  ... +4 more
+
+=== soi (96) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  high   80195988   195988     soi_base_int_trq2A       16x16
+  high   8018D998   18D998     soi_base_int_trq2A       16x16
+  high   80195998   195998     soi_base_int_trq2A       16x16
+  high   80197998   197998     soi_base_int_trq2A       16x16
+  high   80196BC0   196BC0     soi_base_int_trq2A       16x16
+  medium 8018E9A0   18E9A0     soi_base_int_trq2A       16x16
+  medium 80193BC4   193BC4     soi_base_int_trq2A       16x16
+  medium 80195BC4   195BC4     soi_base_int_trq2A       16x16
+  medium 8019A3C8   19A3C8     soi_base_int_trq2A       16x16
+  medium 8019A5C8   19A5C8     soi_base_int_trq2A       16x16
+  medium 8019A7D0   19A7D0     soi_base_int_trq2A       16x16
+  medium 8019ADD0   19ADD0     soi_base_int_trq2A       16x16
+  ... +84 more
+
+=== duration (9) ===
+  conf   Ghidra      WinOLS     id_name                  atlas
+  medium 801CDE04   1CDE04     duration_inj6A           18x24
+  medium 801CDE44   1CDE44     duration_inj6A           18x24
+  medium 801CDE50   1CDE50     duration_inj6A           18x24
+  medium 801CDE5C   1CDE5C     duration_inj6A           18x24
+  medium 801CDE8C   1CDE8C     duration_inj6A           18x24
+  medium 801CE29C   1CE29C     duration_inj6A           18x24
+  medium 801CDF60   1CDF60     duration_inj6A           18x24
+  medium 801CE2CC   1CE2CC     duration_inj6A           18x24
+  medium 801CE310   1CE310     duration_inj6A           18x24
+
+Ghidra one-shot: NameHubStage1Validated.py (CSV next to script)
+CSV: golf9980_stage1_validated.csv
+A2L validated: PCR21_Golf9980_STAGE1_VALIDATED.a2l
+Do not flash.

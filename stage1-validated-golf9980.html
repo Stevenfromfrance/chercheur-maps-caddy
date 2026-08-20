@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · PCR2.1 9980 — maps Stage1 validées</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
+<style>
+body.stage1-page .pair-bar,
+body.stage1-page .quick-chips,
+body.stage1-page .stats,
+body.stage1-page .sub,
+body.stage1-page .work-controls { display: none; }
+.stage1-main .panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+  max-width: 64rem;
+}
+.stage1-main .warn {
+  border-left: 3px solid var(--accent2);
+  padding: .75rem 1rem;
+  background: rgba(0, 0, 0, .28);
+  margin: 0 0 1rem;
+  max-width: 64rem;
+}
+.stage1-main .warn b { color: var(--accent2); }
+.stage1-main .box {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: .7rem .8rem;
+  margin: .6rem 0;
+  background: rgba(0, 0, 0, .28);
+}
+.stage1-main .muted { color: var(--muted); }
+.stage1-main code {
+  font-family: var(--mono);
+  font-size: .84rem;
+  background: #0d0d0d;
+  padding: .1rem .35rem;
+  border-radius: 2px;
+}
+.stage1-main kbd {
+  font-family: var(--mono);
+  font-size: .85em;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0 5px;
+}
+.stage1-main table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .88rem;
+  margin-top: .5rem;
+}
+.stage1-main th,
+.stage1-main td {
+  border-bottom: 1px solid var(--line);
+  padding: .35rem .4rem;
+  text-align: left;
+  vertical-align: top;
+}
+.stage1-main th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.stage1-main .addr-g { color: #8ecf9a; font-weight: 500; font-family: var(--mono); font-size: .86em; }
+.stage1-main .addr-w { color: #b8d4c8; font-family: var(--mono); font-size: .86em; }
+.stage1-main .badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: .12rem .4rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.stage1-main .badge.high {
+  color: #8ecf9a;
+  border-color: rgba(142, 207, 154, .4);
+}
+.stage1-main .badge.med {
+  color: var(--accent2);
+  border-color: rgba(245, 197, 66, .35);
+}
+.stage1-main tr.prio td { background: rgba(245, 197, 66, .06); }
+.stage1-main ol.steps { margin: .35rem 0 .2rem 1.15rem; padding: 0; }
+.stage1-main ol.steps li { margin: .35rem 0; }
+.stage1-main .links { margin-top: .85rem; }
+.stage1-main .links a { margin-right: .75rem; }
+.stage1-main .count-strip {
+  display: flex; flex-wrap: wrap; gap: .45rem .7rem;
+  margin: .5rem 0 0; font-family: var(--mono); font-size: .82rem; color: var(--muted);
+}
+.stage1-main .count-strip b { color: var(--text); font-weight: 600; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#status-load { font-size: .82rem; color: var(--muted); margin: .35rem 0 0; }
+</style>
+</head>
+<body class="stage1-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>PCR2.1 9980 — maps Stage1 validées</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <div class="nav-group on" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#maps-prio" role="menuitem">Fiches</a>
+          <a href="index.html#all-maps" role="menuitem">Toutes</a>
+          <a href="index.html#dtc-atlas" role="menuitem">DTC</a>
+          <a href="index.html#guide" role="menuitem">Guide</a>
+          <a href="index.html#composer" role="menuitem">Recette</a>
+          <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
+          <a href="stage1-validated-golf9980.html" class="on" role="menuitem">Stage1 validées</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="voir">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Voir</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#view2d" role="menuitem">2D</a>
+          <a href="index.html#view3d" role="menuitem">3D</a>
+          <a href="index.html#hexdump" role="menuitem">Hex</a>
+          <a href="index.html#dump2d" role="menuitem">Dump</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="logs">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Logs</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#vcds" role="menuitem">VCDS</a>
+          <a href="index.html#log-compare" role="menuitem">Comparer</a>
+          <a href="log-aide.html" role="menuitem">Fiches</a>
+        </div>
+      </div>
+      <a href="index.html#downloads">Pack</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="app-main stage1-main">
+  <div class="sec-head">
+    <h2>Pack Stage1 validé · Golf 9980 PCR2.1</h2>
+    <p class="sec-lead">Inventaire reverse : hub grids vs atlas 9979. HIGH = rename possible · MEDIUM = commentaire seul. Script Ghidra : <code>NameHubStage1Validated.py</code>.</p>
+  </div>
+
+  <div class="warn">
+    <b>Reverse ID — ne pas flasher.</b> Ces adresses / IdName ne sont <b>pas</b> une carto OEM Continental.
+    Ne pas écrire ces zones dans un bin véhicule « pour tester ».
+  </div>
+
+  <section class="panel">
+    <h2>Règle d’adresses</h2>
+    <div class="box">
+      <ul style="margin:.2rem 0 0;padding-left:1.15rem">
+        <li><b>WinOLS</b> <code>1CF9C0</code> → <b>Ghidra</b> <code>801CF9C0</code> (préfixe <code>80</code>)</li>
+        <li>Ctrl+G = toujours <code>80xxxxxx</code> — jamais l’offset 6 hex seul, jamais <code>A0…</code></li>
+      </ul>
+    </div>
+    <div class="count-strip">
+      <span>unique <b id="c-u">226</b></span>
+      <span>HIGH <b id="c-h">14</b></span>
+      <span>MEDIUM <b id="c-m">212</b></span>
+      <span>A2L chars <b>94</b></span>
+    </div>
+    <p id="status-load">Données embarquées (fallback GitHub Pages). Tentative fetch JSON…</p>
+  </section>
+
+  <section class="panel">
+    <h2>Ghidra one-shot</h2>
+    <ol class="steps">
+      <li><b>File → Save</b></li>
+      <li><b>Window → Script Manager</b> → Refresh → filtre <code>NameHubStage1Validated</code></li>
+      <li>Run <code>NameHubStage1Validated.py</code> (CSV <code>golf9980_stage1_validated.csv</code> à côté du script)</li>
+      <li><b>File → Save</b></li>
+    </ol>
+    <p class="muted" style="margin:.55rem 0 0">Plate comments : <code>PCR21 Stage1 HIGH</code> / <code>PCR21 Stage1 MEDIUM</code>. AccPed déjà labellé = comment only.</p>
+  </section>
+
+  <div id="tables-root"></div>
+
+  <section class="panel">
+    <h2>Fichiers</h2>
+    <p class="links muted">
+      <a href="stage1-hubs-golf9980.html">Hubs / Top AccPed</a>
+      <a href="map-finder/reports/golf9980-stage1-validated.json">JSON complet</a>
+      <a href="map-finder/ghidra/golf9980_stage1_validated.txt">Checklist TXT</a>
+      <a href="map-finder/a2l/PCR21_Golf9980_STAGE1_VALIDATED.a2l">A2L Stage1</a>
+    </p>
+  </section>
+</main>
+
+<script>
+const EMBED = {"title": "PCR2.1 Golf 9980 - Stage1 maps validees", "warning_fr": "Reverse / identification hub. HIGH = IdName probable solide. MEDIUM = pointeur dans la map (pas forcement le debut). Ne pas flasher.", "addr_rule_fr": "WinOLS 1CF9C0 -> Ghidra 801CF9C0 (prefixe 80)", "counts": {"unique_addrs": 226, "high": 14, "medium": 212, "by_category": {"AccPed": {"total": 12, "high": 3, "medium": 9}, "clutch_prot": {"total": 3, "high": 0, "medium": 3}, "tqlim": {"total": 4, "high": 0, "medium": 4}, "tqlim_other": {"total": 7, "high": 0, "medium": 7}, "smoke_maf": {"total": 17, "high": 0, "medium": 17}, "smoke": {"total": 21, "high": 0, "medium": 21}, "turbo": {"total": 27, "high": 3, "medium": 24}, "turbo_corr": {"total": 13, "high": 3, "medium": 10}, "turbo_other": {"total": 1, "high": 0, "medium": 1}, "rail": {"total": 16, "high": 0, "medium": 16}, "soi": {"total": 96, "high": 5, "medium": 91}, "duration": {"total": 9, "high": 0, "medium": 9}}}, "categories": {"AccPed": [{"confidence": "high", "id_name": "AccPed_trq4A", "winols": "0x1CFFC0", "ghidra": "0x801CFFC0", "hub": "2d", "delta": "0x0", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "high", "id_name": "AccPed_trq4A", "winols": "0x1CFAE4", "ghidra": "0x801CFAE4", "hub": "F", "delta": "0x24", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "high", "id_name": "AccPed_trq4A", "winols": "0x1CFCE4", "ghidra": "0x801CFCE4", "hub": "D", "delta": "0x24", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "AccPed_trq4A", "winols": "0x1D0AA8", "ghidra": "0x801D0AA8", "hub": "B", "delta": "0x4C", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "AccPed_trq4A", "winols": "0x1CFA30", "ghidra": "0x801CFA30", "hub": "C", "delta": "0x70", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "AccPed_trq4A", "winols": "0x1D0ACC", "ghidra": "0x801D0ACC", "hub": "N", "delta": "0x70", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "AccPed_trq4A", "winols": "0x1CFA3C", "ghidra": "0x801CFA3C", "hub": "E", "delta": "0x7C", "atlas_cols": "8", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "AccPed_trq4A", "winols": "0x1CFE3C", "ghidra": "0x801CFE3C", "hub": "C", "delta": "0x7C", "atlas_cols": "8", "atlas_rows": "16"}], "clutch_prot": [{"confidence": "medium", "id_name": "tqlim_cluth_prot", "winols": "0x1D086C", "ghidra": "0x801D086C", "hub": "C", "delta": "0xC", "atlas_cols": "8", "atlas_rows": "8"}, {"confidence": "medium", "id_name": "tqlim_cluth_prot", "winols": "0x1D0878", "ghidra": "0x801D0878", "hub": "C", "delta": "0x18", "atlas_cols": "8", "atlas_rows": "8"}, {"confidence": "medium", "id_name": "tqlim_cluth_prot", "winols": "0x1D08BC", "ghidra": "0x801D08BC", "hub": "F", "delta": "0x5C", "atlas_cols": "8", "atlas_rows": "8"}], "tqlim": [{"confidence": "medium", "id_name": "tqlim_base8A", "winols": "0x1D3928", "ghidra": "0x801D3928", "hub": "C", "delta": "0x0", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "tqlim_base_pu_4A", "winols": "0x1D32CC", "ghidra": "0x801D32CC", "hub": "B", "delta": "0x13C", "atlas_cols": "8", "atlas_rows": "26"}, {"confidence": "medium", "id_name": "tqlim_base_pu_4A", "winols": "0x1D330C", "ghidra": "0x801D330C", "hub": "C", "delta": "0x17C", "atlas_cols": "8", "atlas_rows": "26"}, {"confidence": "medium", "id_name": "tqlim_base_pu_4A", "winols": "0x1D332C", "ghidra": "0x801D332C", "hub": "E", "delta": "0x19C", "atlas_cols": "8", "atlas_rows": "26"}], "smoke": [{"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D0F34", "ghidra": "0x801D0F34", "hub": "C", "delta": "0x8", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D0F80", "ghidra": "0x801D0F80", "hub": "I", "delta": "0x54", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D282C", "ghidra": "0x801D282C", "hub": "I", "delta": "0x64", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D287C", "ghidra": "0x801D287C", "hub": "2d", "delta": "0xB4", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D232C", "ghidra": "0x801D232C", "hub": "C", "delta": "0xBC", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D1040", "ghidra": "0x801D1040", "hub": "B", "delta": "0x114", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D20E4", "ghidra": "0x801D20E4", "hub": "2d", "delta": "0x120", "atlas_cols": "19", "atlas_rows": "18"}, {"confidence": "medium", "id_name": "smoke_mapA", "winols": "0x1D2654", "ghidra": "0x801D2654", "hub": "K", "delta": "0x138", "atlas_cols": "19", "atlas_rows": "18"}], "smoke_maf": [{"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D144C", "ghidra": "0x801D144C", "hub": "2d", "delta": "0x34", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D1B24", "ghidra": "0x801D1B24", "hub": "F", "delta": "0x4C", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D16F0", "ghidra": "0x801D16F0", "hub": "G", "delta": "0x98", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D193C", "ghidra": "0x801D193C", "hub": "2d", "delta": "0xA4", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D14C4", "ghidra": "0x801D14C4", "hub": "2d", "delta": "0xAC", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D1720", "ghidra": "0x801D1720", "hub": "H", "delta": "0xC8", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D0DC4", "ghidra": "0x801D0DC4", "hub": "2d", "delta": "0xD8", "atlas_cols": null, "atlas_rows": null}, {"confidence": "medium", "id_name": "smoke_maf_trqA", "winols": "0x1D12CC", "ghidra": "0x801D12CC", "hub": "B", "delta": "0xF4", "atlas_cols": null, "atlas_rows": null}], "turbo": [{"confidence": "high", "id_name": "turbo_base3B", "winols": "0x1C09B0", "ghidra": "0x801C09B0", "hub": "D", "delta": "0x4", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "high", "id_name": "turbo_base3B", "winols": "0x1C1B50", "ghidra": "0x801C1B50", "hub": "2d", "delta": "0x24", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "high", "id_name": "turbo_base3B", "winols": "0x1C206C", "ghidra": "0x801C206C", "hub": "F", "delta": "0x40", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "medium", "id_name": "turbo_base3B", "winols": "0x1C0A04", "ghidra": "0x801C0A04", "hub": "L", "delta": "0x58", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "medium", "id_name": "turbo_base3B", "winols": "0x1C0A44", "ghidra": "0x801C0A44", "hub": "2d", "delta": "0x98", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "medium", "id_name": "turbo_base3B", "winols": "0x1C1950", "ghidra": "0x801C1950", "hub": "D", "delta": "0xA4", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "medium", "id_name": "turbo_base3B", "winols": "0x1C197C", "ghidra": "0x801C197C", "hub": "D", "delta": "0xD0", "atlas_cols": "16", "atlas_rows": "20"}, {"confidence": "medium", "id_name": "turbo_base3B", "winols": "0x1C0A84", "ghidra": "0x801C0A84", "hub": "C", "delta": "0xD8", "atlas_cols": "16", "atlas_rows": "20"}], "turbo_corr": [{"confidence": "high", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C43AC", "ghidra": "0x801C43AC", "hub": "F", "delta": "0x0", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "high", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C3ABC", "ghidra": "0x801C3ABC", "hub": "2d", "delta": "0x10", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "high", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C3AC4", "ghidra": "0x801C3AC4", "hub": "B", "delta": "0x18", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C3B50", "ghidra": "0x801C3B50", "hub": "C", "delta": "0xA4", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C4A50", "ghidra": "0x801C4A50", "hub": "2d", "delta": "0xA4", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C3B5C", "ghidra": "0x801C3B5C", "hub": "C", "delta": "0xB0", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C59B0", "ghidra": "0x801C59B0", "hub": "2d", "delta": "0x104", "atlas_cols": "12", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "turbo_int_trq_correction2C", "winols": "0x1C68D4", "ghidra": "0x801C68D4", "hub": "C", "delta": "0x128", "atlas_cols": "12", "atlas_rows": "16"}], "rail": [{"confidence": "medium", "id_name": "rail_lim_horsA2L_A", "winols": "0x1EBDF0", "ghidra": "0x801EBDF0", "hub": "C", "delta": "0x18", "atlas_cols": "55", "atlas_rows": "1"}, {"confidence": "medium", "id_name": "rail_request_horsA2L_banque_07", "winols": "0x1EADB0", "ghidra": "0x801EADB0", "hub": "C", "delta": "0x48", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_request_horsA2L_banque_07", "winols": "0x1EADBC", "ghidra": "0x801EADBC", "hub": "C", "delta": "0x54", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_base_int_trq2B", "winols": "0x1E9BC8", "ghidra": "0x801E9BC8", "hub": "B", "delta": "0x60", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_request_horsA2L_banque_14", "winols": "0x1EBBC8", "ghidra": "0x801EBBC8", "hub": "2d", "delta": "0x60", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_base_int_trq2B", "winols": "0x1E9DE0", "ghidra": "0x801E9DE0", "hub": "2d", "delta": "0x78", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_request_horsA2L_banque_07", "winols": "0x1EADE8", "ghidra": "0x801EADE8", "hub": "2d", "delta": "0x80", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "rail_request_horsA2L_banque_12", "winols": "0x1EB840", "ghidra": "0x801EB840", "hub": "F", "delta": "0xD8", "atlas_cols": "16", "atlas_rows": "16"}], "soi": [{"confidence": "high", "id_name": "soi_base_int_trq2A", "winols": "0x195988", "ghidra": "0x80195988", "hub": "C", "delta": "0x8", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "high", "id_name": "soi_base_int_trq2A", "winols": "0x18D998", "ghidra": "0x8018D998", "hub": "D", "delta": "0x18", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "high", "id_name": "soi_base_int_trq2A", "winols": "0x195998", "ghidra": "0x80195998", "hub": "F", "delta": "0x18", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "high", "id_name": "soi_base_int_trq2A", "winols": "0x197998", "ghidra": "0x80197998", "hub": "F", "delta": "0x18", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "high", "id_name": "soi_base_int_trq2A", "winols": "0x196BC0", "ghidra": "0x80196BC0", "hub": "I", "delta": "0x40", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "soi_base_int_trq2A", "winols": "0x18E9A0", "ghidra": "0x8018E9A0", "hub": "D", "delta": "0x20", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "soi_base_int_trq2A", "winols": "0x193BC4", "ghidra": "0x80193BC4", "hub": "B", "delta": "0x44", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "soi_base_int_trq2A", "winols": "0x195BC4", "ghidra": "0x80195BC4", "hub": "I", "delta": "0x44", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "soi_base_int_trq2A", "winols": "0x19A3C8", "ghidra": "0x8019A3C8", "hub": "E", "delta": "0x48", "atlas_cols": "16", "atlas_rows": "16"}, {"confidence": "medium", "id_name": "soi_base_int_trq2A", "winols": "0x19A5C8", "ghidra": "0x8019A5C8", "hub": "2d", "delta": "0x48", "atlas_cols": "16", "atlas_rows": "16"}], "duration": [{"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDE04", "ghidra": "0x801CDE04", "hub": "2d", "delta": "0x180", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDE44", "ghidra": "0x801CDE44", "hub": "C", "delta": "0x1C0", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDE50", "ghidra": "0x801CDE50", "hub": "C", "delta": "0x1CC", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDE5C", "ghidra": "0x801CDE5C", "hub": "F", "delta": "0x1D8", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDE8C", "ghidra": "0x801CDE8C", "hub": "B", "delta": "0x208", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CE29C", "ghidra": "0x801CE29C", "hub": "B", "delta": "0x2B8", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CDF60", "ghidra": "0x801CDF60", "hub": "I", "delta": "0x2DC", "atlas_cols": "18", "atlas_rows": "24"}, {"confidence": "medium", "id_name": "duration_inj6A", "winols": "0x1CE2CC", "ghidra": "0x801CE2CC", "hub": "B", "delta": "0x2E8", "atlas_cols": "18", "atlas_rows": "24"}]}};
+const CAT_ORDER = ["AccPed", "clutch_prot", "tqlim", "smoke", "smoke_maf", "turbo", "turbo_corr", "rail", "soi", "duration"];
+const CAT_LABELS = {"AccPed": "AccPed", "clutch_prot": "clutch_prot", "tqlim": "tqlim", "smoke": "smoke", "smoke_maf": "smoke_maf", "turbo": "turbo", "turbo_corr": "turbo_corr", "rail": "rail", "soi": "soi", "duration": "duration"};
+
+function strip0x(s) {
+  s = (s || '').toString();
+  return s.replace(/^0x/i, '').toUpperCase();
+}
+
+function badge(conf) {
+  const c = (conf || '').toLowerCase();
+  if (c === 'high') return '<span class="badge high">HIGH</span>';
+  if (c === 'medium') return '<span class="badge med">MEDIUM</span>';
+  return '<span class="badge">' + (conf || '?') + '</span>';
+}
+
+function dims(r) {
+  const c = r.atlas_cols, rw = r.atlas_rows;
+  if (c && rw) return c + '×' + rw;
+  return '—';
+}
+
+function render(data) {
+  const root = document.getElementById('tables-root');
+  const cats = data.categories || {};
+  const counts = data.counts || {};
+  if (counts.unique_addrs != null) document.getElementById('c-u').textContent = counts.unique_addrs;
+  if (counts.high != null) document.getElementById('c-h').textContent = counts.high;
+  if (counts.medium != null) document.getElementById('c-m').textContent = counts.medium;
+
+  let html = '';
+  CAT_ORDER.forEach((cat) => {
+    const rows = cats[cat] || [];
+    if (!rows.length) return;
+    const by = (counts.by_category && counts.by_category[cat]) || {};
+    const title = CAT_LABELS[cat] || cat;
+    const sub = by.total != null
+      ? (' · ' + by.total + ' total · HIGH ' + (by.high || 0) + ' · MEDIUM ' + (by.medium || 0))
+      : (' · ' + rows.length + ' affichées');
+    html += '<section class="panel"><h2>' + title + '<span class="muted" style="font-weight:500;font-size:.85rem">' + sub + '</span></h2>';
+    html += '<div class="table-wrap"><table><thead><tr>';
+    html += '<th>Conf.</th><th>id_name</th><th>WinOLS</th><th>Ghidra (80…)</th><th>Hub</th><th>Delta</th><th>Atlas</th>';
+    html += '</tr></thead><tbody>';
+    rows.forEach((r) => {
+      const conf = (r.confidence || '').toLowerCase();
+      const trClass = conf === 'high' ? ' class="prio"' : '';
+      html += '<tr' + trClass + '>';
+      html += '<td>' + badge(r.confidence) + '</td>';
+      html += '<td>' + (r.id_name || '') + '</td>';
+      html += '<td class="addr-w">' + strip0x(r.winols) + '</td>';
+      html += '<td class="addr-g">' + strip0x(r.ghidra) + '</td>';
+      html += '<td>' + (r.hub || '—') + '</td>';
+      html += '<td>' + (r.delta || '—') + '</td>';
+      html += '<td>' + dims(r) + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table></div></section>';
+  });
+  root.innerHTML = html;
+}
+
+render(EMBED);
+
+fetch('map-finder/reports/golf9980-stage1-validated.json')
+  .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then((j) => {
+    document.getElementById('status-load').textContent = 'JSON chargé depuis map-finder/reports/golf9980-stage1-validated.json';
+    const cats = {};
+    const src = j.categories || {};
+    CAT_ORDER.forEach((cat) => {
+      const rows = src[cat] || [];
+      if (!rows.length) return;
+      cats[cat] = rows.map((r) => ({
+        confidence: r.confidence,
+        id_name: r.id_name,
+        winols: r.winols,
+        ghidra: r.ghidra,
+        hub: r.hub,
+        delta: r.delta,
+        atlas_cols: r.atlas_cols,
+        atlas_rows: r.atlas_rows
+      }));
+    });
+    render({
+      counts: j.counts || EMBED.counts,
+      categories: cats
+    });
+  })
+  .catch(() => {
+    document.getElementById('status-load').textContent = 'Fetch JSON indisponible — affichage du sous-ensemble embarqué (HIGH + meilleurs MEDIUM).';
+  });
+
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
+document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (!groupBtn) return;
+  e.preventDefault();
+  const group = groupBtn.closest('.nav-group');
+  const wasOpen = group.classList.contains('open');
+  closeNavGroups();
+  if (!wasOpen) {
+    group.classList.add('open');
+    groupBtn.setAttribute('aria-expanded', 'true');
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeNavGroups();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNavGroups();
+});
+</script>
+</body>
+</html>
