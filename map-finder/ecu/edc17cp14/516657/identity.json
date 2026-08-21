@@ -1,0 +1,83 @@
+{
+  "id": "edc17cp14-516657",
+  "client": "Bertin",
+  "vehicle": "Audi A5 Sportback (8TA) 2.7 TDI Multitronic",
+  "year": 2011,
+  "vin": "WAUZZZ8T9BA011797",
+  "engine": "CGKA",
+  "power_stock": {
+    "ps": 190,
+    "kw": 140,
+    "nm": 400
+  },
+  "ecu": "Bosch EDC17CP14 TC1796 IROM",
+  "hw": "8K1907401A",
+  "sw": "8K1907401K",
+  "sw_ver": "0008",
+  "bosch_sw": "516657",
+  "bosch_id": "1037516657C714B3UX",
+  "asam": "EV_ECM27TDI0118K1907401K",
+  "system": "EDC17 CB.02.05.01 C21.00 1.0",
+  "trans": "0AW Multitronic",
+  "read": "K-TAG plugin 151 BOOT backup MICRO+EEPROM",
+  "files": {
+    "fls": "map-finder/ecu/edc17cp14/516657/ORI_FLS.fls",
+    "mpc": "map-finder/ecu/edc17cp14/516657/BACKUP_MICRO.mpc",
+    "epr": "map-finder/ecu/edc17cp14/516657/BACKUP_EEPROM.epr"
+  },
+  "sizes": {
+    "fls": 2097152,
+    "mpc": 2097152,
+    "epr": 131072
+  },
+  "offsets_fls": {
+    "bosch_sw_1037516657": [
+      "0x1a",
+      "0x16001a",
+      "0x18301a"
+    ],
+    "edc17_cp14": [
+      "0x183a15"
+    ],
+    "sw_block": [
+      "0x1a6ea4",
+      "0x1a6eb8"
+    ],
+    "cgka": [
+      "0x1a6ef4"
+    ]
+  },
+  "offsets_epr": {
+    "vin": [
+      "0x10328",
+      "0x103a8",
+      "0x10428",
+      "0x15728",
+      "0x157a8",
+      "0x15828",
+      "0x158a8",
+      "0x15928"
+    ],
+    "sw": [
+      "0x1058f",
+      "0x105dc",
+      "0x1060f",
+      "0x1065c"
+    ]
+  },
+  "status": "ori_ok_no_damos",
+  "no_flash_until": [
+    "DAMOS/A2L or WinOLS mappack 516657/0008",
+    "Coolant / G83 diagnosed (123 C in VCDS)",
+    "EGT S3 P242A diagnosed",
+    "DPF strategy decided (P2463 55g, P2002)"
+  ],
+  "pack_goal": [
+    "stage1_conservative",
+    "launch_control",
+    "hardcut",
+    "dpf_off",
+    "egr_off",
+    "dtc_related_off"
+  ]
+}

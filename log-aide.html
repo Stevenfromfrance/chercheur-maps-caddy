@@ -33,6 +33,7 @@
           <a href="index.html#dtc-atlas" role="menuitem">DTC</a>
           <a href="index.html#guide" role="menuitem">Guide</a>
           <a href="index.html#composer" role="menuitem">Recette</a>
+          <a href="a5-cgka-edc17cp14.html" role="menuitem">A5 CGKA Bertin</a>
           <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
         </div>
       </div>
@@ -60,8 +61,12 @@
 </header>
 <main class="app-main log-aide-main">
   <div class="sec-head">
-    <h2>Guide logs VCDS · banc route 9979</h2>
-    <p class="sec-lead">Un log = <b>une question</b>. Même route, même rapport, même portion → comme un mini banc. Envoie le CSV + le type de run + soft flashé (ORI / ACE / V2 / V3 ITALIE).</p>
+    <h2 id="fiches-title">Guide logs VCDS · banc route 9979</h2>
+    <p class="sec-lead" id="fiches-lead">Un log = <b>une question</b>. Même route, même rapport, même portion → comme un mini banc. Envoie le CSV + le type de run + soft flashé.</p>
+    <div class="btns" id="veh-btns" role="tablist" aria-label="Véhicule" style="margin:.6rem 0 0">
+      <button type="button" class="on" data-veh="caddy">Caddy PCR2.1 9979</button>
+      <button type="button" data-veh="a5">A5 CGKA 516657</button>
+    </div>
   </div>
 
   <section class="panel">
@@ -103,7 +108,7 @@
   <div class="btns" id="run-btns" role="tablist" aria-label="Type de run"></div>
   <div id="runs"></div>
 
-  <p class="meta">
+  <p class="meta" id="fiches-meta">
     Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB ·
     Après CSV → <a href="index.html#vcds">Analyser</a> ou envoie le fichier dans le chat.
     · <a href="LOG-PROCEDURES.md">Doc MD</a>
@@ -150,6 +155,8 @@ const EXTRA = {
   coolant: ['Coolant temp', 'Température liquide (cherche Coolant / Coolant temperature)'],
   iq: ['Injection quantity', 'Quantité injectée (cherche Injection quantity / IQ)'],
   tqlim: ['Torque limitation', 'Limiteur couple (cherche Torque limit / Limitation)'],
+  egt: ['EGT / Exhaust temp', 'Température échappement (avant FAP / S3)'],
+  soot: ['DPF soot mass', 'Masse suie FAP mesurée / calculée'],
 };
 
 const RUNS = [
@@ -322,6 +329,192 @@ const RUNS = [
   },
 ];
 
+const RUNS_A5 = [
+  {
+    id: 'route_rail',
+    label: 'ROUTE_RAIL',
+    title: 'Run ROUTE_RAIL — A5 CGKA couple + rail',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Prouver le Stage 1 conservateur et que le rail réel suit la consigne.',
+    prove: [
+      'Couple pic zone 430–470 Nm (cible Stage 1 conservateur, stock ~400)',
+      'Rail réel proche de la consigne (pas d’écart fou durable)',
+      'Pédale haute pendant le pull',
+      'Liquide refroidissement sous contrôle (pas 120 °C+)',
+    ],
+    conditions: [
+      'Route fixe dégagée',
+      '3ᵉ ou D (Multitronic) moteur chaud',
+      'ASR ON',
+      'Même portion à chaque fois',
+    ],
+    steps: [
+      'Coche IDE (core + coolant)',
+      'Log → Start avant le pull',
+      'Plein gaz ~1800 → 3500–4000 tr/min EN CHARGE',
+      'Relâche, 1 run propre',
+      'Stop → Save',
+    ],
+    forbid: 'Décélération seule / test si G83 ou 123 °C encore en défaut actif.',
+    file: 'A5_516657_{SOFT}_ROUTE_RAIL_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft (ORI / S1) + ASR ON + rapport / mode boîte.',
+  },
+  {
+    id: 'route_turbo',
+    label: 'ROUTE_TURBO',
+    title: 'Run ROUTE_TURBO — A5 MAP / boost',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Voir si le turbo suit la consigne sous charge.',
+    prove: [
+      'MAP specified vs MAP actual pendant WOT',
+      'Pas d’under/overboost durable',
+      'RPM + pédale + vitesse présents',
+    ],
+    conditions: [
+      'Même route / même rapport que ROUTE_RAIL si possible',
+      'ASR ON',
+      'Moteur chaud',
+    ],
+    steps: [
+      'Coche IDE core (MAP déjà dedans) + coolant',
+      'Log Start',
+      '1 pull franc 1800 → 3500–4000',
+      'Stop → Save',
+    ],
+    forbid: 'Changer de portion entre deux comparaisons ORI vs Stage 1.',
+    file: 'A5_516657_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft. Idéal : même route que le run rail.',
+  },
+  {
+    id: 'ville',
+    label: 'VILLE',
+    title: 'Run VILLE — A5 confort partiels',
+    priority: 'PRIORITÉ mappack',
+    goal: 'Multitronic agréable, pas d’à-coups, pas de surchauffe urbaine.',
+    prove: [
+      'Couple progressif à bas régime',
+      'Pas d’à-coups CVT étranges',
+      'Coolant stable',
+    ],
+    conditions: [
+      '15–20 min ville',
+      'ASR ON',
+      'Pas de WOT long',
+    ],
+    steps: [
+      'Coche IDE core + coolant',
+      'Log Start',
+      'Conduite normale',
+      'Stop → Save',
+    ],
+    forbid: 'Transformer le log ville en session launch.',
+    file: 'A5_516657_{SOFT}_VILLE_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + soft + ressenti CVT.',
+  },
+  {
+    id: 'harcut',
+    label: 'HARCUT',
+    title: 'Run HARCUT — A5 cut RPM',
+    priority: 'Validation dossier',
+    goal: 'Montrer couple qui tombe vers 0 près du cut, en roulant (pas à l’arrêt).',
+    prove: [
+      'Vitesse > 0',
+      'Régime zone cut',
+      'Couple bas / 0 avec pédale encore haute si possible',
+    ],
+    conditions: [
+      'Route dégagée',
+      'Pas mode launch',
+      'Noter ASR ON ou OFF',
+    ],
+    steps: [
+      'Coche IDE core (+ torque limit si trouvé)',
+      'Log Start',
+      'Montée franche jusqu’au cut',
+      'Stop → Save',
+    ],
+    forbid: 'Test à l’arrêt (CVT ≠ Caddy embrayage).',
+    file: 'A5_516657_{SOFT}_HARCUT_YYYYMMDD.csv',
+    extras: ['tqlim', 'coolant'],
+    send: 'CSV + soft + ASR + “cut net ?”.',
+  },
+  {
+    id: 'depart',
+    label: 'DEPART',
+    title: 'Run DEPART — A5 launch CVT',
+    priority: 'BONUS (après Stage 1 validé)',
+    goal: 'Hold régime + couple au hold, puis départ Multitronic (pas dump embrayage).',
+    prove: [
+      'Speed ≈ 0 pendant hold',
+      'RPM hold stable',
+      'MAP et couple pendant hold',
+      'Puis speed > 0 au départ',
+    ],
+    conditions: [
+      'Frein / hold selon procédure retenue',
+      'Noter ASR ON/OFF',
+      'Moteur chaud',
+    ],
+    steps: [
+      'Coche IDE core',
+      'Log Start avant le hold',
+      'Hold puis départ',
+      'Stop → Save',
+    ],
+    forbid: 'Claquer la CVT comme un manuel. Si ça patine mal → stop.',
+    file: 'A5_516657_{SOFT}_DEPART_YYYYMMDD.csv',
+    extras: ['coolant'],
+    send: 'CSV + RPM hold visé + ASR.',
+  },
+  {
+    id: 'route_inj',
+    label: 'ROUTE_INJ',
+    title: 'Run ROUTE_INJ — A5 injection / FAP / EGT',
+    priority: 'PRIORITÉ tant que P2463 / P242A',
+    goal: 'Croiser couple, air, suie FAP, EGT sous charge.',
+    prove: [
+      'Air mass monte avec la charge',
+      'EGT présente (S3 HS = log pour le prouver)',
+      'Suie FAP si canal dispo',
+    ],
+    conditions: [
+      'Même route banc',
+      'WOT contrôlé',
+      'ASR ON',
+    ],
+    steps: [
+      'Coche IDE core + EGT + soot si trouvés',
+      'Log Start → 1 pull 1800–4000',
+      'Stop → Save',
+    ],
+    forbid: 'Ignorer une EGT morte et enchaîner les WOT.',
+    file: 'A5_516657_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
+    extras: ['iq', 'egt', 'soot', 'coolant'],
+    send: 'CSV + soft + fumée oui/non + défauts moteur encore présents.',
+  },
+];
+
+const VEH = {
+  caddy: {
+    title: 'Guide logs VCDS · banc route 9979',
+    lead: 'Un log = une question. Soft flashé : ORI / ACE / V2 / V3 ITALIE.',
+    meta: 'Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB',
+    runs: RUNS,
+  },
+  a5: {
+    title: 'Guide logs VCDS · A5 CGKA 516657',
+    lead: 'Client Bertin · EDC17CP14 · fichiers A5_516657_{SOFT}_…. Soft : ORI / S1.',
+    meta: 'A5 Sportback 8TA · CGKA · EDC17CP14 · 8K1907401K 0008 · Multitronic 0AW',
+    runs: RUNS_A5,
+  },
+};
+
+let currentVeh = 'caddy';
+let currentRuns = RUNS;
+
 function ideHtml(list, extras) {
   let html = list.map(([id, n]) =>
     `<div><span class="ide">${id}</span> <span>${n}</span></div>`
@@ -336,19 +529,23 @@ function ideHtml(list, extras) {
 const btns = document.getElementById('run-btns');
 const runsEl = document.getElementById('runs');
 
-RUNS.forEach((r, i) => {
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.textContent = r.label;
-  b.dataset.run = r.id;
-  if (i === 0) b.classList.add('on');
-  b.addEventListener('click', () => selectRun(r.id));
-  btns.appendChild(b);
+function mountRuns(list) {
+  currentRuns = list;
+  btns.innerHTML = '';
+  runsEl.innerHTML = '';
+  list.forEach((r, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = r.label;
+    b.dataset.run = r.id;
+    if (i === 0) b.classList.add('on');
+    b.addEventListener('click', () => selectRun(r.id));
+    btns.appendChild(b);
 
-  const art = document.createElement('article');
-  art.className = 'run' + (i === 0 ? ' show' : '');
-  art.id = r.id;
-  art.innerHTML = `
+    const art = document.createElement('article');
+    art.className = 'run' + (i === 0 ? ' show' : '');
+    art.id = r.id;
+    art.innerHTML = `
     <h2 style="margin:0 0 .35rem;font-size:1.08rem">${r.title}</h2>
     <p class="muted" style="margin:0 0 .5rem">${r.priority}</p>
     <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">But</h3>
@@ -366,12 +563,36 @@ RUNS.forEach((r, i) => {
     <div class="box">
       <b>Nom fichier</b><br>
       <code>${r.file}</code><br>
-      <span class="muted">Remplace {SOFT} par V2 / V3IT / ACE…</span>
+      <span class="muted">Remplace {SOFT} par ORI / S1 / ACE…</span>
     </div>
     <p><b>À m’envoyer :</b> ${r.send}</p>
   `;
-  runsEl.appendChild(art);
+    runsEl.appendChild(art);
+  });
+}
+
+function setVehicle(id) {
+  const v = VEH[id] || VEH.caddy;
+  currentVeh = id;
+  document.getElementById('fiches-title').textContent = v.title;
+  document.getElementById('fiches-lead').innerHTML = v.lead;
+  document.getElementById('fiches-meta').innerHTML =
+    v.meta + ' · Après CSV → <a href="index.html#vcds">Analyser</a> ou envoie le fichier dans le chat.';
+  document.querySelectorAll('#veh-btns button').forEach((b) => {
+    b.classList.toggle('on', b.dataset.veh === id);
+  });
+  mountRuns(v.runs);
+}
+
+document.getElementById('veh-btns')?.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-veh]');
+  if (!b) return;
+  setVehicle(b.dataset.veh);
+  history.replaceState(null, '', b.dataset.veh === 'a5' ? '#a5' : '#caddy');
 });
+
+mountRuns(RUNS);
+if ((location.hash || '').replace('#', '') === 'a5') setVehicle('a5');
 
 function selectRun(id) {
   document.querySelectorAll('#run-btns button').forEach((b) => {
@@ -385,7 +606,7 @@ function selectRun(id) {
 runsEl.addEventListener('click', async (e) => {
   const btn = e.target.closest('[data-copy]');
   if (!btn) return;
-  const r = RUNS.find((x) => x.id === btn.dataset.copy);
+  const r = currentRuns.find((x) => x.id === btn.dataset.copy);
   if (!r) return;
   const lines = [
     `RUN: ${r.label}`,

@@ -6,6 +6,7 @@ Outil atelier multi-calculateur (sélecteur en haut de page) :
 |---|---|---|
 | Siemens PCR 2.1 | 9979 Caddy | Atelier ORI / ACE / V2 / V3 ITALIE + VCDS |
 | Bosch MEVD 17.2.5 | 531049 BMW 1 Series | Catalogue maps (import WinOLS `.kp`) |
+| Bosch EDC17CP14 | 516657 A5 Sportback CGKA | Client Bertin — ORI boot, pack Stage1 / DPF / EGR |
 
 ## PCR 2.1 (Caddy)
 
@@ -23,3 +24,5 @@ Fichiers : `map-finder/ecu/mevd1725/531049/` · registre `data/ecus.json` · `py
 Site : https://stevenfromfrance.github.io/chercheur-maps-caddy/
 
 RE Golf 9980 — validation Stage1 / Top AccPed : [`stage1-hubs-golf9980.html`](https://stevenfromfrance.github.io/chercheur-maps-caddy/stage1-hubs-golf9980.html)
+
+Client A5 Sportback CGKA EDC17CP14 : [`a5-cgka-edc17cp14.html`](https://stevenfromfrance.github.io/chercheur-maps-caddy/a5-cgka-edc17cp14.html)

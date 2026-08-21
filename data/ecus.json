@@ -33,6 +33,23 @@
       "maps_url": "data/mevd1725-531049/maps.json",
       "status": "catalog",
       "note": "Mappack WinOLS importé (180 maps). Pas encore de compare Stage ORI/ACE/V1 — en attente des bins Stage / PCR 2.1 sibling pack."
+    },
+    {
+      "id": "edc17cp14-516657",
+      "label": "EDC17CP14",
+      "short": "A5 CGKA",
+      "ecu": "Bosch EDC17CP14",
+      "soft": "516657",
+      "vehicle": "Audi A5 Sportback 2.7 TDI",
+      "family": "EDC17CP14",
+      "hw": "8K1907401A",
+      "flash_size": 2097152,
+      "mode": "project",
+      "page": "a5-cgka-edc17cp14.html",
+      "subtitle": "A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008 · client Bertin",
+      "maps_url": "data/edc17cp14-516657/project.json",
+      "status": "ori_ok",
+      "note": "ORI boot validé. Pack Stage1 / launch / hardcut / DPF / EGR — en attente DAMOS 516657."
     }
   ]
 }

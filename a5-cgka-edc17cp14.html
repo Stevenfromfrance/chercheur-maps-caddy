@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · A5 CGKA EDC17CP14 — Bertin</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
+<style>
+body.stage1-page .pair-bar,
+body.stage1-page .quick-chips,
+body.stage1-page .stats,
+body.stage1-page .sub,
+body.stage1-page .work-controls { display: none; }
+.stage1-main .panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+  max-width: 64rem;
+}
+.stage1-main .warn {
+  border-left: 3px solid var(--accent2);
+  padding: .75rem 1rem;
+  background: rgba(0, 0, 0, .28);
+  margin: 0 0 1rem;
+  max-width: 64rem;
+}
+.stage1-main .stop {
+  border-left: 3px solid var(--accent);
+  padding: .75rem 1rem;
+  background: rgba(226, 58, 26, .08);
+  margin: 0 0 1rem;
+  max-width: 64rem;
+}
+.stage1-main .warn b, .stage1-main .stop b { color: var(--accent2); }
+.stage1-main .stop b { color: var(--accent); }
+.stage1-main .box {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: .7rem .8rem;
+  margin: .6rem 0;
+  background: rgba(0, 0, 0, .28);
+}
+.stage1-main .muted { color: var(--muted); }
+.stage1-main code {
+  font-family: var(--mono);
+  font-size: .84rem;
+  background: #0d0d0d;
+  padding: .1rem .35rem;
+  border-radius: 2px;
+}
+.stage1-main table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .88rem;
+  margin-top: .5rem;
+}
+.stage1-main th,
+.stage1-main td {
+  border-bottom: 1px solid var(--line);
+  padding: .35rem .4rem;
+  text-align: left;
+  vertical-align: top;
+}
+.stage1-main th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.stage1-main .mono { font-family: var(--mono); font-size: .84em; }
+.stage1-main .badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: .12rem .4rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.stage1-main .badge.ok { color: #8ecf9a; border-color: rgba(142, 207, 154, .4); }
+.stage1-main .badge.wait { color: var(--accent2); border-color: rgba(245, 197, 66, .35); }
+.stage1-main .badge.no { color: var(--accent); border-color: rgba(226, 58, 26, .45); }
+.stage1-main ol.steps { margin: .35rem 0 .2rem 1.15rem; padding: 0; }
+.stage1-main ol.steps li { margin: .35rem 0; }
+.stage1-main .links { margin-top: .85rem; }
+.stage1-main .links a { margin-right: .75rem; }
+.stage1-main .count-strip {
+  display: flex; flex-wrap: wrap; gap: .45rem .7rem;
+  margin: .5rem 0 0; font-family: var(--mono); font-size: .82rem; color: var(--muted);
+}
+.stage1-main .count-strip b { color: var(--text); font-weight: 600; }
+</style>
+</head>
+<body class="stage1-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>A5 Sportback CGKA — EDC17CP14 client</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <div class="nav-group on" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#maps-prio" role="menuitem">Fiches</a>
+          <a href="a5-cgka-edc17cp14.html" class="on" role="menuitem">A5 CGKA Bertin</a>
+          <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
+          <a href="stage1-validated-golf9980.html" role="menuitem">Stage1 validées</a>
+        </div>
+      </div>
+      <div class="nav-group" data-nav-group="logs">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Logs</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#vcds" role="menuitem">VCDS</a>
+          <a href="log-aide.html#a5" role="menuitem">Fiches A5</a>
+        </div>
+      </div>
+      <a href="index.html#downloads">Pack</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="app-main stage1-main">
+  <div class="sec-head">
+    <h2>Client Bertin · Audi A5 Sportback 2.7 TDI</h2>
+    <p class="sec-lead">Même objectif que le Caddy : Stage 1 conservateur + launch + hardcut + DPF/EGR/DTC. ECU différent (Bosch EDC17CP14), boîte <b>Multitronic 0AW</b>. ORI boot validé — pas encore de DAMOS.</p>
+  </div>
+
+  <div class="stop">
+    <b>Ne pas flasher tant que ces 4 points ne sont pas verts.</b>
+    DAMOS/A2L <code>516657 / 0008</code> · G83 / surchauffe 123 °C · sonde EGT S3 <code>P242A</code> · stratégie FAP (<code>P2463</code> 55 g, <code>P2002</code>).
+    Un Stage 1 sur FAP chargé + EGT HS = client coincé.
+  </div>
+
+  <section class="panel">
+    <h2>Identité (lecture K-TAG 151 BOOT)</h2>
+    <div class="count-strip">
+      <span>SW Bosch <b>516657</b></span>
+      <span>ver <b>0008</b></span>
+      <span>HW <b>8K1907401A</b></span>
+      <span>SW <b>8K1907401K</b></span>
+      <span>FLS/MPC <b>2 Mo</b></span>
+      <span>EEPROM <b>128 ko</b></span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Véhicule</th><td>A5 Sportback 8TA · 2011 · CGKA 190 ch / 140 kW · ~400 Nm</td></tr>
+        <tr><th>VIN</th><td class="mono">WAUZZZ8T9BA011797</td></tr>
+        <tr><th>Boîte</th><td>0AW Multitronic (pas DSG, pas embrayage Caddy)</td></tr>
+        <tr><th>ECU</th><td>Bosch EDC17CP14 IROM TC1796 · <code>EDC17 CB.02.05.01 C21.00 1.0</code></td></tr>
+        <tr><th>ASAM</th><td class="mono">EV_ECM27TDI0118K1907401K</td></tr>
+        <tr><th>Bosch ID</th><td class="mono">1037516657C714B3UX</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Pack demandé (comme Caddy)</h2>
+    <table>
+      <thead><tr><th>Pack</th><th>Cible conservatrice</th><th>État</th></tr></thead>
+      <tbody>
+        <tr><td>Stage 1</td><td>~220–230 ch / 450–470 Nm · fumée maîtrisée</td><td><span class="badge wait">ATTENTE DAMOS</span></td></tr>
+        <tr><td>Launch</td><td>Hold régime bas (CVT — pas clutch-prot PCR2.1)</td><td><span class="badge wait">ATTENTE MAPS</span></td></tr>
+        <tr><td>Hardcut</td><td>Couple → 0 près du cut RPM (limiteur EDC17)</td><td><span class="badge wait">ATTENTE MAPS</span></td></tr>
+        <tr><td>DPF off</td><td>Régén / suie + DTC FAP liés</td><td><span class="badge wait">ATTENTE MAPS</span></td></tr>
+        <tr><td>EGR off</td><td>EGR + DTC EGR liés</td><td><span class="badge wait">ATTENTE MAPS</span></td></tr>
+        <tr><td>DTC liés off</td><td>Masques uniquement des codes du pack</td><td><span class="badge wait">ATTENTE MAPS</span></td></tr>
+      </tbody>
+    </table>
+    <div class="box">
+      <b>Multitronic</b> — le launch Caddy (<code>tqlim_cluth_prot</code>) ne se copie pas. Ici : limiteur couple / RPM côté moteur, compatible 0AW. Pas de « dump embrayage ».
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>VCDS — blocages avant carto</h2>
+    <table>
+      <thead><tr><th>Code</th><th>Quoi</th><th>Impact flash</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">P2463</td><td>FAP suie excessive (~55 g, ~3826 km sans régén)</td><td>Traiter avec DPF off / régén — pas ignorer</td></tr>
+        <tr><td class="mono">P2002</td><td>Efficacité FAP sous seuil</td><td>Lié DPF</td></tr>
+        <tr><td class="mono">P242A</td><td>EGT B1 S3 HS</td><td>Régén cassée tant que sonde morte</td></tr>
+        <tr><td class="mono">P102A / P2185</td><td>Surchauffe 123 °C + G83 signal haut</td><td><b>Stop mécanique</b> — pas un Stage 1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>Fichiers ORI (GitHub)</h2>
+    <p class="muted">Backup K-TAG plugin 151 · MICRO + EEPROM. Le <code>.bin</code> 1 Mo sans IDs n’est pas l’ori.</p>
+    <p class="links">
+      <a href="map-finder/ecu/edc17cp14/516657/ORI_FLS.fls">ORI_FLS.fls</a> (carto 2 Mo)
+      <a href="map-finder/ecu/edc17cp14/516657/BACKUP_MICRO.mpc">BACKUP_MICRO.mpc</a>
+      <a href="map-finder/ecu/edc17cp14/516657/BACKUP_EEPROM.epr">BACKUP_EEPROM.epr</a>
+      <a href="data/edc17cp14-516657/project.json">project.json</a>
+    </p>
+    <div class="box">
+      <b>WinOLS Ctrl+G (offset fichier FLS)</b>
+      <ul style="margin:.35rem 0 0;padding-left:1.15rem">
+        <li>Bloc SW / CGKA · <code>1A6E8A</code></li>
+        <li>EDC17_CP14 · <code>183A15</code></li>
+        <li>Bosch 1037516657 · <code>00001A</code></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Prochaine action atelier</h2>
+    <ol class="steps">
+      <li>WinOLS : ouvrir <code>ORI_FLS.fls</code> — projet <code>A5_CGKA_516657_0008</code></li>
+      <li>Importer DAMOS / mappack <b>exact</b> <code>516657</code> + ver <code>0008</code> (pas 511914 / 0006)</li>
+      <li>Marquer familles : couple, smoke, turbo, rail, EGR, DPF, DTC, limiteur RPM</li>
+      <li>Carto V1 conservatrice sur <b>copie</b> du FLS — EEPROM intacte</li>
+      <li>Logs : fiches <a href="log-aide.html#a5">log-aide.html#a5</a> · fichiers <code>A5_516657_…</code></li>
+    </ol>
+    <p class="muted" style="margin:.7rem 0 0">Sans DAMOS on n’invente pas d’adresses. PCR2.1 Caddy ≠ EDC17CP14.</p>
+  </section>
+</main>
+<script>
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
+document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (!groupBtn) return;
+  e.preventDefault();
+  const group = groupBtn.closest('.nav-group');
+  const open = group.classList.contains('open');
+  closeNavGroups();
+  if (!open) {
+    group.classList.add('open');
+    groupBtn.setAttribute('aria-expanded', 'true');
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeNavGroups();
+});
+</script>
+</body>
+</html>

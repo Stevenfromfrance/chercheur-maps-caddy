@@ -73,6 +73,18 @@
         maps_url: "data/mevd1725-531049/maps.json",
         note: "Mappack WinOLS importé. Catalogue maps (pas encore de compare Stage).",
       },
+      {
+        id: "edc17cp14-516657",
+        label: "EDC17CP14",
+        short: "A5 CGKA",
+        vehicle: "Audi A5 Sportback 2.7 TDI",
+        soft: "516657",
+        mode: "project",
+        page: "a5-cgka-edc17cp14.html",
+        subtitle: "A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008",
+        maps_url: "data/edc17cp14-516657/project.json",
+        note: "ORI boot validé. Pack Stage1 / DPF / EGR — en attente DAMOS.",
+      },
     ],
   };
 
@@ -108,7 +120,13 @@
         " · " +
         (ecu.soft || "") +
         "</span>";
-      btn.addEventListener("click", () => setEcu(ecu.id, { persist: true, navigate: true }));
+      btn.addEventListener("click", () => {
+        if (ecu.mode === "project" && ecu.page) {
+          location.href = ecu.page;
+          return;
+        }
+        setEcu(ecu.id, { persist: true, navigate: true });
+      });
       host.appendChild(btn);
     });
   }
@@ -330,7 +348,8 @@
       try {
         want = localStorage.getItem(LS_ECU);
       } catch (_) {}
-      if (!want || !ecus.some((e) => e.id === want)) want = data.default || ecus[0]?.id;
+      const saved = ecus.find((e) => e.id === want);
+      if (!want || !saved || saved.mode === "project") want = data.default || ecus[0]?.id;
       wireCatalogUi();
       await setEcu(want, { persist: false, navigate: false });
       const hash = (location.hash || "").replace(/^#/, "").split("?")[0];
