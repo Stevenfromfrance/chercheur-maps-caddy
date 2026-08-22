@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """Build curated Stage1 validated pack for Golf 9980 PCR2.1.
 
-Uses hub-grid identification (HIGH + best MEDIUM per family) for:
-  AccPed, tqlim*, clutch_prot, smoke*, turbo*, rail*, soi*, duration*
+Uses:
+  1) hub-grid identification (HIGH + best MEDIUM per family)
+  2) atlas START fingerprint pass (identify_atlas_starts.py) — promotes
+     clutch / rail / duration / vmax / DTC / smoke starts that hubs miss
 
 Outputs:
   golf9980_stage1_validated.csv / .txt / .json
@@ -25,6 +27,7 @@ ROOT = Path(__file__).resolve().parent
 WS = ROOT.parents[1]
 ATLAS = WS / "map-finder" / "atlas" / "9979.json"
 IN_CSV = ROOT / "golf9980_hub_grids_identified.csv"
+ATLAS_STARTS = ROOT / "golf9980_atlas_starts_identified.csv"
 OUT_CSV = ROOT / "golf9980_stage1_validated.csv"
 OUT_TXT = ROOT / "golf9980_stage1_validated.txt"
 OUT_JSON = WS / "map-finder" / "reports" / "golf9980-stage1-validated.json"
@@ -46,10 +49,24 @@ CAT_PREFIXES: list[tuple[str, str, int]] = [
     ("rail_", "rail", 80),
     ("soi_", "soi", 90),
     ("duration_", "duration", 100),
+    ("vmax", "speed_limiter", 110),
+    ("airctl", "egr_control", 120),
+    ("dtc_", "dtc", 130),
 ]
 
 # Checklist: best MEDIUM families to surface after all HIGH
-CHECKLIST_MED_CATS = ("clutch_prot", "rail", "duration", "soi", "smoke", "smoke_maf", "tqlim")
+CHECKLIST_MED_CATS = (
+    "clutch_prot",
+    "rail",
+    "duration",
+    "soi",
+    "smoke",
+    "smoke_maf",
+    "tqlim",
+    "speed_limiter",
+    "egr_control",
+    "dtc",
+)
 
 CAT_ORDER = [
     "AccPed",
@@ -64,6 +81,16 @@ CAT_ORDER = [
     "rail",
     "soi",
     "duration",
+    "speed_limiter",
+    "egr_control",
+    "dtc",
+    "dtc_dpf",
+    "dtc_egr",
+    "dtc_egt",
+    "dtc_egr_dpf",
+    "dtc_egr_com",
+    "dtc_dpf_o2",
+    "dtc_other",
 ]
 
 
@@ -74,7 +101,28 @@ def family_id(name: str) -> str:
     return s
 
 
-def categorize(idn: str) -> tuple[str, int] | None:
+def categorize(idn: str, hint_cat: str | None = None) -> tuple[str, int] | None:
+    # Prefer explicit category from atlas-start pass (dtc_dpf, speed_limiter, ...)
+    if hint_cat:
+        for prefix, cat, rank in CAT_PREFIXES:
+            if hint_cat == cat:
+                return cat, rank
+        # dtc_* subcats not in CAT_PREFIXES ranks
+        dtc_ranks = {
+            "dtc_dpf": 131,
+            "dtc_egr": 132,
+            "dtc_egt": 133,
+            "dtc_egr_dpf": 134,
+            "dtc_egr_com": 135,
+            "dtc_dpf_o2": 136,
+            "dtc_other": 137,
+            "speed_limiter": 110,
+            "egr_control": 120,
+        }
+        if hint_cat in dtc_ranks:
+            return hint_cat, dtc_ranks[hint_cat]
+        if hint_cat in CAT_ORDER:
+            return hint_cat, 50 + CAT_ORDER.index(hint_cat)
     f = family_id(idn).lower()
     for prefix, cat, rank in CAT_PREFIXES:
         if f.startswith(prefix):
@@ -149,35 +197,84 @@ def find_atlas_for_hit(atlas_maps: list[dict], idn: str, hit_addr: int) -> dict 
     return same[0] if same else None
 
 
-def main() -> None:
-    atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    atlas_maps: list[dict] = atlas.get("maps") or []
-    atlas_by_id = {m["id"]: m for m in atlas_maps}
+def row_from_hub(r: dict, atlas_maps: list[dict]) -> dict | None:
+    idn = r.get("id_name") or ""
+    cat = categorize(idn)
+    if not cat:
+        return None
+    conf = (r.get("confidence") or "").lower()
+    if conf not in ("high", "medium"):
+        return None
+    category, rank = cat
+    addr = int(r["addr"], 16)
+    out = dict(r)
+    out["category"] = category
+    out["cat_rank"] = str(rank)
+    out["family"] = family_id(idn)
+    out["delta_i"] = parse_delta(r.get("notes") or "")
+    out["delta"] = "0x%X" % out["delta_i"] if out["delta_i"] != 0x7FFFFFFF else ""
+    out["map_start"] = parse_map_start(r.get("notes") or "")
+    out["winols"] = "0x%X" % addr
+    out["ghidra"] = "0x%X" % (addr + FLASH80)
+    out["same_9979"] = "1" if r.get("same_9979") == "1" else "0"
+    out["notes"] = ascii_safe(r.get("notes") or "")
+    out["confidence"] = conf
+    out["source"] = "hub"
+    am = find_atlas_for_hit(atlas_maps, idn, addr)
+    if am and am.get("cols") and am.get("rows"):
+        out["atlas_id"] = am["id"]
+        out["atlas_addr"] = am.get("addr_hex") or ("%X" % int(am["addr"]))
+        out["atlas_length"] = str(am.get("length") or "")
+        out["atlas_cols"] = str(am.get("cols") or "")
+        out["atlas_rows"] = str(am.get("rows") or "")
+    else:
+        out["atlas_id"] = ""
+        out["atlas_addr"] = out["atlas_length"] = out["atlas_cols"] = out["atlas_rows"] = ""
+    return out
 
-    rows = list(csv.DictReader(IN_CSV.open(newline="", encoding="utf-8")))
-    candidates: list[dict] = []
-    for r in rows:
-        idn = r.get("id_name") or ""
-        cat = categorize(idn)
-        if not cat:
-            continue
-        conf = (r.get("confidence") or "").lower()
-        if conf not in ("high", "medium"):
-            continue
-        category, rank = cat
-        addr = int(r["addr"], 16)
-        out = dict(r)
-        out["category"] = category
-        out["cat_rank"] = str(rank)
-        out["family"] = family_id(idn)
-        out["delta_i"] = parse_delta(r.get("notes") or "")
-        out["delta"] = "0x%X" % out["delta_i"] if out["delta_i"] != 0x7FFFFFFF else ""
-        out["map_start"] = parse_map_start(r.get("notes") or "")
-        out["winols"] = "0x%X" % addr
-        out["ghidra"] = "0x%X" % (addr + FLASH80)
-        out["same_9979"] = "1" if r.get("same_9979") == "1" else "0"
-        out["notes"] = ascii_safe(r.get("notes") or "")
-        out["confidence"] = conf
+
+def row_from_atlas_start(r: dict, atlas_maps: list[dict]) -> dict | None:
+    idn = r.get("id_name") or ""
+    hint = (r.get("category") or "").strip() or None
+    cat = categorize(idn, hint_cat=hint)
+    if not cat:
+        return None
+    conf = (r.get("confidence") or "").lower()
+    if conf not in ("high", "medium"):
+        return None
+    category, rank = cat
+    addr = int(r["addr"], 16)
+    out = {
+        "hub": r.get("hub") or "atlas_start",
+        "fam_label": "",
+        "addr": "0x%06X" % addr,
+        "grid80": "0x%08X" % (addr + FLASH80),
+        "id_name": idn,
+        "new_name": r.get("new_name") or "",
+        "confidence": conf,
+        "notes": ascii_safe(r.get("notes") or ""),
+        "call_site": "",
+        "axis_x": "",
+        "axis_y": "",
+        "folder": r.get("folder") or "",
+        "same_9979": "1" if r.get("same_9979") == "1" else "0",
+        "family_id_re": "",
+        "category": category,
+        "cat_rank": str(rank),
+        "family": family_id(idn),
+        "delta_i": 0,
+        "delta": "0x0",
+        "map_start": "0x%06X" % addr,
+        "winols": "0x%X" % addr,
+        "ghidra": "0x%X" % (addr + FLASH80),
+        "source": "atlas_start",
+        "atlas_id": r.get("atlas_id") or idn,
+        "atlas_addr": r.get("atlas_addr") or ("%X" % addr),
+        "atlas_length": r.get("atlas_length") or "",
+        "atlas_cols": r.get("atlas_cols") or "",
+        "atlas_rows": r.get("atlas_rows") or "",
+    }
+    if not out["atlas_cols"] or not out["atlas_rows"]:
         am = find_atlas_for_hit(atlas_maps, idn, addr)
         if am and am.get("cols") and am.get("rows"):
             out["atlas_id"] = am["id"]
@@ -185,17 +282,40 @@ def main() -> None:
             out["atlas_length"] = str(am.get("length") or "")
             out["atlas_cols"] = str(am.get("cols") or "")
             out["atlas_rows"] = str(am.get("rows") or "")
-        else:
-            out["atlas_id"] = ""
-            out["atlas_addr"] = out["atlas_length"] = out["atlas_cols"] = out["atlas_rows"] = ""
-        candidates.append(out)
+    return out
+
+
+def main() -> None:
+    atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
+    atlas_maps: list[dict] = atlas.get("maps") or []
+    atlas_by_id = {m["id"]: m for m in atlas_maps}
+
+    candidates: list[dict] = []
+    hub_rows = list(csv.DictReader(IN_CSV.open(newline="", encoding="utf-8")))
+    for r in hub_rows:
+        out = row_from_hub(r, atlas_maps)
+        if out:
+            candidates.append(out)
+
+    n_atlas = 0
+    if ATLAS_STARTS.exists():
+        for r in csv.DictReader(ATLAS_STARTS.open(newline="", encoding="utf-8")):
+            out = row_from_atlas_start(r, atlas_maps)
+            if out:
+                candidates.append(out)
+                n_atlas += 1
+        print("Merged atlas-start rows:", n_atlas)
+    else:
+        print("WARN: missing", ATLAS_STARTS.name, "- hub-only pack")
 
     # Best row per (family, cal addr): prefer HIGH, then smaller delta, then same_9979
+    # Prefer atlas_start (delta 0) over hub mid-map when confidence equal
     candidates.sort(
         key=lambda r: (
             int(r["cat_rank"]),
             conf_rank(r.get("confidence") or ""),
             r["delta_i"],
+            0 if r.get("source") == "atlas_start" else 1,
             0 if r.get("same_9979") == "1" else 1,
             int(r["addr"], 16),
         )
@@ -250,6 +370,7 @@ def main() -> None:
         "delta",
         "map_start",
         "same_9979",
+        "source",
         "atlas_id",
         "atlas_addr",
         "atlas_cols",
@@ -285,7 +406,7 @@ def main() -> None:
 
     lines = [
         "Golf 9980 - Stage1 VALIDATED pack (auto)",
-        "Source: hub grids identified vs atlas 9979 / A2L",
+        "Source: hub grids + atlas START fingerprints vs atlas 9979 / A2L",
         "HIGH = rename OK (skip AccPed if already labeled) | MEDIUM = comment only",
         "",
         "counts: unique_addrs=%d  high=%d  medium=%d"
@@ -311,7 +432,7 @@ def main() -> None:
         )
     lines += [
         "",
-        "=== CHECKLIST: best MEDIUM per family (clutch/rail/duration/soi/smoke/tqlim) ===",
+        "=== CHECKLIST: best MEDIUM per family (clutch/rail/duration/soi/smoke/tqlim/vmax) ===",
         "  conf   Ghidra      WinOLS     category      id_name  delta",
     ]
     for r in med_checklist:

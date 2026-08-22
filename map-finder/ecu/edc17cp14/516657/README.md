@@ -7,8 +7,21 @@ Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 - `BACKUP_EEPROM.epr` — EEPROM 128 ko (ne pas patcher pour un Stage 1)
 - `identity.json` — IDs + offsets
 
-Pack visé : Stage 1 conservateur, launch, hardcut, DPF off, EGR off, DTC liés.
+Pack visé : Stage 1 conservateur, DPF off, EGR off, DTC liés. Hardcut = V2. Pas de launch (boîte 0AW).
 
-**Pas de flash** sans DAMOS/A2L `516657/0008` et sans trier G83 / EGT S3 / FAP.
+**Pas de flash** sans maps identifiées (A2L 0008 exact ou similar 0005 recalé) et sans trier G83 / EGT S3 / FAP.
 
+## V1 livrée
+
+`A5_516657_V1_S1cons_DPF_EGR_noCHK.fls` — Stage 1 conservateur (+2–12 %) + DPF/EGR/FLAPS DaVinci.
+Détail : `LIVRAISON-V1.txt`. Checksum avant flash. Pas de TVA / lambda.
+
+## DAMOS (Damos-Big-Archive, 93 Go — scan 57k fichiers)
+
+Pas d’A2L **0008 / 516657 / B3UX**. Plus proche déjà copié : `damos-similar-0005/`
+(`8K1907401K` ver **0005**, Bosch **504886**, **B3UN**, projet A2L `P714` / `C714B3UN`).
+
+- WinOLS : ouvrir **notre** `ORI_FLS.fls` → importer l’A2L 0005 en **similar** (noms oui, offsets 0005→0008 non)
+- Réf Stage 2 **même SW** : `ref-a4-516657-stage2/` (A4 2.7, 8499 octets vs ori — localiser les maps, ne pas flasher)
+- Ignorer : CGKB 163 ch `.ols`, CP04 `8K1907401D/F`, versions 0001–0004, Tiguan 2.0 CP14 A2L
 Page site : [`a5-cgka-edc17cp14.html`](../../../a5-cgka-edc17cp14.html)

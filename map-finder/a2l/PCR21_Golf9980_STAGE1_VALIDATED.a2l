@@ -8,379 +8,579 @@ ASAP2_VERSION 1 60
 /begin PROJECT PCR21_Golf9980_STAGE1 "RE Stage1 validated 9980 - NOT OEM"
 /begin MODULE PCR21_SM2G0P_9980_S1 "Stage1 validated maps only"
 
-/begin CHARACTERISTIC AccPed_trq4A "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A" MAP 0x1CF9C0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A" MAP 0x1CF9C0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFAC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFAC0" MAP 0x1CFAC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFAC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFAC0" MAP 0x1CFAC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFBC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFBC0" MAP 0x1CFBC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFBC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFBC0" MAP 0x1CFBC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFCC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFCC0" MAP 0x1CFCC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFCC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFCC0" MAP 0x1CFCC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFDC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFDC0" MAP 0x1CFDC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFDC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFDC0" MAP 0x1CFDC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFEC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFEC0" MAP 0x1CFEC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFEC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFEC0" MAP 0x1CFEC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1CFFC0 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1CFFC0" MAP 0x1CFFC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1CFFC0 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1CFFC0" MAP 0x1CFFC0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC AccPed_trq4A_1D0640 "high AccPed hub=2d hit=0x1CFFC0 atlas=AccPed_trq4A@1D0640" MAP 0x1D0640 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC AccPed_trq4A_1D0640 "high AccPed hub=atlas_start hit=0x1D0640 atlas=AccPed_trq4A@1D0640" MAP 0x1D0640 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC tqlim_cluth_prot "medium clutch_prot hub=C hit=0x1D086C atlas=tqlim_cluth_prot" MAP 0x1D0860 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 8
+/begin CHARACTERISTIC tqlim_cluth_prot "high clutch_prot hub=atlas_start hit=0x1D0860 atlas=tqlim_cluth_prot" MAP 0x1D0860 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 8
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC tqlim_base_pu_4A "medium tqlim hub=B hit=0x1D32CC atlas=tqlim_base_pu_4A" MAP 0x1D3190 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 26
+/begin CHARACTERISTIC tqlim_base_pu_4A "high tqlim hub=atlas_start hit=0x1D3190 atlas=tqlim_base_pu_4A" MAP 0x1D3190 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 26
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC tqlim_speed2A "medium tqlim_other hub=2d hit=0x1CEEF4 atlas=tqlim_speed2A" MAP 0x1CEED4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 6 8
+/begin CHARACTERISTIC tqlim_speed2A "high tqlim_other hub=atlas_start hit=0x1CEED4 atlas=tqlim_speed2A" MAP 0x1CEED4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 6 8
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC tqlim_fuel_temp2A "medium tqlim_other hub=2d hit=0x1D33D8 atlas=tqlim_fuel_temp2A" MAP 0x1D3390 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC tqlim_fuel_temp2 "high tqlim_other hub=atlas_start hit=0x1D2C1C atlas=tqlim_fuel_temp2" MAP 0x1D2C1C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 4 6
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC tqlim_tegt_temp "medium tqlim_other hub=D hit=0x1D3618 atlas=tqlim_tegt_temp" MAP 0x1D35A8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC tqlim_fuel_temp2A "high tqlim_other hub=atlas_start hit=0x1D3390 atlas=tqlim_fuel_temp2A" MAP 0x1D3390 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC smoke_mapA "medium smoke hub=C hit=0x1D0F34 atlas=smoke_mapA" MAP 0x1D1D18 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
+/begin CHARACTERISTIC tqlim_tegt_temp "high tqlim_other hub=atlas_start hit=0x1D35A8 atlas=tqlim_tegt_temp" MAP 0x1D35A8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC smoke_mapA_1D1FC4 "medium smoke hub=C hit=0x1D0F34 atlas=smoke_mapA@1D1FC4" MAP 0x1D1FC4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
+/begin CHARACTERISTIC smoke_mapA "high smoke hub=atlas_start hit=0x1D1D18 atlas=smoke_mapA" MAP 0x1D1D18 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC smoke_mapA_1D2270 "medium smoke hub=C hit=0x1D0F34 atlas=smoke_mapA@1D2270" MAP 0x1D2270 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
+/begin CHARACTERISTIC smoke_mapA_1D1FC4 "high smoke hub=atlas_start hit=0x1D1D18 atlas=smoke_mapA@1D1FC4" MAP 0x1D1FC4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC smoke_mapA_1D251C "medium smoke hub=C hit=0x1D0F34 atlas=smoke_mapA@1D251C" MAP 0x1D251C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
+/begin CHARACTERISTIC smoke_mapA_1D2270 "high smoke hub=atlas_start hit=0x1D1D18 atlas=smoke_mapA@1D2270" MAP 0x1D2270 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC smoke_mapA_1D27C8 "medium smoke hub=C hit=0x1D0F34 atlas=smoke_mapA@1D27C8" MAP 0x1D27C8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
+/begin CHARACTERISTIC smoke_mapA_1D251C "high smoke hub=atlas_start hit=0x1D1D18 atlas=smoke_mapA@1D251C" MAP 0x1D251C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B" MAP 0x1C04AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC smoke_mapA_1D27C8 "high smoke hub=atlas_start hit=0x1D1D18 atlas=smoke_mapA@1D27C8" MAP 0x1D27C8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 19 18
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C072C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C072C" MAP 0x1C072C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B" MAP 0x1C04AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C09AC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C09AC" MAP 0x1C09AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C072C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C072C" MAP 0x1C072C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C0C2C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C0C2C" MAP 0x1C0C2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C09AC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C09AC" MAP 0x1C09AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C0EAC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C0EAC" MAP 0x1C0EAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C0C2C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C0C2C" MAP 0x1C0C2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C112C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C112C" MAP 0x1C112C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C0EAC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C0EAC" MAP 0x1C0EAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C13AC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C13AC" MAP 0x1C13AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C112C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C112C" MAP 0x1C112C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C162C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C162C" MAP 0x1C162C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C13AC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C13AC" MAP 0x1C13AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C18AC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C18AC" MAP 0x1C18AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C162C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C162C" MAP 0x1C162C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C1B2C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C1B2C" MAP 0x1C1B2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C18AC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C18AC" MAP 0x1C18AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C1DAC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C1DAC" MAP 0x1C1DAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C1B2C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C1B2C" MAP 0x1C1B2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C202C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C202C" MAP 0x1C202C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C1DAC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C1DAC" MAP 0x1C1DAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C2A2C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C2A2C" MAP 0x1C2A2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C202C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C202C" MAP 0x1C202C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C2CAC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C2CAC" MAP 0x1C2CAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C2A2C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C2A2C" MAP 0x1C2A2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C2F2C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C2F2C" MAP 0x1C2F2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C2CAC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C2CAC" MAP 0x1C2CAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C31AC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C31AC" MAP 0x1C31AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C2F2C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C2F2C" MAP 0x1C2F2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C342C "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C342C" MAP 0x1C342C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C31AC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C31AC" MAP 0x1C31AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_base3B_1C36AC "high turbo hub=D hit=0x1C09B0 atlas=turbo_base3B@1C36AC" MAP 0x1C36AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
+/begin CHARACTERISTIC turbo_base3B_1C342C "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C342C" MAP 0x1C342C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C" MAP 0x1C3AAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_base3B_1C36AC "high turbo hub=atlas_start hit=0x1C04AC atlas=turbo_base3B@1C36AC" MAP 0x1C36AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 20
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C3D "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C3DAC" MAP 0x1C3DAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C" MAP 0x1C3AAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C40 "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C40AC" MAP 0x1C40AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C3D "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C3DAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C43 "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C43AC" MAP 0x1C43AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C40 "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C40AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C46 "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C46AC" MAP 0x1C46AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C43 "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C43AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C58 "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C58AC" MAP 0x1C58AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C46 "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C46AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C5B "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C5BAC" MAP 0x1C5BAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C58 "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C58AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C5E "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C5EAC" MAP 0x1C5EAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C5B "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C5BAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_int_trq_correction2C_1C67 "high turbo_corr hub=F hit=0x1C43AC atlas=turbo_int_trq_correction2C@1C67AC" MAP 0x1C67AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C5E "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C5EAC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_atm6A "medium turbo_other hub=2d hit=0x1C6978 atlas=turbo_atm6A" MAP 0x1C692C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC turbo_int_trq_correction2C_1C67 "high turbo_corr hub=atlas_start hit=0x1C3AAC atlas=turbo_int_trq_correction2C@1C" MAP 0x1C67AC RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 12 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC turbo_atm6A_1C6A2C "medium turbo_other hub=2d hit=0x1C6978 atlas=turbo_atm6A@1C6A2C" MAP 0x1C6A2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
+/begin CHARACTERISTIC turbo_atm6A "high turbo_other hub=atlas_start hit=0x1C692C atlas=turbo_atm6A" MAP 0x1C692C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B" MAP 0x1E9368 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC turbo_atm6A_1C6A2C "high turbo_other hub=atlas_start hit=0x1C692C atlas=turbo_atm6A@1C6A2C" MAP 0x1C6A2C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 8 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9568 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9568" MAP 0x1E9568 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B" MAP 0x1E9368 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9768 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9768" MAP 0x1E9768 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9568 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9568" MAP 0x1E9568 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9968 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9968" MAP 0x1E9968 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9768 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9768" MAP 0x1E9768 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9B68 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9B68" MAP 0x1E9B68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9968 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9968" MAP 0x1E9968 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9D68 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9D68" MAP 0x1E9D68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9B68 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9B68" MAP 0x1E9B68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_base_int_trq2B_1E9F68 "medium rail hub=B hit=0x1E9BC8 atlas=rail_base_int_trq2B@1E9F68" MAP 0x1E9F68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9D68 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9D68" MAP 0x1E9D68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_request_horsA2L_banque_06 "medium rail hub=F hit=0x1EACFC atlas=rail_request_horsA2L_banque_06" MAP 0x1EAB68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_base_int_trq2B_1E9F68 "high rail hub=atlas_start hit=0x1E9368 atlas=rail_base_int_trq2B@1E9F68" MAP 0x1E9F68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_request_horsA2L_banque_07 "medium rail hub=C hit=0x1EADB0 atlas=rail_request_horsA2L_banque_07" MAP 0x1EAD68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_01 "high rail hub=atlas_start hit=0x1EA168 atlas=rail_request_horsA2L_banque_01" MAP 0x1EA168 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_request_horsA2L_banque_12 "medium rail hub=F hit=0x1EB840 atlas=rail_request_horsA2L_banque_12" MAP 0x1EB768 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_02 "high rail hub=atlas_start hit=0x1EA368 atlas=rail_request_horsA2L_banque_02" MAP 0x1EA368 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_request_horsA2L_banque_14 "medium rail hub=2d hit=0x1EBBC8 atlas=rail_request_horsA2L_banque_14" MAP 0x1EBB68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_03 "high rail hub=atlas_start hit=0x1EA568 atlas=rail_request_horsA2L_banque_03" MAP 0x1EA568 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC rail_lim_horsA2L_A "medium rail hub=C hit=0x1EBDF0 atlas=rail_lim_horsA2L_A" CURVE 0x1EBDD8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 55
+/begin CHARACTERISTIC rail_request_horsA2L_banque_04 "high rail hub=atlas_start hit=0x1EA768 atlas=rail_request_horsA2L_banque_04" MAP 0x1EA768 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A" MAP 0x18C380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_05 "high rail hub=atlas_start hit=0x1EA968 atlas=rail_request_horsA2L_banque_05" MAP 0x1EA968 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18C580 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18C580" MAP 0x18C580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_06 "high rail hub=atlas_start hit=0x1EAB68 atlas=rail_request_horsA2L_banque_06" MAP 0x1EAB68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18C780 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18C780" MAP 0x18C780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_07 "high rail hub=atlas_start hit=0x1EAD68 atlas=rail_request_horsA2L_banque_07" MAP 0x1EAD68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18C980 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18C980" MAP 0x18C980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_08 "high rail hub=atlas_start hit=0x1EAF68 atlas=rail_request_horsA2L_banque_08" MAP 0x1EAF68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18CB80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18CB80" MAP 0x18CB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_09 "high rail hub=atlas_start hit=0x1EB168 atlas=rail_request_horsA2L_banque_09" MAP 0x1EB168 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18CD80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18CD80" MAP 0x18CD80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_10 "high rail hub=atlas_start hit=0x1EB368 atlas=rail_request_horsA2L_banque_10" MAP 0x1EB368 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18CF80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18CF80" MAP 0x18CF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_11 "high rail hub=atlas_start hit=0x1EB568 atlas=rail_request_horsA2L_banque_11" MAP 0x1EB568 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18D180 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18D180" MAP 0x18D180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_12 "high rail hub=atlas_start hit=0x1EB768 atlas=rail_request_horsA2L_banque_12" MAP 0x1EB768 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18D380 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18D380" MAP 0x18D380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_13 "high rail hub=atlas_start hit=0x1EB968 atlas=rail_request_horsA2L_banque_13" MAP 0x1EB968 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18D580 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18D580" MAP 0x18D580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_request_horsA2L_banque_14 "high rail hub=atlas_start hit=0x1EBB68 atlas=rail_request_horsA2L_banque_14" MAP 0x1EBB68 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18D780 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18D780" MAP 0x18D780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_lim_horsA2L_A "high rail hub=atlas_start hit=0x1EBDD8 atlas=rail_lim_horsA2L_A" CURVE 0x1EBDD8 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 55
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18D980 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18D980" MAP 0x18D980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC rail_lim_horsA2L_B "high rail hub=atlas_start hit=0x1EBE58 atlas=rail_lim_horsA2L_B" CURVE 0x1EBE58 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 55
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18DB80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18DB80" MAP 0x18DB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A" MAP 0x18C380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18DD80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18DD80" MAP 0x18DD80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18C580 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18C580" MAP 0x18C580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18DF80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18DF80" MAP 0x18DF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18C780 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18C780" MAP 0x18C780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18E180 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18E180" MAP 0x18E180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18C980 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18C980" MAP 0x18C980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18E380 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18E380" MAP 0x18E380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18CB80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18CB80" MAP 0x18CB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18E580 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18E580" MAP 0x18E580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18CD80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18CD80" MAP 0x18CD80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18E780 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18E780" MAP 0x18E780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18CF80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18CF80" MAP 0x18CF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18E980 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18E980" MAP 0x18E980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18D180 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18D180" MAP 0x18D180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18EB80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18EB80" MAP 0x18EB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18D380 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18D380" MAP 0x18D380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18ED80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18ED80" MAP 0x18ED80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18D580 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18D580" MAP 0x18D580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18EF80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18EF80" MAP 0x18EF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18D780 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18D780" MAP 0x18D780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18F180 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18F180" MAP 0x18F180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18D980 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18D980" MAP 0x18D980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18F380 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18F380" MAP 0x18F380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18DB80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18DB80" MAP 0x18DB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18F580 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18F580" MAP 0x18F580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18DD80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18DD80" MAP 0x18DD80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18F780 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18F780" MAP 0x18F780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18DF80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18DF80" MAP 0x18DF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_18FF80 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@18FF80" MAP 0x18FF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18E180 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18E180" MAP 0x18E180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_190180 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@190180" MAP 0x190180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18E380 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18E380" MAP 0x18E380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_190380 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@190380" MAP 0x190380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18E580 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18E580" MAP 0x18E580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_190580 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@190580" MAP 0x190580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18E780 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18E780" MAP 0x18E780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_190780 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@190780" MAP 0x190780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18E980 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18E980" MAP 0x18E980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC soi_base_int_trq2A_190980 "high soi hub=C hit=0x195988 atlas=soi_base_int_trq2A@190980" MAP 0x190980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+/begin CHARACTERISTIC soi_base_int_trq2A_18EB80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18EB80" MAP 0x18EB80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC duration_inj6A "medium duration hub=2d hit=0x1CDE04 atlas=duration_inj6A" MAP 0x1CDC84 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 18 24
+/begin CHARACTERISTIC soi_base_int_trq2A_18ED80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18ED80" MAP 0x18ED80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 
-/begin CHARACTERISTIC duration_inj6A_1CDFE4 "medium duration hub=2d hit=0x1CDE04 atlas=duration_inj6A@1CDFE4" MAP 0x1CDFE4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 18 24
+/begin CHARACTERISTIC soi_base_int_trq2A_18EF80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18EF80" MAP 0x18EF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_18F180 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18F180" MAP 0x18F180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_18F380 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18F380" MAP 0x18F380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_18F580 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18F580" MAP 0x18F580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_18F780 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18F780" MAP 0x18F780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_18FF80 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@18FF80" MAP 0x18FF80 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_190180 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@190180" MAP 0x190180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_190380 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@190380" MAP 0x190380 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_190580 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@190580" MAP 0x190580 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_190780 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@190780" MAP 0x190780 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC soi_base_int_trq2A_190980 "high soi hub=atlas_start hit=0x18C380 atlas=soi_base_int_trq2A@190980" MAP 0x190980 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC duration_inj6A "high duration hub=atlas_start hit=0x1CDC84 atlas=duration_inj6A" MAP 0x1CDC84 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 18 24
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC duration_inj6A_1CDFE4 "high duration hub=atlas_start hit=0x1CDC84 atlas=duration_inj6A@1CDFE4" MAP 0x1CDFE4 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 18 24
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax3 "high speed_limiter hub=atlas_start hit=0x18047C atlas=vmax3" CURVE 0x18047C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax3_18047E "high speed_limiter hub=atlas_start hit=0x18047C atlas=vmax3@18047E" CURVE 0x18047E RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax2 "high speed_limiter hub=atlas_start hit=0x18048A atlas=vmax2" CURVE 0x18048A RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax2_18048C "high speed_limiter hub=atlas_start hit=0x18048A atlas=vmax2@18048C" CURVE 0x18048C RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax3_18049E "high speed_limiter hub=atlas_start hit=0x18047C atlas=vmax3@18049E" CURVE 0x18049E RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax3_1804A0 "high speed_limiter hub=atlas_start hit=0x18047C atlas=vmax3@1804A0" CURVE 0x1804A0 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC vmax3_1804A2 "high speed_limiter hub=atlas_start hit=0x18047C atlas=vmax3@1804A2" CURVE 0x1804A2 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC airctl_hysteresisC "high egr_control hub=atlas_start hit=0x1D0120 atlas=airctl_hysteresisC" CURVE 0x1D0100 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC airctl_hysteresisC_1D0120 "high egr_control hub=atlas_start hit=0x1D0120 atlas=airctl_hysteresisC@1D0120" CURVE 0x1D0120 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC airctl_hysteresisC_1D0160 "high egr_control hub=atlas_start hit=0x1D0120 atlas=airctl_hysteresisC@1D0160" CURVE 0x1D0160 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC airctl_hysteresisC_1D0180 "high egr_control hub=atlas_start hit=0x1D0120 atlas=airctl_hysteresisC@1D0180" CURVE 0x1D0180 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2002 "high dtc_dpf hub=atlas_start hit=0x1A0071 atlas=DTC_P2002" MAP 0x1A0071 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2453 "high dtc_dpf hub=atlas_start hit=0x1A009D atlas=DTC_P2453" MAP 0x1A009D RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 8
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0471 "high dtc_dpf hub=atlas_start hit=0x1A01D1 atlas=DTC_P0471" MAP 0x1A01D1 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2456 "high dtc_dpf hub=atlas_start hit=0x1A0229 atlas=DTC_P2456" MAP 0x1A0229 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2463 "high dtc_dpf hub=atlas_start hit=0x1A1409 atlas=DTC_P2463" MAP 0x1A1409 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P3004 "high dtc_dpf hub=atlas_start hit=0x1A22A5 atlas=DTC_P3004" MAP 0x1A22A5 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P3005 "high dtc_dpf hub=atlas_start hit=0x1A2381 atlas=DTC_P3005" MAP 0x1A2381 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2458 "high dtc_dpf hub=atlas_start hit=0x1A2959 atlas=DTC_P2458" MAP 0x1A2959 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2454 "high dtc_dpf hub=atlas_start hit=0x1A32A1 atlas=DTC_P2454" MAP 0x1A32A1 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P1428 "high dtc_egr hub=atlas_start hit=0x19E809 atlas=DTC_P1428" MAP 0x19E809 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2425 "high dtc_egr hub=atlas_start hit=0x1A06A1 atlas=DTC_P2425" MAP 0x1A06A1 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2426 "high dtc_egr hub=atlas_start hit=0x1A06CD atlas=DTC_P2426" MAP 0x1A06CD RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2427 "high dtc_egr hub=atlas_start hit=0x1A06F9 atlas=DTC_P2427" MAP 0x1A06F9 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0401 "high dtc_egr hub=atlas_start hit=0x1A0725 atlas=DTC_P0401" MAP 0x1A0725 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0402 "high dtc_egr hub=atlas_start hit=0x1A0751 atlas=DTC_P0402" MAP 0x1A0751 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0403 "high dtc_egr hub=atlas_start hit=0x1A0885 atlas=DTC_P0403" MAP 0x1A0885 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 6
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0400 "high dtc_egr hub=atlas_start hit=0x1A0935 atlas=DTC_P0400" MAP 0x1A0935 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P1400 "high dtc_egr hub=atlas_start hit=0x1A0961 atlas=DTC_P1400" MAP 0x1A0961 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0407 "high dtc_egr hub=atlas_start hit=0x1A3325 atlas=DTC_P0407" MAP 0x1A3325 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2080 "high dtc_egt hub=atlas_start hit=0x19FE09 atlas=DTC_P2080" MAP 0x19FE09 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P242B "high dtc_egt hub=atlas_start hit=0x19FE35 atlas=DTC_P242B" MAP 0x19FE35 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0544 "high dtc_egt hub=atlas_start hit=0x1A2CC9 atlas=DTC_P0544" MAP 0x1A2CC9 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P246E "high dtc_egt hub=atlas_start hit=0x1A2DA5 atlas=DTC_P246E" MAP 0x1A2DA5 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 2
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P0545 "high dtc_egt hub=atlas_start hit=0x1A2DD1 atlas=DTC_P0545" MAP 0x1A2DD1 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P046C "high dtc_egr_dpf hub=atlas_start hit=0x1A32CD atlas=DTC_P046C" MAP 0x1A32CD RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_U1112 "high dtc_egr_com hub=atlas_start hit=0x19E1AD atlas=DTC_U1112" MAP 0x19E1AD RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 6
+  FORMAT "%%5.0"
+/end CHARACTERISTIC
+
+/begin CHARACTERISTIC DTC_P2626 "high dtc_dpf_o2 hub=atlas_start hit=0x1A1931 atlas=DTC_P2626" MAP 0x1A1931 RL_IDENTITY 0 NO_INPUT_QUANTITY 1.0 16 3
   FORMAT "%%5.0"
 /end CHARACTERISTIC
 

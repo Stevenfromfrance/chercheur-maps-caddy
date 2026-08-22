@@ -1,0 +1,29 @@
+A5 Bertin — V1  (8K1907401K / 0008 / 516657 / B3UX / CGKA)
+
+Fichier :
+  A5_516657_V1_S1cons_DPF_EGR_noCHK.fls
+  (copie atelier + copie dossier client AUDI A5 BERTIN)
+
+Contenu
+- Stage 1 conservateur : cellules cal déjà utilisées, +2 % à +12 % max
+  (plafond 0AW / 256 000 km). PAS le Stage 2 A4.
+- DPF off + DTC liées (pack DaVinci DPF)
+- EGR off + DTC liées (pack DaVinci EGR)
+- Swirl flaps avec l’EGR (DaVinci FLAPS)
+- PAS de TVA, PAS de lambda, EEPROM inchangée
+
+Vérifs avant livraison
+- Taille 2 Mo, IDs 516657 / 8K1907401K / 0008 / B3UX / CGKA inchangés
+- Pack DaVinci DPF+EGR+FLAPS 688 o intégral, 0 conflit avec le Stage 2 A4
+- 0 octet TVA, 0 octet lambda
+- V1 ≠ Stage 2 A4 (6661 o d’écart)
+- 1405 cellules 16-bit, max +12,0 %
+
+OBLIGATOIRE avant flash
+1. Checksum WinOLS ou K-TAG (fichier noCHK)
+2. G83 / eau 123 °C (P102A / P2185) traité
+3. EGT S3 P242A traité
+4. Plan FAP physique (P2463 ~55 g, P2002) — le masque ne remplace pas un FAP mort
+
+Ne pas promettre 250 ch / 500 Nm. Cible V1 : ~215–225 ch / ~430–450 Nm.
+Ori 190 ch / 400 Nm.

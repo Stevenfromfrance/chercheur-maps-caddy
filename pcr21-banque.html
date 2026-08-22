@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · PCR2.1 — banque 25 softs</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
+<style>
+body.stage1-page .pair-bar, body.stage1-page .quick-chips, body.stage1-page .stats,
+body.stage1-page .sub, body.stage1-page .work-controls { display: none; }
+.stage1-main .panel {
+  background: var(--panel); border: 1px solid var(--line); border-top: 2px solid var(--accent);
+  border-radius: var(--radius); padding: 1rem 1.1rem; margin: 0 0 1rem; max-width: 64rem;
+}
+.stage1-main .muted { color: var(--muted); }
+.stage1-main code { font-family: var(--mono); font-size: .84rem; background: #0d0d0d; padding: .1rem .35rem; border-radius: 2px; }
+.stage1-main table { border-collapse: collapse; width: 100%; font-size: .86rem; margin-top: .5rem; }
+.stage1-main th, .stage1-main td { border-bottom: 1px solid var(--line); padding: .32rem .4rem; text-align: left; }
+.stage1-main th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.stage1-main .mono { font-family: var(--mono); font-size: .84em; }
+.stage1-main .badge { display: inline-block; font-size: .72rem; font-weight: 600; padding: .12rem .4rem; border: 1px solid var(--line); color: var(--muted); }
+.stage1-main .badge.ok { color: #8ecf9a; border-color: rgba(142, 207, 154, .4); }
+.stage1-main .badge.wait { color: var(--accent2); border-color: rgba(245, 197, 66, .35); }
+.stage1-main .links a { margin-right: .75rem; }
+</style>
+</head>
+<body class="stage1-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>PCR2.1 — banque de softs</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <div class="nav-group on" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="index.html#maps-prio" role="menuitem">Fiches</a>
+          <a href="a5-cgka-edc17cp14.html" role="menuitem">A5 CGKA Bertin</a>
+          <a href="pcr21-banque.html" class="on" role="menuitem">PCR2.1 banque</a>
+          <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
+          <a href="stage1-validated-golf9980.html" role="menuitem">Stage1 validées</a>
+        </div>
+      </div>
+      <a href="index.html#downloads">Pack</a>
+    </nav>
+  </div>
+  </div>
+</header>
+<main class="app-main stage1-main">
+  <div class="sec-head">
+    <h2>25 softs PCR2.1 (9 → 25)</h2>
+    <p class="sec-lead">Atlas + phase2 depuis Damos-Big-Archive / MHH. Atelier Caddy = toujours <b>9979</b> / SM2G0P. Les dumps TUN servent aux adresses, pas à flasher.</p>
+  </div>
+  <section class="panel">
+    <p class="links">
+      <a href="map-finder/reports/pcr21-bin-inventory.md">Inventaire</a>
+      <a href="map-finder/reports/pcr21-soft-bank-status.md">Statut</a>
+      <a href="map-finder/atlas/9979.json">atlas 9979</a>
+    </p>
+    <table>
+      <thead><tr><th>Soft</th><th></th><th>Famille</th><th>HW</th><th>Engine</th><th>Phase2 any</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">0874</td><td><span class="badge wait">new</span></td><td>SM2F0</td><td class="mono">03L906023PH</td><td>CAYC</td><td>33%</td></tr>
+        <tr><td class="mono">2527</td><td><span class="badge wait">new</span></td><td>SM2G0LG</td><td class="mono">03L906023PH</td><td>CAYC</td><td>98%</td></tr>
+        <tr><td class="mono">4875</td><td><span class="badge ok">base</span></td><td>SM2E0</td><td class="mono">03L906023A</td><td>CAYB</td><td>74% · 2 Mo</td></tr>
+        <tr><td class="mono">4881</td><td><span class="badge wait">new</span></td><td>SM2E0</td><td class="mono">03L906023AN</td><td>CAYC</td><td>74%</td></tr>
+        <tr><td class="mono">5249</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023C</td><td>CAYC</td><td>98%</td></tr>
+        <tr><td class="mono">5687</td><td><span class="badge wait">new</span></td><td>SM2E0</td><td class="mono">03L906023G</td><td>CAYC</td><td>98%</td></tr>
+        <tr><td class="mono">5697</td><td><span class="badge wait">new</span></td><td>SM2E0</td><td class="mono">03L906023AG</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono">5862</td><td><span class="badge wait">new</span></td><td>SM2E0</td><td class="mono">03L906023A</td><td>CAYB</td><td>100% ORI</td></tr>
+        <tr><td class="mono">5863</td><td><span class="badge wait">new</span></td><td>SM2E0</td><td class="mono">03L906023B</td><td>CAYC</td><td>100% ORI</td></tr>
+        <tr><td class="mono">6302</td><td><span class="badge wait">new</span></td><td>SM2F0</td><td class="mono">03L906023DQ</td><td>CAYC</td><td>90%</td></tr>
+        <tr><td class="mono">6927</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023AB</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono">6929</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023PA</td><td>CAYE</td><td>self</td></tr>
+        <tr><td class="mono">8790</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023M</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono">8799</td><td><span class="badge wait">new</span></td><td>SM2F0</td><td class="mono">03L906023NF</td><td>CAYC</td><td>92%</td></tr>
+        <tr><td class="mono">8843</td><td><span class="badge wait">new</span></td><td>SM2F0</td><td class="mono">03L906023MS</td><td>CAYC</td><td>92%</td></tr>
+        <tr><td class="mono">8866</td><td><span class="badge wait">new</span></td><td>SM2F0</td><td class="mono">03L906023MM</td><td>CAYC</td><td>92%</td></tr>
+        <tr><td class="mono">9970</td><td><span class="badge wait">new</span></td><td>SM2G0M</td><td class="mono">03L906023G</td><td>CAYC</td><td>22%</td></tr>
+        <tr><td class="mono">9971</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023LC</td><td>CAYB</td><td>86%</td></tr>
+        <tr><td class="mono">9972</td><td><span class="badge ok">base</span></td><td>SM2G0M</td><td class="mono">03L906023BL</td><td>CAYA</td><td>95%</td></tr>
+        <tr><td class="mono">9973</td><td><span class="badge wait">new</span></td><td>SM2G0M</td><td class="mono">03L906023FS</td><td>CAYC</td><td>76%</td></tr>
+        <tr><td class="mono">9977</td><td><span class="badge wait">new</span></td><td>SM2G0P</td><td class="mono">03L906023N</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono">9978</td><td><span class="badge wait">new</span></td><td>SM2G0P</td><td class="mono">03L906023AR</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono"><b>9979</b></td><td><span class="badge ok">atelier</span></td><td>SM2G0P</td><td class="mono">03L906023TB</td><td>CAYE Caddy</td><td>100%</td></tr>
+        <tr><td class="mono">9980</td><td><span class="badge ok">base</span></td><td>SM2G0P</td><td class="mono">Golf</td><td>CAYC</td><td>100%</td></tr>
+        <tr><td class="mono">9983</td><td><span class="badge wait">new</span></td><td>SM2G0P</td><td class="mono">03L906023A</td><td>CAYC</td><td>100%</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin:.8rem 0 0">Frères 9979 (SM2G0P) : 9977 · 9978 · 9980 · 9983. Atlas JSON dans <code>map-finder/atlas/{soft}.json</code>.</p>
+  </section>
+</main>
+<script>
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
+document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (!groupBtn) return;
+  e.preventDefault();
+  const group = groupBtn.closest('.nav-group');
+  const open = group.classList.contains('open');
+  closeNavGroups();
+  if (!open) { group.classList.add('open'); groupBtn.setAttribute('aria-expanded', 'true'); }
+});
+document.addEventListener('click', (e) => { if (!e.target.closest('.nav-group')) closeNavGroups(); });
+</script>
+</body>
+</html>

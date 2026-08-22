@@ -65,19 +65,33 @@
       "0x1065c"
     ]
   },
-  "status": "ori_ok_no_damos",
+  "status": "v1_s1cons_dpf_egr_nochk",
+  "similar_damos": {
+    "pack": "DAMOS SAMMLUNG BIG 07-2015",
+    "folder": "Org_Files_Sortiert Damos/8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41",
+    "sw_ver": "0005",
+    "bosch_sw": "504886",
+    "id": "B3UN",
+    "use": "WinOLS similar import on ORI_FLS.fls — names only, do not copy 0005 offsets onto 0008",
+    "skip": [
+      "AUDI A5 2.7 CR EDC17CP14 163PS CGKB.ols",
+      "8K1907401K_0001..0004",
+      "8K1907401D_0008 / 8K1907401F_0008 (CP04)"
+    ]
+  },
   "no_flash_until": [
-    "DAMOS/A2L or WinOLS mappack 516657/0008",
-    "Coolant / G83 diagnosed (123 C in VCDS)",
-    "EGT S3 P242A diagnosed",
-    "DPF strategy decided (P2463 55g, P2002)"
+    "Coolant / G83 repaired (123 C, P102A / P2185)",
+    "KESS OBD read first: IDs 516657 + size 2 Mo"
   ],
   "pack_goal": [
     "stage1_conservative",
-    "launch_control",
-    "hardcut",
     "dpf_off",
     "egr_off",
     "dtc_related_off"
-  ]
+  ],
+  "pack_later": [
+    "hardcut_v2",
+    "lambda_v1_1_if_P0420"
+  ],
+  "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }

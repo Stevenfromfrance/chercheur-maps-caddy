@@ -1,0 +1,54 @@
+{
+  "description": "Packs applicatifs PCR2.1 — rôles map (référence soft 9979)",
+  "packs": {
+    "stage1": {
+      "label": "Stage 1",
+      "goal": "Couple / smoke / turbo / rail — montée type ACE/V1",
+      "map_roles": ["stage1_core", "stage1_support"]
+    },
+    "dpf_off": {
+      "label": "DPF off + DTC",
+      "goal": "Masques DTC FAP → 00 (+ flags annexes)",
+      "map_roles": ["dtc_dpf", "dtc_egt", "dtc_dpf_o2"]
+    },
+    "egr_off": {
+      "label": "EGR off + DTC",
+      "goal": "Masques DTC EGR → 00 + hystérésis / airctl",
+      "map_roles": ["dtc_egr", "dtc_egr_dpf", "dtc_egr_com", "egr_control"]
+    },
+    "speed_limiter_off": {
+      "label": "Limiteur vitesse off",
+      "goal": "vmax* → FFFF / désactivé",
+      "map_roles": ["speed_limiter"]
+    },
+    "launch_control": {
+      "label": "Launch control",
+      "goal": "Hold couple bas à régime cible via tqlim_cluth_prot (ratio≈0)",
+      "map_roles": ["clutch_prot"]
+    },
+    "hardcut": {
+      "label": "Hardcut",
+      "goal": "0 Nm à régime cut via tqlim_cluth_prot axe RPM",
+      "map_roles": ["clutch_prot"]
+    },
+    "custom": {
+      "label": "Sur mesure",
+      "goal": "Toute map atlas selon brief client",
+      "map_roles": ["*"]
+    }
+  },
+  "role_rules": {
+    "stage1_core": "group == priority",
+    "stage1_support": "folder in {Turbo boost pressure, Smoke limitation, Rail pressure} and group == a2l",
+    "speed_limiter": "folder == Vehicle speed limiters or id startswith vmax",
+    "clutch_prot": "id startswith tqlim_cluth_prot",
+    "egr_control": "folder == Air control or id contains airctl or egr",
+    "dtc_dpf": "group == dtc and folder == DPF",
+    "dtc_egr": "group == dtc and folder == EGR",
+    "dtc_egt": "group == dtc and folder == EGT",
+    "dtc_egr_dpf": "group == dtc and folder == EGR/DPF",
+    "dtc_egr_com": "group == dtc and folder == EGR com",
+    "dtc_dpf_o2": "group == dtc and folder == DPF/O2",
+    "provisoire": "group == provisoire"
+  }
+}

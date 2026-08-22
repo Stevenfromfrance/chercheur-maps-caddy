@@ -1,0 +1,32 @@
+A5 Bertin — DAMOS utile
+Notre ECU : 8K1907401K 0008 / Bosch 516657 / B3UX
+Pas de A2L 0008 / 516657 / B3UX dans Damos-Big-Archive (93 Go, 57k fichiers).
+Plus proche = même SW 8K1907401K, ver 0005 / Bosch 504886 / B3UN.
+COPIÉ ICI depuis :
+  D:\STEVEN\Damos-Big-Archive\Damos-Big-Archive\Org_Files_Sortiert Damos\
+
+=== PRENDRE (WinOLS similar) — déjà copié dans ce dossier ===
+8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41/
+  8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41.a2l   ← 22152 CHARACTERISTIC
+  8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41.hex   ← ori 0005 (pas le nôtre)
+
+Optionnel même dossier :
+  FL_8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41.odx
+  8K1907401K_0005_504886_P714_B3UN_EDC17CP14_2.41.pdx
+
+Backup ASAM (même famille, moins utile que l'A2L) :
+  Master_Eprom_Audi_ab_2.7L/150 MHz/2,7 ltr/Audi B8/0281016456_HS_VL/8K1907401K_0005.zip
+
+=== NE PAS PRENDRE ===
+  0001 / 0002 / 0003 / 0004 (plus loin de 0008)
+  *_uncleaned.hex
+  AUDI A5 2.7 CR EDC17CP14 163PS CGKB.ols   ← CGKB 163 ch, pas CGKA 190
+  8K1907401D_0008 / 8K1907401F_0008         ← EDC17CP04, pas CP14
+  A4 2.7 CR EDC17CP04 190PS CAMA.ols        ← CP04
+  tout le reste du pack (~800 Go)
+
+=== WINOLS ===
+Ouvrir NOTRE ORI_FLS.fls (0008).
+Importer l'A2L 0005 en « similar ».
+Noms OK. Adresses 0005 → 0008 : NE PAS copier telles quelles.
+EEPROM inchangée. Travailler sur une copie du FLS.

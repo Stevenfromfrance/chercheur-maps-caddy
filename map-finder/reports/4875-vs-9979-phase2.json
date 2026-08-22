@@ -1,0 +1,7366 @@
+{
+  "target": "bins\\4875-03L906023A-SM2E0DB.bin",
+  "size": 1006592,
+  "identity": {
+    "project": "SM2E0DB000000111SM2",
+    "cas": "CASM2DB0",
+    "hw": "03L906023A",
+    "engine": "CAYBJ623",
+    "soft_guess": "4875"
+  },
+  "family": "SM2G0P",
+  "atlas_soft": "9979",
+  "atlas_file": "atlas\\9979.json",
+  "atlas_reason": "manual --atlas",
+  "offset_clusters": {},
+  "filter": {
+    "role": null,
+    "pack": null
+  },
+  "summary": {
+    "total": 185,
+    "exact_same_addr": 0,
+    "exact_relocated": 23,
+    "context_only": 16,
+    "miss": 146,
+    "no_fingerprint": 0,
+    "hit_rate_exact": 0.124,
+    "hit_rate_any": 0.211,
+    "offset_predict": 0
+  },
+  "results": [
+    {
+      "id": "AccPed_trq4A",
+      "name": "Drivers wish torque",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CF9C0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8EA6",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1568508
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1566600
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1065212
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1063304
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_base_pu_4A",
+      "name": "Torque limiter",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3190",
+      "length": 416,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A42BA",
+          "hits": [
+            {
+              "addr": 154278,
+              "addr_hex": "025AA6",
+              "delta": -1566740
+            },
+            {
+              "addr": 154298,
+              "addr_hex": "025ABA",
+              "delta": -1566720
+            },
+            {
+              "addr": 657574,
+              "addr_hex": "0A08A6",
+              "delta": -1063444
+            },
+            {
+              "addr": 657594,
+              "addr_hex": "0A08BA",
+              "delta": -1063424
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8CFA",
+          "hits": [
+            {
+              "addr": 173358,
+              "addr_hex": "02A52E",
+              "delta": -1566668
+            },
+            {
+              "addr": 676654,
+              "addr_hex": "0A532E",
+              "delta": -1063372
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1D18",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A9086",
+          "hits": [
+            {
+              "addr": 174334,
+              "addr_hex": "02A8FE",
+              "delta": -1566600
+            },
+            {
+              "addr": 677630,
+              "addr_hex": "0A56FE",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C04AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_atm6A",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C692C",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8302",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5360",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9368",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D7E38",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D65CE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "tqlim_tegt_temp",
+      "name": "Torque limiter by EGT temperature",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D35A8",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A6D1E",
+          "hits": [
+            {
+              "addr": 165318,
+              "addr_hex": "0285C6",
+              "delta": -1566552
+            },
+            {
+              "addr": 668614,
+              "addr_hex": "0A33C6",
+              "delta": -1063256
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A6256",
+          "hits": [
+            {
+              "addr": 162602,
+              "addr_hex": "027B2A",
+              "delta": -1566508
+            },
+            {
+              "addr": 665898,
+              "addr_hex": "0A292A",
+              "delta": -1063212
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_speed2A",
+      "name": "Torque limiter by vehicle speed",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1CEED4",
+      "length": 96,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 335252,
+          "addr_hex": "051D94",
+          "method": "exact"
+        },
+        {
+          "addr": 838548,
+          "addr_hex": "0CCB94",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "180CDB",
+          "hits": [
+            {
+              "addr": 3235,
+              "addr_hex": "000CA3",
+              "delta": -1572920
+            },
+            {
+              "addr": 506531,
+              "addr_hex": "07BAA3",
+              "delta": -1069624
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A60CE",
+          "hits": [
+            {
+              "addr": 18642,
+              "addr_hex": "0048D2",
+              "delta": -1710076
+            },
+            {
+              "addr": 18662,
+              "addr_hex": "0048E6",
+              "delta": -1710056
+            },
+            {
+              "addr": 19942,
+              "addr_hex": "004DE6",
+              "delta": -1708776
+            },
+            {
+              "addr": 162246,
+              "addr_hex": "0279C6",
+              "delta": -1566472
+            },
+            {
+              "addr": 521938,
+              "addr_hex": "07F6D2",
+              "delta": -1206780
+            },
+            {
+              "addr": 521958,
+              "addr_hex": "07F6E6",
+              "delta": -1206760
+            },
+            {
+              "addr": 523238,
+              "addr_hex": "07FBE6",
+              "delta": -1205480
+            },
+            {
+              "addr": 665542,
+              "addr_hex": "0A27C6",
+              "delta": -1063176
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "airctl_hysteresisC",
+      "name": "EGR hysteresis",
+      "roles": [
+        "stage1_core",
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0100",
+      "length": 32,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8D76",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "vmax3",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "stage1_core",
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18047C",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1146,
+          "addr_hex": "00047A",
+          "method": "exact"
+        },
+        {
+          "addr": 1148,
+          "addr_hex": "00047C",
+          "method": "exact"
+        },
+        {
+          "addr": 1180,
+          "addr_hex": "00049C",
+          "method": "exact"
+        },
+        {
+          "addr": 1182,
+          "addr_hex": "00049E",
+          "method": "exact"
+        },
+        {
+          "addr": 38490,
+          "addr_hex": "00965A",
+          "method": "exact"
+        },
+        {
+          "addr": 38558,
+          "addr_hex": "00969E",
+          "method": "exact"
+        },
+        {
+          "addr": 121630,
+          "addr_hex": "01DB1E",
+          "method": "exact"
+        },
+        {
+          "addr": 121664,
+          "addr_hex": "01DB40",
+          "method": "exact"
+        },
+        {
+          "addr": 156598,
+          "addr_hex": "0263B6",
+          "method": "exact"
+        },
+        {
+          "addr": 159898,
+          "addr_hex": "02709A",
+          "method": "exact"
+        },
+        {
+          "addr": 160068,
+          "addr_hex": "027144",
+          "method": "exact"
+        },
+        {
+          "addr": 160594,
+          "addr_hex": "027352",
+          "method": "exact"
+        },
+        {
+          "addr": 160804,
+          "addr_hex": "027424",
+          "method": "exact"
+        },
+        {
+          "addr": 172174,
+          "addr_hex": "02A08E",
+          "method": "exact"
+        },
+        {
+          "addr": 172344,
+          "addr_hex": "02A138",
+          "method": "exact"
+        },
+        {
+          "addr": 172454,
+          "addr_hex": "02A1A6",
+          "method": "exact"
+        },
+        {
+          "addr": 172598,
+          "addr_hex": "02A236",
+          "method": "exact"
+        },
+        {
+          "addr": 172790,
+          "addr_hex": "02A2F6",
+          "method": "exact"
+        },
+        {
+          "addr": 173114,
+          "addr_hex": "02A43A",
+          "method": "exact"
+        },
+        {
+          "addr": 316174,
+          "addr_hex": "04D30E",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "soi_base_int_trq2A",
+      "name": "Start of Injection",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C380",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D2270",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D2270",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A9086",
+          "hits": [
+            {
+              "addr": 174334,
+              "addr_hex": "02A8FE",
+              "delta": -1566600
+            },
+            {
+              "addr": 677630,
+              "addr_hex": "0A56FE",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C43AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C43AC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3AAC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C40AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C40AC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C072C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C072C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C09AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C09AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C0C2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0C2C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C0EAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0EAC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C112C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C112C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C13AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C13AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C162C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C162C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C18AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C18AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C31AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C31AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C342C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C342C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C36AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C36AC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C1B2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1B2C",
+      "length": 640,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 274960,
+          "addr_hex": "043210",
+          "method": "exact"
+        },
+        {
+          "addr": 275600,
+          "addr_hex": "043490",
+          "method": "exact"
+        },
+        {
+          "addr": 276240,
+          "addr_hex": "043710",
+          "method": "exact"
+        },
+        {
+          "addr": 278800,
+          "addr_hex": "044110",
+          "method": "exact"
+        },
+        {
+          "addr": 279440,
+          "addr_hex": "044390",
+          "method": "exact"
+        },
+        {
+          "addr": 280080,
+          "addr_hex": "044610",
+          "method": "exact"
+        },
+        {
+          "addr": 778256,
+          "addr_hex": "0BE010",
+          "method": "exact"
+        },
+        {
+          "addr": 778896,
+          "addr_hex": "0BE290",
+          "method": "exact"
+        },
+        {
+          "addr": 779536,
+          "addr_hex": "0BE510",
+          "method": "exact"
+        },
+        {
+          "addr": 782096,
+          "addr_hex": "0BEF10",
+          "method": "exact"
+        },
+        {
+          "addr": 782736,
+          "addr_hex": "0BF190",
+          "method": "exact"
+        },
+        {
+          "addr": 783376,
+          "addr_hex": "0BF410",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C1DAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1DAC",
+      "length": 640,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 274960,
+          "addr_hex": "043210",
+          "method": "exact"
+        },
+        {
+          "addr": 275600,
+          "addr_hex": "043490",
+          "method": "exact"
+        },
+        {
+          "addr": 276240,
+          "addr_hex": "043710",
+          "method": "exact"
+        },
+        {
+          "addr": 278800,
+          "addr_hex": "044110",
+          "method": "exact"
+        },
+        {
+          "addr": 279440,
+          "addr_hex": "044390",
+          "method": "exact"
+        },
+        {
+          "addr": 280080,
+          "addr_hex": "044610",
+          "method": "exact"
+        },
+        {
+          "addr": 778256,
+          "addr_hex": "0BE010",
+          "method": "exact"
+        },
+        {
+          "addr": 778896,
+          "addr_hex": "0BE290",
+          "method": "exact"
+        },
+        {
+          "addr": 779536,
+          "addr_hex": "0BE510",
+          "method": "exact"
+        },
+        {
+          "addr": 782096,
+          "addr_hex": "0BEF10",
+          "method": "exact"
+        },
+        {
+          "addr": 782736,
+          "addr_hex": "0BF190",
+          "method": "exact"
+        },
+        {
+          "addr": 783376,
+          "addr_hex": "0BF410",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C202C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C202C",
+      "length": 640,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 274960,
+          "addr_hex": "043210",
+          "method": "exact"
+        },
+        {
+          "addr": 275600,
+          "addr_hex": "043490",
+          "method": "exact"
+        },
+        {
+          "addr": 276240,
+          "addr_hex": "043710",
+          "method": "exact"
+        },
+        {
+          "addr": 278800,
+          "addr_hex": "044110",
+          "method": "exact"
+        },
+        {
+          "addr": 279440,
+          "addr_hex": "044390",
+          "method": "exact"
+        },
+        {
+          "addr": 280080,
+          "addr_hex": "044610",
+          "method": "exact"
+        },
+        {
+          "addr": 778256,
+          "addr_hex": "0BE010",
+          "method": "exact"
+        },
+        {
+          "addr": 778896,
+          "addr_hex": "0BE290",
+          "method": "exact"
+        },
+        {
+          "addr": 779536,
+          "addr_hex": "0BE510",
+          "method": "exact"
+        },
+        {
+          "addr": 782096,
+          "addr_hex": "0BEF10",
+          "method": "exact"
+        },
+        {
+          "addr": 782736,
+          "addr_hex": "0BF190",
+          "method": "exact"
+        },
+        {
+          "addr": 783376,
+          "addr_hex": "0BF410",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2A2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2A2C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2CAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2CAC",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2F2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2F2C",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C3DAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3DAC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_atm6A@1C6A2C",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C6A2C",
+      "length": 256,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 295182,
+          "addr_hex": "04810E",
+          "method": "exact"
+        },
+        {
+          "addr": 295184,
+          "addr_hex": "048110",
+          "method": "exact"
+        },
+        {
+          "addr": 798478,
+          "addr_hex": "0C2F0E",
+          "method": "exact"
+        },
+        {
+          "addr": 798480,
+          "addr_hex": "0C2F10",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8302",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5360",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18CB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CB80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18F380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F380",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18F580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F580",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18F780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F780",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 61596,
+          "addr_hex": "00F09C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 62108,
+          "addr_hex": "00F29C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 564892,
+          "addr_hex": "089E9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 565404,
+          "addr_hex": "08A09C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18FF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18FF80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@190180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190180",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@190380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190380",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 64668,
+          "addr_hex": "00FC9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 65180,
+          "addr_hex": "00FE9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 567964,
+          "addr_hex": "08AA9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 568476,
+          "addr_hex": "08AC9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18DF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DF80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18CD80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CD80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18EB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18EB80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18CF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CF80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18DD80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DD80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18E980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E980",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18D380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D380",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18E780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E780",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@190580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190580",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 64668,
+          "addr_hex": "00FC9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 65180,
+          "addr_hex": "00FE9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 567964,
+          "addr_hex": "08AA9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 568476,
+          "addr_hex": "08AC9C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@190780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190780",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@190980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190980",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18C980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C980",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18D180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D180",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18DB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DB80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18F180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F180",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18ED80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18ED80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18EF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18EF80",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18C780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C780",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18D980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D980",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18E580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E580",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18D580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D580",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18E180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E180",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18C580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C580",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18D780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D780",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "soi_base_int_trq2A@18E380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E380",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9768",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9768",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9D68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9D68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9568",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9568",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9968",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9968",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9B68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9B68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9F68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9F68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E8FDE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E8E42",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D80B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D80B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D65F0",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8338",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8338",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6612",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D85B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D85B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6634",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8838",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8838",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6656",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8AB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8AB8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6678",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8D38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8D38",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D669A",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8FB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8FB8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D669A",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9238",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9238",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D66BC",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907426
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907302
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906496
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906462
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906376
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906342
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1885548
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885480
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D94B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D94B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D66DE",
+          "hits": [
+            {
+              "addr": 363622,
+              "addr_hex": "058C66",
+              "delta": -1563256
+            },
+            {
+              "addr": 866918,
+              "addr_hex": "0D3A66",
+              "delta": -1059960
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9738",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9738",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6700",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907494
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907370
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906564
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906530
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906444
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906410
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1885616
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885548
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9C38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9C38",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6744",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907562
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907438
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906632
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906598
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906512
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906478
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1885684
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885616
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9EB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9EB8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6766",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA138",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA138",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6788",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA3B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA3B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D67AA",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA638",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA638",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D67CC",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA8B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA8B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D67EE",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DAB38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DAB38",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6810",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DADB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DADB8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6832",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB038",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB038",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6854",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DC938",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DC938",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6942",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DCBB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DCBB8",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 390036,
+          "addr_hex": "05F394",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 893332,
+          "addr_hex": "0DA194",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6964",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1908106
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907982
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907176
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907142
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1907056
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1907022
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886228
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886160
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DCE38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DCE38",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 390676,
+          "addr_hex": "05F614",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 391316,
+          "addr_hex": "05F894",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 893972,
+          "addr_hex": "0DA414",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 894612,
+          "addr_hex": "0DA694",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6986",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1908140
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1908016
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907210
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907176
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1907090
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1907056
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886262
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886194
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB2B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB2B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6876",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907868
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907744
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906938
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906904
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906818
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906784
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1885990
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885922
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB538",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB538",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6898",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907902
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907778
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906972
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906938
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906852
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906818
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886024
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885956
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB7B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB7B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D68BA",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907936
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907812
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907006
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906972
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906886
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906852
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886058
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885990
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBA38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBA38",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 384916,
+          "addr_hex": "05DF94",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 385556,
+          "addr_hex": "05E214",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 888212,
+          "addr_hex": "0D8D94",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 888852,
+          "addr_hex": "0D9014",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D68DC",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907970
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907846
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907040
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907006
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906920
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906886
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886092
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886024
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBCB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBCB8",
+      "length": 640,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 385556,
+          "addr_hex": "05E214",
+          "method": "exact"
+        },
+        {
+          "addr": 386196,
+          "addr_hex": "05E494",
+          "method": "exact"
+        },
+        {
+          "addr": 386836,
+          "addr_hex": "05E714",
+          "method": "exact"
+        },
+        {
+          "addr": 888852,
+          "addr_hex": "0D9014",
+          "method": "exact"
+        },
+        {
+          "addr": 889492,
+          "addr_hex": "0D9294",
+          "method": "exact"
+        },
+        {
+          "addr": 890132,
+          "addr_hex": "0D9514",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D68FE",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1908004
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907880
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907074
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907040
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906954
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906920
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886126
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886058
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBF38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBF38",
+      "length": 640,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 385556,
+          "addr_hex": "05E214",
+          "method": "exact"
+        },
+        {
+          "addr": 386196,
+          "addr_hex": "05E494",
+          "method": "exact"
+        },
+        {
+          "addr": 386836,
+          "addr_hex": "05E714",
+          "method": "exact"
+        },
+        {
+          "addr": 888852,
+          "addr_hex": "0D9014",
+          "method": "exact"
+        },
+        {
+          "addr": 889492,
+          "addr_hex": "0D9294",
+          "method": "exact"
+        },
+        {
+          "addr": 890132,
+          "addr_hex": "0D9514",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6920",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1908038
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907914
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907108
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907074
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906988
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906954
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886160
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886092
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD0B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD0B8",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 390676,
+          "addr_hex": "05F614",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 391316,
+          "addr_hex": "05F894",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 893972,
+          "addr_hex": "0DA414",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 894612,
+          "addr_hex": "0DA694",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D69A8",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1908174
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1908050
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1907244
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1907210
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1907124
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1907090
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1886296
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1886228
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD338",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD338",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D69CA",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD5B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD5B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D69EC",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D59A6",
+          "hits": [
+            {
+              "addr": 359642,
+              "addr_hex": "057CDA",
+              "delta": -1563852
+            },
+            {
+              "addr": 862938,
+              "addr_hex": "0D2ADA",
+              "delta": -1060556
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D99B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D99B8",
+      "length": 640,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D6722",
+          "hits": [
+            {
+              "addr": 19418,
+              "addr_hex": "004BDA",
+              "delta": -1907528
+            },
+            {
+              "addr": 19542,
+              "addr_hex": "004C56",
+              "delta": -1907404
+            },
+            {
+              "addr": 20348,
+              "addr_hex": "004F7C",
+              "delta": -1906598
+            },
+            {
+              "addr": 20382,
+              "addr_hex": "004F9E",
+              "delta": -1906564
+            },
+            {
+              "addr": 20468,
+              "addr_hex": "004FF4",
+              "delta": -1906478
+            },
+            {
+              "addr": 20502,
+              "addr_hex": "005016",
+              "delta": -1906444
+            },
+            {
+              "addr": 41296,
+              "addr_hex": "00A150",
+              "delta": -1885650
+            },
+            {
+              "addr": 41364,
+              "addr_hex": "00A194",
+              "delta": -1885582
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "tqlim_fuel_temp2A",
+      "name": "Torque limiter by fuel temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3390",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 351128,
+          "addr_hex": "055B98",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 351144,
+          "addr_hex": "055BA8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 351160,
+          "addr_hex": "055BB8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 351176,
+          "addr_hex": "055BC8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 854424,
+          "addr_hex": "0D0998",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 854440,
+          "addr_hex": "0D09A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 854456,
+          "addr_hex": "0D09B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 854472,
+          "addr_hex": "0D09C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A6DD9",
+          "hits": [
+            {
+              "addr": 164577,
+              "addr_hex": "0282E1",
+              "delta": -1567480
+            },
+            {
+              "addr": 165473,
+              "addr_hex": "028661",
+              "delta": -1566584
+            },
+            {
+              "addr": 667873,
+              "addr_hex": "0A30E1",
+              "delta": -1064184
+            },
+            {
+              "addr": 668769,
+              "addr_hex": "0A3461",
+              "delta": -1063288
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A6232",
+          "hits": [
+            {
+              "addr": 162566,
+              "addr_hex": "027B06",
+              "delta": -1566508
+            },
+            {
+              "addr": 665862,
+              "addr_hex": "0A2906",
+              "delta": -1063212
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D251C",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D251C",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A9086",
+          "hits": [
+            {
+              "addr": 174334,
+              "addr_hex": "02A8FE",
+              "delta": -1566600
+            },
+            {
+              "addr": 677630,
+              "addr_hex": "0A56FE",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFAC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFAC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8752",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1566632
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1564724
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1063336
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1061428
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFBC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFBC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8752",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1566632
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1564724
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1063336
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1061428
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFCC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFCC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8752",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1566632
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1564724
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1063336
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1061428
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFDC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFDC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8752",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1566632
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1564724
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1063336
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1061428
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFEC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFEC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8752",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1566632
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1564724
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1063336
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1061428
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1CFFC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFFC0",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8EA6",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1568508
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1566600
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1065212
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1063304
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D27C8",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D27C8",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A9086",
+          "hits": [
+            {
+              "addr": 174334,
+              "addr_hex": "02A8FE",
+              "delta": -1566600
+            },
+            {
+              "addr": 677630,
+              "addr_hex": "0A56FE",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C58AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C58AC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5EAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5EAC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D1FC4",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1FC4",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A9086",
+          "hits": [
+            {
+              "addr": 174334,
+              "addr_hex": "02A8FE",
+              "delta": -1566600
+            },
+            {
+              "addr": 677630,
+              "addr_hex": "0A56FE",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5BAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5BAC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C67AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C67AC",
+      "length": 384,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "scal_trq_cluth",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183F74",
+      "length": 64,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "183F09",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "183EF6",
+          "hits": [
+            {
+              "addr": 14374,
+              "addr_hex": "003826",
+              "delta": -1574608
+            },
+            {
+              "addr": 517670,
+              "addr_hex": "07E626",
+              "delta": -1071312
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "scal_trq_cluth@183FB4",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183FB4",
+      "length": 64,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "183F09",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "183EF6",
+          "hits": [
+            {
+              "addr": 14374,
+              "addr_hex": "003826",
+              "delta": -1574608
+            },
+            {
+              "addr": 517670,
+              "addr_hex": "07E626",
+              "delta": -1071312
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "scal_trq_cluth@183FF4",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183FF4",
+      "length": 64,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "183F09",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "183EF6",
+          "hits": [
+            {
+              "addr": 14374,
+              "addr_hex": "003826",
+              "delta": -1574608
+            },
+            {
+              "addr": 517670,
+              "addr_hex": "07E626",
+              "delta": -1071312
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "scal_trq_cluth@184034",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "184034",
+      "length": 64,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "183F09",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "183EF6",
+          "hits": [
+            {
+              "addr": 14374,
+              "addr_hex": "003826",
+              "delta": -1574608
+            },
+            {
+              "addr": 517670,
+              "addr_hex": "07E626",
+              "delta": -1071312
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "duration_inj6A",
+      "name": "Injection duration",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1CDC84",
+      "length": 864,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 330768,
+          "addr_hex": "050C10",
+          "method": "exact"
+        },
+        {
+          "addr": 834064,
+          "addr_hex": "0CBA10",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8FBE",
+          "hits": [
+            {
+              "addr": 174134,
+              "addr_hex": "02A836",
+              "delta": -1566600
+            },
+            {
+              "addr": 677430,
+              "addr_hex": "0A5636",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8692",
+          "hits": [
+            {
+              "addr": 171754,
+              "addr_hex": "029EEA",
+              "delta": -1566632
+            },
+            {
+              "addr": 675050,
+              "addr_hex": "0A4CEA",
+              "delta": -1063336
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "duration_inj6A@1CDFE4",
+      "name": "Injection duration",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1CDFE4",
+      "length": 864,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 330768,
+          "addr_hex": "050C10",
+          "method": "exact"
+        },
+        {
+          "addr": 834064,
+          "addr_hex": "0CBA10",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8FBE",
+          "hits": [
+            {
+              "addr": 174134,
+              "addr_hex": "02A836",
+              "delta": -1566600
+            },
+            {
+              "addr": 677430,
+              "addr_hex": "0A5636",
+              "delta": -1063304
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8692",
+          "hits": [
+            {
+              "addr": 171754,
+              "addr_hex": "029EEA",
+              "delta": -1566632
+            },
+            {
+              "addr": 675050,
+              "addr_hex": "0A4CEA",
+              "delta": -1063336
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_fuel_temp2",
+      "name": "Torque limiter by fuel temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D2C1C",
+      "length": 48,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 350044,
+          "addr_hex": "05575C",
+          "method": "exact"
+        },
+        {
+          "addr": 853340,
+          "addr_hex": "0D055C",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "180C21",
+          "hits": [
+            {
+              "addr": 3071,
+              "addr_hex": "000BFF",
+              "delta": -1572898
+            },
+            {
+              "addr": 506367,
+              "addr_hex": "07B9FF",
+              "delta": -1069602
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E2E",
+          "hits": [
+            {
+              "addr": 39890,
+              "addr_hex": "009BD2",
+              "delta": -1700444
+            },
+            {
+              "addr": 39910,
+              "addr_hex": "009BE6",
+              "delta": -1700424
+            },
+            {
+              "addr": 39930,
+              "addr_hex": "009BFA",
+              "delta": -1700404
+            },
+            {
+              "addr": 162428,
+              "addr_hex": "027A7C",
+              "delta": -1577906
+            },
+            {
+              "addr": 172004,
+              "addr_hex": "029FE4",
+              "delta": -1568330
+            },
+            {
+              "addr": 173042,
+              "addr_hex": "02A3F2",
+              "delta": -1567292
+            },
+            {
+              "addr": 173938,
+              "addr_hex": "02A772",
+              "delta": -1566396
+            },
+            {
+              "addr": 543186,
+              "addr_hex": "0849D2",
+              "delta": -1197148
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "trq__nm_corr_tmot",
+      "name": "Torque limiter correction by engine temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3330",
+      "length": 96,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 351096,
+          "addr_hex": "055B78",
+          "method": "exact"
+        },
+        {
+          "addr": 854392,
+          "addr_hex": "0D0978",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A6C2D",
+          "hits": [
+            {
+              "addr": 165085,
+              "addr_hex": "0284DD",
+              "delta": -1566544
+            },
+            {
+              "addr": 668381,
+              "addr_hex": "0A32DD",
+              "delta": -1063248
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A6222",
+          "hits": [
+            {
+              "addr": 162550,
+              "addr_hex": "027AF6",
+              "delta": -1566508
+            },
+            {
+              "addr": 665846,
+              "addr_hex": "0A28F6",
+              "delta": -1063212
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "airctl_hysteresisC@1D0120",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0120",
+      "length": 32,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8D76",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "airctl_hysteresisC@1D0180",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0180",
+      "length": 32,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8D76",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "tqlim_cluth_prot",
+      "name": "Torque limiter for clutch protection",
+      "roles": [
+        "clutch_prot"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D0860",
+      "length": 128,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 341864,
+          "addr_hex": "053768",
+          "method": "exact"
+        },
+        {
+          "addr": 845160,
+          "addr_hex": "0CE568",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A81FE",
+          "hits": [
+            {
+              "addr": 170762,
+              "addr_hex": "029B0A",
+              "delta": -1566452
+            },
+            {
+              "addr": 674058,
+              "addr_hex": "0A490A",
+              "delta": -1063156
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A612A",
+          "hits": [
+            {
+              "addr": 162338,
+              "addr_hex": "027A22",
+              "delta": -1566472
+            },
+            {
+              "addr": 665634,
+              "addr_hex": "0A2822",
+              "delta": -1063176
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "airctl_hysteresisC@1D0160",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0160",
+      "length": 32,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8D76",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C46AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C46AC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 16792,
+          "addr_hex": "004198",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16794,
+          "addr_hex": "00419A",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16796,
+          "addr_hex": "00419C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16798,
+          "addr_hex": "00419E",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16800,
+          "addr_hex": "0041A0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16802,
+          "addr_hex": "0041A2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16804,
+          "addr_hex": "0041A4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16806,
+          "addr_hex": "0041A6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16808,
+          "addr_hex": "0041A8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16810,
+          "addr_hex": "0041AA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16812,
+          "addr_hex": "0041AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16814,
+          "addr_hex": "0041AE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16816,
+          "addr_hex": "0041B0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16818,
+          "addr_hex": "0041B2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16820,
+          "addr_hex": "0041B4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16822,
+          "addr_hex": "0041B6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16824,
+          "addr_hex": "0041B8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16826,
+          "addr_hex": "0041BA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16828,
+          "addr_hex": "0041BC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16830,
+          "addr_hex": "0041BE",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16832,
+          "addr_hex": "0041C0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16834,
+          "addr_hex": "0041C2",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16836,
+          "addr_hex": "0041C4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16838,
+          "addr_hex": "0041C6",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16840,
+          "addr_hex": "0041C8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16842,
+          "addr_hex": "0041CA",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 16844,
+          "addr_hex": "0041CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": []
+        }
+      }
+    },
+    {
+      "id": "AccPed_trq4A@1D0640",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1D0640",
+      "length": 256,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A90C2",
+          "hits": []
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8EA6",
+          "hits": [
+            {
+              "addr": 171946,
+              "addr_hex": "029FAA",
+              "delta": -1568508
+            },
+            {
+              "addr": 173854,
+              "addr_hex": "02A71E",
+              "delta": -1566600
+            },
+            {
+              "addr": 675242,
+              "addr_hex": "0A4DAA",
+              "delta": -1065212
+            },
+            {
+              "addr": 677150,
+              "addr_hex": "0A551E",
+              "delta": -1063304
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "vmax2",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18048A",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1160,
+          "addr_hex": "000488",
+          "method": "exact"
+        },
+        {
+          "addr": 1162,
+          "addr_hex": "00048A",
+          "method": "exact"
+        },
+        {
+          "addr": 163474,
+          "addr_hex": "027E92",
+          "method": "exact"
+        },
+        {
+          "addr": 163538,
+          "addr_hex": "027ED2",
+          "method": "exact"
+        },
+        {
+          "addr": 170182,
+          "addr_hex": "0298C6",
+          "method": "exact"
+        },
+        {
+          "addr": 220687,
+          "addr_hex": "035E0F",
+          "method": "exact"
+        },
+        {
+          "addr": 221071,
+          "addr_hex": "035F8F",
+          "method": "exact"
+        },
+        {
+          "addr": 269342,
+          "addr_hex": "041C1E",
+          "method": "exact"
+        },
+        {
+          "addr": 315616,
+          "addr_hex": "04D0E0",
+          "method": "exact"
+        },
+        {
+          "addr": 504456,
+          "addr_hex": "07B288",
+          "method": "exact"
+        },
+        {
+          "addr": 504458,
+          "addr_hex": "07B28A",
+          "method": "exact"
+        },
+        {
+          "addr": 666770,
+          "addr_hex": "0A2C92",
+          "method": "exact"
+        },
+        {
+          "addr": 666834,
+          "addr_hex": "0A2CD2",
+          "method": "exact"
+        },
+        {
+          "addr": 673478,
+          "addr_hex": "0A46C6",
+          "method": "exact"
+        },
+        {
+          "addr": 723983,
+          "addr_hex": "0B0C0F",
+          "method": "exact"
+        },
+        {
+          "addr": 724367,
+          "addr_hex": "0B0D8F",
+          "method": "exact"
+        },
+        {
+          "addr": 772638,
+          "addr_hex": "0BCA1E",
+          "method": "exact"
+        },
+        {
+          "addr": 818912,
+          "addr_hex": "0C7EE0",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "vmax2@18048C",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18048C",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1160,
+          "addr_hex": "000488",
+          "method": "exact"
+        },
+        {
+          "addr": 1162,
+          "addr_hex": "00048A",
+          "method": "exact"
+        },
+        {
+          "addr": 163474,
+          "addr_hex": "027E92",
+          "method": "exact"
+        },
+        {
+          "addr": 163538,
+          "addr_hex": "027ED2",
+          "method": "exact"
+        },
+        {
+          "addr": 170182,
+          "addr_hex": "0298C6",
+          "method": "exact"
+        },
+        {
+          "addr": 220687,
+          "addr_hex": "035E0F",
+          "method": "exact"
+        },
+        {
+          "addr": 221071,
+          "addr_hex": "035F8F",
+          "method": "exact"
+        },
+        {
+          "addr": 269342,
+          "addr_hex": "041C1E",
+          "method": "exact"
+        },
+        {
+          "addr": 315616,
+          "addr_hex": "04D0E0",
+          "method": "exact"
+        },
+        {
+          "addr": 504456,
+          "addr_hex": "07B288",
+          "method": "exact"
+        },
+        {
+          "addr": 504458,
+          "addr_hex": "07B28A",
+          "method": "exact"
+        },
+        {
+          "addr": 666770,
+          "addr_hex": "0A2C92",
+          "method": "exact"
+        },
+        {
+          "addr": 666834,
+          "addr_hex": "0A2CD2",
+          "method": "exact"
+        },
+        {
+          "addr": 673478,
+          "addr_hex": "0A46C6",
+          "method": "exact"
+        },
+        {
+          "addr": 723983,
+          "addr_hex": "0B0C0F",
+          "method": "exact"
+        },
+        {
+          "addr": 724367,
+          "addr_hex": "0B0D8F",
+          "method": "exact"
+        },
+        {
+          "addr": 772638,
+          "addr_hex": "0BCA1E",
+          "method": "exact"
+        },
+        {
+          "addr": 818912,
+          "addr_hex": "0C7EE0",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "vmax3@18047E",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18047E",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1146,
+          "addr_hex": "00047A",
+          "method": "exact"
+        },
+        {
+          "addr": 1148,
+          "addr_hex": "00047C",
+          "method": "exact"
+        },
+        {
+          "addr": 1180,
+          "addr_hex": "00049C",
+          "method": "exact"
+        },
+        {
+          "addr": 1182,
+          "addr_hex": "00049E",
+          "method": "exact"
+        },
+        {
+          "addr": 38490,
+          "addr_hex": "00965A",
+          "method": "exact"
+        },
+        {
+          "addr": 38558,
+          "addr_hex": "00969E",
+          "method": "exact"
+        },
+        {
+          "addr": 121630,
+          "addr_hex": "01DB1E",
+          "method": "exact"
+        },
+        {
+          "addr": 121664,
+          "addr_hex": "01DB40",
+          "method": "exact"
+        },
+        {
+          "addr": 156598,
+          "addr_hex": "0263B6",
+          "method": "exact"
+        },
+        {
+          "addr": 159898,
+          "addr_hex": "02709A",
+          "method": "exact"
+        },
+        {
+          "addr": 160068,
+          "addr_hex": "027144",
+          "method": "exact"
+        },
+        {
+          "addr": 160594,
+          "addr_hex": "027352",
+          "method": "exact"
+        },
+        {
+          "addr": 160804,
+          "addr_hex": "027424",
+          "method": "exact"
+        },
+        {
+          "addr": 172174,
+          "addr_hex": "02A08E",
+          "method": "exact"
+        },
+        {
+          "addr": 172344,
+          "addr_hex": "02A138",
+          "method": "exact"
+        },
+        {
+          "addr": 172454,
+          "addr_hex": "02A1A6",
+          "method": "exact"
+        },
+        {
+          "addr": 172598,
+          "addr_hex": "02A236",
+          "method": "exact"
+        },
+        {
+          "addr": 172790,
+          "addr_hex": "02A2F6",
+          "method": "exact"
+        },
+        {
+          "addr": 173114,
+          "addr_hex": "02A43A",
+          "method": "exact"
+        },
+        {
+          "addr": 316174,
+          "addr_hex": "04D30E",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "vmax3@18049E",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18049E",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1146,
+          "addr_hex": "00047A",
+          "method": "exact"
+        },
+        {
+          "addr": 1148,
+          "addr_hex": "00047C",
+          "method": "exact"
+        },
+        {
+          "addr": 1180,
+          "addr_hex": "00049C",
+          "method": "exact"
+        },
+        {
+          "addr": 1182,
+          "addr_hex": "00049E",
+          "method": "exact"
+        },
+        {
+          "addr": 38490,
+          "addr_hex": "00965A",
+          "method": "exact"
+        },
+        {
+          "addr": 38558,
+          "addr_hex": "00969E",
+          "method": "exact"
+        },
+        {
+          "addr": 121630,
+          "addr_hex": "01DB1E",
+          "method": "exact"
+        },
+        {
+          "addr": 121664,
+          "addr_hex": "01DB40",
+          "method": "exact"
+        },
+        {
+          "addr": 156598,
+          "addr_hex": "0263B6",
+          "method": "exact"
+        },
+        {
+          "addr": 159898,
+          "addr_hex": "02709A",
+          "method": "exact"
+        },
+        {
+          "addr": 160068,
+          "addr_hex": "027144",
+          "method": "exact"
+        },
+        {
+          "addr": 160594,
+          "addr_hex": "027352",
+          "method": "exact"
+        },
+        {
+          "addr": 160804,
+          "addr_hex": "027424",
+          "method": "exact"
+        },
+        {
+          "addr": 172174,
+          "addr_hex": "02A08E",
+          "method": "exact"
+        },
+        {
+          "addr": 172344,
+          "addr_hex": "02A138",
+          "method": "exact"
+        },
+        {
+          "addr": 172454,
+          "addr_hex": "02A1A6",
+          "method": "exact"
+        },
+        {
+          "addr": 172598,
+          "addr_hex": "02A236",
+          "method": "exact"
+        },
+        {
+          "addr": 172790,
+          "addr_hex": "02A2F6",
+          "method": "exact"
+        },
+        {
+          "addr": 173114,
+          "addr_hex": "02A43A",
+          "method": "exact"
+        },
+        {
+          "addr": 316174,
+          "addr_hex": "04D30E",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "vmax3@1804A0",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "1804A0",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1146,
+          "addr_hex": "00047A",
+          "method": "exact"
+        },
+        {
+          "addr": 1148,
+          "addr_hex": "00047C",
+          "method": "exact"
+        },
+        {
+          "addr": 1180,
+          "addr_hex": "00049C",
+          "method": "exact"
+        },
+        {
+          "addr": 1182,
+          "addr_hex": "00049E",
+          "method": "exact"
+        },
+        {
+          "addr": 38490,
+          "addr_hex": "00965A",
+          "method": "exact"
+        },
+        {
+          "addr": 38558,
+          "addr_hex": "00969E",
+          "method": "exact"
+        },
+        {
+          "addr": 121630,
+          "addr_hex": "01DB1E",
+          "method": "exact"
+        },
+        {
+          "addr": 121664,
+          "addr_hex": "01DB40",
+          "method": "exact"
+        },
+        {
+          "addr": 156598,
+          "addr_hex": "0263B6",
+          "method": "exact"
+        },
+        {
+          "addr": 159898,
+          "addr_hex": "02709A",
+          "method": "exact"
+        },
+        {
+          "addr": 160068,
+          "addr_hex": "027144",
+          "method": "exact"
+        },
+        {
+          "addr": 160594,
+          "addr_hex": "027352",
+          "method": "exact"
+        },
+        {
+          "addr": 160804,
+          "addr_hex": "027424",
+          "method": "exact"
+        },
+        {
+          "addr": 172174,
+          "addr_hex": "02A08E",
+          "method": "exact"
+        },
+        {
+          "addr": 172344,
+          "addr_hex": "02A138",
+          "method": "exact"
+        },
+        {
+          "addr": 172454,
+          "addr_hex": "02A1A6",
+          "method": "exact"
+        },
+        {
+          "addr": 172598,
+          "addr_hex": "02A236",
+          "method": "exact"
+        },
+        {
+          "addr": 172790,
+          "addr_hex": "02A2F6",
+          "method": "exact"
+        },
+        {
+          "addr": 173114,
+          "addr_hex": "02A43A",
+          "method": "exact"
+        },
+        {
+          "addr": 316174,
+          "addr_hex": "04D30E",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "vmax3@1804A2",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "1804A2",
+      "length": 2,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 1146,
+          "addr_hex": "00047A",
+          "method": "exact"
+        },
+        {
+          "addr": 1148,
+          "addr_hex": "00047C",
+          "method": "exact"
+        },
+        {
+          "addr": 1180,
+          "addr_hex": "00049C",
+          "method": "exact"
+        },
+        {
+          "addr": 1182,
+          "addr_hex": "00049E",
+          "method": "exact"
+        },
+        {
+          "addr": 38490,
+          "addr_hex": "00965A",
+          "method": "exact"
+        },
+        {
+          "addr": 38558,
+          "addr_hex": "00969E",
+          "method": "exact"
+        },
+        {
+          "addr": 121630,
+          "addr_hex": "01DB1E",
+          "method": "exact"
+        },
+        {
+          "addr": 121664,
+          "addr_hex": "01DB40",
+          "method": "exact"
+        },
+        {
+          "addr": 156598,
+          "addr_hex": "0263B6",
+          "method": "exact"
+        },
+        {
+          "addr": 159898,
+          "addr_hex": "02709A",
+          "method": "exact"
+        },
+        {
+          "addr": 160068,
+          "addr_hex": "027144",
+          "method": "exact"
+        },
+        {
+          "addr": 160594,
+          "addr_hex": "027352",
+          "method": "exact"
+        },
+        {
+          "addr": 160804,
+          "addr_hex": "027424",
+          "method": "exact"
+        },
+        {
+          "addr": 172174,
+          "addr_hex": "02A08E",
+          "method": "exact"
+        },
+        {
+          "addr": 172344,
+          "addr_hex": "02A138",
+          "method": "exact"
+        },
+        {
+          "addr": 172454,
+          "addr_hex": "02A1A6",
+          "method": "exact"
+        },
+        {
+          "addr": 172598,
+          "addr_hex": "02A236",
+          "method": "exact"
+        },
+        {
+          "addr": 172790,
+          "addr_hex": "02A2F6",
+          "method": "exact"
+        },
+        {
+          "addr": 173114,
+          "addr_hex": "02A43A",
+          "method": "exact"
+        },
+        {
+          "addr": 316174,
+          "addr_hex": "04D30E",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0400",
+      "name": "DTC OFF P0400 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0935",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0401",
+      "name": "DTC OFF P0401 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0725",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0402",
+      "name": "DTC OFF P0402 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0751",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0403",
+      "name": "DTC OFF P0403 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0885",
+      "length": 83,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0407",
+      "name": "DTC OFF P0407 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A3325",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0408",
+      "name": "DTC OFF P0408 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A3325",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P046C",
+      "name": "DTC OFF P046C (EGR/DPF)",
+      "roles": [
+        "dtc_egr_dpf"
+      ],
+      "folder": "EGR/DPF",
+      "ref_addr_hex": "1A32CD",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0471",
+      "name": "DTC OFF P0471 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A01D1",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0544",
+      "name": "DTC OFF P0544 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2CC9",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P0545",
+      "name": "DTC OFF P0545 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2DD1",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P1400",
+      "name": "DTC OFF P1400 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0961",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P1428",
+      "name": "DTC OFF P1428 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "19E809",
+      "length": 23,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 131017,
+          "addr_hex": "01FFC9",
+          "method": "exact"
+        },
+        {
+          "addr": 634313,
+          "addr_hex": "09ADC9",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P147A",
+      "name": "DTC OFF P147A (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "19E809",
+      "length": 23,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 131017,
+          "addr_hex": "01FFC9",
+          "method": "exact"
+        },
+        {
+          "addr": 634313,
+          "addr_hex": "09ADC9",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2002",
+      "name": "DTC OFF P2002 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A0071",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2080",
+      "name": "DTC OFF P2080 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "19FE09",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2425",
+      "name": "DTC OFF P2425 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06A1",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2426",
+      "name": "DTC OFF P2426 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06CD",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2427",
+      "name": "DTC OFF P2427 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06F9",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P242B",
+      "name": "DTC OFF P242B (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "19FE35",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2453",
+      "name": "DTC OFF P2453 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A009D",
+      "length": 127,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2454",
+      "name": "DTC OFF P2454 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A32A1",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2455",
+      "name": "DTC OFF P2455 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A32A1",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2456",
+      "name": "DTC OFF P2456 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A0229",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2458",
+      "name": "DTC OFF P2458 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A2959",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2463",
+      "name": "DTC OFF P2463 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A1409",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P246E",
+      "name": "DTC OFF P246E (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2DA5",
+      "length": 23,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P2626",
+      "name": "DTC OFF P2626 (DPF/O2)",
+      "roles": [
+        "dtc_dpf_o2"
+      ],
+      "folder": "DPF/O2",
+      "ref_addr_hex": "1A1931",
+      "length": 39,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P3004",
+      "name": "DTC OFF P3004 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A22A5",
+      "length": 26,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_P3005",
+      "name": "DTC OFF P3005 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A2381",
+      "length": 26,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "DTC_U1112",
+      "name": "DTC OFF U1112 (EGR com)",
+      "roles": [
+        "dtc_egr_com"
+      ],
+      "folder": "EGR com",
+      "ref_addr_hex": "19E1AD",
+      "length": 83,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_01",
+      "name": "Suite rail (hors A2L) banque 1",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA168",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_02",
+      "name": "Suite rail (hors A2L) banque 2",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA368",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_03",
+      "name": "Suite rail (hors A2L) banque 3",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA568",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_04",
+      "name": "Suite rail (hors A2L) banque 4",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA768",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_05",
+      "name": "Suite rail (hors A2L) banque 5",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA968",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_06",
+      "name": "Suite rail (hors A2L) banque 6",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAB68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_07",
+      "name": "Suite rail (hors A2L) banque 7",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAD68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_08",
+      "name": "Suite rail (hors A2L) banque 8",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAF68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_09",
+      "name": "Suite rail (hors A2L) banque 9",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB168",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_10",
+      "name": "Suite rail (hors A2L) banque 10",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB368",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_11",
+      "name": "Suite rail (hors A2L) banque 11",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB568",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_12",
+      "name": "Suite rail (hors A2L) banque 12",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB768",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_13",
+      "name": "Suite rail (hors A2L) banque 13",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB968",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_request_horsA2L_banque_14",
+      "name": "Suite rail (hors A2L) banque 14",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBB68",
+      "length": 512,
+      "status": "miss",
+      "matches": [],
+      "axes": {}
+    },
+    {
+      "id": "rail_lim_horsA2L_A",
+      "name": "Limiteur rail (hors A2L) A",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBDD8",
+      "length": 111,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 458648,
+          "addr_hex": "06FF98",
+          "method": "exact"
+        },
+        {
+          "addr": 458776,
+          "addr_hex": "070018",
+          "method": "exact"
+        },
+        {
+          "addr": 961944,
+          "addr_hex": "0EAD98",
+          "method": "exact"
+        },
+        {
+          "addr": 962072,
+          "addr_hex": "0EAE18",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "rail_lim_horsA2L_B",
+      "name": "Limiteur rail (hors A2L) B",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBE58",
+      "length": 111,
+      "status": "exact_relocated",
+      "matches": [
+        {
+          "addr": 458648,
+          "addr_hex": "06FF98",
+          "method": "exact"
+        },
+        {
+          "addr": 458776,
+          "addr_hex": "070018",
+          "method": "exact"
+        },
+        {
+          "addr": 961944,
+          "addr_hex": "0EAD98",
+          "method": "exact"
+        },
+        {
+          "addr": 962072,
+          "addr_hex": "0EAE18",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    }
+  ]
+}

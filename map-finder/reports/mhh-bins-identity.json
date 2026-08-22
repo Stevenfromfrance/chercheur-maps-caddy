@@ -1,0 +1,69 @@
+[
+  {
+    "project": "SM2E0DB000000111SM2",
+    "cas": "CASM2DB0",
+    "hw": "03L906023A",
+    "engine": "CAYBJ623",
+    "soft_guess": "4875",
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\03L906023A 4875\\03L906023A 4875",
+    "name": "03L906023A 4875",
+    "size": 1006592,
+    "kind": "unknown",
+    "magic": "ffffffffffffffff"
+  },
+  {
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\03L906023T\\03L906023T.frf",
+    "name": "03L906023T.frf",
+    "size": 1688072,
+    "kind": "frf-or-container",
+    "magic": "0a9c927c51a5e1b5"
+  },
+  {
+    "project": "SM2G0P2000000111SM2",
+    "cas": "CASM2P20",
+    "hw": "03L906023N",
+    "engine": "CAYCJ623",
+    "soft_guess": "9977",
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\9977\\9977\\03L906023N_9977-20260330-180555 mama.bin",
+    "name": "03L906023N_9977-20260330-180555 mama.bin",
+    "size": 2097152,
+    "kind": "cal-2mb",
+    "magic": "ffffffffffffffff"
+  },
+  {
+    "project": "SM2F0K3000000111SM2",
+    "cas": "CASM2K30",
+    "hw": "03L906023AB",
+    "engine": "CAYCJ623",
+    "soft_guess": "6927",
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\A16_8856\\A16_8856.ori",
+    "name": "A16_8856.ori",
+    "size": 2097152,
+    "kind": "cal-2mb",
+    "magic": "ffffffffffffffff"
+  },
+  {
+    "project": "SM2F0L9500000111SM2",
+    "cas": "CASM2L95",
+    "hw": "03L906023M",
+    "engine": "CAYCJ623",
+    "soft_guess": "8790",
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\cayc 03l906023m 8790\\cayc 03l906023m 8790",
+    "name": "cayc 03l906023m 8790",
+    "size": 2097152,
+    "kind": "cal-2mb",
+    "magic": "ffffffffffffffff"
+  },
+  {
+    "project": "SM2G0M0000000111SM2",
+    "cas": "CASM2M00",
+    "hw": "03L906023BL",
+    "engine": "CAYAJ623",
+    "soft_guess": "9972",
+    "path": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\mhh\\FL_03L906023BL_9972_FILETYPE_SIEMENS_SIEMENS_xx_03L906023BL_0\\FL_03L906023BL_9972_FILETYPE_SIEMENS_SIEMENS_xx_03L906023BL_0.ori",
+    "name": "FL_03L906023BL_9972_FILETYPE_SIEMENS_SIEMENS_xx_03L906023BL_0.ori",
+    "size": 2097152,
+    "kind": "cal-2mb",
+    "magic": "0000000000000000"
+  }
+]

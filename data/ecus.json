@@ -16,7 +16,7 @@
       "subtitle": "ORI · ACE Tuning · V2 · V3 ITALIE · PCR2.1 · SW 9979",
       "maps_url": null,
       "status": "ready",
-      "note": "Atelier complet ORI / ACE / V2 / V3 ITALIE + VCDS."
+      "note": "Atelier complet ORI / ACE / V2 / V3 ITALIE + VCDS. Banque famille : 25 softs PCR2.1."
     },
     {
       "id": "mevd1725-531049",
@@ -48,8 +48,8 @@
       "page": "a5-cgka-edc17cp14.html",
       "subtitle": "A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008 · client Bertin",
       "maps_url": "data/edc17cp14-516657/project.json",
-      "status": "ori_ok",
-      "note": "ORI boot validé. Pack Stage1 / launch / hardcut / DPF / EGR — en attente DAMOS 516657."
+      "status": "v1_ready",
+      "note": "V1 Stage1 conservateur + DPF/EGR/FLAPS noCHK. KESS OBD CHK. Pas de launch 0AW. Hardcut = V2."
     }
   ]
 }

@@ -1,0 +1,648 @@
+{
+  "unique_softs": 25,
+  "old": [
+    "4875",
+    "5249",
+    "6927",
+    "6929",
+    "8790",
+    "9971",
+    "9972",
+    "9979",
+    "9980"
+  ],
+  "new": [
+    "0874",
+    "2527",
+    "4881",
+    "5687",
+    "5697",
+    "5862",
+    "5863",
+    "6302",
+    "8799",
+    "8843",
+    "8866",
+    "9970",
+    "9973",
+    "9977",
+    "9978",
+    "9983"
+  ],
+  "softs": [
+    {
+      "soft": "0874",
+      "family": "SM2F0",
+      "project": "SM2F0L9500000111SM2",
+      "hw": "03L906023PH",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\0874-03L906023PH-SM2F0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 0,
+        "relocated": 8,
+        "context": 8,
+        "predict": 0,
+        "unconfirmed": 169
+      },
+      "atlas": "atlas/0874.json",
+      "phase2": {
+        "atlas_soft": "4875",
+        "any": 0.327,
+        "exact": 0.163,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "2527",
+      "family": "SM2G0LG",
+      "project": "SM2G0LG000000111SM2",
+      "hw": "03L906023PH",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\2527-03L906023PH-SM2G0LG.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 1,
+        "relocated": 41,
+        "context": 3,
+        "predict": 3,
+        "unconfirmed": 137
+      },
+      "atlas": "atlas/2527.json",
+      "phase2": {
+        "atlas_soft": "6929",
+        "any": 0.98,
+        "exact": 0.857,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "4875",
+      "family": "SM2E0",
+      "project": "SM2E0DB000000111SM2",
+      "hw": "03L906023A",
+      "engine": "CAYBJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\4875-03L906023A-SM2E0DB-2MB.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 0,
+        "relocated": 36,
+        "context": 0,
+        "predict": 0,
+        "unconfirmed": 149
+      },
+      "atlas": "atlas/4875.json",
+      "phase2": {
+        "atlas_soft": "4875",
+        "any": 0.735,
+        "exact": 0.735,
+        "total": 49
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "4881",
+      "family": "SM2E0",
+      "project": "SM2E0DB000000111SM2",
+      "hw": "03L906023AN",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\4881-03L906023AN-SM2E0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 0,
+        "relocated": 36,
+        "context": 0,
+        "predict": 0,
+        "unconfirmed": 149
+      },
+      "atlas": "atlas/4881.json",
+      "phase2": {
+        "atlas_soft": "4875",
+        "any": 0.735,
+        "exact": 0.735,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "5249",
+      "family": "SM2G0M",
+      "project": "SM2F0G3000000111SM2",
+      "hw": "03L906023C",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\ecu1\\ecu1.6TDI",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 1,
+        "relocated": 8,
+        "context": 7,
+        "predict": 32,
+        "unconfirmed": 137
+      },
+      "atlas": "atlas/5249.json",
+      "phase2": {
+        "atlas_soft": "9980",
+        "any": 0.98,
+        "exact": 0.184,
+        "total": 49
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "5687",
+      "family": "SM2E0",
+      "project": "SM2E0DG000000111SM2",
+      "hw": "03L906023G",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5687-03L906023G-SM2E0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 2,
+        "relocated": 25,
+        "context": 9,
+        "predict": 12,
+        "unconfirmed": 137
+      },
+      "atlas": "atlas/5687.json",
+      "phase2": {
+        "atlas_soft": "4881",
+        "any": 0.98,
+        "exact": 0.551,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "5697",
+      "family": "SM2E0",
+      "project": "SM2E0DG000000111SM2",
+      "hw": "03L906023AG",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5697-03L906023AG-SM2E0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 2,
+        "relocated": 35,
+        "context": 11,
+        "predict": 1,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/5697.json",
+      "phase2": {
+        "atlas_soft": "4881",
+        "any": 1.0,
+        "exact": 0.755,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "5862",
+      "family": "SM2E0",
+      "project": "SM2E0DG000000111SM2",
+      "hw": "03L906023A",
+      "engine": "CAYBJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5862-03L906023A-SM2E0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 2,
+        "relocated": 35,
+        "context": 11,
+        "predict": 1,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/5862.json",
+      "phase2": {
+        "atlas_soft": "4881",
+        "any": 1.0,
+        "exact": 0.755,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "5863",
+      "family": "SM2E0",
+      "project": "SM2E0DG000000111SM2",
+      "hw": "03L906023B",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5863-03L906023B-SM2E0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 2,
+        "relocated": 35,
+        "context": 11,
+        "predict": 1,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/5863.json",
+      "phase2": {
+        "atlas_soft": "4881",
+        "any": 1.0,
+        "exact": 0.755,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "6302",
+      "family": "SM2F0",
+      "project": "SM2F0K3000000111SM2",
+      "hw": "03L906023DQ",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\6302-03L906023DQ-SM2F0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 4,
+        "relocated": 18,
+        "context": 11,
+        "predict": 11,
+        "unconfirmed": 141
+      },
+      "atlas": "atlas/6302.json",
+      "phase2": {
+        "atlas_soft": "0874",
+        "any": 0.898,
+        "exact": 0.449,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "6927",
+      "family": "SM2G0M",
+      "project": "SM2F0K3000000111SM2",
+      "hw": "03L906023AB",
+      "engine": "CAYCJ623",
+      "ori_file": "bins\\6927-03L906023AB-SM2F0K3.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 7,
+        "relocated": 112,
+        "context": 39,
+        "predict": 27,
+        "unconfirmed": 0
+      },
+      "atlas": "atlas/6927.json",
+      "phase2": {
+        "atlas_soft": "5249",
+        "any": 1.0,
+        "exact": 0.643,
+        "total": 185
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "6929",
+      "family": "SM2G0M",
+      "project": "SM2G0M0000000111SM2",
+      "hw": "03L906023PA",
+      "engine": "CAYEJ623",
+      "ori_file": "c:\\Users\\theda\\OneDrive\\Bureau\\caddy cartho\\ORI CADDY STEVEN\\CADDY_FRERE_PA_6929_ORI.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 7,
+        "relocated": 80,
+        "context": 11,
+        "predict": 76,
+        "unconfirmed": 11
+      },
+      "atlas": "atlas/6929.json",
+      "phase2": null,
+      "bank": "old"
+    },
+    {
+      "soft": "8790",
+      "family": "SM2G0M",
+      "project": "SM2F0L9500000111SM2",
+      "hw": "03L906023M",
+      "engine": "CAYCJ623",
+      "ori_file": "bins\\8790-03L906023M-SM2F0L95.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 2,
+        "relocated": 124,
+        "context": 17,
+        "predict": 42,
+        "unconfirmed": 0
+      },
+      "atlas": "atlas/8790.json",
+      "phase2": {
+        "atlas_soft": "6929",
+        "any": 1.0,
+        "exact": 0.681,
+        "total": 185
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "8799",
+      "family": "SM2F0",
+      "project": "SM2F0L9500000111SM2",
+      "hw": "03L906023NF",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8799-03L906023NF-SM2F0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 23,
+        "relocated": 0,
+        "context": 10,
+        "predict": 12,
+        "unconfirmed": 140
+      },
+      "atlas": "atlas/8799.json",
+      "phase2": {
+        "atlas_soft": "0874",
+        "any": 0.918,
+        "exact": 0.469,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "8843",
+      "family": "SM2F0",
+      "project": "SM2F0L9500000111SM2",
+      "hw": "03L906023MS",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8843-03L906023MS-SM2F0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 23,
+        "relocated": 0,
+        "context": 10,
+        "predict": 12,
+        "unconfirmed": 140
+      },
+      "atlas": "atlas/8843.json",
+      "phase2": {
+        "atlas_soft": "0874",
+        "any": 0.918,
+        "exact": 0.469,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "8866",
+      "family": "SM2F0",
+      "project": "SM2F0L9500000111SM2",
+      "hw": "03L906023MM",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8866-03L906023MM-SM2F0.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 23,
+        "relocated": 0,
+        "context": 10,
+        "predict": 12,
+        "unconfirmed": 140
+      },
+      "atlas": "atlas/8866.json",
+      "phase2": {
+        "atlas_soft": "0874",
+        "any": 0.918,
+        "exact": 0.469,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "9970",
+      "family": "SM2G0M",
+      "project": "SM2G0M0000000111SM2",
+      "hw": "03L906023G",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9970-03L906023G-SM2G0M.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 0,
+        "relocated": 9,
+        "context": 2,
+        "predict": 0,
+        "unconfirmed": 174
+      },
+      "atlas": "atlas/9970.json",
+      "phase2": {
+        "atlas_soft": "4875",
+        "any": 0.224,
+        "exact": 0.184,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "9971",
+      "family": "SM2G0M",
+      "project": "SM2G0M0000000111SM2",
+      "hw": "03L906023LC",
+      "engine": "CAYBJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\org seat ibiza pcr 2.1\\seat_simospcr2.1_obd_maps_03l906023lc_03l906023q_vsszzz6jzer036991_20220106162831.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 9,
+        "relocated": 0,
+        "context": 3,
+        "predict": 30,
+        "unconfirmed": 143
+      },
+      "atlas": "atlas/9971.json",
+      "phase2": {
+        "atlas_soft": "6929",
+        "any": 0.857,
+        "exact": 0.184,
+        "total": 49
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "9972",
+      "family": "SM2G0M",
+      "project": "SM2G0M0000000111SM2",
+      "hw": "03L906023BL",
+      "engine": "CAYAJ623",
+      "ori_file": "bins\\9972-03L906023BL-SM2G0M.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 124,
+        "relocated": 0,
+        "context": 10,
+        "predict": 42,
+        "unconfirmed": 9
+      },
+      "atlas": "atlas/9972.json",
+      "phase2": {
+        "atlas_soft": "6929",
+        "any": 0.951,
+        "exact": 0.67,
+        "total": 185
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "9973",
+      "family": "SM2G0M",
+      "project": "SM2G0M0000000111SM2",
+      "hw": "03L906023FS",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9973-03L906023FS-SM2G0M.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 0,
+        "relocated": 16,
+        "context": 1,
+        "predict": 20,
+        "unconfirmed": 148
+      },
+      "atlas": "atlas/9973.json",
+      "phase2": {
+        "atlas_soft": "4875",
+        "any": 0.755,
+        "exact": 0.327,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "9977",
+      "family": "SM2G0P",
+      "project": "SM2G0P2000000111SM2",
+      "hw": "03L906023N",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9977-03L906023N-SM2G0P.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 16,
+        "relocated": 1,
+        "context": 4,
+        "predict": 28,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/9977.json",
+      "phase2": {
+        "atlas_soft": "9979",
+        "any": 1.0,
+        "exact": 0.347,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "9978",
+      "family": "SM2G0P",
+      "project": "SM2G0P2000000111SM2",
+      "hw": "03L906023AR",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9978-03L906023AR-SM2G0P.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 18,
+        "relocated": 1,
+        "context": 3,
+        "predict": 27,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/9978.json",
+      "phase2": {
+        "atlas_soft": "9977",
+        "any": 1.0,
+        "exact": 0.388,
+        "total": 49
+      },
+      "bank": "new"
+    },
+    {
+      "soft": "9979",
+      "family": "SM2G0P",
+      "project": "SM2G0P2000000",
+      "hw": "03L906023TB",
+      "engine": null,
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Documents\\Reprog-Stage1\\06-Vehicules\\Caddy-CAYE-2013-03L906023PA-2531\\ORI\\Caddy_CAYE_03L906023TB_9979_ORI_2026-07-27.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {},
+      "atlas": "atlas/9979.json",
+      "phase2": {
+        "atlas_soft": "9979",
+        "any": 1.0,
+        "exact": 0.837,
+        "total": 49
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "9980",
+      "family": "SM2G0M",
+      "project": "SM2G0P2000000111SM2",
+      "hw": null,
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\caddy cartho\\VW Golf (Original) - PCR2.1 SM2G0P2000000 - 03L997557P - CAYC - 9980.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 41,
+        "relocated": 0,
+        "context": 4,
+        "predict": 4,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/9980.json",
+      "phase2": {
+        "atlas_soft": "9979",
+        "any": 1.0,
+        "exact": 0.837,
+        "total": 49
+      },
+      "bank": "old"
+    },
+    {
+      "soft": "9983",
+      "family": "SM2G0P",
+      "project": "SM2G0P2000000111SM2",
+      "hw": "03L906023A",
+      "engine": "CAYCJ623",
+      "ori_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9983-03L906023A-SM2G0P.bin",
+      "flash_size": 2097152,
+      "maps": 185,
+      "confidence": {
+        "exact": 11,
+        "relocated": 0,
+        "context": 3,
+        "predict": 35,
+        "unconfirmed": 136
+      },
+      "atlas": "atlas/9983.json",
+      "phase2": {
+        "atlas_soft": "9977",
+        "any": 1.0,
+        "exact": 0.224,
+        "total": 49
+      },
+      "bank": "new"
+    }
+  ]
+}

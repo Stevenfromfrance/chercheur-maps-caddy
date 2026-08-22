@@ -1,0 +1,8 @@
+# Bosch DAMOS — local WinOLS only, jamais GitHub
+*.a2l
+*.hex
+*.odx
+*.pdx
+*.zip
+*.ols
+!PICKLIST.txt

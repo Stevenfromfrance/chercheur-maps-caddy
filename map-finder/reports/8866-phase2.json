@@ -1,0 +1,2456 @@
+{
+  "target": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8866-03L906023MM-SM2F0.bin",
+  "size": 2097152,
+  "identity": {
+    "project": "SM2F0L9500000111SM2",
+    "cas": "CASM2L95",
+    "hw": "03L906023MM",
+    "engine": "CAYCJ623",
+    "soft_guess": "8866"
+  },
+  "family": "SM2F0",
+  "atlas_soft": "0874",
+  "atlas_file": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\0874.json",
+  "atlas_reason": "project SM2F0L9500000111SM2 family SM2F0 -> 0874.json",
+  "offset_clusters": {
+    "cal:1D0000": 0,
+    "cal:180000": 0,
+    "cal:1B0000": 0,
+    "cal:1C0000": 0,
+    "cal:*": 0
+  },
+  "filter": {
+    "role": null,
+    "pack": "stage1"
+  },
+  "summary": {
+    "total": 49,
+    "exact_same_addr": 23,
+    "exact_relocated": 0,
+    "context_only": 10,
+    "miss": 4,
+    "no_fingerprint": 0,
+    "hit_rate_exact": 0.469,
+    "hit_rate_any": 0.918,
+    "offset_predict": 12
+  },
+  "results": [
+    {
+      "id": "AccPed_trq4A",
+      "name": "Drivers wish torque",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CF9C0",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1898944,
+          "addr_hex": "1CF9C0",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88F6",
+          "hits": [
+            {
+              "addr": 1738998,
+              "addr_hex": "1A88F6",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A86DA",
+          "hits": [
+            {
+              "addr": 1736586,
+              "addr_hex": "1A7F8A",
+              "delta": -1872
+            },
+            {
+              "addr": 1738458,
+              "addr_hex": "1A86DA",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_base_pu_4A",
+      "name": "Torque limiter",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D27E0",
+      "length": 416,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1910752,
+          "addr_hex": "1D27E0",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A3BA2",
+          "hits": [
+            {
+              "addr": 1719202,
+              "addr_hex": "1A3BA2",
+              "delta": 0
+            },
+            {
+              "addr": 1719222,
+              "addr_hex": "1A3BB6",
+              "delta": 20
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8532",
+          "hits": [
+            {
+              "addr": 1738034,
+              "addr_hex": "1A8532",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D02BE",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1901246,
+          "addr_hex": "1D02BE",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88BA",
+          "hits": [
+            {
+              "addr": 1738938,
+              "addr_hex": "1A88BA",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A73AC",
+          "hits": [
+            {
+              "addr": 1733548,
+              "addr_hex": "1A73AC",
+              "delta": 0
+            },
+            {
+              "addr": 1733582,
+              "addr_hex": "1A73CE",
+              "delta": 34
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C04AC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1836204,
+          "addr_hex": "1C04AC",
+          "method": "offset_predict",
+          "phys_min": 1000.0,
+          "phys_max": 2499.999,
+          "note": "mbar[1000.0,2500.0]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_atm6A",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C692C",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1861932,
+          "addr_hex": "1C692C",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8302",
+          "hits": [
+            {
+              "addr": 1737474,
+              "addr_hex": "1A8302",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5360",
+          "hits": [
+            {
+              "addr": 1594276,
+              "addr_hex": "1853A4",
+              "delta": -131004
+            },
+            {
+              "addr": 1594392,
+              "addr_hex": "185418",
+              "delta": -130888
+            },
+            {
+              "addr": 1725076,
+              "addr_hex": "1A5294",
+              "delta": -204
+            },
+            {
+              "addr": 1725110,
+              "addr_hex": "1A52B6",
+              "delta": -170
+            },
+            {
+              "addr": 1725144,
+              "addr_hex": "1A52D8",
+              "delta": -136
+            },
+            {
+              "addr": 1725246,
+              "addr_hex": "1A533E",
+              "delta": -34
+            },
+            {
+              "addr": 1725280,
+              "addr_hex": "1A5360",
+              "delta": 0
+            },
+            {
+              "addr": 1725314,
+              "addr_hex": "1A5382",
+              "delta": 34
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "188F36",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1609526,
+          "addr_hex": "188F36",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "188BAC",
+          "hits": [
+            {
+              "addr": 0,
+              "addr_hex": "000000",
+              "delta": -1608620
+            },
+            {
+              "addr": 1,
+              "addr_hex": "000001",
+              "delta": -1608619
+            },
+            {
+              "addr": 2,
+              "addr_hex": "000002",
+              "delta": -1608618
+            },
+            {
+              "addr": 3,
+              "addr_hex": "000003",
+              "delta": -1608617
+            },
+            {
+              "addr": 4,
+              "addr_hex": "000004",
+              "delta": -1608616
+            },
+            {
+              "addr": 5,
+              "addr_hex": "000005",
+              "delta": -1608615
+            },
+            {
+              "addr": 6,
+              "addr_hex": "000006",
+              "delta": -1608614
+            },
+            {
+              "addr": 7,
+              "addr_hex": "000007",
+              "delta": -1608613
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "188A10",
+          "hits": [
+            {
+              "addr": 0,
+              "addr_hex": "000000",
+              "delta": -1608208
+            },
+            {
+              "addr": 1,
+              "addr_hex": "000001",
+              "delta": -1608207
+            },
+            {
+              "addr": 2,
+              "addr_hex": "000002",
+              "delta": -1608206
+            },
+            {
+              "addr": 3,
+              "addr_hex": "000003",
+              "delta": -1608205
+            },
+            {
+              "addr": 4,
+              "addr_hex": "000004",
+              "delta": -1608204
+            },
+            {
+              "addr": 5,
+              "addr_hex": "000005",
+              "delta": -1608203
+            },
+            {
+              "addr": 6,
+              "addr_hex": "000006",
+              "delta": -1608202
+            },
+            {
+              "addr": 7,
+              "addr_hex": "000007",
+              "delta": -1608201
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nm2iq_base_mg3A",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D7E38",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1932856,
+          "addr_hex": "1D7E38",
+          "method": "offset_predict",
+          "phys_min": 0.0,
+          "phys_max": 58.824,
+          "note": "raw/phys[0.00,58.82]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1D65CE",
+          "hits": [
+            {
+              "addr": 1618890,
+              "addr_hex": "18B3CA",
+              "delta": -307716
+            },
+            {
+              "addr": 1926606,
+              "addr_hex": "1D65CE",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1D5880",
+          "hits": [
+            {
+              "addr": 1923200,
+              "addr_hex": "1D5880",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_tegt_temp",
+      "name": "Torque limiter by EGT temperature",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D35A8",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1914280,
+          "addr_hex": "1D35A8",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A6582",
+          "hits": [
+            {
+              "addr": 1729922,
+              "addr_hex": "1A6582",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B02",
+          "hits": [
+            {
+              "addr": 1727234,
+              "addr_hex": "1A5B02",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tqlim_speed2A",
+      "name": "Torque limiter by vehicle speed",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1CEED4",
+      "length": 96,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1896148,
+          "addr_hex": "1CEED4",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "180CBB",
+          "hits": [
+            {
+              "addr": 1576123,
+              "addr_hex": "180CBB",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A597A",
+          "hits": [
+            {
+              "addr": 1726842,
+              "addr_hex": "1A597A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "airctl_hysteresisC",
+      "name": "EGR hysteresis",
+      "roles": [
+        "stage1_core",
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0100",
+      "length": 32,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1900800,
+          "addr_hex": "1D0100",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8D76",
+          "hits": [
+            {
+              "addr": 1740150,
+              "addr_hex": "1A8D76",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "vmax3",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "stage1_core",
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "189CC6",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1612998,
+          "addr_hex": "189CC6",
+          "method": "exact"
+        }
+      ],
+      "axes": {}
+    },
+    {
+      "id": "soi_base_int_trq2A",
+      "name": "Start of Injection",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C380",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1622912,
+          "addr_hex": "18C380",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "18AA26",
+          "hits": [
+            {
+              "addr": 1616354,
+              "addr_hex": "18A9E2",
+              "delta": -68
+            },
+            {
+              "addr": 1616388,
+              "addr_hex": "18AA04",
+              "delta": -34
+            },
+            {
+              "addr": 1616422,
+              "addr_hex": "18AA26",
+              "delta": 0
+            },
+            {
+              "addr": 1998962,
+              "addr_hex": "1E8072",
+              "delta": 382540
+            },
+            {
+              "addr": 1998996,
+              "addr_hex": "1E8094",
+              "delta": 382574
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "189CF2",
+          "hits": [
+            {
+              "addr": 1613042,
+              "addr_hex": "189CF2",
+              "delta": 0
+            },
+            {
+              "addr": 1736960,
+              "addr_hex": "1A8100",
+              "delta": 123918
+            },
+            {
+              "addr": 1998550,
+              "addr_hex": "1E7ED6",
+              "delta": 385508
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D2270",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1344",
+      "length": 684,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1905476,
+          "addr_hex": "1D1344",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88BA",
+          "hits": [
+            {
+              "addr": 1738938,
+              "addr_hex": "1A88BA",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A7EDA",
+          "hits": [
+            {
+              "addr": 1736410,
+              "addr_hex": "1A7EDA",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C43AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C43AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1852332,
+          "addr_hex": "1C43AC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3AAC",
+      "length": 384,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C40AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C40AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1851564,
+          "addr_hex": "1C40AC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C072C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1BFDE8",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1834472,
+          "addr_hex": "1BFDE8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A71E2",
+          "hits": [
+            {
+              "addr": 1733090,
+              "addr_hex": "1A71E2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5228",
+          "hits": [
+            {
+              "addr": 1724968,
+              "addr_hex": "1A5228",
+              "delta": 0
+            },
+            {
+              "addr": 1725172,
+              "addr_hex": "1A52F4",
+              "delta": 204
+            },
+            {
+              "addr": 1725206,
+              "addr_hex": "1A5316",
+              "delta": 238
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C09AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C09AC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1837484,
+          "addr_hex": "1C09AC",
+          "method": "offset_predict",
+          "phys_min": 1000.0,
+          "phys_max": 2437.644,
+          "note": "mbar[1000.0,2437.6]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C0C2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0C2C",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1838124,
+          "addr_hex": "1C0C2C",
+          "method": "offset_predict",
+          "phys_min": 1000.0,
+          "phys_max": 2364.593,
+          "note": "mbar[1000.0,2364.6]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C0EAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0EAC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1838764,
+          "addr_hex": "1C0EAC",
+          "method": "offset_predict",
+          "phys_min": 1000.0,
+          "phys_max": 2364.593,
+          "note": "mbar[1000.0,2364.6]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C112C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C112C",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1839404,
+          "addr_hex": "1C112C",
+          "method": "offset_predict",
+          "phys_min": 1025.041,
+          "phys_max": 2299.999,
+          "note": "mbar[1025.0,2300.0]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C13AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C13AC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1840044,
+          "addr_hex": "1C13AC",
+          "method": "offset_predict",
+          "phys_min": 1025.041,
+          "phys_max": 2299.999,
+          "note": "mbar[1025.0,2300.0]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C162C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0CE8",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1838312,
+          "addr_hex": "1C0CE8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A71E2",
+          "hits": [
+            {
+              "addr": 1733090,
+              "addr_hex": "1A71E2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5228",
+          "hits": [
+            {
+              "addr": 1724968,
+              "addr_hex": "1A5228",
+              "delta": 0
+            },
+            {
+              "addr": 1725172,
+              "addr_hex": "1A52F4",
+              "delta": 204
+            },
+            {
+              "addr": 1725206,
+              "addr_hex": "1A5316",
+              "delta": 238
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C18AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0F68",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1838952,
+          "addr_hex": "1C0F68",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A71E2",
+          "hits": [
+            {
+              "addr": 1733090,
+              "addr_hex": "1A71E2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5228",
+          "hits": [
+            {
+              "addr": 1724968,
+              "addr_hex": "1A5228",
+              "delta": 0
+            },
+            {
+              "addr": 1725172,
+              "addr_hex": "1A52F4",
+              "delta": 204
+            },
+            {
+              "addr": 1725206,
+              "addr_hex": "1A5316",
+              "delta": 238
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C31AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C31AC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1847724,
+          "addr_hex": "1C31AC",
+          "method": "offset_predict",
+          "phys_min": 2271.392,
+          "phys_max": 2717.08,
+          "note": "mbar[2271.4,2717.1]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C342C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C342C",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1848364,
+          "addr_hex": "1C342C",
+          "method": "offset_predict",
+          "phys_min": 2307.047,
+          "phys_max": 2717.08,
+          "note": "mbar[2307.0,2717.1]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C36AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C36AC",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1849004,
+          "addr_hex": "1C36AC",
+          "method": "offset_predict",
+          "phys_min": 1670.978,
+          "phys_max": 2717.08,
+          "note": "mbar[1671.0,2717.1]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C1B2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1B2C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1841964,
+          "addr_hex": "1C1B2C",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C1DAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1DAC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1842604,
+          "addr_hex": "1C1DAC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C202C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C202C",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1843244,
+          "addr_hex": "1C202C",
+          "method": "offset_predict",
+          "phys_min": 999.004,
+          "phys_max": 2299.999,
+          "note": "mbar[999.0,2300.0]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2A2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2368",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1839592,
+          "addr_hex": "1C11E8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1840232,
+          "addr_hex": "1C1468",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1843432,
+          "addr_hex": "1C20E8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1844072,
+          "addr_hex": "1C2368",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7462",
+          "hits": [
+            {
+              "addr": 1733730,
+              "addr_hex": "1A7462",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A54A8",
+          "hits": [
+            {
+              "addr": 1725608,
+              "addr_hex": "1A54A8",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2CAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2368",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1839592,
+          "addr_hex": "1C11E8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1840232,
+          "addr_hex": "1C1468",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1843432,
+          "addr_hex": "1C20E8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1844072,
+          "addr_hex": "1C2368",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A71E2",
+          "hits": [
+            {
+              "addr": 1733090,
+              "addr_hex": "1A71E2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5228",
+          "hits": [
+            {
+              "addr": 1724968,
+              "addr_hex": "1A5228",
+              "delta": 0
+            },
+            {
+              "addr": 1725172,
+              "addr_hex": "1A52F4",
+              "delta": 204
+            },
+            {
+              "addr": 1725206,
+              "addr_hex": "1A5316",
+              "delta": 238
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_base3B@1C2F2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2F2C",
+      "length": 640,
+      "status": "offset_predict",
+      "matches": [
+        {
+          "addr": 1847084,
+          "addr_hex": "1C2F2C",
+          "method": "offset_predict",
+          "phys_min": 1194.029,
+          "phys_max": 2717.08,
+          "note": "mbar[1194.0,2717.1]",
+          "delta": 0
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7B26",
+          "hits": [
+            {
+              "addr": 1735462,
+              "addr_hex": "1A7B26",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5B6C",
+          "hits": [
+            {
+              "addr": 1727340,
+              "addr_hex": "1A5B6C",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C3DAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3DAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1850796,
+          "addr_hex": "1C3DAC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_atm6A@1C6A2C",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C6A2C",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1862188,
+          "addr_hex": "1C6A2C",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A8302",
+          "hits": [
+            {
+              "addr": 1737474,
+              "addr_hex": "1A8302",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5360",
+          "hits": [
+            {
+              "addr": 1594276,
+              "addr_hex": "1853A4",
+              "delta": -131004
+            },
+            {
+              "addr": 1594392,
+              "addr_hex": "185418",
+              "delta": -130888
+            },
+            {
+              "addr": 1725076,
+              "addr_hex": "1A5294",
+              "delta": -204
+            },
+            {
+              "addr": 1725110,
+              "addr_hex": "1A52B6",
+              "delta": -170
+            },
+            {
+              "addr": 1725144,
+              "addr_hex": "1A52D8",
+              "delta": -136
+            },
+            {
+              "addr": 1725246,
+              "addr_hex": "1A533E",
+              "delta": -34
+            },
+            {
+              "addr": 1725280,
+              "addr_hex": "1A5360",
+              "delta": 0
+            },
+            {
+              "addr": 1725314,
+              "addr_hex": "1A5382",
+              "delta": 34
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9768",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "188F36",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1609526,
+          "addr_hex": "188F36",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1887AC",
+          "hits": [
+            {
+              "addr": 0,
+              "addr_hex": "000000",
+              "delta": -1607596
+            },
+            {
+              "addr": 1,
+              "addr_hex": "000001",
+              "delta": -1607595
+            },
+            {
+              "addr": 2,
+              "addr_hex": "000002",
+              "delta": -1607594
+            },
+            {
+              "addr": 3,
+              "addr_hex": "000003",
+              "delta": -1607593
+            },
+            {
+              "addr": 4,
+              "addr_hex": "000004",
+              "delta": -1607592
+            },
+            {
+              "addr": 5,
+              "addr_hex": "000005",
+              "delta": -1607591
+            },
+            {
+              "addr": 6,
+              "addr_hex": "000006",
+              "delta": -1607590
+            },
+            {
+              "addr": 7,
+              "addr_hex": "000007",
+              "delta": -1607589
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "188610",
+          "hits": [
+            {
+              "addr": 1607184,
+              "addr_hex": "188610",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9D68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E79A4",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1997220,
+          "addr_hex": "1E79A4",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E6C1A",
+          "hits": [
+            {
+              "addr": 1991546,
+              "addr_hex": "1E637A",
+              "delta": -2208
+            },
+            {
+              "addr": 1991578,
+              "addr_hex": "1E639A",
+              "delta": -2176
+            },
+            {
+              "addr": 1991610,
+              "addr_hex": "1E63BA",
+              "delta": -2144
+            },
+            {
+              "addr": 1991642,
+              "addr_hex": "1E63DA",
+              "delta": -2112
+            },
+            {
+              "addr": 1991674,
+              "addr_hex": "1E63FA",
+              "delta": -2080
+            },
+            {
+              "addr": 1991706,
+              "addr_hex": "1E641A",
+              "delta": -2048
+            },
+            {
+              "addr": 1991738,
+              "addr_hex": "1E643A",
+              "delta": -2016
+            },
+            {
+              "addr": 1991770,
+              "addr_hex": "1E645A",
+              "delta": -1984
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E6A7E",
+          "hits": [
+            {
+              "addr": 1991550,
+              "addr_hex": "1E637E",
+              "delta": -1792
+            },
+            {
+              "addr": 1991582,
+              "addr_hex": "1E639E",
+              "delta": -1760
+            },
+            {
+              "addr": 1991614,
+              "addr_hex": "1E63BE",
+              "delta": -1728
+            },
+            {
+              "addr": 1991646,
+              "addr_hex": "1E63DE",
+              "delta": -1696
+            },
+            {
+              "addr": 1991678,
+              "addr_hex": "1E63FE",
+              "delta": -1664
+            },
+            {
+              "addr": 1991710,
+              "addr_hex": "1E641E",
+              "delta": -1632
+            },
+            {
+              "addr": 1991742,
+              "addr_hex": "1E643E",
+              "delta": -1600
+            },
+            {
+              "addr": 1991774,
+              "addr_hex": "1E645E",
+              "delta": -1568
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9568",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1847D0",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1591248,
+          "addr_hex": "1847D0",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "184246",
+          "hits": [
+            {
+              "addr": 1589830,
+              "addr_hex": "184246",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1840AA",
+          "hits": [
+            {
+              "addr": 1589418,
+              "addr_hex": "1840AA",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9968",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "188F36",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1609526,
+          "addr_hex": "188F36",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1885AC",
+          "hits": [
+            {
+              "addr": 1607084,
+              "addr_hex": "1885AC",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "188410",
+          "hits": [
+            {
+              "addr": 1606640,
+              "addr_hex": "1883F0",
+              "delta": -32
+            },
+            {
+              "addr": 1606672,
+              "addr_hex": "188410",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9B68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "188F36",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1609526,
+          "addr_hex": "188F36",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1883AC",
+          "hits": [
+            {
+              "addr": 1606572,
+              "addr_hex": "1883AC",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "188210",
+          "hits": [
+            {
+              "addr": 1606160,
+              "addr_hex": "188210",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9F68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E7BA4",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1997732,
+          "addr_hex": "1E7BA4",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1E6C1A",
+          "hits": [
+            {
+              "addr": 1991546,
+              "addr_hex": "1E637A",
+              "delta": -2208
+            },
+            {
+              "addr": 1991578,
+              "addr_hex": "1E639A",
+              "delta": -2176
+            },
+            {
+              "addr": 1991610,
+              "addr_hex": "1E63BA",
+              "delta": -2144
+            },
+            {
+              "addr": 1991642,
+              "addr_hex": "1E63DA",
+              "delta": -2112
+            },
+            {
+              "addr": 1991674,
+              "addr_hex": "1E63FA",
+              "delta": -2080
+            },
+            {
+              "addr": 1991706,
+              "addr_hex": "1E641A",
+              "delta": -2048
+            },
+            {
+              "addr": 1991738,
+              "addr_hex": "1E643A",
+              "delta": -2016
+            },
+            {
+              "addr": 1991770,
+              "addr_hex": "1E645A",
+              "delta": -1984
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1E6A7E",
+          "hits": [
+            {
+              "addr": 1991550,
+              "addr_hex": "1E637E",
+              "delta": -1792
+            },
+            {
+              "addr": 1991582,
+              "addr_hex": "1E639E",
+              "delta": -1760
+            },
+            {
+              "addr": 1991614,
+              "addr_hex": "1E63BE",
+              "delta": -1728
+            },
+            {
+              "addr": 1991646,
+              "addr_hex": "1E63DE",
+              "delta": -1696
+            },
+            {
+              "addr": 1991678,
+              "addr_hex": "1E63FE",
+              "delta": -1664
+            },
+            {
+              "addr": 1991710,
+              "addr_hex": "1E641E",
+              "delta": -1632
+            },
+            {
+              "addr": 1991742,
+              "addr_hex": "1E643E",
+              "delta": -1600
+            },
+            {
+              "addr": 1991774,
+              "addr_hex": "1E645E",
+              "delta": -1568
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D251C",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D251C",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88BA",
+          "hits": [
+            {
+              "addr": 1738938,
+              "addr_hex": "1A88BA",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": [
+            {
+              "addr": 1740294,
+              "addr_hex": "1A8E06",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D27C8",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D27C8",
+      "length": 684,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88BA",
+          "hits": [
+            {
+              "addr": 1738938,
+              "addr_hex": "1A88BA",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": [
+            {
+              "addr": 1740294,
+              "addr_hex": "1A8E06",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C58AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C58AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1857708,
+          "addr_hex": "1C58AC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5EAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5EAC",
+      "length": 384,
+      "status": "miss",
+      "matches": [],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "smoke_mapA@1D1FC4",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1FC4",
+      "length": 684,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1908676,
+          "addr_hex": "1D1FC4",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A88BA",
+          "hits": [
+            {
+              "addr": 1738938,
+              "addr_hex": "1A88BA",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A8E06",
+          "hits": [
+            {
+              "addr": 1740294,
+              "addr_hex": "1A8E06",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5BAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5BAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1858476,
+          "addr_hex": "1C5BAC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C67AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C67AC",
+      "length": 384,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1861580,
+          "addr_hex": "1C67CC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1862604,
+          "addr_hex": "1C6BCC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C46AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C46AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1853100,
+          "addr_hex": "1C46AC",
+          "method": "exact"
+        }
+      ],
+      "axes": {
+        "axis_x": {
+          "ref_addr_hex": "1A7BD2",
+          "hits": [
+            {
+              "addr": 1735634,
+              "addr_hex": "1A7BD2",
+              "delta": 0
+            }
+          ]
+        },
+        "axis_y": {
+          "ref_addr_hex": "1A5C6A",
+          "hits": [
+            {
+              "addr": 1727594,
+              "addr_hex": "1A5C6A",
+              "delta": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

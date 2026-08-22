@@ -1,0 +1,291 @@
+[
+  {
+    "soft": "2527",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\2527-03L906023PH-SM2G0LG.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0LG000000111SM2",
+      "cas": "CASM2LG0",
+      "hw": "03L906023PH",
+      "engine": "CAYCJ623",
+      "soft_guess": "2527"
+    },
+    "family": "SM2G0LG",
+    "note": "TUN EGR-off Touran SM2G0LG0 (seul dump)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\2527.json"
+  },
+  {
+    "soft": "0874",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\0874-03L906023PH-SM2F0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2F0L9500000111SM2",
+      "cas": "CASM2L95",
+      "hw": "03L906023PH",
+      "engine": "CAYCJ623",
+      "soft_guess": "0874"
+    },
+    "family": "SM2F0",
+    "note": "TUN Stage1 Touran Exclusive 03L906023PH SM2F0L95 (SW stamp 0874)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\0874.json"
+  },
+  {
+    "soft": "4881",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\4881-03L906023AN-SM2E0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DB000000111SM2",
+      "cas": "CASM2DB0",
+      "hw": "03L906023AN",
+      "engine": "CAYCJ623",
+      "soft_guess": "4881"
+    },
+    "family": "SM2E0",
+    "note": "TUN Stage1 Golf SM2E0DB 03L906023AN",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\4881.json"
+  },
+  {
+    "soft": "5687",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5687-03L906023G-SM2E0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DG000000111SM2",
+      "cas": "CASM2DG0",
+      "hw": "03L906023G",
+      "engine": "CAYCJ623",
+      "soft_guess": "5687"
+    },
+    "family": "SM2E0",
+    "note": "TUN DPF-off Polo (fichier flash_org = m\u00eame md5 que dpf-off)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\5687.json"
+  },
+  {
+    "soft": "5697",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5697-03L906023AG-SM2E0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DG000000111SM2",
+      "cas": "CASM2DG0",
+      "hw": "03L906023AG",
+      "engine": "CAYCJ623",
+      "soft_guess": "5697"
+    },
+    "family": "SM2E0",
+    "note": "ORI Octavia SM2E0DG 03L906023AG",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\5697.json"
+  },
+  {
+    "soft": "5862",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5862-03L906023A-SM2E0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DG000000111SM2",
+      "cas": "CASM2DG0",
+      "hw": "03L906023A",
+      "engine": "CAYBJ623",
+      "soft_guess": "5862"
+    },
+    "family": "SM2E0",
+    "note": "ORI CAYB 03L906023A",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\5862.json"
+  },
+  {
+    "soft": "5863",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\5863-03L906023B-SM2E0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DG000000111SM2",
+      "cas": "CASM2DG0",
+      "hw": "03L906023B",
+      "engine": "CAYCJ623",
+      "soft_guess": "5863"
+    },
+    "family": "SM2E0",
+    "note": "ORI CAYC (dossier DPF mais bin ORIGINAL distinct)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\5863.json"
+  },
+  {
+    "soft": "6302",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\6302-03L906023DQ-SM2F0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2F0K3000000111SM2",
+      "cas": "CASM2K30",
+      "hw": "03L906023DQ",
+      "engine": "CAYCJ623",
+      "soft_guess": "6302"
+    },
+    "family": "SM2F0",
+    "note": "probable ORI Golf 03L906023DQ (md5 != tun)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\6302.json"
+  },
+  {
+    "soft": "8799",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8799-03L906023NF-SM2F0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2F0L9500000111SM2",
+      "cas": "CASM2L95",
+      "hw": "03L906023NF",
+      "engine": "CAYCJ623",
+      "soft_guess": "8799"
+    },
+    "family": "SM2F0",
+    "note": "TUN EGR-off Octavia (orgigflash = m\u00eame md5 que egr-off)",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\8799.json"
+  },
+  {
+    "soft": "8843",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8843-03L906023MS-SM2F0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2F0L9500000111SM2",
+      "cas": "CASM2L95",
+      "hw": "03L906023MS",
+      "engine": "CAYCJ623",
+      "soft_guess": "8843"
+    },
+    "family": "SM2F0",
+    "note": "TUN EGR-off Golf 03L906023MS Exclusive",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\8843.json"
+  },
+  {
+    "soft": "8866",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\8866-03L906023MM-SM2F0.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2F0L9500000111SM2",
+      "cas": "CASM2L95",
+      "hw": "03L906023MM",
+      "engine": "CAYCJ623",
+      "soft_guess": "8866"
+    },
+    "family": "SM2F0",
+    "note": "TUN EGR-off Golf 03L906023MM",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\8866.json"
+  },
+  {
+    "soft": "9970",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9970-03L906023G-SM2G0M.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0M0000000111SM2",
+      "cas": "CASM2M00",
+      "hw": "03L906023G",
+      "engine": "CAYCJ623",
+      "soft_guess": "9970"
+    },
+    "family": "SM2G0M",
+    "note": "probable ORI Polo 03L906023G SM2G0M",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\9970.json"
+  },
+  {
+    "soft": "9973",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9973-03L906023FS-SM2G0M.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0M0000000111SM2",
+      "cas": "CASM2M00",
+      "hw": "03L906023FS",
+      "engine": "CAYCJ623",
+      "soft_guess": "9973"
+    },
+    "family": "SM2G0M",
+    "note": "TUN EGR-off Passat 03L906023FS",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\9973.json"
+  },
+  {
+    "soft": "9977",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9977-03L906023N-SM2G0P.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0P2000000111SM2",
+      "cas": "CASM2P20",
+      "hw": "03L906023N",
+      "engine": "CAYCJ623",
+      "soft_guess": "9977"
+    },
+    "family": "SM2G0P",
+    "note": "MHH d\u00e9j\u00e0 en bins, atlas manquant",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\9977.json"
+  },
+  {
+    "soft": "9978",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9978-03L906023AR-SM2G0P.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0P2000000111SM2",
+      "cas": "CASM2P20",
+      "hw": "03L906023AR",
+      "engine": "CAYCJ623",
+      "soft_guess": "9978"
+    },
+    "family": "SM2G0P",
+    "note": "cal 2MB unlabeled SM2G0P 03L906023AR",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\9978.json"
+  },
+  {
+    "soft": "9983",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\9983-03L906023A-SM2G0P.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2G0P2000000111SM2",
+      "cas": "CASM2P20",
+      "hw": "03L906023A",
+      "engine": "CAYCJ623",
+      "soft_guess": "9983"
+    },
+    "family": "SM2G0P",
+    "note": "TUN Stage1+EGR Golf 03L997557M",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\9983.json"
+  },
+  {
+    "soft": "4875",
+    "dest": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\bins\\4875-03L906023A-SM2E0DB-2MB.bin",
+    "size": 2097152,
+    "identity": {
+      "project": "SM2E0DB000000111SM2",
+      "cas": "CASM2DB0",
+      "hw": "03L906023A",
+      "engine": "CAYBJ623",
+      "soft_guess": "4875"
+    },
+    "family": "SM2E0",
+    "note": "upgrade 1MB -> 2MB Golf 90hp SM2E0DB",
+    "phase2_ok": true,
+    "atlas_ok": true,
+    "atlas": "C:\\Users\\theda\\OneDrive\\Bureau\\chercheur-maps-caddy\\map-finder\\atlas\\4875.json"
+  }
+]

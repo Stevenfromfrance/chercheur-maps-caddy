@@ -65,19 +65,22 @@
       "0x1065c"
     ]
   },
-  "status": "ori_ok_no_damos",
+  "status": "v1_ready",
+  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1_S1cons_DPF_EGR_noCHK.fls",
+  "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
-    "DAMOS/A2L or WinOLS mappack 516657/0008",
-    "Coolant / G83 diagnosed (123 C in VCDS)",
-    "EGT S3 P242A diagnosed",
-    "DPF strategy decided (P2463 55g, P2002)"
+    "Coolant / G83 repaired (123 C, P102A / P2185)",
+    "KESS OBD read first: IDs 516657 + size 2 Mo"
   ],
   "pack_goal": [
     "stage1_conservative",
-    "launch_control",
-    "hardcut",
     "dpf_off",
     "egr_off",
     "dtc_related_off"
-  ]
+  ],
+  "pack_later": [
+    "hardcut_v2",
+    "lambda_v1_1_if_P0420"
+  ],
+  "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }

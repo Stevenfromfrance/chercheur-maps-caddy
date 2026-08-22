@@ -34,6 +34,7 @@
           <a href="index.html#guide" role="menuitem">Guide</a>
           <a href="index.html#composer" role="menuitem">Recette</a>
           <a href="a5-cgka-edc17cp14.html" role="menuitem">A5 CGKA Bertin</a>
+          <a href="pcr21-banque.html" role="menuitem">PCR2.1 banque</a>
           <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
         </div>
       </div>
@@ -154,6 +155,9 @@ const CORE = [
 const EXTRA = {
   coolant: ['Coolant temp', 'Température liquide (cherche Coolant / Coolant temperature)'],
   iq: ['Injection quantity', 'Quantité injectée (cherche Injection quantity / IQ)'],
+  iqdev: ['IQ deviation cyl', 'Écart quantité / cylindre (cherche Injection quantity deviation / Idle stabilization)'],
+  soi: ['Start of injection', 'Début injection consigne + réel (cherche Start of injection / Injection commencement)'],
+  cam: ['Cam / G40 / phase', 'Sync arbre à cames (cherche Camshaft / G40 / Phase / Synchronization)'],
   tqlim: ['Torque limitation', 'Limiteur couple (cherche Torque limit / Limitation)'],
   egt: ['EGT / Exhaust temp', 'Température échappement (avant FAP / S3)'],
   soot: ['DPF soot mass', 'Masse suie FAP mesurée / calculée'],
@@ -326,6 +330,35 @@ const RUNS = [
     file: 'CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
     extras: ['iq'],
     send: 'CSV + soft + fumée oui/non.',
+  },
+  {
+    id: 'calage',
+    label: 'CALAGE',
+    title: 'Run CALAGE — courroie sautée (1.6 TDI PCR2.1)',
+    priority: 'DIAG MÉCA (pas mappack)',
+    goal: 'Savoir si le calage distribution a sauté. Sur Common Rail le SOI seul ne suffit pas : d’abord défauts, puis ralenti, puis compression relative.',
+    prove: [
+      'Présence ou absence P0016 / P0341 / P0321 (photo Auto-Scan)',
+      'Ralenti chaud : RPM stable, IQ et écarts cylindres dans la norme',
+      'Si canal Cam/G40/phase trouvé : écart faible (pas une dent)',
+    ],
+    conditions: [
+      'À l’arrêt, moteur chaud (>80 °C)',
+      'Point mort, frein à main, clim OFF, ASR peu importe',
+      'Pédale à 0 — pas de route',
+      'Ralenti 2–3 min mini',
+    ],
+    steps: [
+      '01-Engine → Faults : photo / print Auto-Scan AVANT d’effacer',
+      'Advanced Measuring Values : core sans MAP + IQ + SOI + Cam/G40 si trouvés',
+      'Log Start → ralenti 2–3 min, rien toucher',
+      'Stop → Save CSV',
+      'Puis Basic Settings → Measurement of compression pressure (voir fiche chat)',
+    ],
+    forbid: 'WOT / route / lancer le log froid / effacer les défauts avant la photo. Ne pas conclure au calage avec le seul SOI (PCR2.1 injecte sur le vilebrequin).',
+    file: 'CADDY_{SOFT}_CALAGE_YYYYMMDD.csv',
+    extras: ['coolant', 'iq', 'iqdev', 'soi', 'cam'],
+    send: 'Auto-Scan + CSV ralenti + valeurs compression relative (4 cyl) + ressenti démarrage / bruit / fumée.',
   },
 ];
 
