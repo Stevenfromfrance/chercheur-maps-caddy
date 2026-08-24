@@ -1,0 +1,35 @@
+A5 Bertin — V1.1  (8K1907401K / 0008 / 516657 / B3UX / CGKA)
+
+Fichier :
+  A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls
+  (atelier map-finder/ecu/edc17cp14/516657/ + dossier client AUDI A5 BERTIN)
+
+Contenu
+- DPF off + DTC liées (DaVinci DPF) — 688 o avec EGR + flaps
+- EGR off + DTC liées (DaVinci EGR) + swirl flaps
+- Stage 1 NAMED (mappack ami WinOLS .kp), pas le +12 % à l’aveugle V1
+  · couple demande / limiteurs          +8 % max  (cases ori > 0 seulement)
+  · IQ (mm3)                            +7 %
+  · turbo + limiteur turbo              +6 %
+  · rail + limiteur rail                +5 %
+- PAS de remplissage des cases vides (le Stage 2 A4 met 10000 — interdit ici)
+- PAS SOI / durée / VGT-WG / idle / limiteur RPM
+- PAS smoke/lambda (hausser lambda = plus pauvre)
+- PAS TVA, PAS launch 0AW, EEPROM inchangée
+
+Pourquoi plus soft que V1
+  256 000 km + Multitronic 0AW. Cible ~210–220 ch / ~420–440 Nm.
+  Ori 190 ch / 400 Nm. Ne pas promettre 250 / 500.
+
+Vérifs
+- 2 Mo, IDs 516657 / 8K1907401K / 0008 / B3UX / CGKA inchangés
+- DaVinci DPF+EGR+FLAPS 688 o intégral
+- 0 octet TVA, 0 octet lambda
+- 4137 cellules 16-bit, max +8,0 %
+
+OBLIGATOIRE avant flash
+1. Checksum WinOLS ou KESS CHK (fichier noCHK)
+2. G83 / eau 123 °C (P102A / P2185) réparé
+3. EGT S3 P242A : masqué FAP, sonde / downpipe à coller au physique
+4. Descente FAP + plaque EGR collées au pack
+5. Lecture KESS OBD d’abord (IDs 516657, 2 Mo) puis écriture V1.1 CHK

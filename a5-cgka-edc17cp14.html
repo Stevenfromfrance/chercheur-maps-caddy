@@ -134,12 +134,12 @@ body.stage1-page .work-controls { display: none; }
 <main class="app-main stage1-main">
   <div class="sec-head">
     <h2>Client Bertin · Audi A5 Sportback 2.7 TDI</h2>
-    <p class="sec-lead">V1 livrée : Stage 1 conservateur + DPF/EGR/FLAPS. ECU Bosch EDC17CP14, boîte <b>Multitronic 0AW</b>. Flash KESS V2 OBD <b>CHK</b> — ori restore = K-TAG 151 BOOT.</p>
+    <p class="sec-lead">V1.1 livrée : Stage 1 named (mappack ami) + DPF/EGR/FLAPS. ECU Bosch EDC17CP14, boîte <b>Multitronic 0AW</b>. Flash KESS V2 OBD <b>CHK</b> — ori restore = K-TAG 151 BOOT.</p>
   </div>
 
   <div class="stop">
     <b>Ne pas flasher tant que l’eau / G83 n’est pas réparé</b>
-    (123 °C, <code>P102A</code> / <code>P2185</code>). Descente de FAP + plaque EGR prévues. Fichier V1 = <code>noCHK</code> → KESS <b>CHK</b>.
+    (123 °C, <code>P102A</code> / <code>P2185</code>). Descente de FAP + plaque EGR prévues. Fichier V1.1 = <code>noCHK</code> → KESS <b>CHK</b>.
     EGT S3 <code>P242A</code> masqué côté FAP ; sonde / downpipe à coller au physique.
   </div>
 
@@ -170,12 +170,12 @@ body.stage1-page .work-controls { display: none; }
     <table>
       <thead><tr><th>Pack</th><th>Cible conservatrice</th><th>État</th></tr></thead>
       <tbody>
-        <tr><td>Stage 1</td><td>~215–225 ch / 430–450 Nm · +2–12 % cal · 0AW</td><td><span class="badge ok">V1</span></td></tr>
+        <tr><td>Stage 1</td><td>~210–220 ch / 420–440 Nm · maps nommées +5–8 % · 0AW · 256k km</td><td><span class="badge ok">V1.1</span></td></tr>
         <tr><td>Launch</td><td>Pas sur Multitronic (pas clutch-prot PCR2.1)</td><td><span class="badge no">NON 0AW</span></td></tr>
-        <tr><td>Hardcut</td><td>Limiteur RPM EDC17 net · après V1 validée</td><td><span class="badge wait">V2</span></td></tr>
-        <tr><td>DPF off</td><td>DaVinci DPF + DTC liées · descente FAP</td><td><span class="badge ok">V1</span></td></tr>
-        <tr><td>EGR off</td><td>DaVinci EGR + flaps · plaque EGR</td><td><span class="badge ok">V1</span></td></tr>
-        <tr><td>DTC liés off</td><td>Masques FAP/EGR/FLAPS · pas TVA · pas lambda</td><td><span class="badge ok">V1</span></td></tr>
+        <tr><td>Hardcut</td><td>Limiteur RPM EDC17 net · après V1.1 validée</td><td><span class="badge wait">V2</span></td></tr>
+        <tr><td>DPF off</td><td>DaVinci DPF + DTC liées · descente FAP</td><td><span class="badge ok">V1.1</span></td></tr>
+        <tr><td>EGR off</td><td>DaVinci EGR + flaps · plaque EGR</td><td><span class="badge ok">V1.1</span></td></tr>
+        <tr><td>DTC liés off</td><td>Masques FAP/EGR/FLAPS · pas TVA · pas lambda</td><td><span class="badge ok">V1.1</span></td></tr>
       </tbody>
     </table>
     <div class="box">
@@ -201,8 +201,9 @@ body.stage1-page .work-controls { display: none; }
     <p class="muted">Backup K-TAG plugin 151 · MICRO + EEPROM. Le <code>.bin</code> 1 Mo sans IDs n’est pas l’ori.</p>
     <p class="links">
       <a href="map-finder/ecu/edc17cp14/516657/ORI_FLS.fls">ORI_FLS.fls</a>
-      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1_S1cons_DPF_EGR_noCHK.fls">V1 noCHK</a>
-      <a href="map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.txt">LIVRAISON-V1</a>
+      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls">V1.1 noCHK</a>
+      <a href="map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.1.txt">LIVRAISON-V1.1</a>
+      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1_S1cons_DPF_EGR_noCHK.fls">V1 noCHK (old)</a>
       <a href="map-finder/ecu/edc17cp14/516657/BACKUP_MICRO.mpc">BACKUP_MICRO.mpc</a>
       <a href="map-finder/ecu/edc17cp14/516657/BACKUP_EEPROM.epr">BACKUP_EEPROM.epr</a>
       <a href="data/edc17cp14-516657/project.json">project.json</a>
@@ -220,11 +221,11 @@ body.stage1-page .work-controls { display: none; }
   <section class="panel">
     <h2>Prochaine action atelier</h2>
     <ol class="steps">
-      <li>Eau / G83 réparé <b>avant</b> de rouler en V1</li>
-      <li>KESS V2 OBD : lecture d’abord (IDs <code>516657</code> / 2 Mo) puis écriture V1 <b>CHK</b></li>
+      <li>Eau / G83 réparé <b>avant</b> de rouler en V1.1</li>
+      <li>KESS V2 OBD : lecture d’abord (IDs <code>516657</code> / 2 Mo) puis écriture V1.1 <b>CHK</b></li>
       <li>Descente FAP + plaque EGR collées au pack DPF/EGR</li>
-      <li>Premier log <a href="log-aide.html#a5">VILLE</a> · <code>A5_516657_V1_VILLE_…</code> — pas de WOT</li>
-      <li>Hardcut = V2 après validation. Lambda = V1.1 si downpipe gueule <code>P0420</code></li>
+      <li>Premier log <a href="log-aide.html#a5">VILLE</a> · <code>A5_516657_V11_VILLE_…</code> — pas de WOT</li>
+      <li>Hardcut = V2 après validation. Lambda = plus tard si downpipe gueule <code>P0420</code></li>
     </ol>
     <p class="muted" style="margin:.7rem 0 0">A2L similar 0005 / 504886 déjà extrait en local (pas GitHub). PCR2.1 Caddy ≠ EDC17CP14 — banque PCR : <a href="pcr21-banque.html">25 softs</a>.</p>
   </section>

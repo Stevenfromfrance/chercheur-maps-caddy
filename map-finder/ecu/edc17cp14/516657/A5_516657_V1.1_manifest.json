@@ -1,0 +1,179 @@
+{
+  "file": "A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls",
+  "ok": true,
+  "errors": [],
+  "bytes_changed": 7244,
+  "davinci_dpf_egr_flaps_bytes": 688,
+  "stage1_u16_cells": 4137,
+  "stage1_pct_max": 8.0,
+  "caps": {
+    "torque": 1.08,
+    "iq": 1.07,
+    "boost": 1.06,
+    "rail": 1.05
+  },
+  "maps_used": 35,
+  "cells_by_family": {
+    "torque": 576,
+    "iq": 1728,
+    "boost": 1375,
+    "rail": 458
+  },
+  "maps_touched": {
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #4 / 1": 272,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #2 / 1": 256,
+    "Rail Pressure (bar) #1": 256,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 1": 240,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 2": 240,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 3": 240,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 4": 240,
+    "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #3 / 1": 240,
+    "Turbo Pressure (hPA) #1 / 1": 160,
+    "Turbo Pressure (hPA) #1 / 2": 160,
+    "Turbo Pressure (hPA) #1 / 3": 160,
+    "Turbo Pressure (hPA) #1 / 4": 160,
+    "Turbo Pressure (hPA) #1 / 5": 160,
+    "Turbo Pressure (hPA) #1 / 6": 160,
+    "Turbo Pressure (hPA) #1 / 7": 160,
+    "Turbo Pressure (hPA) #1 / 15": 150,
+    "Rail pressure limiter f(RPM,Fuel_Q) (bar) #3": 112,
+    "Torque Request - Gear 1 (Nm) #1 / 1": 105,
+    "Limiter of Turbo Pressure f(APS) (hPa)": 105,
+    "Torque Request - Gear 5 (Nm) #1 / 1": 104,
+    "Torque Request - Gear 2 (Nm) #1 / 1": 102,
+    "Torque Request - Gear 3 (Nm) #1 / 1": 102,
+    "Torque Request - Gear 4 (Nm) #1 / 1": 102,
+    "Rail pressure limiter f(RPM,Fuel_Q) (bar) #1": 90,
+    "Torque Request During Standart Condition (Nm)": 51,
+    "Limiter of Maximum Torque (Nm) #1": 1,
+    "Limiter of Maximum Torque (Nm) #2 / 1": 1,
+    "Limiter of Maximum Torque (Nm) #3": 1,
+    "Limiter of Maximum Torque (Nm) #4": 1,
+    "Maximum Torque for First Gear (Nm)": 1,
+    "Maximum Torque for Second Gear (Nm)": 1,
+    "Maximum Torque for Thrid Gear (Nm)": 1,
+    "Maximum Torque for Fifth Gear (Nm)": 1,
+    "Maximum Torque for Sixth Gear (Nm)": 1,
+    "Maximum Torque for Reverse Gear (Nm)": 1
+  },
+  "skipped": {
+    "ori0": 265
+  },
+  "ids_ok": true,
+  "ids_unmoved": true,
+  "tva_not_applied": true,
+  "lambda_not_applied": true,
+  "no_launch": true,
+  "no_hardcut": true,
+  "note": "noCHK \u2014 checksum WinOLS/KESS avant flash. Maps nomm\u00e9es (mappack ami) + DaVinci DPF/EGR/FLAPS. Pas de TVA/lambda/launch/hardcut. Ne pas flasher si G83 123C / EGT S3 non traites.",
+  "cells_top": [
+    {
+      "addr": 1589248,
+      "ori": 1813,
+      "s2": 10000,
+      "v11": 1958,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589250,
+      "ori": 2476,
+      "s2": 10000,
+      "v11": 2674,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589260,
+      "ori": 9090,
+      "s2": 10000,
+      "v11": 9817,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589276,
+      "ori": 9090,
+      "s2": 10000,
+      "v11": 9817,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589286,
+      "ori": 4000,
+      "s2": 10000,
+      "v11": 4320,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589290,
+      "ori": 7926,
+      "s2": 10000,
+      "v11": 8560,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589292,
+      "ori": 9090,
+      "s2": 10000,
+      "v11": 9817,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589300,
+      "ori": 2638,
+      "s2": 10000,
+      "v11": 2849,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589308,
+      "ori": 9090,
+      "s2": 10000,
+      "v11": 9817,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589318,
+      "ori": 3400,
+      "s2": 10000,
+      "v11": 3672,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589320,
+      "ori": 5725,
+      "s2": 10000,
+      "v11": 6183,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    },
+    {
+      "addr": 1589324,
+      "ori": 8465,
+      "s2": 10000,
+      "v11": 9142,
+      "pct": 8.0,
+      "fam": "torque",
+      "map": "Torque Request During Standart Condition (Nm)"
+    }
+  ]
+}
