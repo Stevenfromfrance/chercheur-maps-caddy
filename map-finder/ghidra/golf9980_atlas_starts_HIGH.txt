@@ -1,0 +1,159 @@
+Golf 9980 atlas START identification (offline)
+HIGH = fingerprint/ORI match at map start — safe label candidate
+counts high=132 medium=0 low=12 unique=144
+
+addr      category          id_name
+------------------------------------------------------------------------
+0x1D0860  clutch_prot       tqlim_cluth_prot
+0x1D0640  AccPed            AccPed_trq4A@1D0640
+0x1D3190  tqlim             tqlim_base_pu_4A
+0x1CEED4  tqlim_other       tqlim_speed2A
+0x1D2C1C  tqlim_other       tqlim_fuel_temp2
+0x1D3390  tqlim_other       tqlim_fuel_temp2A
+0x1D35A8  tqlim_other       tqlim_tegt_temp
+0x1D1D18  smoke             smoke_mapA
+0x1D1FC4  smoke             smoke_mapA@1D1FC4
+0x1D2270  smoke             smoke_mapA@1D2270
+0x1D251C  smoke             smoke_mapA@1D251C
+0x1D27C8  smoke             smoke_mapA@1D27C8
+0x1C04AC  turbo             turbo_base3B
+0x1C072C  turbo             turbo_base3B@1C072C
+0x1C09AC  turbo             turbo_base3B@1C09AC
+0x1C0C2C  turbo             turbo_base3B@1C0C2C
+0x1C0EAC  turbo             turbo_base3B@1C0EAC
+0x1C112C  turbo             turbo_base3B@1C112C
+0x1C13AC  turbo             turbo_base3B@1C13AC
+0x1C162C  turbo             turbo_base3B@1C162C
+0x1C18AC  turbo             turbo_base3B@1C18AC
+0x1C1B2C  turbo             turbo_base3B@1C1B2C
+0x1C1DAC  turbo             turbo_base3B@1C1DAC
+0x1C202C  turbo             turbo_base3B@1C202C
+0x1C2A2C  turbo             turbo_base3B@1C2A2C
+0x1C2CAC  turbo             turbo_base3B@1C2CAC
+0x1C2F2C  turbo             turbo_base3B@1C2F2C
+0x1C31AC  turbo             turbo_base3B@1C31AC
+0x1C342C  turbo             turbo_base3B@1C342C
+0x1C36AC  turbo             turbo_base3B@1C36AC
+0x1C3AAC  turbo_corr        turbo_int_trq_correction2C
+0x1C3DAC  turbo_corr        turbo_int_trq_correction2C@1C3DAC
+0x1C40AC  turbo_corr        turbo_int_trq_correction2C@1C40AC
+0x1C43AC  turbo_corr        turbo_int_trq_correction2C@1C43AC
+0x1C46AC  turbo_corr        turbo_int_trq_correction2C@1C46AC
+0x1C58AC  turbo_corr        turbo_int_trq_correction2C@1C58AC
+0x1C5BAC  turbo_corr        turbo_int_trq_correction2C@1C5BAC
+0x1C5EAC  turbo_corr        turbo_int_trq_correction2C@1C5EAC
+0x1C67AC  turbo_corr        turbo_int_trq_correction2C@1C67AC
+0x1C692C  turbo_other       turbo_atm6A
+0x1C6A2C  turbo_other       turbo_atm6A@1C6A2C
+0x1E9368  rail              rail_base_int_trq2B
+0x1E9768  rail              rail_base_int_trq2B@1E9768
+0x1E9968  rail              rail_base_int_trq2B@1E9968
+0x1E9B68  rail              rail_base_int_trq2B@1E9B68
+0x1E9D68  rail              rail_base_int_trq2B@1E9D68
+0x1E9F68  rail              rail_base_int_trq2B@1E9F68
+0x1EA168  rail              rail_request_horsA2L_banque_01
+0x1EA368  rail              rail_request_horsA2L_banque_02
+0x1EA568  rail              rail_request_horsA2L_banque_03
+0x1EA768  rail              rail_request_horsA2L_banque_04
+0x1EA968  rail              rail_request_horsA2L_banque_05
+0x1EAB68  rail              rail_request_horsA2L_banque_06
+0x1EAD68  rail              rail_request_horsA2L_banque_07
+0x1EAF68  rail              rail_request_horsA2L_banque_08
+0x1EB168  rail              rail_request_horsA2L_banque_09
+0x1EB368  rail              rail_request_horsA2L_banque_10
+0x1EB568  rail              rail_request_horsA2L_banque_11
+0x1EB768  rail              rail_request_horsA2L_banque_12
+0x1EB968  rail              rail_request_horsA2L_banque_13
+0x1EBB68  rail              rail_request_horsA2L_banque_14
+0x1EBDD8  rail              rail_lim_horsA2L_A
+0x1EBE58  rail              rail_lim_horsA2L_B
+0x18C380  soi               soi_base_int_trq2A
+0x18C780  soi               soi_base_int_trq2A@18C780
+0x18C980  soi               soi_base_int_trq2A@18C980
+0x18CB80  soi               soi_base_int_trq2A@18CB80
+0x18CD80  soi               soi_base_int_trq2A@18CD80
+0x18CF80  soi               soi_base_int_trq2A@18CF80
+0x18D180  soi               soi_base_int_trq2A@18D180
+0x18D380  soi               soi_base_int_trq2A@18D380
+0x18D580  soi               soi_base_int_trq2A@18D580
+0x18D980  soi               soi_base_int_trq2A@18D980
+0x18DB80  soi               soi_base_int_trq2A@18DB80
+0x18DD80  soi               soi_base_int_trq2A@18DD80
+0x18DF80  soi               soi_base_int_trq2A@18DF80
+0x18E180  soi               soi_base_int_trq2A@18E180
+0x18E380  soi               soi_base_int_trq2A@18E380
+0x18E580  soi               soi_base_int_trq2A@18E580
+0x18E780  soi               soi_base_int_trq2A@18E780
+0x18E980  soi               soi_base_int_trq2A@18E980
+0x18EB80  soi               soi_base_int_trq2A@18EB80
+0x18ED80  soi               soi_base_int_trq2A@18ED80
+0x18EF80  soi               soi_base_int_trq2A@18EF80
+0x18F180  soi               soi_base_int_trq2A@18F180
+0x18F380  soi               soi_base_int_trq2A@18F380
+0x18F580  soi               soi_base_int_trq2A@18F580
+0x18F780  soi               soi_base_int_trq2A@18F780
+0x18FF80  soi               soi_base_int_trq2A@18FF80
+0x190180  soi               soi_base_int_trq2A@190180
+0x190380  soi               soi_base_int_trq2A@190380
+0x190580  soi               soi_base_int_trq2A@190580
+0x190780  soi               soi_base_int_trq2A@190780
+0x190980  soi               soi_base_int_trq2A@190980
+0x1CDC84  duration          duration_inj6A
+0x1CDFE4  duration          duration_inj6A@1CDFE4
+0x18047C  speed_limiter     vmax3
+0x18047E  speed_limiter     vmax3@18047E
+0x18048A  speed_limiter     vmax2
+0x18048C  speed_limiter     vmax2@18048C
+0x18049E  speed_limiter     vmax3@18049E
+0x1804A0  speed_limiter     vmax3@1804A0
+0x1804A2  speed_limiter     vmax3@1804A2
+0x1D0120  egr_control       airctl_hysteresisC@1D0120
+0x1D0180  egr_control       airctl_hysteresisC@1D0180
+0x19E1AD  dtc_egr_com       DTC_U1112
+0x19E809  dtc_egr           DTC_P1428
+0x19FE09  dtc_egt           DTC_P2080
+0x19FE35  dtc_egt           DTC_P242B
+0x1A0071  dtc_dpf           DTC_P2002
+0x1A009D  dtc_dpf           DTC_P2453
+0x1A01D1  dtc_dpf           DTC_P0471
+0x1A0229  dtc_dpf           DTC_P2456
+0x1A06A1  dtc_egr           DTC_P2425
+0x1A06CD  dtc_egr           DTC_P2426
+0x1A06F9  dtc_egr           DTC_P2427
+0x1A0725  dtc_egr           DTC_P0401
+0x1A0751  dtc_egr           DTC_P0402
+0x1A0885  dtc_egr           DTC_P0403
+0x1A0935  dtc_egr           DTC_P0400
+0x1A0961  dtc_egr           DTC_P1400
+0x1A1409  dtc_dpf           DTC_P2463
+0x1A1931  dtc_dpf_o2        DTC_P2626
+0x1A22A5  dtc_dpf           DTC_P3004
+0x1A2381  dtc_dpf           DTC_P3005
+0x1A2959  dtc_dpf           DTC_P2458
+0x1A2CC9  dtc_egt           DTC_P0544
+0x1A2DA5  dtc_egt           DTC_P246E
+0x1A2DD1  dtc_egt           DTC_P0545
+0x1A32A1  dtc_dpf           DTC_P2454
+0x1A32CD  dtc_egr_dpf       DTC_P046C
+0x1A3325  dtc_egr           DTC_P0407
+
+=== by category (high/medium/low) ===
+  AccPed            high=1 medium=0 low=7
+  clutch_prot       high=1 medium=0 low=0
+  dtc_dpf           high=10 medium=0 low=0
+  dtc_dpf_o2        high=1 medium=0 low=0
+  dtc_egr           high=12 medium=0 low=0
+  dtc_egr_com       high=1 medium=0 low=0
+  dtc_egr_dpf       high=1 medium=0 low=0
+  dtc_egt           high=5 medium=0 low=0
+  duration          high=2 medium=0 low=0
+  egr_control       high=2 medium=0 low=2
+  rail              high=22 medium=0 low=1
+  smoke             high=5 medium=0 low=0
+  soi               high=31 medium=0 low=2
+  speed_limiter     high=7 medium=0 low=0
+  tqlim             high=1 medium=0 low=0
+  tqlim_other       high=4 medium=0 low=0
+  turbo             high=18 medium=0 low=0
+  turbo_corr        high=9 medium=0 low=0
+  turbo_other       high=2 medium=0 low=0

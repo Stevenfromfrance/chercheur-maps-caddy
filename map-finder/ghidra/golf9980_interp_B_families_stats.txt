@@ -1,0 +1,74 @@
+Golf 9980 interp_2d_B family scan (method 4, static)
+interp_2d_B @ 0x8004C960  CALL sites=80  (calls_csv(80) + flash_scan(80))
+window=80 bytes before call; lookback=256 only to fill [a10+k] slots
+
+Families: 65
+Grids labeled (potential): 76/80 (95.0%)
+COVERAGE (d4 AND d5 RAM resolved, no lea-fallback): 8/80 = 10.0%
+d4 RAM found: 30/80 (37.5%)  d5: 10/80 (12.5%)  exactly one: 24
+After lea-fallback, rows with both ram_x and ram_y: 15/80 (18.8%)
+Honesty: ld.a a15,[a10+k] / ld.hu d4,[a15] misses when the pointer was stored outside lookback.
+
+Unique RAM as X: 20
+Unique RAM as Y: 14
+RAM labels (voted from A2L axis IdNames co-occurring; NOT OEM MEASUREMENT):
+  0xD0000000  asX=0 asY=2  RAM_D000xxxx
+  0xD000195A  asX=0 asY=2  RAM_D000xxxx
+  0xD0001964  asX=1 asY=0  RAM_D000xxxx
+  0xD000196A  asX=0 asY=1  RAM_D000xxxx
+  0xD0001A02  asX=1 asY=0  RAM_D000xxxx
+  0xD0001A36  asX=0 asY=1  RAM_D000xxxx
+  0xD0001ADE  asX=0 asY=1  RAM_D000xxxx
+  0xD0001D60  asX=1 asY=0  RAM_D000xxxx
+  0xD0001D62  asX=0 asY=1  RAM_D000xxxx
+  0xD0001F96  asX=0 asY=1  RAM_D000xxxx
+  0xD0001FA2  asX=4 asY=0  RAM_D000xxxx
+  0xD0001FB4  asX=1 asY=0  RAM_D000xxxx
+  0xD0001FBC  asX=0 asY=1  RAM_D000xxxx
+  0xD000206C  asX=1 asY=0  RAM_D000xxxx
+  0xD0002150  asX=1 asY=0  RAM_D000xxxx
+  0xD0002482  asX=1 asY=0  RAM_D000xxxx
+  0xD0002494  asX=0 asY=2  RAM_D000xxxx
+  0xD0002496  asX=2 asY=0  RAM_D000xxxx
+  0xD00024C4  asX=2 asY=0  RAM_D000xxxx
+  0xD00026C2  asX=1 asY=0  RAM_D000xxxx
+  0xD00028F6  asX=1 asY=0  RAM_D000xxxx
+  0xD00028F8  asX=0 asY=1  RAM_D000xxxx
+  0xD0002A2E  asX=1 asY=0  RAM_D000xxxx
+  0xD0002A36  asX=1 asY=0  RAM_D000xxxx
+  0xD0002A3E  asX=0 asY=1  RAM_D000xxxx
+  0xD0002BEC  asX=2 asY=0  RAM_D000xxxx
+  0xD0002D16  asX=0 asY=1  RAM_D000xxxx
+  0xD0002D18  asX=2 asY=0  RAM_D000xxxx
+  0xD00031E8  asX=0 asY=1  RAM_D000xxxx
+  0xD00031EC  asX=2 asY=0  RAM_D000xxxx
+  0xD00031EE  asX=2 asY=0  RAM_D000xxxx
+  0xD00031F0  asX=2 asY=0  RAM_D000xxxx
+  0xD001481A  asX=2 asY=1  RAM_D000xxxx
+
+Biggest families:
+  B_fam_0001 n=4  ram - / -  ax 0xA01A91D0 / -  e.g. 0x8011639A B_lookup_ax_X_Y_19B7C0
+  B_fam_0003 n=3  ram - / -  ax 0xA01B4894 / 0xA01B2868  e.g. 0x8008736E B_lookup_ax_X_Y_1D32CC
+  B_fam_0002 n=3  ram - / -  ax 0xA01A88FC / 0xA01A8934  e.g. 0x800954AA B_lookup_ax_X_Y_1CE2CC
+  B_fam_0007 n=2  ram 0xD00031F0 / 0xD000195A  ax - / -  e.g. 0x8008190E B_lookup_D00031F0_x_D000195A_1844C8
+  B_fam_0011 n=2  ram 0xD00031EE / -  ax - / -  e.g. 0x80081A3C B_lookup_unresolved_081A3C
+  B_fam_0008 n=2  ram 0xD0002496 / 0xD0002494  ax - / -  e.g. 0x80087AC0 B_lookup_D0002496_x_D0002494_1D02DC
+  B_fam_0010 n=2  ram 0xD0002BEC / -  ax - / -  e.g. 0x80092FE6 B_lookup_unresolved_092FE6
+  B_fam_0009 n=2  ram 0xD0001FA2 / -  ax 0xA01BB9C0 / -  e.g. 0x800AE160 B_lookup_ax_X_Y_1D43B4
+  B_fam_0004 n=2  ram - / -  ax 0xA01A6710 / 0xA01AE940  e.g. 0x800BD03A B_lookup_ax_X_Y_1C37F4
+  B_fam_0005 n=2  ram 0xD00024C4 / 0xD0000000  ax 0xA01A6724 / 0xA01AE940  e.g. 0x800BD0F4 B_lookup_D00024C4_x_D0000000_1C57F4
+  B_fam_0006 n=2  ram - / -  ax 0xA01AA840 / 0xA01AD8DC  e.g. 0x800D66F2 B_lookup_ax_X_Y_0D66F2
+  B_fam_0043 n=1  ram - / -  ax - / -  e.g. 0x80055D1E B_lookup_unresolved_055D1E
+  B_fam_0044 n=1  ram - / -  ax - / -  e.g. 0x8006202E B_lookup_unresolved_06202E
+  B_fam_0045 n=1  ram - / -  ax - / -  e.g. 0x80062080 B_lookup_unresolved_062080
+  B_fam_0012 n=1  ram - / -  ax 0xA01A0648 / 0xA01BC9F8  e.g. 0x8007B2B4 B_lookup_ax_X_Y_1C58E0
+
+Ident-ish strings (firmware, not map names):
+  SM233-111SM2G0
+
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_B_families.csv
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_B_families_stats.txt
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_B_HIGH.a2l
+Ghidra: NameInterpFamilies.py processes ALL golf9980_interp*_families.csv next to the script.
+Secondary labels fam_* / B_fam_* .. O_fam_* do not delete map_horsA2L_*.
+Public A2L: families + AXIS_PTS from flash, not OEM CHARACTERISTIC names.

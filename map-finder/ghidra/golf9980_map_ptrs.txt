@@ -1,0 +1,4 @@
+Golf 9980 full flash — absolute pointers to 9979 atlas maps
+code 0x000000-0x180000, maps as 0xA0xxxxxx
+maps with >=1 pointer: 0 / 250 unique addrs
+

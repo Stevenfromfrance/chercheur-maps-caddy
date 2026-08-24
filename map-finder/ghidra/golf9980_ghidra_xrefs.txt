@@ -1,0 +1,34 @@
+Golf 9980 Stage1 Ghidra XREFs
+program=Golf6_03L997558A_9980_FULLFLASH.bin
+functions=1516
+
+=== tqlim_cluth_prot @ 0x801D0860 ===
+  xref_count=0
+
+=== AccPed_trq4A_1CFFC0 @ 0x801CFFC0 ===
+  xref_count=0
+
+=== AccPed_trq4A_1D0640 @ 0x801D0640 ===
+  xref_count=0
+
+=== tqlim_base_pu_4A @ 0x801D3190 ===
+  xref_count=0
+
+=== smoke_mapA @ 0x801D1D18 ===
+  xref_count=0
+
+=== turbo_base3B @ 0x801C04AC ===
+  xref_count=0
+
+=== rail_base_int_trq2B @ 0x801E9368 ===
+  xref_count=0
+
+=== duration_inj6A @ 0x801CDC84 ===
+  xref_count=0
+
+=== vmax3 @ 0x8018047C ===
+  xref_count=0
+
+=== airctl_hysteresisC @ 0x801D0100 ===
+  xref_count=0
+

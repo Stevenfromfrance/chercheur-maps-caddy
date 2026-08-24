@@ -1,0 +1,9 @@
+# Lab Caddy fullflash dumps — never commit
+map-finder/bins/caddy-9979-TB-fullflash-ORI-DONOTTOUCH.bin
+map-finder/bins/caddy-9979-TB-fullflash-WORK.bin
+
+# Local junk
+__pycache__/
+*.pyc
+node_modules/
+.cursor/
