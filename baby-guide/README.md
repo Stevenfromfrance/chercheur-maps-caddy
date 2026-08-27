@@ -1,6 +1,6 @@
-# Shopping lists (draft)
+# The Shopping Guide
 
-Static mom / baby pages from the Amazon.fr lists.
+Static mom / baby shopping pages. Works in a phone or tablet browser.
 
 Open `index.html`, or from this folder:
 
