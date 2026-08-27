@@ -1,11 +1,10 @@
 # The Shopping Guide
 
-Static mom / baby shopping pages. Works in a phone or tablet browser.
+Share this public link:
 
-Open `index.html`, or from this folder:
+**https://stevenfromfrance.github.io/chercheur-maps-caddy/baby-guide/**
 
-```bash
-python3 -m http.server 4173
-```
+- Mom: https://stevenfromfrance.github.io/chercheur-maps-caddy/baby-guide/mom.html
+- Baby: https://stevenfromfrance.github.io/chercheur-maps-caddy/baby-guide/baby.html
 
-Then visit http://localhost:4173
+Anyone with the link can open it on a phone, tablet, or computer. No login needed.
