@@ -11,10 +11,13 @@ Pack visé : Stage 1 conservateur, DPF off, EGR off, DTC liés. Hardcut = V2. Pa
 
 **Pas de flash** sans maps identifiées (A2L 0008 exact ou similar 0005 recalé) et sans trier G83 / EGT S3 / FAP.
 
-## V1 livrée
+## V1.1 livrée (à flasher)
 
-`A5_516657_V1_S1cons_DPF_EGR_noCHK.fls` — Stage 1 conservateur (+2–12 %) + DPF/EGR/FLAPS DaVinci.
-Détail : `LIVRAISON-V1.txt`. Checksum avant flash. Pas de TVA / lambda.
+`A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls` — Stage 1 **named** (mappack ami) + DPF/EGR/FLAPS DaVinci.
+Couple +8 %, IQ +7 %, turbo +6 %, rail +5 %. Pas de cases vides, pas SOI/durée/VGT, pas smoke.
+Détail : `LIVRAISON-V1.1.txt`. Checksum avant flash. Pas de TVA / lambda.
+
+V1 aveugle (+12 % cal) reste en archive : `A5_516657_V1_S1cons_DPF_EGR_noCHK.fls`.
 
 ## DAMOS (Damos-Big-Archive, 93 Go — scan 57k fichiers)
 

@@ -65,8 +65,8 @@
       "0x1065c"
     ]
   },
-  "status": "v1_ready",
-  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1_S1cons_DPF_EGR_noCHK.fls",
+  "status": "v1.1_ready",
+  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls",
   "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
     "Coolant / G83 repaired (123 C, P102A / P2185)",
@@ -80,7 +80,7 @@
   ],
   "pack_later": [
     "hardcut_v2",
-    "lambda_v1_1_if_P0420"
+    "lambda_v1_2_if_P0420"
   ],
   "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }

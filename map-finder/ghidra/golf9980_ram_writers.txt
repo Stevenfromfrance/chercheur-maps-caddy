@@ -1,0 +1,307 @@
+Golf 9980 — writers RAM interp (offline, pas OEM)
+bin: C:\Users\theda\Tools\ghidra-projects\Golf6_03L997558A_9980_FULLFLASH.bin
+
+## ram_273C clutch X (launch/hardcut)  (0xd000273c)
+  lea ABS: 3   st.h juste apres: 1
+  WRITE lea a15 @ 0x800fb7de
+   800FB7C2  c0 08        op16 c0 08
+   800FB7C4  09 a0 08 29  st.w d0, [a10+0x88]
+   800FB7C8  42 0f        add d15, d0
+   800FB7CA  37 0f 50 50  extr
+   800FB7CE  02 a4        mov d4, d10
+   800FB7D0  6d fa 3a 9e  call 0x8004f444
+   800FB7D4  02 24        mov d4, d2
+   800FB7D6  6d fa f3 9d  call 0x8004f3bc
+   800FB7DA  58 22        ld.w d15, [a10]+0x88
+   800FB7DC  42 2f        add d15, d2
+>> 800FB7DE  c5 df 7c c2  lea a15, 0xd000273c
+   800FB7E2  b4 ff        st.h [a15], d15
+   800FB7E4  14 cf        ld.bu d15, [a12]
+   800FB7E6  6e 4b        jz
+   800FB7E8  d8 25        ld.a a15, [a10]+0x94
+   800FB7EA  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  READ  lea a15 @ 0x800fb7fc
+  READ  lea a2 @ 0x800fc2ee
+
+## ram_2754 clutch Y  (0xd0002754)
+  lea ABS: 1   st.h juste apres: 0
+  READ  lea a15 @ 0x800fc260
+
+## APP_r AccPed X  (0xd0002198)
+  lea ABS: 7   st.h juste apres: 1
+  WRITE lea a14 @ 0x800cc728
+   800CC70C  01 4a d9 44  op32 01
+   800CC710  c0 bf        op16 c0 bf
+   800CC712  09 a2 88 09  bo d2, [a10+0x8]
+   800CC716  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC71A  d4 a2        op16 d4 a2
+   800CC71C  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC720  6d fc 40 00  call 0x8004c7a0 interp_2d
+   800CC724  37 02 50 00  extr
+>> 800CC728  c5 de 18 62  lea a14, 0xd0002198
+   800CC72C  a2 f0        op16 a2 f0
+   800CC72E  b4 f0        st.h [a15], d0
+   800CC730  94 ff        op16 94 ff
+   800CC732  b4 ef        st.h [a14], d15
+   800CC734  94 f4        op16 94 f4
+   800CC736  94 e5        op16 94 e5
+
+  READ  lea a14 @ 0x800cc48e
+  READ  lea a14 @ 0x800cc4f8
+  READ  lea a14 @ 0x800cc562
+  READ  lea a14 @ 0x800cc5cc
+  READ  lea a14 @ 0x800cc636
+  READ  lea a14 @ 0x800cc69e
+
+## nmot  (0xd000219a)
+  lea ABS: 7   st.h juste apres: 6
+  WRITE lea a15 @ 0x800cc4cc
+   800CC4B0  50 00        op16 50 00
+   800CC4B2  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC4B6  a2 f0        op16 a2 f0
+   800CC4B8  b4 e0        st.h [a14], d0
+   800CC4BA  09 a2 88 09  bo d2, [a10+0x8]
+   800CC4BE  d9 44 80 7f  op32 d9
+   800CC4C2  40 d5        mov.aa a5, a13
+   800CC4C4  40 c6        mov.aa a6, a12
+   800CC4C6  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC4CA  d4 a2        op16 d4 a2
+>> 800CC4CC  c5 df 1a 62  lea a15, 0xd000219a
+   800CC4D0  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC4D4  6d fc 66 01  call 0x8004c7a0 interp_2d
+   800CC4D8  37 02 50 00  extr
+
+  WRITE lea a15 @ 0x800cc536
+   800CC51A  50 00        op16 50 00
+   800CC51C  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC520  a2 f0        op16 a2 f0
+   800CC522  b4 e0        st.h [a14], d0
+   800CC524  09 a2 88 09  bo d2, [a10+0x8]
+   800CC528  d9 44 80 bf  op32 d9
+   800CC52C  40 d5        mov.aa a5, a13
+   800CC52E  40 c6        mov.aa a6, a12
+   800CC530  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC534  d4 a2        op16 d4 a2
+>> 800CC536  c5 df 1a 62  lea a15, 0xd000219a
+   800CC53A  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC53E  6d fc 31 01  call 0x8004c7a0 interp_2d
+   800CC542  37 02 50 00  extr
+
+  WRITE lea a15 @ 0x800cc5a0
+   800CC584  50 00        op16 50 00
+   800CC586  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC58A  a2 f0        op16 a2 f0
+   800CC58C  b4 e0        st.h [a14], d0
+   800CC58E  09 a2 88 09  bo d2, [a10+0x8]
+   800CC592  d9 44 80 ff  op32 d9
+   800CC596  40 d5        mov.aa a5, a13
+   800CC598  40 c6        mov.aa a6, a12
+   800CC59A  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC59E  d4 a2        op16 d4 a2
+>> 800CC5A0  c5 df 1a 62  lea a15, 0xd000219a
+   800CC5A4  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC5A8  6d fc fc 00  call 0x8004c7a0 interp_2d
+   800CC5AC  37 02 50 00  extr
+
+  WRITE lea a15 @ 0x800cc60a
+   800CC5EE  50 00        op16 50 00
+   800CC5F0  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC5F4  a2 f0        op16 a2 f0
+   800CC5F6  b4 e0        st.h [a14], d0
+   800CC5F8  09 a2 88 09  bo d2, [a10+0x8]
+   800CC5FC  d9 44 c0 3f  op32 d9
+   800CC600  40 d5        mov.aa a5, a13
+   800CC602  40 c6        mov.aa a6, a12
+   800CC604  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC608  d4 a2        op16 d4 a2
+>> 800CC60A  c5 df 1a 62  lea a15, 0xd000219a
+   800CC60E  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC612  6d fc c7 00  call 0x8004c7a0 interp_2d
+   800CC616  37 02 50 00  extr
+
+  WRITE lea a15 @ 0x800cc674
+   800CC658  50 00        op16 50 00
+   800CC65A  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC65E  a2 f0        op16 a2 f0
+   800CC660  b4 e0        st.h [a14], d0
+   800CC662  09 a2 88 09  bo d2, [a10+0x8]
+   800CC666  d9 44 c0 7f  op32 d9
+   800CC66A  40 d5        mov.aa a5, a13
+   800CC66C  40 c6        mov.aa a6, a12
+   800CC66E  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC672  d4 a2        op16 d4 a2
+>> 800CC674  c5 df 1a 62  lea a15, 0xd000219a
+   800CC678  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC67C  6d fc 92 00  call 0x8004c7a0 interp_2d
+   800CC680  37 02 50 00  extr
+
+  WRITE lea a15 @ 0x800cc6dc
+   800CC6C0  50 00        op16 50 00
+   800CC6C2  91 d0 01 4a  movh.a a4, 0xa01d0000
+   800CC6C6  a2 f0        op16 a2 f0
+   800CC6C8  b4 e0        st.h [a14], d0
+   800CC6CA  09 a2 88 09  bo d2, [a10+0x8]
+   800CC6CE  d9 44 c0 bf  op32 d9
+   800CC6D2  40 d5        mov.aa a5, a13
+   800CC6D4  40 c6        mov.aa a6, a12
+   800CC6D6  09 24 c0 08  ld.hu d4, [a2+0x0]
+   800CC6DA  d4 a2        op16 d4 a2
+>> 800CC6DC  c5 df 1a 62  lea a15, 0xd000219a
+   800CC6E0  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800CC6E4  6d fc 5e 00  call 0x8004c7a0 interp_2d
+   800CC6E8  37 02 50 00  extr
+
+  READ  lea a15 @ 0x800cc706
+
+## ram_1D60 smoke X  (0xd0001d60)
+  lea ABS: 8   st.h juste apres: 7
+  WRITE lea a14 @ 0x800f4a38
+   800F4A1C  76 2e        op16 76 2e
+   800F4A1E  df 12 17 00  op32 df
+   800F4A22  df 22 1f 00  op32 df
+   800F4A26  df 32 27 00  op32 df
+   800F4A2A  df 42 2f 00  op32 df
+   800F4A2E  df 52 37 00  op32 df
+   800F4A32  df 62 3f 00  op32 df
+   800F4A36  3c 57        op16 3c 57
+>> 800F4A38  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A3C  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A40  d9 ff f4 e3  op32 d9
+   800F4A44  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4a4c
+   800F4A30  37 00 df 62  extr
+   800F4A34  3f 00 3c 57  op32 3f
+   800F4A38  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A3C  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A40  d9 ff f4 e3  op32 d9
+   800F4A44  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A48  b4 ef        st.h [a14], d15
+   800F4A4A  3c 4f        op16 3c 4f
+>> 800F4A4C  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A50  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A54  d9 ff f2 e3  op32 d9
+   800F4A58  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4a60
+   800F4A44  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A48  b4 ef        st.h [a14], d15
+   800F4A4A  3c 4f        op16 3c 4f
+   800F4A4C  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A50  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A54  d9 ff f2 e3  op32 d9
+   800F4A58  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A5C  b4 ef        st.h [a14], d15
+   800F4A5E  3c 45        op16 3c 45
+>> 800F4A60  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A64  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A68  d9 ff f0 e3  op32 d9
+   800F4A6C  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4a74
+   800F4A58  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A5C  b4 ef        st.h [a14], d15
+   800F4A5E  3c 45        op16 3c 45
+   800F4A60  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A64  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A68  d9 ff f0 e3  op32 d9
+   800F4A6C  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A70  b4 ef        st.h [a14], d15
+   800F4A72  3c 3b        op16 3c 3b
+>> 800F4A74  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A78  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A7C  d9 ff ee e3  op32 d9
+   800F4A80  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4a88
+   800F4A6C  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A70  b4 ef        st.h [a14], d15
+   800F4A72  3c 3b        op16 3c 3b
+   800F4A74  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A78  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A7C  d9 ff ee e3  op32 d9
+   800F4A80  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A84  b4 ef        st.h [a14], d15
+   800F4A86  3c 31        op16 3c 31
+>> 800F4A88  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A8C  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A90  d9 ff ec e3  op32 d9
+   800F4A94  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4a9c
+   800F4A80  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A84  b4 ef        st.h [a14], d15
+   800F4A86  3c 31        op16 3c 31
+   800F4A88  c5 de e0 51  lea a14, 0xd0001d60
+   800F4A8C  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4A90  d9 ff ec e3  op32 d9
+   800F4A94  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A98  b4 ef        st.h [a14], d15
+   800F4A9A  3c 27        op16 3c 27
+>> 800F4A9C  c5 de e0 51  lea a14, 0xd0001d60
+   800F4AA0  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4AA4  d9 ff ea e3  op32 d9
+   800F4AA8  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  WRITE lea a14 @ 0x800f4ab0
+   800F4A94  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4A98  b4 ef        st.h [a14], d15
+   800F4A9A  3c 27        op16 3c 27
+   800F4A9C  c5 de e0 51  lea a14, 0xd0001d60
+   800F4AA0  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4AA4  d9 ff ea e3  op32 d9
+   800F4AA8  09 ff c0 08  ld.hu d15, [a15+0x0]
+   800F4AAC  b4 ef        st.h [a14], d15
+   800F4AAE  3c 1d        op16 3c 1d
+>> 800F4AB0  c5 de e0 51  lea a14, 0xd0001d60
+   800F4AB4  91 d0 01 fa  movh.a a15, 0xa01d0000
+   800F4AB8  d9 ff e8 e3  op32 d9
+   800F4ABC  09 ff c0 08  ld.hu d15, [a15+0x0]
+
+  READ  lea a14 @ 0x800f4ae4
+
+## ram_1D62 smoke Y  (0xd0001d62)
+  lea ABS: 2   st.h juste apres: 1
+  WRITE lea a15 @ 0x800f4afa
+   800F4ADE  c0 08        op16 c0 08
+   800F4AE0  25 df de 59  op32 25
+   800F4AE4  c5 de e0 51  lea a14, 0xd0001d60
+   800F4AE8  d9 0f 76 02  op32 d9
+   800F4AEC  f8 01        op16 f8 01
+   800F4AEE  14 ff        ld.bu d15, [a15]
+   800F4AF0  6e 37        jz
+   800F4AF2  d9 1f d6 4a  op32 d9
+   800F4AF6  14 ff        ld.bu d15, [a15]
+   800F4AF8  76 f9        op16 76 f9
+>> 800F4AFA  c5 df e2 51  lea a15, 0xd0001d62
+   800F4AFE  d9 12 70 d9  op32 d9
+   800F4B02  09 2f c0 08  ld.hu d15, [a2+0x0]
+   800F4B06  b4 ff        st.h [a15], d15
+   800F4B08  3c 2d        op16 3c 2d
+
+  READ  lea a15 @ 0x800f4b5e
+
+## ram_2780 SOI X (near clutch)  (0xd0002780)
+  lea ABS: 2   st.h juste apres: 1
+  WRITE lea a15 @ 0x800fb6e0
+   800FB6C4  b4 cf        st.h [a12], d15
+   800FB6C6  d9 0f 16 ee  op32 d9
+   800FB6CA  09 c4 c0 08  ld.hu d4, [a12+0x0]
+   800FB6CE  09 a2 88 09  bo d2, [a10+0x8]
+   800FB6D2  09 25 c0 08  ld.hu d5, [a2+0x0]
+   800FB6D6  6d fa a1 83  call 0x8004be18
+   800FB6DA  b4 f2        st.h [a15], d2
+   800FB6DC  09 ff c0 08  ld.hu d15, [a15+0x0]
+>> 800FB6E0  c5 df 40 e2  lea a15, 0xd0002780
+   800FB6E4  b4 ff        st.h [a15], d15
+   800FB6E6  3c 11        op16 3c 11
+   800FB6E8  d9 0f 16 ee  op32 d9
+   800FB6EC  bb f0 ff ff  op32 bb
+
+  READ  lea a2 @ 0x800fb48e
+
+## ram_1AB8 duration X  (0xd0001ab8)
+  lea ABS: 1   st.h juste apres: 0
+  READ  lea a14 @ 0x8008b592
+

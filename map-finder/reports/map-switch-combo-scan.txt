@@ -1,0 +1,72 @@
+SOFT/RACE combo scan — Golf 9980 offline
+bin: C:\Users\theda\Tools\ghidra-projects\Golf6_03L997558A_9980_FULLFLASH.bin
+
+## AccPed interp sites (a4 in AccPed tiles)
+count 7
+  800CC4AA  interp_2d       a4=A01CFFC0  a14=D0002198
+  800E2DFC  map_interp_D    a4=A01CFCE4  a14=00000000
+  800E2D18  map_interp_F    a4=A01CFCE4  a14=00000000
+  800E2D2E  map_interp_F    a4=A01CFCE4  a14=00000000
+  800EC250  map_interp_F    a4=A01CFAE4  a14=00000000
+  800E2DDC  map_interp_I    a4=A01CFCE4  a14=00000000
+  800E2DCA  map_interp_K    a4=A01CFCE4  a14=00000000
+
+## AccPed tile bytes (copy candidates)
+  1CFFC0  uniq_u16=75  head=0080008f4d916693
+  1CFAC0  uniq_u16=75  head=0080c092a0954098
+  1CFBC0  uniq_u16=75  head=0080c092a0954098
+  1CFCC0  uniq_u16=75  head=0080c092a0954098
+  1CFDC0  uniq_u16=75  head=0080c092a0954098
+  1CFEC0  uniq_u16=75  head=0080c092a0954098
+  1D0640  uniq_u16=79  head=008040945b97319a
+
+## RACE hole 1CB064
+  first 0xD80 bytes, FF=3456/3456
+
+## code caves >=64 B in 0x80020000..cal
+  801718A0  58464  fill=00
+  800336E4  50460  fill=00
+  80165FDA  23739  fill=00
+  8016DC52   5040  fill=00
+  8016C62C   1792  fill=00
+  8003FE04   1020  fill=00
+  8017FE04    508  fill=00
+  8002061C    484  fill=00
+  8016F042    446  fill=00
+  8004393D    375  fill=00
+  8003331D    343  fill=00
+  800201C0    324  fill=00
+
+## cal FF holes >=256
+  1CB064   3456
+  188D48   1536
+  19D1D8    512
+  1BB1D0    512
+  1AC034    386
+  1BF898    384
+  189958    256
+  19C6D8    256
+  1D3CD8    256
+
+## lea ABS RAM D000-D001 count 1573
+unused lea-ABS near A946: A948 A949 A94A A94B A94C A94D A94E A94F A950 A951 A952 A953 A954 A955 A956 A957 A958 A959 A95A A95B
+biggest D0002000-4000 lea-ABS gap: D0002890 len=66
+
+## proven combo inputs
+  APP_r   D0002198  AccPed X @ 800CC4AA
+  nmot    D000219A
+  vfzg?   D0002810  X of tqlim_speed2A @ 800A6B86 (atlas: vehicle speed km/h)
+  brake   NOT PROVEN (skip V1)
+
+## D0002810 writer
+  lea a14 @ 800A6AF4
+   800A6AE4  c5 dd 92 02  lea a13, 0xd0002812
+   800A6AE8  94 c4        ld.h d4, [a12]
+   800A6AEA  94 d5        ld.h d5, [a13]
+   800A6AEC  6d fd ae 33  call 0x8004d248
+   800A6AF0  3b 40 06 50  op32 3b
+>> 800A6AF4  c5 de 90 02  lea a14, 0xd0002810
+   800A6AF8  02 24        mov d4, d2
+   800A6AFA  6d fd 2d 33  call 0x8004d154
+   800A6AFE  b4 e2        st.h [a14], d2
+

@@ -1,0 +1,57 @@
+Golf 9980 map_interp_L family scan (method 4, static)
+map_interp_L @ 0x8004E4E8  CALL sites=47  (calls_csv(47) + flash_scan(47))
+window=80 bytes before call; lookback=256 only to fill [a10+k] slots
+
+Families: 47
+Grids labeled (potential): 18/47 (38.3%)
+COVERAGE (d4 AND d5 RAM resolved, no lea-fallback): 1/47 = 2.1%
+d4 RAM found: 10/47 (21.3%)  d5: 6/47 (12.8%)  exactly one: 14
+After lea-fallback, rows with both ram_x and ram_y: 6/47 (12.8%)
+Honesty: ld.a a15,[a10+k] / ld.hu d4,[a15] misses when the pointer was stored outside lookback.
+
+Unique RAM as X: 9
+Unique RAM as Y: 8
+RAM labels (voted from A2L axis IdNames co-occurring; NOT OEM MEASUREMENT):
+  0xD0000000  asX=1 asY=0  RAM_D000xxxx
+  0xD00006CA  asX=0 asY=1  RAM_D000xxxx
+  0xD00007D8  asX=0 asY=1  RAM_D000xxxx
+  0xD00007DC  asX=1 asY=0  RAM_D000xxxx
+  0xD00019E4  asX=1 asY=0  RAM_D000xxxx
+  0xD0002048  asX=1 asY=1  RAM_D000xxxx
+  0xD0002248  asX=0 asY=1  RAM_D000xxxx
+  0xD000227E  asX=1 asY=0  RAM_D000xxxx
+  0xD0002416  asX=0 asY=4  RAM_D000xxxx
+  0xD000241C  asX=4 asY=0  RAM_D000xxxx
+  0xD0002986  asX=1 asY=0  RAM_D000xxxx
+  0xD0002996  asX=0 asY=1  RAM_D000xxxx
+  0xD0003008  asX=0 asY=1  RAM_D000xxxx
+  0xD00030A0  asX=0 asY=1  RAM_D000xxxx
+  0xD00030A2  asX=1 asY=0  RAM_D000xxxx
+  0xD00031EC  asX=1 asY=0  RAM_D000xxxx
+
+Biggest families:
+  L_fam_0021 n=1  ram - / -  ax 0xA01B4910 / 0xA01B39C8  e.g. 0x8007BF86 L_lookup_ax_X_Y_07BF86
+  L_fam_0022 n=1  ram - / -  ax 0xA01B4910 / 0xA01B39D8  e.g. 0x8007C6D6 L_lookup_ax_X_Y_07C6D6
+  L_fam_0024 n=1  ram - / -  ax 0xA01B784C / 0xA01B0BE8  e.g. 0x8007E82A L_lookup_ax_X_Y_07E82A
+  L_fam_0023 n=1  ram - / -  ax 0xA01B784C / 0xA01AB990  e.g. 0x8007E91E L_lookup_ax_X_Y_07E91E
+  L_fam_0015 n=1  ram - / -  ax 0xA01B1874 / 0xA01AA9FC  e.g. 0x80080D0E L_lookup_ax_X_Y_19D6AC
+  L_fam_0017 n=1  ram - / -  ax 0xA01B1874 / 0xA01B4A78  e.g. 0x80080DC8 L_lookup_ax_X_Y_080DC8
+  L_fam_0018 n=1  ram 0xD0000000 / 0xD00006CA  ax 0xA01B1874 / 0xA01B5A58  e.g. 0x80080E2A L_lookup_D0000000_x_D00006CA
+  L_fam_0038 n=1  ram - / -  ax - / -  e.g. 0x80081674 L_lookup_unresolved_081674
+  L_fam_0037 n=1  ram 0xD00031EC / -  ax - / -  e.g. 0x80081832 L_lookup_unresolved_081832
+  L_fam_0035 n=1  ram - / 0xD0003008  ax 0xA01B0B38 / -  e.g. 0x80085DF6 L_lookup_ax_X_Y_085DF6
+  L_fam_0039 n=1  ram - / -  ax - / -  e.g. 0x8008A8EE L_lookup_unresolved_08A8EE
+  L_fam_0033 n=1  ram 0xD00030A2 / 0xD00030A0  ax - / -  e.g. 0x8008AA7E L_lookup_D00030A2_x_D00030A0_1824B8
+  L_fam_0016 n=1  ram - / -  ax 0xA01B1874 / 0xA01B1874  e.g. 0x80096AAA L_lookup_ax_X_Y_19B524
+  L_fam_0014 n=1  ram - / -  ax 0xA01B1854 / 0xA01B6AE8  e.g. 0x8009A440 L_lookup_ax_X_Y_09A440
+  L_fam_0036 n=1  ram 0xD000241C / -  ax 0xA01AAAC8 / -  e.g. 0x8009ADE6 L_lookup_ax_X_Y_09ADE6
+
+Ident-ish strings (firmware, not map names):
+  SM233-111SM2G0
+
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_L_families.csv
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_L_families_stats.txt
+Wrote C:\Users\theda\OneDrive\Bureau\chercheur-maps-caddy\map-finder\ghidra\golf9980_interp_L_HIGH.a2l
+Ghidra: NameInterpFamilies.py processes ALL golf9980_interp*_families.csv next to the script.
+Secondary labels fam_* / B_fam_* .. O_fam_* do not delete map_horsA2L_*.
+Public A2L: families + AXIS_PTS from flash, not OEM CHARACTERISTIC names.

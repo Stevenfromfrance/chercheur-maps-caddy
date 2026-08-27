@@ -1,0 +1,3335 @@
+{
+  "target": "C:\\Users\\theda\\OneDrive\\Documents\\Reprog-Stage1\\06-Vehicules\\Caddy-CAYE-2013-03L906023PA-2531\\A2L\\REF_Golf_CAYC_SM2G0P2000000_9980.bin",
+  "size": 2097152,
+  "atlas_soft": "9979",
+  "filter": {
+    "role": null,
+    "pack": null
+  },
+  "summary": {
+    "total": 185,
+    "exact_same_addr": 152,
+    "exact_relocated": 0,
+    "context_only": 12,
+    "miss": 21,
+    "no_fingerprint": 0,
+    "hit_rate_exact": 0.822,
+    "hit_rate_any": 0.886
+  },
+  "results": [
+    {
+      "id": "AccPed_trq4A",
+      "name": "Drivers wish torque",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CF9C0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "tqlim_base_pu_4A",
+      "name": "Torque limiter",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3190",
+      "length": 416,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1913232,
+          "addr_hex": "1D3190",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "smoke_mapA",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1D18",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1907992,
+          "addr_hex": "1D1D18",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C04AC",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "turbo_atm6A",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C692C",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1861932,
+          "addr_hex": "1C692C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9368",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2003816,
+          "addr_hex": "1E9368",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D7E38",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "tqlim_tegt_temp",
+      "name": "Torque limiter by EGT temperature",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D35A8",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1914280,
+          "addr_hex": "1D35A8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "tqlim_speed2A",
+      "name": "Torque limiter by vehicle speed",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1CEED4",
+      "length": 96,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1896148,
+          "addr_hex": "1CEED4",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "airctl_hysteresisC",
+      "name": "EGR hysteresis",
+      "roles": [
+        "stage1_core",
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0100",
+      "length": 32,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "vmax3",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "stage1_core",
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18047C",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574012,
+          "addr_hex": "18047C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A",
+      "name": "Start of Injection",
+      "roles": [
+        "stage1_core"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C380",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1622912,
+          "addr_hex": "18C380",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "smoke_mapA@1D2270",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D2270",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1909360,
+          "addr_hex": "1D2270",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C43AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C43AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1852332,
+          "addr_hex": "1C43AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3AAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1850028,
+          "addr_hex": "1C3AAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C40AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C40AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1851564,
+          "addr_hex": "1C40AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C072C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C072C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1836844,
+          "addr_hex": "1C072C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C09AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C09AC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1837484,
+          "addr_hex": "1C09AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C0C2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0C2C",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1836844,
+          "addr_hex": "1C072C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1837484,
+          "addr_hex": "1C09AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1838124,
+          "addr_hex": "1C0C2C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1838764,
+          "addr_hex": "1C0EAC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1848364,
+          "addr_hex": "1C342C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C0EAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C0EAC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1838764,
+          "addr_hex": "1C0EAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C112C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C112C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1839404,
+          "addr_hex": "1C112C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C13AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C13AC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1840044,
+          "addr_hex": "1C13AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C162C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C162C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1840684,
+          "addr_hex": "1C162C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C18AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C18AC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1841324,
+          "addr_hex": "1C18AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C31AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C31AC",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1847084,
+          "addr_hex": "1C2F2C",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1847724,
+          "addr_hex": "1C31AC",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C342C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C342C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1848364,
+          "addr_hex": "1C342C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C36AC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C36AC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1849004,
+          "addr_hex": "1C36AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C1B2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1B2C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1841964,
+          "addr_hex": "1C1B2C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C1DAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C1DAC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1842604,
+          "addr_hex": "1C1DAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C202C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C202C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1843244,
+          "addr_hex": "1C202C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C2A2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2A2C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1845804,
+          "addr_hex": "1C2A2C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C2CAC",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2CAC",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1846444,
+          "addr_hex": "1C2CAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_base3B@1C2F2C",
+      "name": "Turbo boost pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C2F2C",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1847084,
+          "addr_hex": "1C2F2C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C3DAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C3DAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1850796,
+          "addr_hex": "1C3DAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_atm6A@1C6A2C",
+      "name": "Turbo boost pressure limiter by ATM",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C6A2C",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1862188,
+          "addr_hex": "1C6A2C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18CB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CB80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1624960,
+          "addr_hex": "18CB80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18F380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F380",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1635200,
+          "addr_hex": "18F380",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18F580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F580",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1635712,
+          "addr_hex": "18F580",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18F780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F780",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1636224,
+          "addr_hex": "18F780",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18FF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18FF80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1638272,
+          "addr_hex": "18FF80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@190180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190180",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1638784,
+          "addr_hex": "190180",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@190380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190380",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1639296,
+          "addr_hex": "190380",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18DF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DF80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1630080,
+          "addr_hex": "18DF80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18CD80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CD80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1625472,
+          "addr_hex": "18CD80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18EB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18EB80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1633152,
+          "addr_hex": "18EB80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18CF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18CF80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1625984,
+          "addr_hex": "18CF80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18DD80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DD80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1629568,
+          "addr_hex": "18DD80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18E980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E980",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1632640,
+          "addr_hex": "18E980",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18D380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D380",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1627008,
+          "addr_hex": "18D380",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18E780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E780",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1632128,
+          "addr_hex": "18E780",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@190580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190580",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1639808,
+          "addr_hex": "190580",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@190780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190780",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1640320,
+          "addr_hex": "190780",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@190980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "190980",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1640832,
+          "addr_hex": "190980",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18C980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C980",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1624448,
+          "addr_hex": "18C980",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1629056,
+          "addr_hex": "18DB80",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1632128,
+          "addr_hex": "18E780",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18D180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D180",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1626496,
+          "addr_hex": "18D180",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18DB80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18DB80",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1624448,
+          "addr_hex": "18C980",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1629056,
+          "addr_hex": "18DB80",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1632128,
+          "addr_hex": "18E780",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18F180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18F180",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1634688,
+          "addr_hex": "18F180",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18ED80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18ED80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1633664,
+          "addr_hex": "18ED80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18EF80",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18EF80",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1634176,
+          "addr_hex": "18EF80",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18C780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C780",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1623936,
+          "addr_hex": "18C780",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18D980",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D980",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1628544,
+          "addr_hex": "18D980",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18E580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E580",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1631616,
+          "addr_hex": "18E580",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18D580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D580",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1627520,
+          "addr_hex": "18D580",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18E180",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E180",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1630592,
+          "addr_hex": "18E180",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18C580",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18C580",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1623424,
+          "addr_hex": "18C580",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1628032,
+          "addr_hex": "18D780",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1631104,
+          "addr_hex": "18E380",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18D780",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18D780",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1623424,
+          "addr_hex": "18C580",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1628032,
+          "addr_hex": "18D780",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1631104,
+          "addr_hex": "18E380",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "soi_base_int_trq2A@18E380",
+      "name": "Start of Injection",
+      "roles": [
+        "other"
+      ],
+      "folder": "Start of injection SOI",
+      "ref_addr_hex": "18E380",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1631104,
+          "addr_hex": "18E380",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9768",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9768",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2004840,
+          "addr_hex": "1E9768",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9D68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9D68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2006376,
+          "addr_hex": "1E9D68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9568",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9568",
+      "length": 512,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 2004328,
+          "addr_hex": "1E9568",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 2007400,
+          "addr_hex": "1EA168",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 2010472,
+          "addr_hex": "1EAD68",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9968",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9968",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2005352,
+          "addr_hex": "1E9968",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9B68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9B68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2005864,
+          "addr_hex": "1E9B68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_base_int_trq2B@1E9F68",
+      "name": "Rail pressure request",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Rail pressure",
+      "ref_addr_hex": "1E9F68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2006888,
+          "addr_hex": "1E9F68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D80B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D80B8",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8338",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8338",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1934136,
+          "addr_hex": "1D8338",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D85B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D85B8",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8838",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8838",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1935416,
+          "addr_hex": "1D8838",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8AB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8AB8",
+      "length": 640,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1936056,
+          "addr_hex": "1D8AB8",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        },
+        {
+          "addr": 1936696,
+          "addr_hex": "1D8D38",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8D38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8D38",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1936696,
+          "addr_hex": "1D8D38",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D8FB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D8FB8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1937336,
+          "addr_hex": "1D8FB8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9238",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9238",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1937976,
+          "addr_hex": "1D9238",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D94B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D94B8",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9738",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9738",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9C38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9C38",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D9EB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D9EB8",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA138",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA138",
+      "length": 640,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA3B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA3B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1942456,
+          "addr_hex": "1DA3B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA638",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA638",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1943096,
+          "addr_hex": "1DA638",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DA8B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DA8B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1943736,
+          "addr_hex": "1DA8B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DAB38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DAB38",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1944376,
+          "addr_hex": "1DAB38",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DADB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DADB8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1945016,
+          "addr_hex": "1DADB8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB038",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB038",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1945656,
+          "addr_hex": "1DB038",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DC938",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DC938",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1952056,
+          "addr_hex": "1DC938",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DCBB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DCBB8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1952696,
+          "addr_hex": "1DCBB8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DCE38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DCE38",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1953336,
+          "addr_hex": "1DCE38",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB2B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB2B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1946296,
+          "addr_hex": "1DB2B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB538",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB538",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1946936,
+          "addr_hex": "1DB538",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DB7B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DB7B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1947576,
+          "addr_hex": "1DB7B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBA38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBA38",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1948216,
+          "addr_hex": "1DBA38",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBCB8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBCB8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1948856,
+          "addr_hex": "1DBCB8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DBF38",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DBF38",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1949496,
+          "addr_hex": "1DBF38",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD0B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD0B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1953976,
+          "addr_hex": "1DD0B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD338",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD338",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1954616,
+          "addr_hex": "1DD338",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1DD5B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1DD5B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1955256,
+          "addr_hex": "1DD5B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "nm2iq_base_mg3A@1D99B8",
+      "name": "Torque to fuel quantity injected conversion",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1D99B8",
+      "length": 640,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1939896,
+          "addr_hex": "1D99B8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "tqlim_fuel_temp2A",
+      "name": "Torque limiter by fuel temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3390",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1913744,
+          "addr_hex": "1D3390",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "smoke_mapA@1D251C",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D251C",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1910044,
+          "addr_hex": "1D251C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "AccPed_trq4A@1CFAC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFAC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "AccPed_trq4A@1CFBC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFBC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "AccPed_trq4A@1CFCC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFCC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "AccPed_trq4A@1CFDC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFDC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "AccPed_trq4A@1CFEC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFEC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "AccPed_trq4A@1CFFC0",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1CFFC0",
+      "length": 256,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "smoke_mapA@1D27C8",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D27C8",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1910728,
+          "addr_hex": "1D27C8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C58AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C58AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1857708,
+          "addr_hex": "1C58AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5EAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5EAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1859244,
+          "addr_hex": "1C5EAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "smoke_mapA@1D1FC4",
+      "name": "Smoke limitation by MAP",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Smoke limitation",
+      "ref_addr_hex": "1D1FC4",
+      "length": 684,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1908676,
+          "addr_hex": "1D1FC4",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C5BAC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C5BAC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1858476,
+          "addr_hex": "1C5BAC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C67AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C67AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1861548,
+          "addr_hex": "1C67AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "scal_trq_cluth",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183F74",
+      "length": 64,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "scal_trq_cluth@183FB4",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183FB4",
+      "length": 64,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "scal_trq_cluth@183FF4",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "183FF4",
+      "length": 64,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "scal_trq_cluth@184034",
+      "name": "Monitored scaling factor for requested torque at clutch from driver",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "184034",
+      "length": 64,
+      "status": "miss",
+      "matches": []
+    },
+    {
+      "id": "duration_inj6A",
+      "name": "Injection duration",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1CDC84",
+      "length": 864,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1891460,
+          "addr_hex": "1CDC84",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "duration_inj6A@1CDFE4",
+      "name": "Injection duration",
+      "roles": [
+        "other"
+      ],
+      "folder": "Injection system",
+      "ref_addr_hex": "1CDFE4",
+      "length": 864,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1892324,
+          "addr_hex": "1CDFE4",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "tqlim_fuel_temp2",
+      "name": "Torque limiter by fuel temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D2C1C",
+      "length": 48,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1911836,
+          "addr_hex": "1D2C1C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "trq__nm_corr_tmot",
+      "name": "Torque limiter correction by engine temperature",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D3330",
+      "length": 96,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1913648,
+          "addr_hex": "1D3330",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "airctl_hysteresisC@1D0120",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0120",
+      "length": 32,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1900832,
+          "addr_hex": "1D0120",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "airctl_hysteresisC@1D0180",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0180",
+      "length": 32,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1900928,
+          "addr_hex": "1D0180",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "tqlim_cluth_prot",
+      "name": "Torque limiter for clutch protection",
+      "roles": [
+        "clutch_prot"
+      ],
+      "folder": "Engine torque limiters",
+      "ref_addr_hex": "1D0860",
+      "length": 128,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1902688,
+          "addr_hex": "1D0860",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "airctl_hysteresisC@1D0160",
+      "name": "EGR hysteresis",
+      "roles": [
+        "egr_control"
+      ],
+      "folder": "Air control",
+      "ref_addr_hex": "1D0160",
+      "length": 32,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1900896,
+          "addr_hex": "1D0160",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "turbo_int_trq_correction2C@1C46AC",
+      "name": "Turbo boost correction by internal torque",
+      "roles": [
+        "stage1_support"
+      ],
+      "folder": "Turbo boost pressure",
+      "ref_addr_hex": "1C46AC",
+      "length": 384,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1853100,
+          "addr_hex": "1C46AC",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "AccPed_trq4A@1D0640",
+      "name": "Drivers wish torque",
+      "roles": [
+        "other"
+      ],
+      "folder": "Engine torque request",
+      "ref_addr_hex": "1D0640",
+      "length": 256,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1902144,
+          "addr_hex": "1D0640",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax2",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18048A",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574026,
+          "addr_hex": "18048A",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax2@18048C",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18048C",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574028,
+          "addr_hex": "18048C",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax3@18047E",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18047E",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574014,
+          "addr_hex": "18047E",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax3@18049E",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "18049E",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574046,
+          "addr_hex": "18049E",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax3@1804A0",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "1804A0",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574048,
+          "addr_hex": "1804A0",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "vmax3@1804A2",
+      "name": "Maximum vehicle speed",
+      "roles": [
+        "speed_limiter"
+      ],
+      "folder": "Vehicle speed limiters",
+      "ref_addr_hex": "1804A2",
+      "length": 2,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1574050,
+          "addr_hex": "1804A2",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0400",
+      "name": "DTC OFF P0400 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0935",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1706293,
+          "addr_hex": "1A0935",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0401",
+      "name": "DTC OFF P0401 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0725",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1705765,
+          "addr_hex": "1A0725",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0402",
+      "name": "DTC OFF P0402 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0751",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1705809,
+          "addr_hex": "1A0751",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0403",
+      "name": "DTC OFF P0403 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0885",
+      "length": 83,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1706117,
+          "addr_hex": "1A0885",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0407",
+      "name": "DTC OFF P0407 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A3325",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1717029,
+          "addr_hex": "1A3325",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0408",
+      "name": "DTC OFF P0408 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A3325",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1717029,
+          "addr_hex": "1A3325",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P046C",
+      "name": "DTC OFF P046C (EGR/DPF)",
+      "roles": [
+        "dtc_egr_dpf"
+      ],
+      "folder": "EGR/DPF",
+      "ref_addr_hex": "1A32CD",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1716941,
+          "addr_hex": "1A32CD",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0471",
+      "name": "DTC OFF P0471 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A01D1",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1704401,
+          "addr_hex": "1A01D1",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0544",
+      "name": "DTC OFF P0544 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2CC9",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1715401,
+          "addr_hex": "1A2CC9",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P0545",
+      "name": "DTC OFF P0545 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2DD1",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1715665,
+          "addr_hex": "1A2DD1",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P1400",
+      "name": "DTC OFF P1400 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A0961",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1706337,
+          "addr_hex": "1A0961",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P1428",
+      "name": "DTC OFF P1428 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "19E809",
+      "length": 23,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1697801,
+          "addr_hex": "19E809",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P147A",
+      "name": "DTC OFF P147A (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "19E809",
+      "length": 23,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1697801,
+          "addr_hex": "19E809",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2002",
+      "name": "DTC OFF P2002 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A0071",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1704049,
+          "addr_hex": "1A0071",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2080",
+      "name": "DTC OFF P2080 (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "19FE09",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1703433,
+          "addr_hex": "19FE09",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2425",
+      "name": "DTC OFF P2425 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06A1",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1705633,
+          "addr_hex": "1A06A1",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2426",
+      "name": "DTC OFF P2426 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06CD",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1705677,
+          "addr_hex": "1A06CD",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2427",
+      "name": "DTC OFF P2427 (EGR)",
+      "roles": [
+        "dtc_egr"
+      ],
+      "folder": "EGR",
+      "ref_addr_hex": "1A06F9",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1705721,
+          "addr_hex": "1A06F9",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P242B",
+      "name": "DTC OFF P242B (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "19FE35",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1703477,
+          "addr_hex": "19FE35",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2453",
+      "name": "DTC OFF P2453 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A009D",
+      "length": 127,
+      "status": "context_only",
+      "matches": [
+        {
+          "addr": 1704093,
+          "addr_hex": "1A009D",
+          "method": "context",
+          "note": "borders match, payload differs — likely same map slot, different soft values"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2454",
+      "name": "DTC OFF P2454 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A32A1",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1716897,
+          "addr_hex": "1A32A1",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2455",
+      "name": "DTC OFF P2455 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A32A1",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1716897,
+          "addr_hex": "1A32A1",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2456",
+      "name": "DTC OFF P2456 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A0229",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1704489,
+          "addr_hex": "1A0229",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2458",
+      "name": "DTC OFF P2458 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A2959",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1714521,
+          "addr_hex": "1A2959",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2463",
+      "name": "DTC OFF P2463 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A1409",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1709065,
+          "addr_hex": "1A1409",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P246E",
+      "name": "DTC OFF P246E (EGT)",
+      "roles": [
+        "dtc_egt"
+      ],
+      "folder": "EGT",
+      "ref_addr_hex": "1A2DA5",
+      "length": 23,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1715621,
+          "addr_hex": "1A2DA5",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P2626",
+      "name": "DTC OFF P2626 (DPF/O2)",
+      "roles": [
+        "dtc_dpf_o2"
+      ],
+      "folder": "DPF/O2",
+      "ref_addr_hex": "1A1931",
+      "length": 39,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1710385,
+          "addr_hex": "1A1931",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P3004",
+      "name": "DTC OFF P3004 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A22A5",
+      "length": 26,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1712805,
+          "addr_hex": "1A22A5",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_P3005",
+      "name": "DTC OFF P3005 (DPF)",
+      "roles": [
+        "dtc_dpf"
+      ],
+      "folder": "DPF",
+      "ref_addr_hex": "1A2381",
+      "length": 26,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1713025,
+          "addr_hex": "1A2381",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "DTC_U1112",
+      "name": "DTC OFF U1112 (EGR com)",
+      "roles": [
+        "dtc_egr_com"
+      ],
+      "folder": "EGR com",
+      "ref_addr_hex": "19E1AD",
+      "length": 83,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 1696173,
+          "addr_hex": "19E1AD",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_01",
+      "name": "Suite rail (hors A2L) banque 1",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA168",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2007400,
+          "addr_hex": "1EA168",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_02",
+      "name": "Suite rail (hors A2L) banque 2",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA368",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2007912,
+          "addr_hex": "1EA368",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_03",
+      "name": "Suite rail (hors A2L) banque 3",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA568",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2008424,
+          "addr_hex": "1EA568",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_04",
+      "name": "Suite rail (hors A2L) banque 4",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA768",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2008936,
+          "addr_hex": "1EA768",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_05",
+      "name": "Suite rail (hors A2L) banque 5",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EA968",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2009448,
+          "addr_hex": "1EA968",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_06",
+      "name": "Suite rail (hors A2L) banque 6",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAB68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2009960,
+          "addr_hex": "1EAB68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_07",
+      "name": "Suite rail (hors A2L) banque 7",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAD68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2010472,
+          "addr_hex": "1EAD68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_08",
+      "name": "Suite rail (hors A2L) banque 8",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EAF68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2010984,
+          "addr_hex": "1EAF68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_09",
+      "name": "Suite rail (hors A2L) banque 9",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB168",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2011496,
+          "addr_hex": "1EB168",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_10",
+      "name": "Suite rail (hors A2L) banque 10",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB368",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2012008,
+          "addr_hex": "1EB368",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_11",
+      "name": "Suite rail (hors A2L) banque 11",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB568",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2012520,
+          "addr_hex": "1EB568",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_12",
+      "name": "Suite rail (hors A2L) banque 12",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB768",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2013032,
+          "addr_hex": "1EB768",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_13",
+      "name": "Suite rail (hors A2L) banque 13",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EB968",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2013544,
+          "addr_hex": "1EB968",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_request_horsA2L_banque_14",
+      "name": "Suite rail (hors A2L) banque 14",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBB68",
+      "length": 512,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2014056,
+          "addr_hex": "1EBB68",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_lim_horsA2L_A",
+      "name": "Limiteur rail (hors A2L) A",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBDD8",
+      "length": 111,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2014680,
+          "addr_hex": "1EBDD8",
+          "method": "exact"
+        }
+      ]
+    },
+    {
+      "id": "rail_lim_horsA2L_B",
+      "name": "Limiteur rail (hors A2L) B",
+      "roles": [
+        "provisoire"
+      ],
+      "folder": "Hors A2L / provisoire",
+      "ref_addr_hex": "1EBE58",
+      "length": 111,
+      "status": "exact_same_addr",
+      "matches": [
+        {
+          "addr": 2014808,
+          "addr_hex": "1EBE58",
+          "method": "exact"
+        }
+      ]
+    }
+  ]
+}
