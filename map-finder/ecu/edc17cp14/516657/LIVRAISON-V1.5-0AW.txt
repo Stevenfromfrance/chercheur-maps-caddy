@@ -1,0 +1,29 @@
+A5 Bertin — V1.5 0AW InjTime soft + cruise IQ
+
+Fichier :
+  A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls
+  (atelier + AUDI A5 BERTIN)
+
+Base = V1.4d (vmax + no-smoke + fill@400 + HC + SOI + pollution)
+
+Ajoute (retour Stage 1 ami)
+1. Injection Time (us) @ 1D1496
+   - 90 cellules = cells Stage1 ami
+   - ~+1.7 % med, cap +3 % vs ORI
+   - axes RPM avant / apres intacts
+2. IQ #2 / #3 / #4 → ORI
+   - Stage 1 = maps cruise (IQ #1 reste +2 % V1.4c)
+   - 721 cellules remises stock
+
+Inchange vs V1.4d
+- Fill sous 400 Nm, smoke lambda +5 %, IQ #1 +2 %
+- HC, SOI, DPF/EGR/FLAPS, vmax 350, plafonds couple ORI
+
+OBLIGATOIRE avant flash
+1. CHK WinOLS/KESS
+2. G83 / EGT / FAP+EGR physiques
+3. Lecture KESS OBD puis ecriture V1.5 CHK
+
+Apres flash — logs (log-aide.html A5)
+  VILLE / ROUTE_INJ / HARCUT : A5_516657_V15_*_YYYYMMDD.csv
+  Priorite ROUTE_INJ : valider duree inj + fumée / conso

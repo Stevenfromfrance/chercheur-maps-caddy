@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · A5 WinOLS stand-in — ORI vs V1.5</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=ecu">
+<style>
+body.stage1-page .pair-bar,
+body.stage1-page .quick-chips,
+body.stage1-page .stats,
+body.stage1-page .sub,
+body.stage1-page .work-controls { display: none; }
+.wo-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 12px;
+  align-items: start;
+  max-width: 96rem;
+}
+@media (max-width: 860px) {
+  .wo-layout { grid-template-columns: 1fr; }
+}
+.wo-list {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+}
+.wo-list button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font: inherit;
+  padding: .45rem .65rem;
+  cursor: pointer;
+}
+.wo-list button:hover { background: rgba(226, 58, 26, .08); }
+.wo-list button.on { background: rgba(245, 197, 66, .12); }
+.wo-list .wo-name { display: block; font-size: .86rem; }
+.wo-list .wo-meta { display: block; font-family: var(--mono); font-size: .72rem; color: var(--muted); }
+.wo-view {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent2);
+  border-radius: var(--radius);
+  padding: .85rem 1rem 1.1rem;
+  min-height: 20rem;
+}
+.wo-view h3 { margin: 0 0 .35rem; font-family: var(--display); letter-spacing: .04em; }
+.wo-tools { display: flex; flex-wrap: wrap; gap: .4rem; margin: .5rem 0 .8rem; }
+.wo-tools button, .wo-filters button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: #0d0d0d;
+  color: var(--ink);
+  border-radius: 3px;
+  padding: .28rem .55rem;
+}
+.wo-tools button.on, .wo-filters button.on {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+.wo-filters { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .6rem; }
+.wo-note { color: var(--muted); font-size: .88rem; margin: 0 0 .7rem; }
+.wo-axis {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--accent2);
+  margin: .35rem 0 .6rem;
+}
+.wo-empty { color: var(--muted); padding: 1rem 0; }
+.badge.ok { color: #8ecf9a; border-color: rgba(142, 207, 154, .4); }
+.badge.wait { color: var(--accent2); border-color: rgba(245, 197, 66, .35); }
+.badge.no { color: var(--muted); border-color: var(--line); }
+.stage1-main .panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+  max-width: 96rem;
+}
+.stage1-main .count-strip {
+  display: flex; flex-wrap: wrap; gap: .45rem .7rem;
+  margin: .5rem 0 .7rem; font-family: var(--mono); font-size: .82rem; color: var(--muted);
+}
+.stage1-main .count-strip b { color: var(--ink); font-weight: 600; }
+table.winols td.cell.axis-warn { outline: 2px dashed var(--accent2); outline-offset: -2px; }
+</style>
+</head>
+<body class="stage1-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>A5 · viewer type WinOLS — ORI vs V1.5</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <div class="nav-group on" data-nav-group="maps">
+        <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
+        <div class="nav-sub" role="menu">
+          <a href="a5-cgka-edc17cp14.html" role="menuitem">Fiche Bertin</a>
+          <a href="a5-winols.html" class="on" role="menuitem">Viewer WinOLS</a>
+          <a href="pcr21-banque.html" role="menuitem">PCR2.1 banque</a>
+        </div>
+      </div>
+      <a href="log-aide.html#a5">Fiches log</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="app-main stage1-main">
+  <section class="panel">
+    <h2>Ce que ça fait — et ce que ça n’est pas</h2>
+    <p class="wo-note">Grilles du <code>.kp</code> ami · compare <b>ORI</b> à <b>V1.5 0AW</b> (fill@400 + nosmoke + InjTime + cruise IQ + HC/SOI/pollution). Pas WinOLS : pas d’édition, pas de checksum. Relancer : <code>python tools/a5_winols_standin.py</code>. Fiche : <a href="a5-cgka-edc17cp14.html">a5-cgka-edc17cp14.html</a>.</p>
+    <div class="count-strip" id="wo-strip"><span>Chargement…</span></div>
+    <div class="wo-filters" id="wo-filters">
+      <button type="button" data-f="used" class="on">Touchées V1.5</button>
+      <button type="button" data-f="watch">Doutes (axes)</button>
+      <button type="button" data-f="unused">Non utilisées</button>
+      <button type="button" data-f="all">Tout le .kp</button>
+    </div>
+  </section>
+  <div class="wo-layout">
+    <div class="wo-list" id="wo-list"></div>
+    <div class="wo-view" id="wo-view">
+      <p class="wo-empty">Choisis une map à gauche.</p>
+    </div>
+  </div>
+</main>
+<script src="data/edc17cp14-516657/winols-view.js"></script>
+<script>
+function closeNavGroups() {
+  document.querySelectorAll('.nav-group.open').forEach((g) => {
+    g.classList.remove('open');
+    g.querySelector('.nav-group-btn')?.setAttribute('aria-expanded', 'false');
+  });
+}
+document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
+  const groupBtn = e.target.closest('.nav-group-btn');
+  if (!groupBtn) return;
+  e.preventDefault();
+  const group = groupBtn.closest('.nav-group');
+  const open = group.classList.contains('open');
+  closeNavGroups();
+  if (!open) {
+    group.classList.add('open');
+    groupBtn.setAttribute('aria-expanded', 'true');
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeNavGroups();
+});
+
+let DATA = window.A5WINOLS || null;
+let FILTER = 'used';
+let MODE = 'diff';
+let CURRENT = null;
+
+function heatColor(t) {
+  t = Math.max(0, Math.min(1, t));
+  const stops = [
+    [0.00, [20, 40, 90]],
+    [0.25, [30, 120, 180]],
+    [0.50, [40, 170, 90]],
+    [0.75, [220, 180, 40]],
+    [1.00, [220, 60, 50]],
+  ];
+  let a = stops[0], b = stops[stops.length - 1];
+  for (let i = 0; i < stops.length - 1; i++) {
+    if (t >= stops[i][0] && t <= stops[i + 1][0]) { a = stops[i]; b = stops[i + 1]; break; }
+  }
+  const u = (t - a[0]) / ((b[0] - a[0]) || 1);
+  const rgb = a[1].map((v, i) => Math.round(v + (b[1][i] - v) * u));
+  return 'rgb(' + rgb.join(',') + ')';
+}
+function diffColor(d, maxAbs) {
+  if (!maxAbs || Math.abs(d) < 1e-9) return '#1a2430';
+  const t = Math.min(1, Math.abs(d) / maxAbs);
+  if (d > 0) {
+    const g = Math.round(40 + 140 * t);
+    const r = Math.round(30 + 180 * t);
+    return 'rgb(' + r + ',' + g + ',40)';
+  }
+  return 'rgb(' + Math.round(80 + 140 * t) + ',50,50)';
+}
+function badgeClass(v) {
+  if (!v) return 'no';
+  if (v.indexOf('ok') === 0) return 'ok';
+  if (v.indexOf('watch') === 0) return 'wait';
+  return 'no';
+}
+function visibleMaps() {
+  const maps = DATA.maps || [];
+  if (FILTER === 'all') return maps;
+  if (FILTER === 'used') return maps.filter((m) => m.used);
+  if (FILTER === 'unused') return maps.filter((m) => !m.used);
+  return maps.filter((m) => String(m.verdict).indexOf('watch') === 0);
+}
+function renderList() {
+  const host = document.getElementById('wo-list');
+  const maps = visibleMaps();
+  host.innerHTML = maps.map((m) => {
+    const on = CURRENT && CURRENT.id === m.id ? ' on' : '';
+    return '<button type="button" class="' + on.trim() + '" data-id="' + m.id + '">' +
+      '<span class="wo-name">' + m.name + '</span>' +
+      '<span class="wo-meta"><span class="badge ' + badgeClass(m.verdict) + '">' + m.verdict + '</span> ' +
+      (m.addr || 'pas d’addr') +
+      (m.cols ? ' · ' + m.cols + '×' + m.rows : '') +
+      (m.pct_med != null ? ' · ' + m.pct_med + ' %' : '') +
+      '</span></button>';
+  }).join('') || '<p class="wo-empty" style="padding:.8rem">Rien dans ce filtre.</p>';
+}
+function buildTable(m) {
+  const left = m.ori || [];
+  const right = m.v11 || [];
+  const cols = m.cols || 1;
+  const rows = Math.max(1, Math.ceil(left.length / cols));
+  let minV = Infinity, maxV = -Infinity, maxAbs = 0;
+  for (let i = 0; i < left.length; i++) {
+    const o = left[i], a = right[i], d = a - o;
+    minV = Math.min(minV, o, a);
+    maxV = Math.max(maxV, o, a);
+    maxAbs = Math.max(maxAbs, Math.abs(d));
+  }
+  if (!(maxV > minV)) { minV = 0; maxV = 1; }
+  let html = '<div class="v2d-wrap"><table class="winols"><thead><tr><th class="corner">Y \\ X</th>';
+  for (let c = 0; c < cols; c++) {
+    const xv = m.axis_x && m.axis_x[c] != null ? m.axis_x[c] : c;
+    html += '<th>' + xv + '</th>';
+  }
+  html += '</tr></thead><tbody>';
+  for (let r = 0; r < rows; r++) {
+    const yv = m.axis_y && m.axis_y[r] != null ? m.axis_y[r] : r;
+    html += '<tr><td class="axis">' + yv + '</td>';
+    for (let c = 0; c < cols; c++) {
+      const i = r * cols + c;
+      if (i >= left.length) { html += '<td class="cell"></td>'; continue; }
+      const o = left[i], a = right[i], d = a - o;
+      const chg = o !== a;
+      let show, bg;
+      if (MODE === 'ori') {
+        show = String(o);
+        bg = heatColor((o - minV) / (maxV - minV));
+      } else if (MODE === 'v11') {
+        show = String(a);
+        bg = heatColor((a - minV) / (maxV - minV));
+      } else {
+        show = (d > 0 ? '+' : '') + d;
+        bg = diffColor(d, maxAbs);
+      }
+      html += '<td class="cell' + (chg ? ' chg' : ' same') + '" style="background:' + bg + '" title="ORI ' + o + ' → V1.5 ' + a + '">' + show + '</td>';
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table></div>';
+  return html;
+}
+function renderView() {
+  const host = document.getElementById('wo-view');
+  if (!CURRENT) {
+    host.innerHTML = '<p class="wo-empty">Choisis une map à gauche.</p>';
+    return;
+  }
+  const m = CURRENT;
+  let html = '<h3>' + m.name + '</h3>';
+  html += '<p class="wo-note"><span class="badge ' + badgeClass(m.verdict) + '">' + m.verdict + '</span> ';
+  html += m.folder + ' · ' + (m.addr ? '0x' + m.addr : 'sans adresse') +
+    (m.kp_size ? ' · plage .kp ' + m.kp_size + ' o' : '') +
+    (m.cols ? ' · vue ' + m.cols + '×' + m.rows : '') +
+    (m.pct_med != null ? ' · médiane ' + (m.pct_med > 0 ? '+' : '') + m.pct_med + ' %' : '') +
+    (m.changed != null ? ' · ' + m.changed + ' cellules' : '') +
+    (m.used ? ' · touchée V1.5' : ' · identique ORI') + '</p>';
+  if (m.why) html += '<p class="wo-note">' + m.why + '</p>';
+  if (m.axis_note) {
+    html += '<p class="wo-axis">' + m.axis_note +
+      (m.axis_changed ? ' · <b>l’axe a aussi bougé</b> (doute)' : ' · axe identique ORI/V1.5') +
+      '</p>';
+  }
+  if (!m.ori) {
+    html += '<p class="wo-empty">Pas de grille : le .kp n’a pas d’adresse flash pour ce nom.</p>';
+    host.innerHTML = html;
+    return;
+  }
+  html += '<div class="wo-tools">' +
+    '<button type="button" data-m="ori"' + (MODE === 'ori' ? ' class="on"' : '') + '>ORI</button>' +
+    '<button type="button" data-m="v11"' + (MODE === 'v11' ? ' class="on"' : '') + '>V1.5</button>' +
+    '<button type="button" data-m="diff"' + (MODE === 'diff' ? ' class="on"' : '') + '>Diff</button>' +
+    '</div>';
+  html += buildTable(m);
+  host.innerHTML = html;
+}
+function renderStrip() {
+  const c = DATA.counts || {};
+  document.getElementById('wo-strip').innerHTML =
+    '<span>Paire <b>' + (DATA.pair || 'ORI vs V1.5') + '</b></span>' +
+    '<span>touchées <b>' + (DATA.maps_touched || 0) + '</b></span>' +
+    '<span>octets Δ <b>' + (DATA.bytes_changed || '—') + '</b></span>' +
+    '<span>IDs <b>' + (DATA.ids_unmoved ? 'OK' : 'KO') + '</b></span>' +
+    '<span>ok_grid <b>' + (c.ok_grid || 0) + '</b></span>' +
+    '<span>ok_scalar <b>' + (c.ok_scalar || 0) + '</b></span>' +
+    '<span>watch_dim <b>' + (c.watch_dim || 0) + '</b></span>' +
+    '<span>unused <b>' + (c.unused || 0) + '</b></span>';
+}
+function showId(id) {
+  CURRENT = (DATA.maps || []).find((m) => m.id === id) || null;
+  renderList();
+  renderView();
+}
+document.getElementById('wo-filters').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-f]');
+  if (!btn) return;
+  FILTER = btn.getAttribute('data-f');
+  document.querySelectorAll('#wo-filters button').forEach((b) => b.classList.toggle('on', b === btn));
+  const vis = visibleMaps();
+  if (!CURRENT || !vis.some((m) => m.id === CURRENT.id)) CURRENT = vis[0] || null;
+  renderList();
+  renderView();
+});
+document.getElementById('wo-list').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-id]');
+  if (btn) showId(btn.getAttribute('data-id'));
+});
+document.getElementById('wo-view').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-m]');
+  if (!btn) return;
+  MODE = btn.getAttribute('data-m');
+  renderView();
+});
+
+function boot(d) {
+  DATA = d;
+  renderStrip();
+  const vis = visibleMaps();
+  CURRENT = vis[0] || null;
+  renderList();
+  renderView();
+}
+if (DATA) boot(DATA);
+else {
+  fetch('data/edc17cp14-516657/winols-view.json')
+    .then((r) => r.json())
+    .then(boot)
+    .catch(() => {
+      document.getElementById('wo-strip').innerHTML = '<span>Données introuvables. Lance <code>python tools/a5_winols_standin.py</code>.</span>';
+    });
+}
+</script>
+</body>
+</html>

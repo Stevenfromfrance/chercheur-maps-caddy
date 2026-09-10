@@ -1,0 +1,29 @@
+{
+  "file": "A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
+  "ok": true,
+  "errors": [],
+  "based_on": "V1.4d_0AW_vmaxoff_nosmoke_fill400",
+  "goal": "injtime_soft_cruise_iq",
+  "inj_time": {
+    "addr_hex": "1D1496",
+    "size": 714,
+    "cells": 90,
+    "pct_med": 1.71,
+    "pct_min": 0.88,
+    "pct_max": 3.0,
+    "cap": 1.03,
+    "source": "friend_stage1_cells"
+  },
+  "iq_secondary_restored_to_ori": {
+    "IQ_2": 240,
+    "IQ_3": 240,
+    "IQ_4": 241
+  },
+  "iq_secondary_cells": 721,
+  "tq_ceiling_ori": true,
+  "v14d_preserved_outside": true,
+  "ids_ok": true,
+  "bytes_changed_vs_v14d": 993,
+  "bytes_changed_vs_ori": 6238,
+  "note": "noCHK. V1.5 = V1.4d + Injection Time (us) soft (ami Stage1 cells, cap +3%) + IQ #2/#3/#4 back to ORI (cruise Stage1). 0AW ceilings / nosmoke / fill / pollution / vmax inchanges."
+}

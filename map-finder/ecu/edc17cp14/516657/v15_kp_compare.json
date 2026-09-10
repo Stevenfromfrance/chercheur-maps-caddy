@@ -1,0 +1,417 @@
+{
+  "pair": "ORI vs V1.5",
+  "stage_file": "A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
+  "ids_unmoved": true,
+  "bytes_changed": 6238,
+  "stage1_cells": 4246,
+  "maps_touched": 40,
+  "verdicts": {
+    "ok_grid": 25,
+    "unused": 83,
+    "watch_dim": 10,
+    "ok_scalar": 5
+  },
+  "note": "KP bancal = taille (lignes x cols), pas le nom. V1.5 = soft 0AW sous plafond couple ORI + fill/nosmoke/InjTime/SOI/HC/pollution.",
+  "maps": [
+    {
+      "name": "Torque Request During Standart Condition (Nm)",
+      "folder": "Couple",
+      "start": 1589246,
+      "size": 128,
+      "cells": 22,
+      "pct_med": 41.63,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Torque Request - Gear 1 (Nm) #1 / 1",
+      "folder": "Couple",
+      "start": 1683092,
+      "size": 256,
+      "cells": 43,
+      "pct_med": 38.15,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Torque Request - Gear 2 (Nm) #1 / 1",
+      "folder": "Couple",
+      "start": 1683400,
+      "size": 256,
+      "cells": 42,
+      "pct_med": 49.68,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Torque Request - Gear 3 (Nm) #1 / 1",
+      "folder": "Couple",
+      "start": 1683708,
+      "size": 256,
+      "cells": 38,
+      "pct_med": 43.19,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Torque Request - Gear 4 (Nm) #1 / 1",
+      "folder": "Couple",
+      "start": 1684016,
+      "size": 256,
+      "cells": 38,
+      "pct_med": 36.1,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Torque Request - Gear 5 (Nm) #1 / 1",
+      "folder": "Couple",
+      "start": 1684666,
+      "size": 256,
+      "cells": 53,
+      "pct_med": 50.79,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 1",
+      "folder": "IQ",
+      "start": 1740412,
+      "size": 512,
+      "cells": 240,
+      "pct_med": 1.99,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 2",
+      "folder": "IQ",
+      "start": 1740992,
+      "size": 512,
+      "cells": 240,
+      "pct_med": 1.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 3",
+      "folder": "IQ",
+      "start": 1741640,
+      "size": 512,
+      "cells": 240,
+      "pct_med": 1.99,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Fuel Quantity Injected f(RPM, Trq) (mm3 / Stk) #1 / 4",
+      "folder": "IQ",
+      "start": 1742936,
+      "size": 512,
+      "cells": 240,
+      "pct_med": 1.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #1 / 1",
+      "folder": "SOI / duree",
+      "start": 1801812,
+      "size": 200,
+      "cells": 14,
+      "pct_med": 4.98,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #1 / 2",
+      "folder": "SOI / duree",
+      "start": 1802100,
+      "size": 200,
+      "cells": 14,
+      "pct_med": 4.98,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #1 / 3",
+      "folder": "SOI / duree",
+      "start": 1802388,
+      "size": 200,
+      "cells": 14,
+      "pct_med": 4.98,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #1 / 4",
+      "folder": "SOI / duree",
+      "start": 1802676,
+      "size": 200,
+      "cells": 14,
+      "pct_med": 4.98,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #1 / 5",
+      "folder": "SOI / duree",
+      "start": 1802964,
+      "size": 200,
+      "cells": 16,
+      "pct_med": 4.98,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #3 / 1",
+      "folder": "SOI / duree",
+      "start": 1803546,
+      "size": 260,
+      "cells": 8,
+      "pct_med": 5.05,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #3 / 2",
+      "folder": "SOI / duree",
+      "start": 1803878,
+      "size": 260,
+      "cells": 8,
+      "pct_med": 5.05,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #4 / 1",
+      "folder": "SOI / duree",
+      "start": 1804206,
+      "size": 220,
+      "cells": 8,
+      "pct_med": 5.05,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Timing - Main Injection Base Map (deg BTDC) #3 / 3",
+      "folder": "SOI / duree",
+      "start": 1804542,
+      "size": 260,
+      "cells": 8,
+      "pct_med": 5.05,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Injection Time (us)",
+      "folder": "SOI / duree",
+      "start": 1905814,
+      "size": 714,
+      "cells": 90,
+      "pct_med": 1.71,
+      "verdict": "watch_dim",
+      "naddr": 5
+    },
+    {
+      "name": "Smoke Limitation - Higher Lambda Value (Lambda) #1 / 1",
+      "folder": "Smoke",
+      "start": 1978974,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 4.96,
+      "verdict": "ok_grid",
+      "naddr": 3
+    },
+    {
+      "name": "Smoke Limitation - Higher Lambda Value (Lambda) #1 / 2",
+      "folder": "Smoke",
+      "start": 1979486,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 4.96,
+      "verdict": "ok_grid",
+      "naddr": 3
+    },
+    {
+      "name": "Smoke Limitation - Higher Lambda Value (Lambda) #1 / 3",
+      "folder": "Smoke",
+      "start": 1979998,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 4.96,
+      "verdict": "ok_grid",
+      "naddr": 3
+    },
+    {
+      "name": "Smoke Limitation - Higher Lambda Value (Lambda) #1 / 4",
+      "folder": "Smoke",
+      "start": 1980510,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 4.95,
+      "verdict": "ok_grid",
+      "naddr": 3
+    },
+    {
+      "name": "Smoke Limitation - Higher Lambda Value (Lambda) #1 / 5",
+      "folder": "Smoke",
+      "start": 1981022,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 4.95,
+      "verdict": "ok_grid",
+      "naddr": 3
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 1",
+      "folder": "Turbo",
+      "start": 1924476,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 2",
+      "folder": "Turbo",
+      "start": 1924852,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 3",
+      "folder": "Turbo",
+      "start": 1925228,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 4",
+      "folder": "Turbo",
+      "start": 1925604,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 5",
+      "folder": "Turbo",
+      "start": 1925980,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 6",
+      "folder": "Turbo",
+      "start": 1926356,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Turbo Pressure (hPA) #1 / 7",
+      "folder": "Turbo",
+      "start": 1927108,
+      "size": 320,
+      "cells": 160,
+      "pct_med": 3.98,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Limiter of Turbo Pressure f(APS) (hPa)",
+      "folder": "Turbo",
+      "start": 1928696,
+      "size": 210,
+      "cells": 105,
+      "pct_med": 3.97,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Rail pressure limiter f(RPM,Fuel_Q) (bar) #1",
+      "folder": "Rail",
+      "start": 1956668,
+      "size": 210,
+      "cells": 90,
+      "pct_med": 3.0,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "Rail Pressure (bar) #1",
+      "folder": "Rail",
+      "start": 1961300,
+      "size": 512,
+      "cells": 256,
+      "pct_med": 3.0,
+      "verdict": "ok_grid",
+      "naddr": 5
+    },
+    {
+      "name": "RPM Limiter in Neutral (RPM) #1",
+      "folder": "Limiteur RPM",
+      "start": 1644480,
+      "size": 2,
+      "cells": 1,
+      "pct_med": 8.0,
+      "verdict": "ok_scalar",
+      "naddr": 3
+    },
+    {
+      "name": "RPM Limiter in Neutral (RPM) #2",
+      "folder": "Limiteur RPM",
+      "start": 1644560,
+      "size": 2,
+      "cells": 1,
+      "pct_med": 7.89,
+      "verdict": "ok_scalar",
+      "naddr": 3
+    },
+    {
+      "name": "RPM Limiter in Neutral (RPM) #3",
+      "folder": "Limiteur RPM",
+      "start": 1644564,
+      "size": 2,
+      "cells": 1,
+      "pct_med": 8.0,
+      "verdict": "ok_scalar",
+      "naddr": 3
+    },
+    {
+      "name": "RPM Limiter (RPM) #2",
+      "folder": "Limiteur RPM",
+      "start": 1768816,
+      "size": 2,
+      "cells": 1,
+      "pct_med": 8.26,
+      "verdict": "ok_scalar",
+      "naddr": 3
+    },
+    {
+      "name": "RPM Limiter (RPM) #3",
+      "folder": "Limiteur RPM",
+      "start": 1768818,
+      "size": 2,
+      "cells": 1,
+      "pct_med": 8.04,
+      "verdict": "ok_scalar",
+      "naddr": 3
+    }
+  ]
+}

@@ -65,22 +65,25 @@
       "0x1065c"
     ]
   },
-  "status": "v1.1_ready",
-  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls",
+  "status": "v1.5_0aw_ready",
+  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
+  "compare": "map-finder/ecu/edc17cp14/516657/v15_kp_compare.json",
+  "viewer": "a5-winols.html",
   "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
     "Coolant / G83 repaired (123 C, P102A / P2185)",
     "KESS OBD read first: IDs 516657 + size 2 Mo"
   ],
   "pack_goal": [
-    "stage1_conservative",
-    "dpf_off",
-    "egr_off",
-    "dtc_related_off"
+    "stage1_0aw_fill400",
+    "nosmoke_lambda",
+    "injtime_soft",
+    "cruise_iq",
+    "dpf_egr_flaps",
+    "hardcut_soi_vmax"
   ],
   "pack_later": [
-    "hardcut_v2",
-    "lambda_v1_2_if_P0420"
+    "logs_ville_route_inj_harcut"
   ],
   "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }

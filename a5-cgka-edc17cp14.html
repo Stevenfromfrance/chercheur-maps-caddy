@@ -113,6 +113,7 @@ body.stage1-page .work-controls { display: none; }
         <div class="nav-sub" role="menu">
           <a href="index.html#maps-prio" role="menuitem">Fiches</a>
           <a href="a5-cgka-edc17cp14.html" class="on" role="menuitem">A5 CGKA Bertin</a>
+          <a href="a5-winols.html" role="menuitem">Viewer WinOLS A5</a>
           <a href="pcr21-banque.html" role="menuitem">PCR2.1 banque</a>
           <a href="stage1-hubs-golf9980.html" role="menuitem">Golf Stage1 hubs</a>
           <a href="stage1-validated-golf9980.html" role="menuitem">Stage1 validées</a>
@@ -123,6 +124,7 @@ body.stage1-page .work-controls { display: none; }
         <div class="nav-sub" role="menu">
           <a href="index.html#vcds" role="menuitem">VCDS</a>
           <a href="log-aide.html#a5" role="menuitem">Fiches A5</a>
+          <a href="fiche-logs-vcds-a4-a5-bertin.html" role="menuitem">Fiche A4 logs</a>
         </div>
       </div>
       <a href="index.html#downloads">Pack</a>
@@ -134,12 +136,12 @@ body.stage1-page .work-controls { display: none; }
 <main class="app-main stage1-main">
   <div class="sec-head">
     <h2>Client Bertin · Audi A5 Sportback 2.7 TDI</h2>
-    <p class="sec-lead">V1.1 livrée : Stage 1 named (mappack ami) + DPF/EGR/FLAPS. ECU Bosch EDC17CP14, boîte <b>Multitronic 0AW</b>. Flash KESS V2 OBD <b>CHK</b> — ori restore = K-TAG 151 BOOT.</p>
+    <p class="sec-lead">Pack actuel : <b>V1.5 0AW</b> — fill sous ~400 Nm + nosmoke + InjTime soft + cruise IQ + HC/SOI/DPF-EGR + vmax. ECU Bosch EDC17CP14, boîte <b>Multitronic 0AW</b>. Flash KESS V2 OBD <b>CHK</b> — ori restore = K-TAG 151 BOOT. Diff publique : <a href="a5-winols.html">a5-winols.html</a>.</p>
   </div>
 
   <div class="stop">
     <b>Ne pas flasher tant que l’eau / G83 n’est pas réparé</b>
-    (123 °C, <code>P102A</code> / <code>P2185</code>). Descente de FAP + plaque EGR prévues. Fichier V1.1 = <code>noCHK</code> → KESS <b>CHK</b>.
+    (123 °C, <code>P102A</code> / <code>P2185</code>). Descente de FAP + plaque EGR prévues. Fichier V1.5 = <code>noCHK</code> → KESS <b>CHK</b>.
     EGT S3 <code>P242A</code> masqué côté FAP ; sonde / downpipe à coller au physique.
   </div>
 
@@ -170,12 +172,12 @@ body.stage1-page .work-controls { display: none; }
     <table>
       <thead><tr><th>Pack</th><th>Cible conservatrice</th><th>État</th></tr></thead>
       <tbody>
-        <tr><td>Stage 1</td><td>~210–220 ch / 420–440 Nm · maps nommées +5–8 % · 0AW · 256k km</td><td><span class="badge ok">V1.1</span></td></tr>
+        <tr><td>Stage 1 0AW</td><td>Fill sous ~400 Nm · limiters couple ORI · IQ/turbo/rail soft · InjTime</td><td><span class="badge ok">V1.5</span></td></tr>
         <tr><td>Launch</td><td>Pas sur Multitronic (pas clutch-prot PCR2.1)</td><td><span class="badge no">NON 0AW</span></td></tr>
-        <tr><td>Hardcut</td><td>Limiteur RPM EDC17 net · après V1.1 validée</td><td><span class="badge wait">V2</span></td></tr>
-        <tr><td>DPF off</td><td>DaVinci DPF + DTC liées · descente FAP</td><td><span class="badge ok">V1.1</span></td></tr>
-        <tr><td>EGR off</td><td>DaVinci EGR + flaps · plaque EGR</td><td><span class="badge ok">V1.1</span></td></tr>
-        <tr><td>DTC liés off</td><td>Masques FAP/EGR/FLAPS · pas TVA · pas lambda</td><td><span class="badge ok">V1.1</span></td></tr>
+        <tr><td>Hardcut</td><td>~5200 · inclus V1.5</td><td><span class="badge ok">V1.5</span></td></tr>
+        <tr><td>DPF off</td><td>DaVinci DPF + DTC liées · descente FAP</td><td><span class="badge ok">V1.5</span></td></tr>
+        <tr><td>EGR off</td><td>DaVinci EGR + flaps · plaque EGR</td><td><span class="badge ok">V1.5</span></td></tr>
+        <tr><td>DTC liés off</td><td>Masques FAP/EGR/FLAPS · nosmoke lambda · SOI soft</td><td><span class="badge ok">V1.5</span></td></tr>
       </tbody>
     </table>
     <div class="box">
@@ -196,14 +198,39 @@ body.stage1-page .work-controls { display: none; }
     </table>
   </section>
 
+  <section class="panel" id="compare-v15">
+    <h2>Comparateur ORI vs V1.5 (sans WinOLS)</h2>
+    <p class="muted">Hex ORI contre V1.5, recoupé sur les plages du <code>.kp</code> ami. Grilles type WinOLS : <a href="a5-winols.html">a5-winols.html</a> (bouton <b>Diff</b>). Relancer : <code>python tools/a5_winols_standin.py</code>.</p>
+    <div class="count-strip" id="cmp-strip">
+      <span>Chargement…</span>
+    </div>
+    <div class="box">
+      <b>Lecture</b>
+      <ul style="margin:.35rem 0 0;padding-left:1.15rem">
+        <li><span class="badge ok">ok_grid</span> taille EDC classique — scale / reshape de table, pas un axe RPM au pif</li>
+        <li><span class="badge ok">ok_scalar</span> 1–2 cellules (limiteur) — pas de grille</li>
+        <li><span class="badge wait">watch_dim</span> taille bizarre côté .kp (SOI / InjTime) — ouvrir la grille Diff pour juger</li>
+        <li>Maps <b>unused</b> = identiques ORI (pas touchées)</li>
+      </ul>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Verdict</th><th>Famille / map</th><th>Taille .kp</th><th>Cellules Δ</th><th>% médian</th><th>Addr</th></tr></thead>
+        <tbody id="cmp-body"></tbody>
+      </table>
+    </div>
+  </section>
+
   <section class="panel">
     <h2>Fichiers (GitHub)</h2>
-    <p class="muted">Backup K-TAG plugin 151 · MICRO + EEPROM. Le <code>.bin</code> 1 Mo sans IDs n’est pas l’ori.</p>
+    <p class="muted">Backup K-TAG plugin 151 · MICRO + EEPROM. Pack flash = V1.5 noCHK.</p>
     <p class="links">
       <a href="map-finder/ecu/edc17cp14/516657/ORI_FLS.fls">ORI_FLS.fls</a>
-      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1.1_S1named_DPF_EGR_noCHK.fls">V1.1 noCHK</a>
-      <a href="map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.1.txt">LIVRAISON-V1.1</a>
-      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1_S1cons_DPF_EGR_noCHK.fls">V1 noCHK (old)</a>
+      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls">V1.5 noCHK</a>
+      <a href="map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.5-0AW.txt">LIVRAISON-V1.5</a>
+      <a href="map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_manifest.json">manifest V1.5</a>
+      <a href="map-finder/ecu/edc17cp14/516657/v15_kp_compare.json">v15_kp_compare.json</a>
+      <a href="a5-winols.html">Viewer Diff</a>
       <a href="map-finder/ecu/edc17cp14/516657/BACKUP_MICRO.mpc">BACKUP_MICRO.mpc</a>
       <a href="map-finder/ecu/edc17cp14/516657/BACKUP_EEPROM.epr">BACKUP_EEPROM.epr</a>
       <a href="data/edc17cp14-516657/project.json">project.json</a>
@@ -214,6 +241,7 @@ body.stage1-page .work-controls { display: none; }
         <li>Bloc SW / CGKA · <code>1A6E8A</code></li>
         <li>EDC17_CP14 · <code>183A15</code></li>
         <li>Bosch 1037516657 · <code>00001A</code></li>
+        <li>InjTime (us) · <code>1D1496</code></li>
       </ul>
     </div>
   </section>
@@ -221,11 +249,10 @@ body.stage1-page .work-controls { display: none; }
   <section class="panel">
     <h2>Prochaine action atelier</h2>
     <ol class="steps">
-      <li>Eau / G83 réparé <b>avant</b> de rouler en V1.1</li>
-      <li>KESS V2 OBD : lecture d’abord (IDs <code>516657</code> / 2 Mo) puis écriture V1.1 <b>CHK</b></li>
+      <li>Eau / G83 réparé <b>avant</b> de rouler en V1.5</li>
+      <li>KESS V2 OBD : lecture d’abord (IDs <code>516657</code> / 2 Mo) puis écriture V1.5 <b>CHK</b></li>
       <li>Descente FAP + plaque EGR collées au pack DPF/EGR</li>
-      <li>Premier log <a href="log-aide.html#a5">VILLE</a> · <code>A5_516657_V11_VILLE_…</code> — pas de WOT</li>
-      <li>Hardcut = V2 après validation. Lambda = plus tard si downpipe gueule <code>P0420</code></li>
+      <li>Logs <a href="log-aide.html#a5">VILLE / ROUTE_INJ / HARCUT</a> · <code>A5_516657_V15_…</code></li>
     </ol>
     <p class="muted" style="margin:.7rem 0 0">A2L similar 0005 / 504886 déjà extrait en local (pas GitHub). PCR2.1 Caddy ≠ EDC17CP14 — banque PCR : <a href="pcr21-banque.html">25 softs</a>.</p>
   </section>
@@ -252,6 +279,41 @@ document.querySelector('.nav-jump')?.addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.nav-group')) closeNavGroups();
 });
+fetch('map-finder/ecu/edc17cp14/516657/v15_kp_compare.json')
+  .then((r) => r.json())
+  .then((d) => {
+    const strip = document.getElementById('cmp-strip');
+    const v = d.verdicts || {};
+    strip.innerHTML =
+      '<span>Paire <b>' + d.pair + '</b></span>' +
+      '<span>IDs <b>' + (d.ids_unmoved ? 'OK' : 'KO') + '</b></span>' +
+      '<span>octets Δ <b>' + (d.bytes_changed || '—') + '</b></span>' +
+      '<span>maps touchées <b>' + (d.maps_touched || 0) + '</b></span>' +
+      '<span>cellules Δ <b>' + (d.stage1_cells || 0) + '</b></span>' +
+      '<span>ok_grid <b>' + (v.ok_grid || 0) + '</b></span>' +
+      '<span>ok_scalar <b>' + (v.ok_scalar || 0) + '</b></span>' +
+      '<span>watch_dim <b>' + (v.watch_dim || 0) + '</b></span>' +
+      '<span>unused <b>' + (v.unused || 0) + '</b></span>';
+    const tb = document.getElementById('cmp-body');
+    const order = { watch_dim: 0, watch_axis: 1, watch: 2, ok_grid: 3, ok_scalar: 4 };
+    const maps = (d.maps || []).slice().sort((a, b) => (order[a.verdict] ?? 9) - (order[b.verdict] ?? 9) || b.cells - a.cells);
+    tb.innerHTML = maps.map((m) => {
+      const badge = String(m.verdict || '').indexOf('ok') === 0 ? 'ok' : 'wait';
+      const pct = m.pct_med == null ? '—' : ((m.pct_med > 0 ? '+' : '') + m.pct_med + ' %');
+      const addr = m.start != null ? ('0x' + Number(m.start).toString(16).toUpperCase()) : '—';
+      return '<tr><td><span class="badge ' + badge + '">' + m.verdict + '</span></td>' +
+        '<td>' + (m.folder ? '<span class="muted">' + m.folder + '</span> · ' : '') + m.name + '</td>' +
+        '<td class="mono">' + (m.size != null ? m.size + ' o' : '—') + '</td>' +
+        '<td class="mono">' + (m.cells || 0) + '</td>' +
+        '<td class="mono">' + pct + '</td>' +
+        '<td class="mono">' + addr + '</td></tr>';
+    }).join('') || '<tr><td colspan="6">Aucune map touchée.</td></tr>';
+  })
+  .catch(() => {
+    const s = document.getElementById('cmp-strip');
+    if (s) s.innerHTML = '<span>JSON comparateur introuvable — lance <code>python tools/a5_winols_standin.py</code>.</span>';
+  });
 </script>
+
 </body>
 </html>

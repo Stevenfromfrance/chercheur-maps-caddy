@@ -49,7 +49,7 @@
       "subtitle": "A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008 · client Bertin",
       "maps_url": "data/edc17cp14-516657/project.json",
       "status": "v1.1_ready",
-      "note": "V1.1 Stage1 named (mappack) + DPF/EGR/FLAPS noCHK. KESS OBD CHK. Pas de launch 0AW. Hardcut = V2."
+      "note": "V1.5 0AW fill@400 + nosmoke + InjTime + cruise IQ + HC/SOI/DPF-EGR noCHK. Diff: a5-winols.html. Pas de launch 0AW."
     }
   ]
 }
