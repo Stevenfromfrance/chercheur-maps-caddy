@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Logs V5d Steven — courbes VCDS</title>
+<link rel="icon" href="../avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../chercheur-theme.css?v=atelier1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<style>
+  .v5d-main { max-width: 1180px; margin: 0 auto; padding: var(--pad) var(--pad) 4rem; }
+  .v5d-hero {
+    margin: 0 0 1.1rem;
+    padding: 1rem 1.1rem 1.15rem;
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(226,58,26,.12), transparent 42%),
+      var(--panel);
+  }
+  .v5d-hero h2 {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .35rem;
+  }
+  .v5d-hero .meta { color: var(--muted); margin: 0 0 .75rem; font-size: .92rem; }
+  .grade {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .82rem;
+    padding: .35rem .6rem;
+    border: 1px solid var(--line-hot);
+    background: var(--soft);
+    color: var(--accent2);
+    margin-bottom: .75rem;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .85rem;
+  }
+  @media (max-width: 820px) { .verdict-grid { grid-template-columns: 1fr; } }
+  .verdict-col h3 {
+    margin: 0 0 .45rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .verdict-col ul { margin: 0; padding: 0; list-style: none; }
+  .verdict-col li {
+    margin: 0 0 .55rem;
+    padding: .55rem .65rem;
+    border-left: 3px solid var(--line);
+    background: rgba(0,0,0,.18);
+  }
+  .verdict-col.ok li { border-left-color: var(--ok); }
+  .verdict-col.ko li { border-left-color: var(--bad); }
+  .verdict-col.next li { border-left-color: var(--accent2); }
+  .verdict-col li b { display: block; margin-bottom: .2rem; }
+  .verdict-col li span { color: var(--muted); font-size: .92rem; }
+
+  .log-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin: 1rem 0 .75rem;
+  }
+  .log-tabs button {
+    font-family: var(--mono);
+    font-size: .78rem;
+    padding: .45rem .7rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .log-tabs button:hover { border-color: var(--accent); }
+  .log-tabs button.on {
+    background: var(--soft);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .log-tabs button .pill {
+    display: inline-block;
+    width: .45rem; height: .45rem;
+    border-radius: 50%;
+    margin-right: .35rem;
+    vertical-align: middle;
+    background: var(--muted);
+  }
+  .log-tabs button[data-status="ok"] .pill { background: var(--ok); }
+  .log-tabs button[data-status="ko"] .pill { background: var(--bad); }
+  .log-tabs button[data-status="warn"] .pill { background: var(--accent2); }
+
+  .log-panel {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .9rem 1rem 1.1rem;
+  }
+  .log-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .6rem 1rem;
+    margin-bottom: .7rem;
+  }
+  .log-head h3 {
+    margin: 0;
+    font-family: var(--display);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: .4rem;
+    margin: .6rem 0 .85rem;
+  }
+  .stat {
+    padding: .4rem .5rem;
+    background: rgba(0,0,0,.22);
+    border: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: .75rem;
+  }
+  .stat .k { color: var(--muted); display: block; font-size: .68rem; margin-bottom: .15rem; }
+  .stat .v { color: var(--ink); }
+
+  .ide-picks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem .55rem;
+    margin: 0 0 .75rem;
+  }
+  .ide-picks label {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .8rem;
+    padding: .28rem .5rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    cursor: pointer;
+    user-select: none;
+  }
+  .ide-picks label.on { border-color: var(--accent); background: var(--soft); }
+  .ide-picks input { accent-color: var(--accent); }
+  .ide-picks .ide { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
+
+  .chart-wrap {
+    position: relative;
+    height: min(460px, 62vh);
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--line);
+    padding: .5rem;
+  }
+  .presets { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .65rem; }
+  .presets button {
+    font-size: .78rem;
+    padding: .35rem .55rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .presets button:hover { color: var(--ink); border-color: var(--accent); }
+
+  .note-box {
+    margin-top: .75rem;
+    padding: .55rem .7rem;
+    border-left: 3px solid var(--accent2);
+    background: rgba(245,197,66,.06);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  .note-box b { color: var(--ink); }
+  .csv-link { font-family: var(--mono); font-size: .78rem; }
+  .loading { color: var(--muted); padding: 2rem 0; text-align: center; }
+  .err { color: var(--bad); padding: 1rem; border: 1px solid var(--bad); }
+</style>
+</head>
+<body class="log-aide-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="../index.html#home">
+      <img class="brand-mark" src="../avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>Logs V5d Steven · courbes</h1>
+      </div>
+    </a>
+    <div class="work-controls" role="group" aria-label="Thème">
+      <span class="theme-toggle">
+        <button type="button" class="theme-btn on" id="btn-theme-dark">Noir</button>
+        <button type="button" class="theme-btn" id="btn-theme-light">Blanc</button>
+      </span>
+    </div>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="../index.html#home">Accueil</a>
+      <a href="../log-aide.html">Fiches runs</a>
+      <a href="../index.html#vcds">Analyser</a>
+      <a href="../fiche-logs-vcds-a4-v5d.html">A4 V5d</a>
+      <a href="index.html" class="on">V5d Steven</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="v5d-main">
+  <div id="app" class="loading">Chargement data.json…</div>
+</main>
+
+<script>
+(function () {
+  const COLORS = [
+    '#e23a1a', '#f5c542', '#3ecf7a', '#5b9cff', '#c77dff',
+    '#ff8c42', '#2dd4bf', '#f472b6', '#a3e635', '#94a3b8', '#fb7185'
+  ];
+  const PRESETS = {
+    power: ['rpm', 'ped', 'tq', 'spd'],
+    rail: ['rpm', 'ped', 'fup_a', 'fup_sp', 'tq'],
+    turbo: ['rpm', 'ped', 'map_sp', 'map_act', 'air'],
+    launch: ['rpm', 'ped', 'tq', 'spd', 'map_act'],
+    hardcut: ['rpm', 'ped', 'tq'],
+    all: null,
+  };
+
+  let DATA = null;
+  let chart = null;
+  let currentId = null;
+  let selected = new Set(['rpm', 'ped', 'tq', 'fup_a', 'fup_sp']);
+
+  const themeDark = document.getElementById('btn-theme-dark');
+  const themeLight = document.getElementById('btn-theme-light');
+  function applyTheme(mode) {
+    document.body.classList.toggle('theme-light', mode === 'light');
+    themeDark.classList.toggle('on', mode === 'dark');
+    themeLight.classList.toggle('on', mode === 'light');
+    try { localStorage.setItem('ss-theme', mode); } catch (_) {}
+    if (chart) renderChart();
+  }
+  themeDark.addEventListener('click', () => applyTheme('dark'));
+  themeLight.addEventListener('click', () => applyTheme('light'));
+  try {
+    const saved = localStorage.getItem('ss-theme');
+    if (saved === 'light') applyTheme('light');
+  } catch (_) {}
+
+  function statusOf(id) {
+    return (DATA.verdict.per_log[id] || {}).status || 'ok';
+  }
+
+  function fmt(n, digits) {
+    if (n == null || Number.isNaN(n)) return '—';
+    return Number(n).toLocaleString('fr-FR', { maximumFractionDigits: digits ?? 1 });
+  }
+
+  function ink() {
+    return getComputedStyle(document.body).getPropertyValue('--ink').trim() || '#f3f1ef';
+  }
+  function muted() {
+    return getComputedStyle(document.body).getPropertyValue('--muted').trim() || '#a39e96';
+  }
+  function line() {
+    return getComputedStyle(document.body).getPropertyValue('--line').trim() || '#2e2926';
+  }
+
+  function render() {
+    const v = DATA.verdict;
+    const app = document.getElementById('app');
+    app.className = '';
+    app.innerHTML = `
+      <section class="v5d-hero">
+        <h2>Validation carto V5d</h2>
+        <p class="meta">${DATA.vehicle} · ${DATA.carto} · logs ${DATA.date}</p>
+        <div class="grade">${v.grade}</div>
+        <p style="margin:.2rem 0 .9rem">${v.summary}</p>
+        <div class="verdict-grid">
+          <div class="verdict-col ok">
+            <h3>Ce qui va</h3>
+            <ul>${v.ok.map(x => `<li><b>${x.title}</b><span>${x.detail}</span></li>`).join('')}</ul>
+          </div>
+          <div class="verdict-col ko">
+            <h3>Ce qui ne va pas</h3>
+            <ul>${v.ko.map(x => `<li><b>${x.title}</b><span>${x.detail}</span></li>`).join('')}</ul>
+          </div>
+        </div>
+        <div class="verdict-col next" style="margin-top:.85rem">
+          <h3>Next</h3>
+          <ul>${v.next.map(x => `<li><span>${x}</span></li>`).join('')}</ul>
+        </div>
+      </section>
+
+      <div class="log-tabs" id="log-tabs" role="tablist" aria-label="Logs"></div>
+      <section class="log-panel" id="log-panel"></section>
+    `;
+
+    const tabs = document.getElementById('log-tabs');
+    DATA.logs.forEach((log, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.dataset.id = log.id;
+      b.dataset.status = statusOf(log.id);
+      b.innerHTML = `<span class="pill"></span>${log.label}`;
+      b.addEventListener('click', () => selectLog(log.id));
+      if (i === 0) b.classList.add('on');
+      tabs.appendChild(b);
+    });
+
+    const hash = (location.hash || '').replace(/^#/, '');
+    const start = DATA.logs.some(l => l.id === hash) ? hash : DATA.logs[0].id;
+    selectLog(start);
+  }
+
+  function selectLog(id) {
+    currentId = id;
+    location.hash = id;
+    document.querySelectorAll('#log-tabs button').forEach(b => {
+      b.classList.toggle('on', b.dataset.id === id);
+    });
+    const log = DATA.logs.find(l => l.id === id);
+    const st = DATA.verdict.per_log[id] || {};
+    const s = log.stats || {};
+    const panel = document.getElementById('log-panel');
+    const available = DATA.ides.filter(ide => log.series[ide.key]);
+
+    panel.innerHTML = `
+      <div class="log-head">
+        <div>
+          <h3>${log.label}</h3>
+          <p class="muted" style="margin:.25rem 0 0">${log.goal}</p>
+        </div>
+        <div>
+          <a class="csv-link" href="${log.csv}" download>↓ ${log.csv.replace('csv/','')}</a>
+        </div>
+      </div>
+      <div class="note-box"><b>Verdict log :</b> ${st.note || '—'}</div>
+      <div class="stats">
+        <div class="stat"><span class="k">Points / durée</span><span class="v">${s.n} · ${fmt(s.duration_s,1)} s</span></div>
+        <div class="stat"><span class="k">Coolant</span><span class="v">${fmt(s.cool_min,0)}–${fmt(s.cool_max,0)} °C</span></div>
+        <div class="stat"><span class="k">RPM max</span><span class="v">${fmt(s.rpm_max,0)}</span></div>
+        <div class="stat"><span class="k">TQI_SP max</span><span class="v">${fmt(s.tq_max,1)} Nm</span></div>
+        <div class="stat"><span class="k">Rail act max</span><span class="v">${fmt(s.fup_a_max,1)} MPa (${fmt(s.fup_a_bar,0)} bar)</span></div>
+        <div class="stat"><span class="k">Rail sp max</span><span class="v">${fmt(s.fup_sp_max,1)} MPa</span></div>
+        <div class="stat"><span class="k">MAP act max</span><span class="v">${fmt(s.map_act_max,0)} hPa · ${fmt(s.map_act_bar_rel,2)} bar</span></div>
+        <div class="stat"><span class="k">Air max</span><span class="v">${fmt(s.air_max,1)} g/s</span></div>
+        <div class="stat"><span class="k">Pedal max</span><span class="v">${fmt(s.ped_max,1)} %</span></div>
+        <div class="stat"><span class="k">WOT pts</span><span class="v">${s.wot_n ?? 0}</span></div>
+      </div>
+      <div class="presets" id="presets">
+        <button type="button" data-preset="power">Preset couple</button>
+        <button type="button" data-preset="rail">Preset rail</button>
+        <button type="button" data-preset="turbo">Preset turbo</button>
+        <button type="button" data-preset="launch">Preset launch</button>
+        <button type="button" data-preset="hardcut">Preset hardcut</button>
+        <button type="button" data-preset="all">Tous les IDE</button>
+      </div>
+      <div class="ide-picks" id="ide-picks"></div>
+      <div class="chart-wrap"><canvas id="v5d-chart" aria-label="Courbes IDE"></canvas></div>
+    `;
+
+    const picks = document.getElementById('ide-picks');
+    available.forEach((ide, idx) => {
+      const lab = document.createElement('label');
+      const on = selected.has(ide.key);
+      lab.className = on ? 'on' : '';
+      lab.innerHTML = `<input type="checkbox" data-key="${ide.key}" ${on ? 'checked' : ''}>
+        <span class="ide">${ide.ide}</span> ${ide.name.split('-')[0].trim()} <span class="muted">(${ide.unit})</span>`;
+      lab.querySelector('input').addEventListener('change', (e) => {
+        if (e.target.checked) selected.add(ide.key);
+        else selected.delete(ide.key);
+        lab.classList.toggle('on', e.target.checked);
+        renderChart();
+      });
+      picks.appendChild(lab);
+      ide._color = COLORS[idx % COLORS.length];
+    });
+
+    document.getElementById('presets').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-preset]');
+      if (!btn) return;
+      const keys = PRESETS[btn.dataset.preset];
+      selected = new Set(keys || available.map(a => a.key));
+      picks.querySelectorAll('input').forEach(inp => {
+        inp.checked = selected.has(inp.dataset.key);
+        inp.closest('label').classList.toggle('on', inp.checked);
+      });
+      renderChart();
+    });
+
+    renderChart();
+  }
+
+  function unitAxis(unit) {
+    // group similar scales onto shared axes
+    if (unit === 'MPa') return 'yMPa';
+    if (unit === 'hPa') return 'yHpa';
+    if (unit === '/min') return 'yRpm';
+    if (unit === 'Nm') return 'yNm';
+    if (unit === '%') return 'yPct';
+    if (unit === 'km/h') return 'ySpd';
+    if (unit === 'g/s') return 'yAir';
+    if (unit === '°C') return 'yTemp';
+    if (unit === 'ml/s') return 'yFco';
+    return 'y';
+  }
+
+  function renderChart() {
+    const log = DATA.logs.find(l => l.id === currentId);
+    if (!log) return;
+    const canvas = document.getElementById('v5d-chart');
+    if (!canvas || typeof Chart === 'undefined') return;
+    if (chart) { chart.destroy(); chart = null; }
+
+    const ides = DATA.ides.filter(ide => selected.has(ide.key) && log.series[ide.key]);
+    const axesUsed = new Set();
+    const datasets = ides.map((ide, i) => {
+      const ax = unitAxis(ide.unit);
+      axesUsed.add(ax);
+      const ser = log.series[ide.key];
+      return {
+        label: `${ide.ide} · ${ide.name} (${ide.unit})`,
+        data: ser.t.map((t, j) => ({ x: t, y: ser.v[j] })),
+        borderColor: COLORS[i % COLORS.length],
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointRadius: ser.t.length > 80 ? 0 : 2.5,
+        pointHoverRadius: 4,
+        tension: 0.15,
+        yAxisID: ax,
+      };
+    });
+
+    const scales = {
+      x: {
+        type: 'linear',
+        title: { display: true, text: 'Temps (s)', color: muted() },
+        ticks: { color: muted() },
+        grid: { color: line() },
+      },
+    };
+
+    const axisDefs = {
+      yRpm: { title: 'RPM', position: 'left' },
+      yNm: { title: 'Nm', position: 'left' },
+      yMPa: { title: 'MPa', position: 'right' },
+      yHpa: { title: 'hPa', position: 'right' },
+      yPct: { title: '%', position: 'right' },
+      ySpd: { title: 'km/h', position: 'right' },
+      yAir: { title: 'g/s', position: 'right' },
+      yTemp: { title: '°C', position: 'right' },
+      yFco: { title: 'ml/s', position: 'right' },
+      y: { title: '', position: 'left' },
+    };
+
+    let left = true;
+    [...axesUsed].forEach((id, idx) => {
+      const def = axisDefs[id] || axisDefs.y;
+      const pos = idx === 0 ? 'left' : (idx === 1 ? 'right' : (left ? 'left' : 'right'));
+      if (idx > 1) left = !left;
+      scales[id] = {
+        type: 'linear',
+        position: def.position || pos,
+        title: { display: true, text: def.title, color: muted() },
+        ticks: { color: muted() },
+        grid: { color: idx === 0 ? line() : 'transparent' },
+      };
+    });
+
+    chart = new Chart(canvas, {
+      type: 'line',
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        plugins: {
+          legend: {
+            labels: { color: ink(), boxWidth: 12, font: { family: "'IBM Plex Mono', monospace", size: 11 } },
+          },
+          tooltip: {
+            callbacks: {
+              title: (items) => items.length ? `t = ${items[0].parsed.x.toFixed(2)} s` : '',
+            },
+          },
+        },
+        scales,
+      },
+    });
+  }
+
+  fetch('data.json')
+    .then(r => {
+      if (!r.ok) throw new Error('data.json introuvable');
+      return r.json();
+    })
+    .then(json => {
+      DATA = json;
+      const wait = () => {
+        if (typeof Chart === 'undefined') {
+          requestAnimationFrame(wait);
+          return;
+        }
+        render();
+      };
+      wait();
+    })
+    .catch(err => {
+      document.getElementById('app').innerHTML = `<p class="err">Erreur : ${err.message}</p>`;
+    });
+
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.replace(/^#/, '');
+    if (DATA && DATA.logs.some(l => l.id === id) && id !== currentId) selectLog(id);
+  });
+})();
+</script>
+</body>
+</html>

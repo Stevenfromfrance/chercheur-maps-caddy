@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="chercheur-theme.css">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
 </head>
 <body class="log-aide-page density-compact">
 <header>
@@ -23,8 +23,15 @@
         <h1>Guide logs VCDS · banc route</h1>
       </div>
     </a>
+    <div class="work-controls" role="group" aria-label="Thème">
+      <span class="theme-toggle">
+        <button type="button" class="theme-btn on" id="btn-theme-dark">Noir</button>
+        <button type="button" class="theme-btn" id="btn-theme-light">Blanc</button>
+      </span>
+    </div>
     <nav class="nav-jump" aria-label="Pages">
       <a href="index.html#home">Accueil</a>
+      <a href="index.html#clients">Clients</a>
       <div class="nav-group" data-nav-group="maps">
         <button type="button" class="nav-group-btn" aria-expanded="false" aria-haspopup="true">Maps</button>
         <div class="nav-sub" role="menu">
@@ -53,6 +60,7 @@
           <a href="index.html#vcds" role="menuitem">VCDS</a>
           <a href="index.html#log-compare" role="menuitem">Comparer</a>
           <a href="log-aide.html" class="on" role="menuitem">Fiches</a>
+          <a href="logs-v5d-steven/" role="menuitem">V5d Steven · courbes</a>
         </div>
       </div>
       <a href="index.html#downloads">Pack</a>
@@ -67,6 +75,10 @@
     <div class="btns" id="veh-btns" role="tablist" aria-label="Véhicule" style="margin:.6rem 0 0">
       <button type="button" class="on" data-veh="caddy">Caddy PCR2.1 9979</button>
       <button type="button" data-veh="a5">A5 CGKA 516657</button>
+      <a class="muted" href="fiche-logs-vcds-a4-a5-bertin.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 A5</a>
+      <a class="muted" href="fiche-logs-vcds-a4.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 Caddy</a>
+      <a class="muted" href="fiche-logs-vcds-a4-v5d.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 V5d</a>
+      <a class="muted" href="logs-v5d-steven/" style="margin-left:.5rem;font-size:.85rem">Courbes V5d Steven</a>
     </div>
   </div>
 
@@ -78,7 +90,7 @@
       <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_TURBO</b> — MAP consigne/réel sous charge</li>
       <li><span class="tag need">PRIORITÉ</span> <b>VILLE</b> — confort partiels (pas on/off)</li>
       <li><span class="tag opt">OK SI RESSENTI</span> <b>HARCUT</b> — cut ~4800 en roulant</li>
-      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V3 ITALIE</li>
+      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V5d hold ~110 Nm @2800</li>
       <li><span class="tag bonus">BONUS</span> <b>ROUTE_INJ</b> — air mass / fumée / IQ si canal trouvé</li>
     </ol>
     <div class="box">
@@ -141,26 +153,37 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeNavGroups();
 });
 
+/* Noms EXACTS VCDS ADVMB — source: C:\\ross-tech\\VCDS\\Logs (soft 9979). Voir VCDS-IDE-CADDY-9979.md */
 const CORE = [
   ['IDE00021', 'Engine RPM'],
   ['IDE00075', 'Vehicle speed'],
-  ['IDE00086', 'Accelerator pedal'],
-  ['IDE00100', 'Engine torque TQI'],
-  ['IDE00188', 'Rail pressure actual'],
-  ['IDE00201', 'Rail pressure specified'],
-  ['IDE00190', 'MAP specified'],
-  ['IDE00191', 'MAP actual'],
-  ['IDE00347', 'Air mass'],
+  ['IDE00086', 'Accelerator pedal position'],
+  ['IDE00100', 'Engine torque-TQI_SP'],
+  ['IDE00188', 'Fuel high-pressure: actual value-FUP_FIL'],
+  ['IDE00201', 'High fuel pressure: specified value-FUP_SP_KPA'],
+  ['IDE00190', 'Charge air pressure: specified value-MAP_SP_MMV'],
+  ['IDE00191', 'Charge air pressure: actual value-MAP_MMV'],
+  ['IDE00347', 'Air mass: actual value:'],
 ];
 const EXTRA = {
-  coolant: ['Coolant temp', 'Température liquide (cherche Coolant / Coolant temperature)'],
-  iq: ['Injection quantity', 'Quantité injectée (cherche Injection quantity / IQ)'],
-  iqdev: ['IQ deviation cyl', 'Écart quantité / cylindre (cherche Injection quantity deviation / Idle stabilization)'],
-  soi: ['Start of injection', 'Début injection consigne + réel (cherche Start of injection / Injection commencement)'],
-  cam: ['Cam / G40 / phase', 'Sync arbre à cames (cherche Camshaft / G40 / Phase / Synchronization)'],
-  tqlim: ['Torque limitation', 'Limiteur couple (cherche Torque limit / Limitation)'],
-  egt: ['EGT / Exhaust temp', 'Température échappement (avant FAP / S3)'],
-  soot: ['DPF soot mass', 'Masse suie FAP mesurée / calculée'],
+  coolant: ['IDE00025', 'Coolant temperature'],
+  fuel_cons: ['IDE00371', 'Fuel consumption-FCO_T'],
+  iqdev: ['IDE00365–368', 'Injection quantity deviation cylinder 1…4-FAC_CYL_BAL*'],
+  iqdev1: ['IDE00365', 'Injection quantity deviation cylinder 1-FAC_CYL_BAL1'],
+  iqdev2: ['IDE00366', 'Injection quantity deviation cylinder 2-FAC_CYL_BAL2'],
+  iqdev3: ['IDE00367', 'Injection quantity deviation cylinder 3-FAC_CYL_BAL3'],
+  iqdev4: ['IDE00368', 'Injection quantity deviation cylinder 4-FAC_CYL_BAL4'],
+  bpa: ['IDE00362', 'Charge Pressure Actuator: activation-ANG_SP_BPA[0]'],
+  soot_calc: ['IDE00434', 'Particle filter: soot mass calculated-MASS_SOOT_SIM_PF'],
+  soot_meas: ['IDE00435', 'Particle filter: soot mass measured-MASS_SOOT_PHY_PF'],
+  dpf_dp: ['IDE00427', 'Particle filter: difference pressure-DIP_PF'],
+  /* A5 EDC17 — CORE = même famille UDS ; soot IDE confirmés scan Bertin ; EGT/IQ/limit = nom freeze frame */
+  tqlim: ['filtre', 'Limiting torque'],
+  iq: ['filtre', 'Mean injection quantity'],
+  egt: ['filtre', 'Exhaust gas temperature before particulate filter'],
+  soot: ['IDE00434', 'Particle filter: soot mass calculated'],
+  soot_calc: ['IDE00434', 'Particle filter: soot mass calculated'],
+  soot_meas: ['IDE00435', 'Particle filter: soot mass measured'],
 };
 
 const RUNS = [
@@ -201,7 +224,7 @@ const RUNS = [
     priority: 'PRIORITÉ mappack',
     goal: 'Voir si le turbo suit la consigne sous charge (pas d’écart fou).',
     prove: [
-      'MAP specified vs MAP actual pendant WOT',
+      'MAP_SP_MMV vs MAP_MMV pendant WOT',
       'Pas d’écart énorme durable (under/overboost)',
       'RPM + pédale + vitesse présents',
     ],
@@ -212,7 +235,7 @@ const RUNS = [
       'Moteur chaud',
     ],
     steps: [
-      'Coche IDE core (MAP déjà dedans)',
+      'Coche IDE CORE (MAP déjà dedans)',
       'Log Start',
       '1 pull franc 1800 → 3500–4000',
       'Stop → Save',
@@ -239,7 +262,7 @@ const RUNS = [
       'Pas de WOT long',
     ],
     steps: [
-      'Coche IDE core',
+      'Coche IDE CORE',
       'Log Start',
       'Conduite normale (2ᵉ/3ᵉ, stops)',
       'Stop → Save',
@@ -266,54 +289,56 @@ const RUNS = [
       'Noter ASR ON ou OFF',
     ],
     steps: [
-      'Coche IDE core (+ torque limit si trouvé)',
+      'Coche IDE CORE (9 canaux — déjà vu dans LOG-HARCUT.CSV)',
       'Log Start',
       'Montée franche jusqu’à ~4800',
       'Stop → Save',
     ],
     forbid: 'Test à l’arrêt (ça devient launch / clutch-prot).',
     file: 'CADDY_{SOFT}_HARCUT_YYYYMMDD.csv',
-    extras: ['tqlim'],
+    extras: [],
     send: 'CSV + soft + ASR + “ressenti cut net ?”.',
   },
   {
     id: 'depart',
     label: 'DEPART',
     title: 'Run DEPART — launch',
-    priority: 'BONUS (V3 ITALIE)',
-    goal: 'Hold régime + MAP/couple au hold + trou au départ.',
+    priority: 'BONUS (V5d launch hold)',
+    goal: 'Hold ~2800 + couple ~110 Nm + MAP qui monte + départ sans patinage long.',
     prove: [
       'Speed ≈ 0 pendant hold',
-      'RPM hold (V3 ITALIE ~2500)',
-      'MAP et couple pendant hold',
-      'Puis speed > 0 au départ',
+      'RPM hold ~2700–3000 (pas 2500 V2)',
+      'TQI_SP ~100–120 Nm (plus 0)',
+      'MAP_MMV monte pendant hold',
+      'Puis speed > 0 au départ sans patinage long',
     ],
     conditions: [
       'Endroit sûr',
       'ASR OFF',
       '1ʳᵉ + frein à main + en prise (pas débrayé au hold)',
+      'Soft V5d (ou noter le soft flashé)',
     ],
     steps: [
-      'Coche IDE core',
+      'Coche IDE CORE',
       'Log Start',
-      'Plein gaz 2–3 s (hold)',
+      'Plein gaz 2–3 s hold ~2800',
       'Départ contrôlé',
       'Stop → Save',
     ],
-    forbid: 'Mélanger hardcut 4800 dans le même fichier.',
-    file: 'CADDY_{SOFT}_DEPART_LAUNCH_YYYYMMDD.csv',
-    extras: ['tqlim'],
-    send: 'CSV + soft (V2 ou V3 ITALIE) + ASR OFF + ressenti trou oui/non.',
+    forbid: 'Mélanger hardcut 4800 dans le même fichier. Hold à 2500 « comme V2 ».',
+    file: 'CADDY_{SOFT}_V5d_DEPART_LAUNCH_YYYYMMDD.csv',
+    extras: [],
+    send: 'CSV + soft V5d + ASR OFF + ressenti lag/patinage.',
   },
   {
     id: 'route_inj',
     label: 'ROUTE_INJ',
     title: 'Run ROUTE_INJ — injection / smoke',
     priority: 'BONUS famille',
-    goal: 'Croiser couple / air / quantité injectée sous charge.',
+    goal: 'Croiser couple / air / conso sous charge (IQ principale pas encore vue sur 9979).',
     prove: [
-      'Air mass monte avec la charge',
-      'IQ (si dispo) cohérent avec couple',
+      'Air mass: actual value: monte avec la charge',
+      'Engine torque-TQI_SP cohérent',
       'Pas de fumée noire grosse ressentie',
     ],
     conditions: [
@@ -322,13 +347,13 @@ const RUNS = [
       'ASR ON',
     ],
     steps: [
-      'Coche IDE core + Injection quantity si trouvé',
+      'Coche IDE CORE + IDE00371 Fuel consumption-FCO_T',
       'Log Start → 1 pull 1800–4000',
       'Stop → Save',
     ],
     forbid: 'Oublier de noter s’il y a fumée visuelle.',
     file: 'CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
-    extras: ['iq'],
+    extras: ['fuel_cons'],
     send: 'CSV + soft + fumée oui/non.',
   },
   {
@@ -336,11 +361,11 @@ const RUNS = [
     label: 'CALAGE',
     title: 'Run CALAGE — courroie sautée (1.6 TDI PCR2.1)',
     priority: 'DIAG MÉCA (pas mappack)',
-    goal: 'Savoir si le calage distribution a sauté. Sur Common Rail le SOI seul ne suffit pas : d’abord défauts, puis ralenti, puis compression relative.',
+    goal: 'Savoir si le calage distribution a sauté. D’abord défauts, puis ralenti + écarts cylindres, puis compression relative.',
     prove: [
       'Présence ou absence P0016 / P0341 / P0321 (photo Auto-Scan)',
-      'Ralenti chaud : RPM stable, IQ et écarts cylindres dans la norme',
-      'Si canal Cam/G40/phase trouvé : écart faible (pas une dent)',
+      'Ralenti chaud : RPM stable, écarts cylindres IDE00365–368 dans la norme',
+      'Coolant temperature > 80 °C',
     ],
     conditions: [
       'À l’arrêt, moteur chaud (>80 °C)',
@@ -350,14 +375,14 @@ const RUNS = [
     ],
     steps: [
       '01-Engine → Faults : photo / print Auto-Scan AVANT d’effacer',
-      'Advanced Measuring Values : core sans MAP + IQ + SOI + Cam/G40 si trouvés',
+      'Advanced Measuring Values : IDE00021 + IDE00025 + IDE00086 + IDE00100 + IDE00347 + IDE00365 + IDE00366 + IDE00367 + IDE00368',
       'Log Start → ralenti 2–3 min, rien toucher',
       'Stop → Save CSV',
       'Puis Basic Settings → Measurement of compression pressure (voir fiche chat)',
     ],
-    forbid: 'WOT / route / lancer le log froid / effacer les défauts avant la photo. Ne pas conclure au calage avec le seul SOI (PCR2.1 injecte sur le vilebrequin).',
+    forbid: 'WOT / route / lancer le log froid / effacer les défauts avant la photo.',
     file: 'CADDY_{SOFT}_CALAGE_YYYYMMDD.csv',
-    extras: ['coolant', 'iq', 'iqdev', 'soi', 'cam'],
+    extras: ['coolant', 'iqdev1', 'iqdev2', 'iqdev3', 'iqdev4'],
     send: 'Auto-Scan + CSV ralenti + valeurs compression relative (4 cyl) + ressenti démarrage / bruit / fumée.',
   },
 ];
@@ -464,7 +489,7 @@ const RUNS_A5 = [
       'Noter ASR ON ou OFF',
     ],
     steps: [
-      'Coche IDE core (+ torque limit si trouvé)',
+      'Coche IDE CORE + IDE00025 Coolant temperature + filtre ADVMB « Limiting torque »',
       'Log Start',
       'Montée franche jusqu’au cut',
       'Stop → Save',
@@ -492,7 +517,7 @@ const RUNS_A5 = [
       'Moteur chaud',
     ],
     steps: [
-      'Coche IDE core',
+      'Coche IDE CORE + Coolant temperature',
       'Log Start avant le hold',
       'Hold puis départ',
       'Stop → Save',
@@ -507,11 +532,11 @@ const RUNS_A5 = [
     label: 'ROUTE_INJ',
     title: 'Run ROUTE_INJ — A5 injection / FAP / EGT',
     priority: 'PRIORITÉ tant que P2463 / P242A',
-    goal: 'Croiser couple, air, suie FAP, EGT sous charge.',
+    goal: 'Croiser couple, air, suie FAP sous charge (EGT S3 si place — max 12 canaux).',
     prove: [
-      'Air mass monte avec la charge',
-      'EGT présente (S3 HS = log pour le prouver)',
-      'Suie FAP si canal dispo',
+      'Air mass: actual value: monte avec la charge',
+      'Particle filter: soot mass calculated / measured',
+      'Coolant temperature sous contrôle',
     ],
     conditions: [
       'Même route banc',
@@ -519,13 +544,14 @@ const RUNS_A5 = [
       'ASR ON',
     ],
     steps: [
-      'Coche IDE core + EGT + soot si trouvés',
+      'Coche IDE CORE + IDE00025 + IDE00434 + IDE00435 (12 canaux)',
+      'Si besoin EGT S3 : filtre ADVMB « Exhaust gas temperature before particulate filter » (échanger 1 canal)',
       'Log Start → 1 pull 1800–4000',
       'Stop → Save',
     ],
     forbid: 'Ignorer une EGT morte et enchaîner les WOT.',
     file: 'A5_516657_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
-    extras: ['iq', 'egt', 'soot', 'coolant'],
+    extras: ['coolant', 'soot_calc', 'soot_meas'],
     send: 'CSV + soft + fumée oui/non + défauts moteur encore présents.',
   },
 ];
@@ -533,13 +559,13 @@ const RUNS_A5 = [
 const VEH = {
   caddy: {
     title: 'Guide logs VCDS · banc route 9979',
-    lead: 'Un log = une question. Soft flashé : ORI / ACE / V2 / V3 ITALIE.',
+    lead: 'Un log = une question. Soft : V5d (validation). <a href="logs-v5d-steven/">Courbes V5d Steven</a> · <a href="fiche-logs-vcds-a4-v5d.html">Fiche A4 V5d</a> · <a href="fiche-logs-vcds-a4.html">A4 générique</a> · <a href="fiche-logs-vcds-a4.pdf" download="SAVAGESEAR-fiche-logs-Caddy-9979.pdf">↓ PDF générique</a>.',
     meta: 'Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB',
     runs: RUNS,
   },
   a5: {
     title: 'Guide logs VCDS · A5 CGKA 516657',
-    lead: 'Client Bertin · EDC17CP14 · fichiers A5_516657_{SOFT}_…. Soft : ORI / S1.',
+    lead: 'Client Bertin · EDC17CP14 · soft ORI / S1. <a href="fiche-logs-vcds-a4-a5-bertin.pdf" download="SAVAGESEAR-fiche-logs-A5-Bertin-516657.pdf">↓ PDF A4 A5</a> · <a href="fiche-logs-vcds-a4-a5-bertin.html">ouvrir HTML</a>.',
     meta: 'A5 Sportback 8TA · CGKA · EDC17CP14 · 8K1907401K 0008 · Multitronic 0AW',
     runs: RUNS_A5,
   },
@@ -656,6 +682,20 @@ runsEl.addEventListener('click', async (e) => {
   btn.textContent = 'Copié ✓';
   setTimeout(() => { btn.textContent = old; }, 1400);
 });
+
+(function themeInit() {
+  const LS = 'chercheur-theme';
+  function apply(theme) {
+    const light = theme === 'light';
+    document.body.classList.toggle('theme-light', light);
+    document.getElementById('btn-theme-dark')?.classList.toggle('on', !light);
+    document.getElementById('btn-theme-light')?.classList.toggle('on', light);
+    localStorage.setItem(LS, light ? 'light' : 'dark');
+  }
+  document.getElementById('btn-theme-dark')?.addEventListener('click', () => apply('dark'));
+  document.getElementById('btn-theme-light')?.addEventListener('click', () => apply('light'));
+  apply(localStorage.getItem(LS) || 'dark');
+})();
 </script>
 </body>
 </html>
