@@ -1,0 +1,8 @@
+OUT=C:\Users\theda\OneDrive\Documents\Reprog-Stage1\06-Vehicules\Caddy-CAYE-2013-03L906023PA-2531\MOD\Caddy_CAYE_03L906023TB_9979_MOD_V5d_tegtORI_launch110.NOCS
+bytes_vs_v5b=398
+tegt_bytes=386 max 350.0->290.0
+launch=[110.0, 85.0] @ [2700, 2800, 3000] cells=6
+rpm_axis=[800, 1000, 2000, 2700, 2800, 3000, 4800, 4801]
+tegt_identical_ori=OK
+hardcut_4801=OK
+axis_unchanged=OK

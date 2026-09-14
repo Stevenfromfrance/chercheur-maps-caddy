@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · tqlim_base · V5d vs V6f</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  .cmp-main { max-width: 1200px; margin: 0 auto; padding: var(--pad) var(--pad) 3rem; }
+  .cmp-hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.1), transparent 45%), var(--panel);
+    padding: 1rem 1.1rem; margin-bottom: 1rem;
+  }
+  .cmp-hero h2 {
+    margin: 0 0 .35rem; font-family: var(--display); text-transform: uppercase;
+    letter-spacing: .04em; font-size: clamp(1.2rem, 3vw, 1.7rem);
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0; }
+  .pill {
+    font-family: var(--mono); font-size: .75rem; padding: .3rem .55rem;
+    border: 1px solid var(--line); background: var(--panel2);
+  }
+  .pill.ok { border-color: var(--ok); color: var(--ok); }
+  .pill.warn { border-color: var(--accent2); color: var(--accent2); }
+  .pill.bad { border-color: var(--bad); color: var(--bad); }
+  .mode-tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 .8rem; }
+  .mode-tabs button {
+    font-family: var(--mono); font-size: .78rem; padding: .4rem .65rem;
+    border: 1px solid var(--line); background: var(--panel2); color: var(--ink); cursor: pointer;
+  }
+  .mode-tabs button.on { border-color: var(--accent); background: var(--soft); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+  .plot-card { border: 1px solid var(--line); background: var(--panel); padding: .5rem .55rem .65rem; }
+  .plot-card h3 { margin: 0 0 .35rem; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .plot { width: 100%; height: 360px; }
+  .plot-tall { height: 440px; }
+  .note {
+    margin-top: .8rem; padding: .6rem .75rem; border-left: 3px solid var(--accent2);
+    background: rgba(245,197,66,.06); color: var(--muted); font-size: .92rem;
+  }
+  .note b { color: var(--ink); }
+  .note.ok-border { border-left-color: var(--ok); background: rgba(34,197,94,.06); }
+  .probe-table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: .75rem; margin-top: .5rem; }
+  .probe-table th, .probe-table td { border: 1px solid var(--line); padding: .3rem .4rem; text-align: right; }
+  .probe-table th { text-align: left; color: var(--muted); background: var(--panel2); }
+  .err { color: var(--bad); padding: 1rem; border: 1px solid var(--bad); }
+</style>
+</head>
+<body class="log-aide-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>tqlim_base · V5d vs V6f</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="logs-v5d-steven/">Logs V5d</a>
+      <a href="compare-v5d-v6-accped.html">AccPed</a>
+      <a href="compare-v5d-v6-smoke.html">Smoke</a>
+      <a href="compare-v5d-v6-turbo.html">Turbo</a>
+      <a href="compare-v5d-v6-tqlim.html" class="on">tqlim</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="cmp-main">
+  <section class="cmp-hero">
+    <h2>tqlim_base_pu_4A @ 1D3190</h2>
+    <p class="muted" id="hero-note">Chargement…</p>
+    <div class="pill-row" id="pills"></div>
+    <p class="note ok-border" id="verdict-box" style="margin:0"></p>
+  </section>
+
+  <div class="mode-tabs" role="tablist">
+    <button type="button" class="on" data-view="heat">2D</button>
+    <button type="button" data-view="surf">3D</button>
+    <button type="button" data-view="both">2D + 3D</button>
+  </div>
+  <div id="app"></div>
+</main>
+
+<script>
+(function () {
+  const LAYOUT_BASE = {
+    paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+    font: { family: 'IBM Plex Mono, monospace', size: 11, color: '#a39e96' },
+    margin: { l: 55, r: 20, t: 30, b: 50 },
+    xaxis: { title: 'ATM mbar', color: '#a39e96', gridcolor: '#2e2926' },
+    yaxis: { title: 'RPM', color: '#a39e96', gridcolor: '#2e2926' },
+  };
+  let DATA = null, view = 'both';
+
+  function heat(z, cs, zmid) {
+    return {
+      z, x: DATA.axisX.map((v) => Math.round(v)), y: DATA.axisY,
+      type: 'heatmap', colorscale: cs, zmid,
+      colorbar: { thickness: 12, len: 0.85, tickfont: { size: 10 } },
+      hovertemplate: 'ATM %{x}<br>rpm %{y}<br>%{z:.1f} Nm<extra></extra>',
+    };
+  }
+
+  function render() {
+    const app = document.getElementById('app');
+    const showHeat = view === 'heat' || view === 'both';
+    const showSurf = view === 'surf' || view === 'both';
+    const sl = DATA.slice_atm1000;
+    const probes = (DATA.log_probes || []).map((p) => `<tr>
+      <td style="text-align:left">${p.src}</td>
+      <td>${p.rpm}</td><td>${p.log_tq}</td>
+      <td>${p.tqlim_v5d}</td><td>${p.tqlim_v6f}</td>
+      <td>${p.headroom_wish_v5d}</td><td>${p.headroom_wish_v6f}</td>
+    </tr>`).join('');
+
+    app.innerHTML = `
+      ${showHeat ? `<div class="grid-2">
+        <div class="plot-card"><h3>2D · V5d</h3><div class="plot" id="h-v5d"></div></div>
+        <div class="plot-card"><h3>2D · V6f preview</h3><div class="plot" id="h-v6"></div></div>
+        <div class="plot-card"><h3>2D · ACE</h3><div class="plot" id="h-ace"></div></div>
+        <div class="plot-card"><h3>2D · Δ V6f − V5d</h3><div class="plot" id="h-d"></div></div>
+      </div>` : ''}
+      ${showSurf ? `<div class="grid-2" style="margin-top:.75rem">
+        <div class="plot-card"><h3>3D · V5d</h3><div class="plot plot-tall" id="s-v5d"></div></div>
+        <div class="plot-card"><h3>3D · V6f</h3><div class="plot plot-tall" id="s-v6"></div></div>
+      </div>` : ''}
+      <div class="plot-card" style="margin-top:.75rem">
+        <h3>Coupe ATM ≈ ${Math.round(sl.atm)} mbar · Nm vs RPM</h3>
+        <div class="plot" id="slice"></div>
+      </div>
+      <div class="plot-card" style="margin-top:.75rem">
+        <h3>Probes logs · tqlim vs wish≈333 / TQI log</h3>
+        <table class="probe-table">
+          <thead><tr>
+            <th>src</th><th>rpm</th><th>TQI log</th>
+            <th>tqlim V5d</th><th>V6f</th><th>HR wish V5d</th><th>HR wish V6f</th>
+          </tr></thead>
+          <tbody>${probes}</tbody>
+        </table>
+      </div>
+      <div class="note">
+        <b>Pas sûr à 100 %</b> — confiant pour le cliff ≥4000 (HR wish V5d négatif).
+        Soft @3814 : tqlim V5d encore ~346 → <b>autre cause</b> possible (tegt / transient / MAP).
+        Hardcut ≥4800 = V5d inchangé. Preview only — pas un .NOCS.
+      </div>
+    `;
+
+    const cs = [[0,'#0b1a2a'],[0.35,'#1d4e6f'],[0.65,'#e23a1a'],[1,'#f5c542']];
+    const csD = [[0,'#1e293b'],[0.5,'#181614'],[1,'#ef4444']];
+    if (showHeat) {
+      Plotly.newPlot('h-v5d', [heat(DATA.v5d, cs)], {...LAYOUT_BASE}, {responsive:true, displayModeBar:false});
+      Plotly.newPlot('h-v6', [heat(DATA.v6, cs)], {...LAYOUT_BASE}, {responsive:true, displayModeBar:false});
+      Plotly.newPlot('h-ace', [heat(DATA.ace, cs)], {...LAYOUT_BASE}, {responsive:true, displayModeBar:false});
+      Plotly.newPlot('h-d', [heat(DATA.delta, csD, 0)], {...LAYOUT_BASE}, {responsive:true, displayModeBar:false});
+    }
+    if (showSurf) {
+      const scene = {
+        xaxis:{title:'ATM',color:'#a39e96',backgroundcolor:'#0b0a09',gridcolor:'#2e2926'},
+        yaxis:{title:'RPM',color:'#a39e96',backgroundcolor:'#0b0a09',gridcolor:'#2e2926'},
+        zaxis:{title:'Nm',color:'#a39e96',backgroundcolor:'#0b0a09',gridcolor:'#2e2926'},
+        camera:{eye:{x:1.55,y:-1.55,z:0.85}}, aspectmode:'manual', aspectratio:{x:1.1,y:1.3,z:0.7},
+      };
+      const surf = (z,name) => ({
+        z, x: DATA.axisX, y: DATA.axisY, type:'surface', name, colorscale:'Hot', showscale:true, opacity:0.95,
+      });
+      Plotly.newPlot('s-v5d', [surf(DATA.v5d,'V5d')], {...LAYOUT_BASE, margin:{l:10,r:10,t:20,b:10}, scene}, {responsive:true, displayModeBar:true});
+      Plotly.newPlot('s-v6', [surf(DATA.v6,'V6f')], {...LAYOUT_BASE, margin:{l:10,r:10,t:20,b:10}, scene}, {responsive:true, displayModeBar:true});
+    }
+
+    Plotly.newPlot('slice', [
+      { x: sl.rpm, y: sl.v5d, name: 'V5d', type: 'scatter', mode: 'lines+markers', line: { color: '#e23a1a', width: 2 } },
+      { x: sl.rpm, y: sl.v6, name: 'V6f', type: 'scatter', mode: 'lines+markers', line: { color: '#f5c542', width: 2 } },
+      { x: sl.rpm, y: sl.ace, name: 'ACE', type: 'scatter', mode: 'lines', line: { color: '#22c55e', width: 1, dash: 'dash' } },
+      { x: sl.rpm, y: sl.ori, name: 'ORI', type: 'scatter', mode: 'lines', line: { color: '#5b9cff', width: 1, dash: 'dot' } },
+      { x: [3000, 5600], y: [333, 333], name: 'wish≈333', type: 'scatter', mode: 'lines', line: { color: '#a78bfa', width: 1, dash: 'dot' } },
+    ], {
+      ...LAYOUT_BASE,
+      xaxis: { ...LAYOUT_BASE.xaxis, title: 'RPM' },
+      yaxis: { ...LAYOUT_BASE.yaxis, title: 'Nm' },
+      legend: { orientation: 'h', y: 1.15 },
+      title: { text: 'Cliff 3750→4000 visible sur V5d/ACE', font: { size: 12, color: '#f3f1ef' } },
+    }, { responsive: true, displayModeBar: false });
+  }
+
+  function mountMeta() {
+    document.getElementById('hero-note').textContent = DATA.title + ' · ' + DATA.note;
+    document.getElementById('verdict-box').innerHTML = '<b>Confiance</b> — ' + (DATA.confidence || '');
+    const st = DATA.stats;
+    const v = DATA.verdict || {};
+    document.getElementById('pills').innerHTML = `
+      <span class="pill">addr ${DATA.addr}</span>
+      <span class="pill ${v.sure_for_ge4000 ? 'ok' : 'warn'}">≥4000: ${v.sure_for_ge4000 ? 'oui' : '?'}</span>
+      <span class="pill ${v.sure_for_3814_soft ? 'ok' : 'warn'}">@3814 soft: ${v.sure_for_3814_soft ? 'oui' : 'non sûr'}</span>
+      <span class="pill">cells ${st.cells} · max +${st.max_d} Nm</span>
+      <span class="pill">${st.version}</span>
+    `;
+  }
+
+  document.querySelectorAll('.mode-tabs button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      view = btn.dataset.view;
+      document.querySelectorAll('.mode-tabs button').forEach((b) => b.classList.toggle('on', b === btn));
+      render();
+    });
+  });
+
+  fetch('compare-v5d-v6-tqlim-data.json')
+    .then((r) => { if (!r.ok) throw new Error('JSON manquant — tools/export_v5d_v6_tqlim_preview.py'); return r.json(); })
+    .then((json) => { DATA = json; mountMeta(); render(); })
+    .catch((e) => { document.getElementById('app').innerHTML = `<p class="err">${e.message}</p>`; });
+})();
+</script>
+</body>
+</html>

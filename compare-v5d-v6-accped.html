@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · AccPed V5d vs V6 preview (2D / 3D)</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  .cmp-main { max-width: 1200px; margin: 0 auto; padding: var(--pad) var(--pad) 3rem; }
+  .cmp-hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.1), transparent 45%), var(--panel);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .cmp-hero h2 {
+    margin: 0 0 .35rem;
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0; }
+  .pill {
+    font-family: var(--mono);
+    font-size: .75rem;
+    padding: .3rem .55rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+  }
+  .pill.ok { border-color: var(--ok); color: var(--ok); }
+  .pill.warn { border-color: var(--accent2); color: var(--accent2); }
+  .pill.bad { border-color: var(--bad); color: var(--bad); }
+  .bank-tabs, .mode-tabs {
+    display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 .8rem;
+  }
+  .bank-tabs button, .mode-tabs button {
+    font-family: var(--mono);
+    font-size: .78rem;
+    padding: .4rem .65rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .bank-tabs button.on, .mode-tabs button.on {
+    border-color: var(--accent);
+    background: var(--soft);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+  .plot-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .5rem .55rem .65rem;
+  }
+  .plot-card h3 {
+    margin: 0 0 .35rem;
+    font-size: .85rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .plot { width: 100%; height: 360px; }
+  .plot-tall { height: 440px; }
+  .note {
+    margin-top: .8rem;
+    padding: .6rem .75rem;
+    border-left: 3px solid var(--accent2);
+    background: rgba(245,197,66,.06);
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  .note b { color: var(--ink); }
+  .slice-row { margin-top: .85rem; }
+  .err { color: var(--bad); padding: 1rem; border: 1px solid var(--bad); }
+</style>
+</head>
+<body class="log-aide-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>AccPed · V5d vs V6e preview</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <a href="index.html#view3d">3D atelier</a>
+      <a href="logs-v5d-steven/">Logs V5d</a>
+      <a href="compare-v5d-v6-accped.html" class="on">AccPed</a>
+      <a href="compare-v5d-v6-smoke.html">Smoke</a>
+      <a href="compare-v5d-v6-turbo.html">Turbo</a>
+      <a href="compare-v5d-v6-tqlim.html">tqlim</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="cmp-main">
+  <section class="cmp-hero">
+    <h2>Comparaison AccPed_trq4A</h2>
+    <p class="muted" id="hero-note">Chargement…</p>
+    <div class="pill-row" id="pills"></div>
+    <p class="note" style="margin:0">
+      <b>V6e = preview AccPed</b> (pas un .NOCS flashable). Soft tip-in <b>0–23 %</b> vers ORI · hold <b>75–85 %</b> lisse · <b>WOT 100 %</b> fill 4000→5355 (4998 ~282 Nm, 5355 ~204 — pas de plat 360).
+      Smoke/IQ écartés · turbo V5d=ACE — voir <a href="compare-v5d-v6-smoke.html">Smoke</a> / <a href="compare-v5d-v6-turbo.html">Turbo</a>.
+    </p>
+  </section>
+
+  <div class="mode-tabs" role="tablist" aria-label="Vue">
+    <button type="button" class="on" data-view="heat">2D heatmaps</button>
+    <button type="button" data-view="surf">3D surfaces</button>
+    <button type="button" data-view="both">2D + 3D</button>
+  </div>
+
+  <label class="muted" style="font-size:.85rem">Banque AccPed</label>
+  <div class="bank-tabs" id="bank-tabs"></div>
+
+  <div id="app"></div>
+</main>
+
+<script>
+(function () {
+  const LAYOUT_BASE = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    font: { family: 'IBM Plex Mono, monospace', size: 11, color: '#a39e96' },
+    margin: { l: 55, r: 20, t: 30, b: 50 },
+    xaxis: { title: 'Pédale %', color: '#a39e96', gridcolor: '#2e2926' },
+    yaxis: { title: 'RPM', color: '#a39e96', gridcolor: '#2e2926' },
+  };
+
+  let DATA = null;
+  let bankAddr = null;
+  let view = 'both';
+
+  function bankData() {
+    if (bankAddr === DATA.primary_addr) {
+      return { v5d: DATA.v5d, v6: DATA.v6, delta: DATA.delta, stats: DATA.stats };
+    }
+    return DATA.all_banks[bankAddr];
+  }
+
+  function heat(z, title, colorscale, zmid) {
+    return {
+      z,
+      x: DATA.axisX.map((v) => +v.toFixed(1)),
+      y: DATA.axisY,
+      type: 'heatmap',
+      colorscale,
+      zmid: zmid,
+      colorbar: { thickness: 12, len: 0.85, tickfont: { size: 10 } },
+      hovertemplate: 'ped %{x}%<br>rpm %{y}<br>%{z:.1f} Nm<extra></extra>',
+    };
+  }
+
+  function surf(z, name, color) {
+    return {
+      z,
+      x: DATA.axisX.map((v) => +v.toFixed(1)),
+      y: DATA.axisY,
+      type: 'surface',
+      name,
+      colorscale: color,
+      showscale: true,
+      opacity: 0.95,
+      contours: { z: { show: false } },
+      hovertemplate: 'ped %{x}%<br>rpm %{y}<br>%{z:.1f} Nm<extra>' + name + '</extra>',
+    };
+  }
+
+  function render() {
+    const b = bankData();
+    const app = document.getElementById('app');
+    const showHeat = view === 'heat' || view === 'both';
+    const showSurf = view === 'surf' || view === 'both';
+
+    app.innerHTML = `
+      ${showHeat ? `
+      <div class="grid-2" id="heat-grid">
+        <div class="plot-card"><h3>2D · V5d (Nm)</h3><div class="plot" id="h-v5d"></div></div>
+        <div class="plot-card"><h3>2D · V6 preview (Nm)</h3><div class="plot" id="h-v6"></div></div>
+        <div class="plot-card" style="grid-column:1/-1"><h3>2D · Écart V6 − V5d (Nm) · bleu = adouci · rouge = hold</h3><div class="plot" id="h-d"></div></div>
+      </div>` : ''}
+      ${showSurf ? `
+      <div class="grid-2" style="margin-top:.75rem" id="surf-grid">
+        <div class="plot-card"><h3>3D · V5d</h3><div class="plot plot-tall" id="s-v5d"></div></div>
+        <div class="plot-card"><h3>3D · V6 preview</h3><div class="plot plot-tall" id="s-v6"></div></div>
+        <div class="plot-card" style="grid-column:1/-1"><h3>3D · Écart (V6 − V5d)</h3><div class="plot plot-tall" id="s-d"></div></div>
+      </div>` : ''}
+      <div class="slice-row plot-card">
+        <h3>Coupes 2D · ligne RPM fixe</h3>
+        <div class="bank-tabs" id="rpm-tabs"></div>
+        <div class="plot" id="slice"></div>
+      </div>
+      <div class="slice-row plot-card">
+        <h3>Coupes 2D · colonne pédale fixe (WOT / tip-in)</h3>
+        <div class="bank-tabs" id="ped-tabs"></div>
+        <div class="plot" id="slice-ped"></div>
+      </div>
+    `;
+
+    const csNm = [
+      [0, '#0b1a2a'], [0.25, '#1d4e6f'], [0.5, '#e23a1a'], [0.75, '#f5c542'], [1, '#fff3c4']
+    ];
+    const csDelta = [
+      [0, '#3b82f6'], [0.45, '#1e293b'], [0.5, '#181614'], [0.55, '#1e293b'], [1, '#ef4444']
+    ];
+
+    if (showHeat) {
+      Plotly.newPlot('h-v5d', [heat(b.v5d, 'V5d', csNm)], { ...LAYOUT_BASE, title: { text: 'V5d', font: { size: 12 } } }, { responsive: true, displayModeBar: false });
+      Plotly.newPlot('h-v6', [heat(b.v6, 'V6', csNm)], { ...LAYOUT_BASE, title: { text: 'V6', font: { size: 12 } } }, { responsive: true, displayModeBar: false });
+      Plotly.newPlot('h-d', [heat(b.delta, 'Δ', csDelta, 0)], { ...LAYOUT_BASE, title: { text: 'Écart', font: { size: 12 } } }, { responsive: true, displayModeBar: false });
+    }
+
+    if (showSurf) {
+      const scene = {
+        xaxis: { title: 'Pédale %', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        yaxis: { title: 'RPM', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        zaxis: { title: 'Nm', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        camera: { eye: { x: 1.55, y: -1.55, z: 0.85 } },
+        aspectmode: 'manual',
+        aspectratio: { x: 1.1, y: 1.3, z: 0.7 },
+      };
+      Plotly.newPlot('s-v5d', [surf(b.v5d, 'V5d', 'Hot')], {
+        ...LAYOUT_BASE, margin: { l: 10, r: 10, t: 20, b: 10 }, scene,
+      }, { responsive: true, displayModeBar: true });
+      Plotly.newPlot('s-v6', [surf(b.v6, 'V6', 'Hot')], {
+        ...LAYOUT_BASE, margin: { l: 10, r: 10, t: 20, b: 10 }, scene,
+      }, { responsive: true, displayModeBar: true });
+      Plotly.newPlot('s-d', [surf(b.delta, 'Δ', 'RdBu')], {
+        ...LAYOUT_BASE, margin: { l: 10, r: 10, t: 20, b: 10 },
+        scene: { ...scene, zaxis: { ...scene.zaxis, title: 'Δ Nm' } },
+      }, { responsive: true, displayModeBar: true });
+    }
+
+    // RPM slices — default mid city + mid power
+    const rpmIdx = [5, 7, 9, 10]; // 1491, 2499, 3990, 4998
+    const rpmTabs = document.getElementById('rpm-tabs');
+    let curRpm = 7;
+    function drawRpmSlice(ri) {
+      curRpm = ri;
+      rpmTabs.querySelectorAll('button').forEach((btn) => btn.classList.toggle('on', +btn.dataset.ri === ri));
+      const x = DATA.axisX;
+      Plotly.newPlot('slice', [
+        { x, y: b.v5d[ri], name: 'V5d', type: 'scatter', mode: 'lines+markers', line: { color: '#e23a1a', width: 2 } },
+        { x, y: b.v6[ri], name: 'V6', type: 'scatter', mode: 'lines+markers', line: { color: '#f5c542', width: 2 } },
+        { x, y: DATA.ori ? (bankAddr === DATA.primary_addr ? DATA.ori[ri] : null) : null, name: 'ORI', type: 'scatter', mode: 'lines', line: { color: '#5b9cff', width: 1, dash: 'dot' } },
+      ].filter((t) => t.y), {
+        ...LAYOUT_BASE,
+        title: { text: `Nm vs pédale @ ${DATA.axisY[ri]} rpm`, font: { size: 12, color: '#f3f1ef' } },
+        yaxis: { ...LAYOUT_BASE.yaxis, title: 'Nm' },
+        legend: { orientation: 'h', y: 1.12 },
+      }, { responsive: true, displayModeBar: false });
+    }
+    rpmTabs.innerHTML = '';
+    rpmIdx.forEach((ri) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.dataset.ri = ri;
+      btn.textContent = Math.round(DATA.axisY[ri]) + ' rpm';
+      btn.addEventListener('click', () => drawRpmSlice(ri));
+      rpmTabs.appendChild(btn);
+    });
+    drawRpmSlice(curRpm);
+
+    // Pedal column slices
+    const pedIdx = [2, 3, 5, 7]; // ~10%, 23%, 75%, WOT
+    const pedTabs = document.getElementById('ped-tabs');
+    let curPed = 2;
+    function drawPedSlice(ci) {
+      curPed = ci;
+      pedTabs.querySelectorAll('button').forEach((btn) => btn.classList.toggle('on', +btn.dataset.ci === ci));
+      const y = DATA.axisY;
+      const col5 = b.v5d.map((row) => row[ci]);
+      const col6 = b.v6.map((row) => row[ci]);
+      const colO = DATA.ori ? DATA.ori.map((row) => row[ci]) : null;
+      Plotly.newPlot('slice-ped', [
+        { x: y, y: col5, name: 'V5d', type: 'scatter', mode: 'lines+markers', line: { color: '#e23a1a', width: 2 } },
+        { x: y, y: col6, name: 'V6', type: 'scatter', mode: 'lines+markers', line: { color: '#f5c542', width: 2 } },
+        colO ? { x: y, y: colO, name: 'ORI', type: 'scatter', mode: 'lines', line: { color: '#5b9cff', width: 1, dash: 'dot' } } : null,
+      ].filter(Boolean), {
+        ...LAYOUT_BASE,
+        title: { text: `Nm vs RPM @ pédale ${DATA.axisX[ci].toFixed(1)} %`, font: { size: 12, color: '#f3f1ef' } },
+        xaxis: { ...LAYOUT_BASE.xaxis, title: 'RPM' },
+        yaxis: { ...LAYOUT_BASE.yaxis, title: 'Nm' },
+        legend: { orientation: 'h', y: 1.12 },
+      }, { responsive: true, displayModeBar: false });
+    }
+    pedTabs.innerHTML = '';
+    pedIdx.forEach((ci) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.dataset.ci = ci;
+      btn.textContent = DATA.axisX[ci].toFixed(0) + ' %';
+      btn.addEventListener('click', () => drawPedSlice(ci));
+      pedTabs.appendChild(btn);
+    });
+    drawPedSlice(curPed);
+  }
+
+  function mountMeta() {
+    document.getElementById('hero-note').textContent =
+      DATA.title + ' · ' + DATA.note;
+    const st = DATA.stats;
+    document.getElementById('pills').innerHTML = `
+      <span class="pill">addr ${DATA.primary_addr}</span>
+      <span class="pill ok">plateau mid ${st.mid_plateau_nm} Nm</span>
+      <span class="pill bad">soft max ${st.max_delta_neg} Nm</span>
+      <span class="pill warn">hold/WOT +${st.max_delta_pos} Nm</span>
+      <span class="pill">soft ${st.soft_cells} · hold ${st.hold_cells} · WOT fill ${st.wot_fill_cells || 0}</span>
+      <span class="pill">${st.version || ''}</span>
+    `;
+    const tabs = document.getElementById('bank-tabs');
+    tabs.innerHTML = '';
+    DATA.banks.forEach((bk, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = bk.addr;
+      if (i === 0) btn.classList.add('on');
+      btn.addEventListener('click', () => {
+        bankAddr = bk.addr;
+        tabs.querySelectorAll('button').forEach((b) => b.classList.toggle('on', b === btn));
+        render();
+      });
+      tabs.appendChild(btn);
+    });
+    bankAddr = DATA.primary_addr;
+  }
+
+  document.querySelectorAll('.mode-tabs button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      view = btn.dataset.view;
+      document.querySelectorAll('.mode-tabs button').forEach((b) => b.classList.toggle('on', b === btn));
+      render();
+    });
+  });
+
+  fetch('compare-v5d-v6-accped-data.json')
+    .then((r) => {
+      if (!r.ok) throw new Error('JSON introuvable — lance tools/export_v5d_v6_accped_preview.py');
+      return r.json();
+    })
+    .then((json) => {
+      DATA = json;
+      mountMeta();
+      render();
+    })
+    .catch((e) => {
+      document.getElementById('app').innerHTML = `<p class="err">${e.message}</p>`;
+    });
+})();
+</script>
+</body>
+</html>

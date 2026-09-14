@@ -60,6 +60,8 @@
           <a href="index.html#vcds" role="menuitem">VCDS</a>
           <a href="index.html#log-compare" role="menuitem">Comparer</a>
           <a href="log-aide.html" class="on" role="menuitem">Fiches</a>
+          <a href="logs-v5f/" role="menuitem">V5f soir · courbes</a>
+          <a href="logs-v5f/" role="menuitem">V5f soir · courbes</a>
           <a href="logs-v5d-steven/" role="menuitem">V5d Steven · courbes</a>
         </div>
       </div>
@@ -77,30 +79,31 @@
       <button type="button" data-veh="a5">A5 CGKA 516657</button>
       <a class="muted" href="fiche-logs-vcds-a4-a5-bertin.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 A5</a>
       <a class="muted" href="fiche-logs-vcds-a4.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 Caddy</a>
+      <a class="muted" href="fiche-logs-vcds-a4-v5e.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 V5f ★</a>
       <a class="muted" href="fiche-logs-vcds-a4-v5d.html" style="margin-left:.5rem;font-size:.85rem">Fiche A4 V5d</a>
+      <a class="muted" href="logs-v5f/" style="margin-left:.5rem;font-size:.85rem">Courbes V5f ★</a>
       <a class="muted" href="logs-v5d-steven/" style="margin-left:.5rem;font-size:.85rem">Courbes V5d Steven</a>
     </div>
   </div>
 
   <section class="panel">
     <h2>Roadmap validation mappack</h2>
-    <p class="muted">Ordre conseillé pour valider Stage1 daily (launch = bonus).</p>
+    <p class="muted">Ordre <b>V5f FINAL</b> (peu d’IDE) — détail A4 : <a href="fiche-logs-vcds-a4-v5e.html">fiche-logs-vcds-a4-v5e.html</a> · carto <a href="FICHE-V5F-FINAL.md">FICHE-V5F-FINAL.md</a>.</p>
     <ol class="roadmap">
-      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_RAIL</b> — couple + rail consigne/réel</li>
-      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_TURBO</b> — MAP consigne/réel sous charge</li>
-      <li><span class="tag need">PRIORITÉ</span> <b>VILLE</b> — confort partiels (pas on/off)</li>
-      <li><span class="tag opt">OK SI RESSENTI</span> <b>HARCUT</b> — cut ~4800 en roulant</li>
-      <li><span class="tag bonus">BONUS</span> <b>DEPART</b> — launch V5d hold ~110 Nm @2800</li>
-      <li><span class="tag bonus">BONUS</span> <b>ROUTE_INJ</b> — air mass / fumée / IQ si canal trouvé</li>
+      <li><span class="tag need">PRIORITÉ</span> <b>VILLE_SOFT</b> — AccPed V6e tip-in (4 IDE)</li>
+      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_SOFT</b> — 3ᵉ WOT 3000→4200 tqlim+AccPed+tegt320 (6 IDE)</li>
+      <li><span class="tag need">PRIORITÉ</span> <b>DEPART</b> — launch <b>0 Nm</b> @~2800 (5 IDE)</li>
+      <li><span class="tag opt">OK SI RESSENTI</span> <b>HARDCUT</b> — cut ~4800 (4 IDE)</li>
+      <li><span class="tag bonus">SI BESOIN</span> <b>ROUTE_RAIL</b> / <b>ROUTE_TURBO</b> — packs complets (≤9 IDE)</li>
     </ol>
     <div class="box">
-      <b>Avant chaque session</b>
+      <b>Avant chaque session · fréquence max</b>
       <ul>
-        <li>Note soft flashé : <code>V2</code> / <code>V3 ITALIE</code> / ACE / ORI</li>
-        <li>Moteur chaud</li>
-        <li>Route fixe (même départ / même fin)</li>
+        <li>Soft flashé : <code>V5f</code> (V5e + tegt~320)</li>
+        <li>Moteur chaud · route fixe</li>
         <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b></li>
-        <li>Max ~12 canaux (sinon échantillonnage trop lent)</li>
+        <li><b>Max 5–6 IDE</b> / run (idéalement 4) — au-delà multiplexe ~1–2 s</li>
+        <li>Décoche tout sauf la liste du run · logs courts 20–40 s</li>
       </ul>
     </div>
     <p class="muted" style="margin:.75rem 0 0">RE Golf 9980 (hors log) : <a href="stage1-hubs-golf9980.html">Stage1 hubs / Top AccPed</a> · liste <a href="map-finder/reports/golf9980-medium-stage1.html">MEDIUM</a> (adresses Ghidra <code>80…</code>).</p>
@@ -559,7 +562,7 @@ const RUNS_A5 = [
 const VEH = {
   caddy: {
     title: 'Guide logs VCDS · banc route 9979',
-    lead: 'Un log = une question. Soft : V5d (validation). <a href="logs-v5d-steven/">Courbes V5d Steven</a> · <a href="fiche-logs-vcds-a4-v5d.html">Fiche A4 V5d</a> · <a href="fiche-logs-vcds-a4.html">A4 générique</a> · <a href="fiche-logs-vcds-a4.pdf" download="SAVAGESEAR-fiche-logs-Caddy-9979.pdf">↓ PDF générique</a>.',
+    lead: 'Un log = une question. Soft : <b>V5f FINAL</b> · <a href="logs-v5f/"><b>Courbes V5f soir (validée)</b></a> · <a href="fiche-logs-vcds-a4-v5e.html">Fiche A4</a> · <a href="FICHE-V5F-FINAL.md">Fiche carto</a> · <a href="logs-v5d-steven/">V5d Steven</a>.',
     meta: 'Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB',
     runs: RUNS,
   },

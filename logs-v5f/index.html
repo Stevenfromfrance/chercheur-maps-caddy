@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SAVAGESEAR · Logs V5d Steven — courbes VCDS</title>
+<title>SAVAGESEAR · Logs V5f — courbes VCDS</title>
 <link rel="icon" href="../avatar-savagesear.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,7 +251,7 @@
       <div class="brand-text">
         <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
         <p class="brand-tag">Reprog</p>
-        <h1>Logs V5d Steven · courbes</h1>
+        <h1>Logs V5f · courbes</h1>
       </div>
     </a>
     <div class="work-controls" role="group" aria-label="Thème">
@@ -264,8 +264,9 @@
       <a href="../index.html#home">Accueil</a>
       <a href="../log-aide.html">Fiches runs</a>
       <a href="../index.html#vcds">Analyser</a>
-      <a href="../fiche-logs-vcds-a4-v5d.html">A4 V5d</a>
-      <a href="index.html" class="on">V5d Steven</a>
+      <a href="../fiche-logs-vcds-a4-v5e.html">A4 V5f</a>
+      <a href="../logs-v5d-steven/">V5d Steven</a>
+      <a href="index.html" class="on">V5f soir</a>
     </nav>
   </div>
   </div>
@@ -293,7 +294,7 @@
   let DATA = null;
   let chart = null;
   let currentId = null;
-  let selected = new Set(['rpm', 'ped', 'tq', 'fup_a', 'fup_sp']);
+  let selected = new Set(['rpm', 'ped', 'tq', 'spd', 'map_sp', 'map_act']);
 
   const themeDark = document.getElementById('btn-theme-dark');
   const themeLight = document.getElementById('btn-theme-light');
@@ -391,7 +392,7 @@
     app.innerHTML = `
       ${renderSoftGear()}
       <section class="v5d-hero">
-        <h2>Validation carto V5d</h2>
+        <h2>Validation carto V5f FINAL</h2>
         <p class="meta">${DATA.vehicle} · ${DATA.carto} · logs ${DATA.date}</p>
         <div class="grade">${v.grade}</div>
         <p style="margin:.2rem 0 .9rem">${v.summary}</p>

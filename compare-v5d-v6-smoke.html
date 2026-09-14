@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Smoke / IQ · V5d vs V6c preview</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  .cmp-main { max-width: 1200px; margin: 0 auto; padding: var(--pad) var(--pad) 3rem; }
+  .cmp-hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.1), transparent 45%), var(--panel);
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .cmp-hero h2 {
+    margin: 0 0 .35rem;
+    font-family: var(--display);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0; }
+  .pill {
+    font-family: var(--mono);
+    font-size: .75rem;
+    padding: .3rem .55rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+  }
+  .pill.ok { border-color: var(--ok); color: var(--ok); }
+  .pill.warn { border-color: var(--accent2); color: var(--accent2); }
+  .pill.bad { border-color: var(--bad); color: var(--bad); }
+  .bank-tabs, .mode-tabs {
+    display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 .8rem;
+  }
+  .bank-tabs button, .mode-tabs button {
+    font-family: var(--mono);
+    font-size: .78rem;
+    padding: .4rem .65rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .bank-tabs button.on, .mode-tabs button.on {
+    border-color: var(--accent);
+    background: var(--soft);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+  .plot-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .5rem .55rem .65rem;
+  }
+  .plot-card h3 {
+    margin: 0 0 .35rem;
+    font-size: .85rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .plot { width: 100%; height: 360px; }
+  .plot-tall { height: 440px; }
+  .note {
+    margin-top: .8rem;
+    padding: .6rem .75rem;
+    border-left: 3px solid var(--accent2);
+    background: rgba(245,197,66,.06);
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  .note b { color: var(--ink); }
+  .note.ok-border { border-left-color: var(--ok); background: rgba(34,197,94,.06); }
+  .probe-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: .78rem;
+    margin-top: .5rem;
+  }
+  .probe-table th, .probe-table td {
+    border: 1px solid var(--line);
+    padding: .35rem .45rem;
+    text-align: right;
+  }
+  .probe-table th { text-align: left; color: var(--muted); background: var(--panel2); }
+  .err { color: var(--bad); padding: 1rem; border: 1px solid var(--bad); }
+</style>
+</head>
+<body class="log-aide-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>Smoke / IQ · V5d vs V6c</h1>
+      </div>
+    </a>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="index.html#home">Accueil</a>
+      <a href="logs-v5d-steven/">Logs V5d</a>
+      <a href="compare-v5d-v6-accped.html">AccPed</a>
+      <a href="compare-v5d-v6-smoke.html" class="on">Smoke</a>
+      <a href="compare-v5d-v6-turbo.html">Turbo</a>
+      <a href="compare-v5d-v6-tqlim.html">tqlim</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="cmp-main">
+  <section class="cmp-hero">
+    <h2>Smoke_mapA + nm2iq</h2>
+    <p class="muted" id="hero-note">Chargement…</p>
+    <div class="pill-row" id="pills"></div>
+    <p class="note ok-border" id="verdict-box" style="margin:0"></p>
+  </section>
+
+  <div class="mode-tabs" role="tablist" aria-label="Vue">
+    <button type="button" class="on" data-view="heat">2D heatmaps</button>
+    <button type="button" data-view="surf">3D surfaces</button>
+    <button type="button" data-view="both">2D + 3D</button>
+  </div>
+
+  <label class="muted" style="font-size:.85rem">Banque smoke</label>
+  <div class="bank-tabs" id="bank-tabs"></div>
+
+  <div id="app"></div>
+</main>
+
+<script>
+(function () {
+  const LAYOUT_BASE = {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    font: { family: 'IBM Plex Mono, monospace', size: 11, color: '#a39e96' },
+    margin: { l: 55, r: 20, t: 30, b: 50 },
+    xaxis: { title: 'MAP mbar', color: '#a39e96', gridcolor: '#2e2926' },
+    yaxis: { title: 'RPM', color: '#a39e96', gridcolor: '#2e2926' },
+  };
+
+  let DATA = null;
+  let bankAddr = null;
+  let view = 'both';
+
+  function bankData() {
+    if (bankAddr === DATA.primary_addr) {
+      return { v5d: DATA.v5d, v6: DATA.v6, ori: DATA.ori, ace: DATA.ace, delta: DATA.delta, stats: DATA.stats };
+    }
+    return DATA.all_banks[bankAddr];
+  }
+
+  function heat(z, colorscale, zmid) {
+    return {
+      z,
+      x: DATA.axisX.map((v) => Math.round(v)),
+      y: DATA.axisY,
+      type: 'heatmap',
+      colorscale,
+      zmid: zmid,
+      colorbar: { thickness: 12, len: 0.85, tickfont: { size: 10 } },
+      hovertemplate: 'MAP %{x} mbar<br>rpm %{y}<br>%{z:.1f} Nm<extra></extra>',
+    };
+  }
+
+  function surf(z, name, color) {
+    return {
+      z,
+      x: DATA.axisX.map((v) => Math.round(v)),
+      y: DATA.axisY,
+      type: 'surface',
+      name,
+      colorscale: color,
+      showscale: true,
+      opacity: 0.95,
+      hovertemplate: 'MAP %{x}<br>rpm %{y}<br>%{z:.1f} Nm<extra>' + name + '</extra>',
+    };
+  }
+
+  function renderProbes() {
+    const rows = (DATA.log_probes || []).map((p) => {
+      const lg = p.log || {};
+      const pr = p.primary || {};
+      return `<tr>
+        <td style="text-align:left">${lg.src || ''}</td>
+        <td>${lg.rpm ?? ''}</td>
+        <td>${lg.map_hpa ?? ''}</td>
+        <td>${(pr.log_tq ?? lg.tq ?? '').toFixed ? (pr.log_tq ?? lg.tq).toFixed(0) : (pr.log_tq ?? lg.tq ?? '')}</td>
+        <td>${pr.smoke_v5d ?? ''}</td>
+        <td>${pr.smoke_ace ?? ''}</td>
+        <td>${pr.headroom_wish ?? ''}</td>
+        <td>${pr.headroom_log ?? ''}</td>
+      </tr>`;
+    }).join('');
+    return `
+      <div class="slice-row plot-card">
+        <h3>Probes logs · smoke primary ${DATA.primary_addr} vs TQI / wish≈333</h3>
+        <table class="probe-table">
+          <thead><tr>
+            <th>src</th><th>rpm</th><th>MAP</th><th>TQI</th>
+            <th>smoke V5d</th><th>ACE</th><th>HR wish</th><th>HR log</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function renderIq() {
+    const iq = DATA.nm2iq;
+    if (!iq) return '';
+    const sl = iq.slice_330nm;
+    const col = sl.trq_col;
+    return `
+      <div class="slice-row plot-card">
+        <h3>nm2iq @ ${col.toFixed(0)} Nm (dernière colonne) · mg/hub vs RPM</h3>
+        <p class="muted" style="margin:.2rem 0 .5rem;font-size:.85rem">
+          addr ${iq.addr} · V5d ${iq.identical_to_ace ? '= ACE' : '≠ ACE'} · axe couple max carte = ${iq.axisX[iq.axisX.length-1]} Nm
+        </p>
+        <div class="plot" id="iq-slice"></div>
+      </div>`;
+  }
+
+  function render() {
+    const b = bankData();
+    const app = document.getElementById('app');
+    const showHeat = view === 'heat' || view === 'both';
+    const showSurf = view === 'surf' || view === 'both';
+
+    app.innerHTML = `
+      ${showHeat ? `
+      <div class="grid-2" id="heat-grid">
+        <div class="plot-card"><h3>2D · V5d (Nm)</h3><div class="plot" id="h-v5d"></div></div>
+        <div class="plot-card"><h3>2D · V6c preview (Nm)</h3><div class="plot" id="h-v6"></div></div>
+        <div class="plot-card"><h3>2D · ACE (Nm)</h3><div class="plot" id="h-ace"></div></div>
+        <div class="plot-card"><h3>2D · Écart V6c − V5d</h3><div class="plot" id="h-d"></div></div>
+      </div>` : ''}
+      ${showSurf ? `
+      <div class="grid-2" style="margin-top:.75rem">
+        <div class="plot-card"><h3>3D · V5d</h3><div class="plot plot-tall" id="s-v5d"></div></div>
+        <div class="plot-card"><h3>3D · V6c</h3><div class="plot plot-tall" id="s-v6"></div></div>
+      </div>` : ''}
+      ${renderProbes()}
+      ${renderIq()}
+      <div class="slice-row plot-card">
+        <h3>Coupes · RPM fixe</h3>
+        <div class="bank-tabs" id="rpm-tabs"></div>
+        <div class="plot" id="slice"></div>
+      </div>
+      <div class="note">
+        <b>V6c = preview only</b> (lift smoke haut régime / gros boost vers ACE, cap 375).
+        Si les probes montrent un headroom wish positif, lever smoke ne soigne pas le mou WOT — regarder MAP_SP / LDR et AccPed 100 % &gt; 4000.
+      </div>
+    `;
+
+    const csNm = [
+      [0, '#0b1a2a'], [0.25, '#1d4e6f'], [0.5, '#e23a1a'], [0.75, '#f5c542'], [1, '#fff3c4']
+    ];
+    const csDelta = [
+      [0, '#1e293b'], [0.5, '#181614'], [1, '#ef4444']
+    ];
+
+    if (showHeat) {
+      Plotly.newPlot('h-v5d', [heat(b.v5d, csNm)], { ...LAYOUT_BASE }, { responsive: true, displayModeBar: false });
+      Plotly.newPlot('h-v6', [heat(b.v6, csNm)], { ...LAYOUT_BASE }, { responsive: true, displayModeBar: false });
+      Plotly.newPlot('h-ace', [heat(b.ace || DATA.ace, csNm)], { ...LAYOUT_BASE }, { responsive: true, displayModeBar: false });
+      Plotly.newPlot('h-d', [heat(b.delta, csDelta, 0)], { ...LAYOUT_BASE }, { responsive: true, displayModeBar: false });
+    }
+
+    if (showSurf) {
+      const scene = {
+        xaxis: { title: 'MAP', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        yaxis: { title: 'RPM', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        zaxis: { title: 'Nm', color: '#a39e96', backgroundcolor: '#0b0a09', gridcolor: '#2e2926' },
+        camera: { eye: { x: 1.55, y: -1.55, z: 0.85 } },
+        aspectmode: 'manual',
+        aspectratio: { x: 1.1, y: 1.3, z: 0.7 },
+      };
+      Plotly.newPlot('s-v5d', [surf(b.v5d, 'V5d', 'Hot')], {
+        ...LAYOUT_BASE, margin: { l: 10, r: 10, t: 20, b: 10 }, scene,
+      }, { responsive: true, displayModeBar: true });
+      Plotly.newPlot('s-v6', [surf(b.v6, 'V6c', 'Hot')], {
+        ...LAYOUT_BASE, margin: { l: 10, r: 10, t: 20, b: 10 }, scene,
+      }, { responsive: true, displayModeBar: true });
+    }
+
+    const iq = DATA.nm2iq;
+    if (iq) {
+      const sl = iq.slice_330nm;
+      Plotly.newPlot('iq-slice', [
+        { x: sl.rpm, y: sl.v5d, name: 'V5d', type: 'scatter', mode: 'lines+markers', line: { color: '#e23a1a', width: 2 } },
+        { x: sl.rpm, y: sl.ace, name: 'ACE', type: 'scatter', mode: 'lines', line: { color: '#f5c542', width: 2, dash: 'dash' } },
+        { x: sl.rpm, y: sl.ori, name: 'ORI', type: 'scatter', mode: 'lines', line: { color: '#5b9cff', width: 1, dash: 'dot' } },
+      ], {
+        ...LAYOUT_BASE,
+        xaxis: { ...LAYOUT_BASE.xaxis, title: 'RPM' },
+        yaxis: { ...LAYOUT_BASE.yaxis, title: 'mg/hub' },
+        legend: { orientation: 'h', y: 1.12 },
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    // RPM slices — high rpm focus
+    const rpmIdx = [];
+    DATA.axisY.forEach((r, i) => {
+      if (r >= 2500 && r <= 4800) rpmIdx.push(i);
+    });
+    const pick = rpmIdx.filter((_, i) => i % Math.max(1, Math.floor(rpmIdx.length / 4)) === 0).slice(0, 4);
+    if (!pick.length) pick.push(Math.floor(DATA.axisY.length / 2));
+    const rpmTabs = document.getElementById('rpm-tabs');
+    let curRpm = pick[Math.min(2, pick.length - 1)];
+    function drawRpmSlice(ri) {
+      curRpm = ri;
+      rpmTabs.querySelectorAll('button').forEach((btn) => btn.classList.toggle('on', +btn.dataset.ri === ri));
+      const x = DATA.axisX;
+      Plotly.newPlot('slice', [
+        { x, y: b.v5d[ri], name: 'V5d', type: 'scatter', mode: 'lines+markers', line: { color: '#e23a1a', width: 2 } },
+        { x, y: b.v6[ri], name: 'V6c', type: 'scatter', mode: 'lines+markers', line: { color: '#f5c542', width: 2 } },
+        { x, y: (b.ace || DATA.ace)[ri], name: 'ACE', type: 'scatter', mode: 'lines', line: { color: '#22c55e', width: 1, dash: 'dash' } },
+        { x, y: (b.ori || DATA.ori)[ri], name: 'ORI', type: 'scatter', mode: 'lines', line: { color: '#5b9cff', width: 1, dash: 'dot' } },
+      ], {
+        ...LAYOUT_BASE,
+        title: { text: `Smoke Nm vs MAP @ ${Math.round(DATA.axisY[ri])} rpm`, font: { size: 12, color: '#f3f1ef' } },
+        yaxis: { ...LAYOUT_BASE.yaxis, title: 'Nm' },
+        legend: { orientation: 'h', y: 1.12 },
+      }, { responsive: true, displayModeBar: false });
+    }
+    rpmTabs.innerHTML = '';
+    pick.forEach((ri) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.dataset.ri = ri;
+      btn.textContent = Math.round(DATA.axisY[ri]) + ' rpm';
+      btn.addEventListener('click', () => drawRpmSlice(ri));
+      rpmTabs.appendChild(btn);
+    });
+    drawRpmSlice(curRpm);
+  }
+
+  function mountMeta() {
+    document.getElementById('hero-note').textContent = DATA.title + ' · ' + DATA.note;
+    const v = DATA.verdict || {};
+    const box = document.getElementById('verdict-box');
+    box.innerHTML = '<b>Verdict probes</b> — ' + (v.summary || '');
+    document.getElementById('pills').innerHTML = `
+      <span class="pill">smoke ${DATA.primary_addr}</span>
+      <span class="pill ${v.smoke_clips_high_rpm ? 'bad' : 'ok'}">${v.smoke_clips_high_rpm ? 'smoke clip?' : 'pas de clip smoke'}</span>
+      <span class="pill ${DATA.nm2iq && DATA.nm2iq.identical_to_ace ? 'ok' : 'warn'}">nm2iq ${DATA.nm2iq && DATA.nm2iq.identical_to_ace ? '= ACE' : '≠ ACE'}</span>
+      <span class="pill">V6c cells Δ ${DATA.stats.cells || '?'} · max +${(DATA.stats.max_d || 0).toFixed(1)} Nm</span>
+    `;
+    const tabs = document.getElementById('bank-tabs');
+    tabs.innerHTML = '';
+    DATA.banks.forEach((bk, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = bk.addr + (bk.addr === DATA.primary_addr ? ' ★' : '');
+      if (bk.addr === DATA.primary_addr || i === 0) btn.classList.add('on');
+      btn.addEventListener('click', () => {
+        bankAddr = bk.addr;
+        tabs.querySelectorAll('button').forEach((b) => b.classList.toggle('on', b === btn));
+        render();
+      });
+      tabs.appendChild(btn);
+    });
+    bankAddr = DATA.primary_addr;
+  }
+
+  document.querySelectorAll('.mode-tabs button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      view = btn.dataset.view;
+      document.querySelectorAll('.mode-tabs button').forEach((b) => b.classList.toggle('on', b === btn));
+      render();
+    });
+  });
+
+  fetch('compare-v5d-v6-smoke-data.json')
+    .then((r) => {
+      if (!r.ok) throw new Error('JSON introuvable — lance tools/export_v5d_v6_smoke_preview.py');
+      return r.json();
+    })
+    .then((json) => {
+      DATA = json;
+      mountMeta();
+      render();
+    })
+    .catch((e) => {
+      document.getElementById('app').innerHTML = `<p class="err">${e.message}</p>`;
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Fiche logs VCDS — Validation V5d (A4)</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f4ef;
+    --ink: #141210;
+    --muted: #5c564e;
+    --line: #d8d0c6;
+    --card: #ffffff;
+    --accent: #e23a1a;
+    --soft: #fceee9;
+    --opt: #8a5a12;
+    --bonus: #3a4a7a;
+    --font: 'Barlow', system-ui, sans-serif;
+    --display: 'Oswald', Impact, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: #1a1714;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .screen-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(10, 9, 8, 0.94);
+    border-bottom: 1px solid #2e2926;
+    font-size: 13px;
+    color: #a39e96;
+  }
+  .screen-bar strong { color: #f3f1ef; }
+  .screen-bar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .screen-bar button {
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 11px;
+    border: 1px solid rgba(226, 58, 26, 0.55);
+    background: rgba(226, 58, 26, 0.18);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .screen-bar button:hover { background: rgba(226, 58, 26, 0.32); }
+  .screen-bar a { color: #f5c542; text-decoration: none; font-size: 12px; }
+
+  .stage { display: flex; justify-content: center; padding: 24px 16px 40px; }
+
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 6.5mm 7mm 5.5mm;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+
+  header.top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3mm;
+    align-items: end;
+    border-bottom: 2.5px solid var(--accent);
+    padding-bottom: 1.8mm;
+  }
+  .brand {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9.5pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .brand span { color: var(--accent); }
+  .title {
+    margin: 0.5mm 0 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 11.5pt;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .sub {
+    margin: 0.5mm 0 0;
+    font-size: 6.4pt;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .meta-box {
+    text-align: right;
+    font-size: 6.2pt;
+    color: var(--muted);
+    line-height: 1.28;
+  }
+  .meta-box b {
+    display: block;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 7.2pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .pack {
+    margin-top: 0.8mm;
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 6.5pt;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--soft);
+    color: var(--accent);
+    padding: 0.6mm 1.4mm;
+  }
+
+  .targets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2mm;
+    border: 1px solid var(--line);
+    background: #faf8f5;
+    padding: 1.2mm 1.4mm;
+  }
+  .tgt {
+    font-size: 5.5pt;
+    line-height: 1.2;
+    color: var(--muted);
+  }
+  .tgt b {
+    display: block;
+    font-family: var(--display);
+    font-size: 5.8pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.2mm;
+  }
+
+  .ide {
+    display: flex;
+    align-items: baseline;
+    gap: 1mm;
+    font-size: 5.1pt;
+    line-height: 1.12;
+  }
+  .box {
+    width: 2mm;
+    height: 2mm;
+    border: 1.1px solid var(--ink);
+    flex: 0 0 auto;
+    margin-top: 0.3mm;
+    background: #fff;
+  }
+  .ide code {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 4.9pt;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 0 0 auto;
+  }
+  .ide .n { color: var(--muted); font-weight: 500; }
+  .ide.extra code, .ide.extra .n { color: var(--accent); }
+
+  .ides-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3mm 1.5mm;
+    background: #faf8f5;
+    border: 1px solid var(--line);
+    padding: 1mm 1.2mm;
+  }
+
+  .runs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8mm;
+    flex: 1;
+  }
+
+  .run {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.5mm 1.8mm 1.4mm;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85mm;
+    min-height: 0;
+  }
+  .run-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2mm;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.7mm;
+  }
+  .run-name {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 7.8pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .tag {
+    font-family: var(--display);
+    font-size: 5.3pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4mm 1.2mm;
+    border-radius: 1px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag.prio { background: var(--soft); color: var(--accent); }
+  .tag.opt { background: #f7efd8; color: var(--opt); }
+  .tag.bonus { background: #e8ecf5; color: var(--bonus); }
+
+  .meta-line {
+    font-size: 5.5pt;
+    line-height: 1.22;
+    color: var(--ink);
+  }
+  .meta-line b {
+    font-family: var(--display);
+    font-size: 5.1pt;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 1mm;
+  }
+
+  .file {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 4.9pt;
+    background: #f1ece4;
+    padding: 0.55mm 1mm;
+    border-radius: 1px;
+    word-break: break-all;
+    line-height: 1.18;
+  }
+  .forbid {
+    font-size: 5.2pt;
+    color: #7a1f12;
+    background: #f8e8e4;
+    padding: 0.55mm 1mm;
+    border-left: 2px solid var(--accent);
+  }
+  .forbid b {
+    font-family: var(--display);
+    font-size: 4.9pt;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-right: 1mm;
+  }
+
+  footer.foot {
+    border-top: 1.5px solid var(--line);
+    padding-top: 1.3mm;
+    display: flex;
+    justify-content: space-between;
+    gap: 3mm;
+    align-items: center;
+    font-size: 5.7pt;
+    color: var(--muted);
+  }
+  footer.foot strong { color: var(--ink); }
+  .rules { display: flex; flex-wrap: wrap; gap: 0.8mm 2.2mm; }
+  .rules span::before {
+    content: "";
+    display: inline-block;
+    width: 1.3mm;
+    height: 1.3mm;
+    background: var(--accent);
+    margin-right: 0.9mm;
+    vertical-align: middle;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .screen-bar { display: none !important; }
+    .stage { padding: 0; }
+    .sheet {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      box-shadow: none;
+      margin: 0;
+      overflow: hidden;
+    }
+    @page { size: A4 portrait; margin: 0; }
+  }
+
+  @media screen and (max-width: 900px) {
+    .stage { padding: 12px; }
+    .sheet { width: 100%; min-height: auto; padding: 14px; }
+    .runs { grid-template-columns: 1fr; }
+    .targets { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="screen-bar">
+    <div><strong>Fiche A4 · V5d</strong> — validation Stage 1 Caddy 9979</div>
+    <div class="actions">
+      <a href="log-aide.html">Guide fiches</a>
+      <a href="FICHE-V5D-TEGT-LAUNCH.md">Fiche V5d</a>
+      <a href="VCDS-IDE-CADDY-9979.md">Noms IDE</a>
+      <button type="button" onclick="window.print()">Imprimer / PDF</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <article class="sheet" aria-label="Fiche A4 logs VCDS validation V5d">
+      <header class="top">
+        <div>
+          <p class="brand">SAVAGESEAR <span>Reprog</span></p>
+          <h1 class="title">Fiche logs VCDS — Validation V5d</h1>
+          <p class="sub">Caddy PCR2.1 · soft 9979 · HW 03L906023TB · 01-Engine → Advanced Measuring Values · max ~12 canaux</p>
+          <span class="pack">Flash : …_V5d_tegtORI_launch110.NOCS · CHK avant</span>
+        </div>
+        <div class="meta-box">
+          <b>Ordre conseillé</b>
+          1 RAIL → 2 TURBO → 3 VILLE<br>
+          puis DEPART · HARCUT · INJ
+        </div>
+      </header>
+
+      <div class="targets">
+        <div class="tgt"><b>Couple</b>TQI_SP WOT ~350–360 Nm<br>(wish 360 · tqlim 370)</div>
+        <div class="tgt"><b>Rail</b>FUP_FIL ≈ FUP_SP ~1620 bar<br>pic court ≤ ~1670</div>
+        <div class="tgt"><b>Turbo</b>MAP_MMV suit MAP_SP<br>pas d’écart fou durable</div>
+        <div class="tgt"><b>Launch</b>Hold ~110 Nm @2800<br>pas 0 Nm / pas hold 2500</div>
+      </div>
+
+      <div class="runs" id="runs"></div>
+
+      <footer class="foot">
+        <div class="rules">
+          <span><strong>1 CSV = 1 run</strong></span>
+          <span>Soft = V5d</span>
+          <span>Noter ASR ON/OFF</span>
+          <span>Noms IDE exacts</span>
+        </div>
+        <div>log-aide.html · VCDS-IDE-CADDY-9979.md</div>
+      </footer>
+    </article>
+  </div>
+
+<script>
+const CORE = [
+  ['IDE00021', 'Engine RPM'],
+  ['IDE00075', 'Vehicle speed'],
+  ['IDE00086', 'Accelerator pedal position'],
+  ['IDE00100', 'Engine torque-TQI_SP'],
+  ['IDE00188', 'Fuel high-pressure: actual value-FUP_FIL'],
+  ['IDE00201', 'High fuel pressure: specified value-FUP_SP_KPA'],
+  ['IDE00190', 'Charge air pressure: specified value-MAP_SP_MMV'],
+  ['IDE00191', 'Charge air pressure: actual value-MAP_MMV'],
+  ['IDE00347', 'Air mass: actual value:'],
+];
+
+function idesHtml(extra) {
+  const all = CORE.concat(extra || []);
+  return `<div class="ides-grid">${all.map(([id, n], i) => {
+    const isExtra = i >= CORE.length;
+    return `<div class="ide${isExtra ? ' extra' : ''}"><span class="box"></span><code>${id}</code><span class="n">${n}</span></div>`;
+  }).join('')}</div>`;
+}
+
+const RUNS = [
+  {
+    name: '1 · ROUTE_RAIL',
+    tag: 'prio',
+    tagLabel: 'Priorité',
+    cond: '3ᵉ/4ᵉ · chaud · ASR ON · pull 1800→3500–4000 WOT en charge',
+    prove: 'TQI_SP ~350–360 · FUP_FIL ≈ FUP_SP (~1620) · pédale haute',
+    file: 'CADDY_9979_V5d_ROUTE_RAIL_YYYYMMDD.csv',
+    forbid: 'Frein moteur seul · mélange launch · soft ≠ V5d',
+    extra: [['IDE00025', 'Coolant temperature']],
+  },
+  {
+    name: '2 · ROUTE_TURBO',
+    tag: 'prio',
+    tagLabel: 'Priorité',
+    cond: 'Même route/rapport que RAIL · 3ᵉ/4ᵉ · ASR ON · 1800→3500–4000',
+    prove: 'MAP_SP vs MAP_MMV sous WOT · air mass monte · pas under/overboost fou',
+    file: 'CADDY_9979_V5d_ROUTE_TURBO_YYYYMMDD.csv',
+    forbid: 'Changer portion/rapport entre RAIL et TURBO',
+    extra: [['IDE00025', 'Coolant temperature']],
+  },
+  {
+    name: '3 · VILLE',
+    tag: 'prio',
+    tagLabel: 'Priorité',
+    cond: '15–20 min · ASR ON · 2ᵉ/3ᵉ normale · pas de WOT long',
+    prove: 'Partiels fluides · pas d’à-coups / on-off · daily OK',
+    file: 'CADDY_9979_V5d_VILLE_YYYYMMDD.csv',
+    forbid: 'Transformer la ville en session launch',
+    extra: [['IDE00025', 'Coolant temperature']],
+  },
+  {
+    name: '4 · DEPART / LAUNCH',
+    tag: 'bonus',
+    tagLabel: 'Bonus V5d',
+    cond: 'Sûr · ASR OFF · 1ʳᵉ + frein à main + embrayé · hold 2–3 s @~2800',
+    prove: 'Hold TQI ~100–120 Nm · MAP monte · speed≈0 puis départ sans patinage long',
+    file: 'CADDY_9979_V5d_DEPART_LAUNCH_YYYYMMDD.csv',
+    forbid: 'Hold à 2500 · hardcut 4800 dans le même CSV · ASR ON',
+    extra: [],
+  },
+  {
+    name: '5 · HARCUT',
+    tag: 'opt',
+    tagLabel: 'Optionnel',
+    cond: '3ᵉ/4ᵉ en roulant · pas frein à main · noter ASR · montée jusqu’~4800',
+    prove: 'Speed > 0 · TQI_SP tombe vers 0 près de 4800 (pédale haute OK)',
+    file: 'CADDY_9979_V5d_HARCUT_YYYYMMDD.csv',
+    forbid: 'Test à l’arrêt (devient launch / clutch-prot)',
+    extra: [],
+  },
+  {
+    name: '6 · ROUTE_INJ',
+    tag: 'bonus',
+    tagLabel: 'Bonus',
+    cond: '3ᵉ/4ᵉ WOT · ASR ON · 1800→4000 · noter fumée visuelle',
+    prove: 'Air mass monte · TQI cohérent ~350–360 · fumée oui/non notée',
+    file: 'CADDY_9979_V5d_ROUTE_INJ_YYYYMMDD.csv',
+    forbid: 'Oublier la note fumée · IQ inventée (pas d’IDE IQ sur 9979)',
+    extra: [['IDE00371', 'Fuel consumption-FCO_T']],
+  },
+];
+
+document.getElementById('runs').innerHTML = RUNS.map((r) => `
+  <section class="run">
+    <div class="run-head">
+      <h2 class="run-name">${r.name}</h2>
+      <span class="tag ${r.tag}">${r.tagLabel}</span>
+    </div>
+    <div class="meta-line"><b>Conditions</b>${r.cond}</div>
+    <div class="meta-line"><b>IDE à cocher</b></div>
+    ${idesHtml(r.extra)}
+    <div class="meta-line"><b>Prouve</b>${r.prove}</div>
+    <div class="file">${r.file}</div>
+    <div class="forbid"><b>Interdit</b>${r.forbid}</div>
+  </section>
+`).join('');
+</script>
+</body>
+</html>

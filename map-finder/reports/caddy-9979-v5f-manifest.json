@@ -1,0 +1,116 @@
+{
+  "version": "V5f",
+  "role": "FINAL flash atelier",
+  "file": "Caddy_CAYE_03L906023TB_9979_MOD_V5f_final_tegt320.NOCS",
+  "base": "Caddy_CAYE_03L906023TB_9979_MOD_V5e_launch0_tqlimV6f_accpedV6e.NOCS",
+  "bytes_vs_v5e": 386,
+  "tegt_mid": {
+    "addr": "1D35A8",
+    "blend": 0.5,
+    "cells_changed": 196,
+    "max_nm_ori": 290.0,
+    "max_nm_ace": 350.0,
+    "max_nm_v5f": 320.0,
+    "egt_axis_min_hot": 780.1,
+    "egt_axis": [
+      780.1,
+      790.1,
+      800.1,
+      810.1,
+      820.1,
+      830.1,
+      840.1,
+      850.1,
+      860.1,
+      870.1,
+      880.1,
+      890.1,
+      900.1,
+      910.1,
+      920.1,
+      930.1
+    ],
+    "samples_hot": [
+      {
+        "rpm": 3000.0,
+        "egt": 780.1,
+        "ori": 272.2,
+        "ace": 350.0,
+        "v5f": 311.1
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 790.1,
+        "ori": 272.2,
+        "ace": 350.0,
+        "v5f": 311.1
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 800.1,
+        "ori": 272.2,
+        "ace": 350.0,
+        "v5f": 311.1
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 810.1,
+        "ori": 222.4,
+        "ace": 350.0,
+        "v5f": 286.2
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 820.1,
+        "ori": 181.8,
+        "ace": 350.0,
+        "v5f": 265.9
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 830.1,
+        "ori": 141.2,
+        "ace": 350.0,
+        "v5f": 245.6
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 840.1,
+        "ori": 100.6,
+        "ace": 350.0,
+        "v5f": 225.3
+      },
+      {
+        "rpm": 3000.0,
+        "egt": 850.1,
+        "ori": 85.0,
+        "ace": 350.0,
+        "v5f": 217.5
+      }
+    ]
+  },
+  "launch_check": {
+    "hold_nm_by_rpm": {
+      "2700": [
+        0.0,
+        0.0
+      ],
+      "2800": [
+        0.0,
+        0.0
+      ],
+      "3000": [
+        0.0,
+        0.0
+      ]
+    },
+    "hardcut_4801": "OK"
+  },
+  "includes": [
+    "V5e: launch 0 @2700/2800/3000",
+    "V5e: tqlim_base V6f hi-rpm fill",
+    "V5e: AccPed V6e soft+hold+WOT fill",
+    "V5d stack: fillbass + smoke375 + tqlim370 mid + HC4800",
+    "V5f: tqlim_tegt blend 50% ORI→ACE (~320 Nm max)"
+  ]
+}

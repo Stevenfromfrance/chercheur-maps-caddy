@@ -1,0 +1,11 @@
+OUT=C:\Users\theda\OneDrive\Documents\Reprog-Stage1\06-Vehicules\Caddy-CAYE-2013-03L906023PA-2531\MOD\Caddy_CAYE_03L906023TB_9979_MOD_V5e_launch0_tqlimV6f_accpedV6e.NOCS
+bytes_vs_v5d=490
+launch=0/0 @ [2700, 2800, 3000] cells=6 practice_hold~2800
+tqlim_v6f cells=16 max_d=+84.5 plateau=370.0
+tqlim_atm1000 rpm=[3000, 3250, 3500, 3750, 4000, 4200, 4400, 4600, 4800, 5000, 5200, 5400, 5600]
+tqlim_atm1000 before=[370.0, 370.0, 370.0, 370.0, 277.8, 256.7, 234.0, 207.0, 112.1, 97.5, 75.3, 37.0, 0.0]
+tqlim_atm1000 after=[370.0, 370.0, 370.0, 370.0, 347.5, 332.0, 316.4, 291.5, 112.1, 97.5, 75.3, 37.0, 0.0]
+accped_v6e cells_written=264 banks=8
+accped_primary={'addr': '1CF9C0', 'soft': 64, 'hold': 6, 'wot_fill': 2, 'wot_anchor': 333.1, 'wot_high_rpm_after': [333.1, 332.6, 282.3, 203.6, 27.0, 0.0, 0.0, 0.0]}
+hardcut_4801=OK
+axis_launch_unchanged=OK (2700/2800/3000)

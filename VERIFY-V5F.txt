@@ -1,0 +1,10 @@
+OUT=C:\Users\theda\OneDrive\Documents\Reprog-Stage1\06-Vehicules\Caddy-CAYE-2013-03L906023PA-2531\MOD\Caddy_CAYE_03L906023TB_9979_MOD_V5f_final_tegt320.NOCS
+bytes_vs_v5e=386
+tegt_blend=0.5 (ORI↔ACE) max 290.0→320.0 (ACE=350.0)
+tegt_cells_changed=196
+tegt_egt_axis=[780.1, 790.1, 800.1, 810.1, 820.1, 830.1, 840.1, 850.1, 860.1, 870.1, 880.1, 890.1, 900.1, 910.1, 920.1, 930.1]
+tegt_samples_hot=[{'rpm': 3000.0, 'egt': 780.1, 'ori': 272.2, 'ace': 350.0, 'v5f': 311.1}, {'rpm': 3000.0, 'egt': 790.1, 'ori': 272.2, 'ace': 350.0, 'v5f': 311.1}, {'rpm': 3000.0, 'egt': 800.1, 'ori': 272.2, 'ace': 350.0, 'v5f': 311.1}, {'rpm': 3000.0, 'egt': 810.1, 'ori': 222.4, 'ace': 350.0, 'v5f': 286.2}, {'rpm': 3000.0, 'egt': 820.1, 'ori': 181.8, 'ace': 350.0, 'v5f': 265.9}, {'rpm': 3000.0, 'egt': 830.1, 'ori': 141.2, 'ace': 350.0, 'v5f': 245.6}, {'rpm': 3000.0, 'egt': 840.1, 'ori': 100.6, 'ace': 350.0, 'v5f': 225.3}, {'rpm': 3000.0, 'egt': 850.1, 'ori': 85.0, 'ace': 350.0, 'v5f': 217.5}]
+launch_hold={2700: [0.0, 0.0], 2800: [0.0, 0.0], 3000: [0.0, 0.0]}
+hardcut_4801=OK
+stack=V5e + tegt mid320
+includes=launch0 + tqlimV6f + AccPedV6e + tegt50%ORI-ACE

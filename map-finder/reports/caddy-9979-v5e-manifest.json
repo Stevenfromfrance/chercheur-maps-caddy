@@ -1,0 +1,265 @@
+{
+  "version": "V5e",
+  "file": "Caddy_CAYE_03L906023TB_9979_MOD_V5e_launch0_tqlimV6f_accpedV6e.NOCS",
+  "base": "Caddy_CAYE_03L906023TB_9979_MOD_V5d_tegtORI_launch110.NOCS",
+  "bytes_vs_v5d": 490,
+  "launch": {
+    "rpm_axis": [
+      800,
+      1000,
+      2000,
+      2700,
+      2800,
+      3000,
+      4800,
+      4801
+    ],
+    "cells": 6,
+    "changed": [
+      {
+        "rpm": 2700,
+        "col": 0,
+        "was": 110.0,
+        "now": 0.0
+      },
+      {
+        "rpm": 2700,
+        "col": 1,
+        "was": 85.0,
+        "now": 0.0
+      },
+      {
+        "rpm": 2800,
+        "col": 0,
+        "was": 110.0,
+        "now": 0.0
+      },
+      {
+        "rpm": 2800,
+        "col": 1,
+        "was": 85.0,
+        "now": 0.0
+      },
+      {
+        "rpm": 3000,
+        "col": 0,
+        "was": 110.0,
+        "now": 0.0
+      },
+      {
+        "rpm": 3000,
+        "col": 1,
+        "was": 85.0,
+        "now": 0.0
+      }
+    ],
+    "hold_nm": [
+      0.0,
+      0.0
+    ],
+    "hold_rpms": [
+      2700,
+      2800,
+      3000
+    ],
+    "practice_hold_rpm": 2800
+  },
+  "tqlim_v6f": {
+    "addr": "1D3190",
+    "plateau_nm": 370.0,
+    "cells": 16,
+    "max_d": 84.5,
+    "atm1000_rpm": [
+      3000,
+      3250,
+      3500,
+      3750,
+      4000,
+      4200,
+      4400,
+      4600,
+      4800,
+      5000,
+      5200,
+      5400,
+      5600
+    ],
+    "atm1000_before": [
+      370.0,
+      370.0,
+      370.0,
+      370.0,
+      277.8,
+      256.7,
+      234.0,
+      207.0,
+      112.1,
+      97.5,
+      75.3,
+      37.0,
+      0.0
+    ],
+    "atm1000_after": [
+      370.0,
+      370.0,
+      370.0,
+      370.0,
+      347.5,
+      332.0,
+      316.4,
+      291.5,
+      112.1,
+      97.5,
+      75.3,
+      37.0,
+      0.0
+    ]
+  },
+  "accped_v6e": {
+    "banks": [
+      {
+        "addr": "1CF9C0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFAC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFBC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFCC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFDC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFEC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 333.1,
+        "wot_high_rpm_after": [
+          333.1,
+          332.6,
+          282.3,
+          203.6,
+          27.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1CFFC0",
+        "soft": 64,
+        "hold": 6,
+        "wot_fill": 2,
+        "wot_anchor": 330.2,
+        "wot_high_rpm_after": [
+          330.2,
+          329.7,
+          273.4,
+          198.3,
+          21.6,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "addr": "1D0640",
+        "soft": 64,
+        "hold": 4,
+        "wot_fill": 1,
+        "wot_anchor": 318.8,
+        "wot_high_rpm_after": [
+          318.8,
+          318.1,
+          285.0,
+          200.9,
+          35.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "cells_written": 264
+  },
+  "includes": [
+    "V5d stack (fillbass + smoke375 + tqlim370 mid + tegtORI + HC4800)",
+    "launch hold 0 Nm @2700/2800/3000 (pratique ~2800)",
+    "tqlim_base V6f hi-rpm fill",
+    "AccPed V6e soft tip-in + mid hold + WOT fill"
+  ]
+}
