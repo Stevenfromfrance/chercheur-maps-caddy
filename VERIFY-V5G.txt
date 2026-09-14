@@ -1,0 +1,17 @@
+OUT=C:\Users\theda\OneDrive\Documents\Reprog-Stage1\06-Vehicules\Caddy-CAYE-2013-03L906023PA-2531\MOD\Caddy_CAYE_03L906023TB_9979_MOD_V5g_360_longband.NOCS
+base=V5f_final_tegt320
+bytes_vs_v5f=875
+target_wot_plateau=360.0
+rolloff_start_rpm=3800.0
+chain wish=360.0 < tqlim=370.0 <= smoke=375 -> OK
+rail=UNCHANGED (ne pas forcer pompe)
+smoke=UNCHANGED cap375
+accped_v6g cells=324
+accped_wot_slice=[(1008.0, 360.0), (1491.0, 360.0), (1995.0, 360.0), (2499.0, 360.0), (3003.0, 360.0), (3990.0, 346.3), (4998.0, 259.4), (5355.0, 201.7)]
+tqlim_v6g cells=16 max_d=7.1
+tqlim_atm1000=[(2500, 370.0), (2750, 370.0), (3000, 370.0), (3250, 370.0), (3500, 370.0), (3750, 370.0), (4000, 354.6), (4200, 336.3), (4400, 318.1), (4600, 293.4), (4800, 112.1), (5000, 97.5), (5200, 75.3), (5400, 37.0), (5600, 0.0)]
+tegt_max=360.0 policy=egt<800 → jusqu'à 360 mid ; >860 blend hot 0.85 ORI↔ACE
+tegt_samples=[{'rpm': 2000.0, 'egt': 780.1, 'ori': 290.0, 'ace': 350.0, 'v5g': 360.0}, {'rpm': 2000.0, 'egt': 790.1, 'ori': 290.0, 'ace': 350.0, 'v5g': 360.0}, {'rpm': 2000.0, 'egt': 800.1, 'ori': 290.0, 'ace': 350.0, 'v5g': 360.0}, {'rpm': 2000.0, 'egt': 810.1, 'ori': 238.4, 'ace': 350.0, 'v5g': 355.5}, {'rpm': 2000.0, 'egt': 820.1, 'ori': 193.8, 'ace': 350.0, 'v5g': 348.8}, {'rpm': 2000.0, 'egt': 830.1, 'ori': 149.2, 'ace': 350.0, 'v5g': 339.8}, {'rpm': 2000.0, 'egt': 840.1, 'ori': 104.6, 'ace': 350.0, 'v5g': 328.7}, {'rpm': 2000.0, 'egt': 850.1, 'ori': 93.0, 'ace': 350.0, 'v5g': 319.4}, {'rpm': 2000.0, 'egt': 860.1, 'ori': 81.3, 'ace': 350.0, 'v5g': 309.7}, {'rpm': 2000.0, 'egt': 870.1, 'ori': 69.7, 'ace': 350.0, 'v5g': 308.0}]
+launch_hold={2700: [0.0, 0.0], 2800: [0.0, 0.0], 3000: [0.0, 0.0]}
+hardcut_4801=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+includes=V5f + AccPedV6g + tqlimV6g + tegtV6g360

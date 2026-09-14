@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · V5f vs V5g 360 — compare carto</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<style>
+  .cmp-main { max-width: 1100px; margin: 0 auto; padding: var(--pad) var(--pad) 4rem; }
+  .cmp-hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.12), transparent 42%), var(--panel);
+    padding: 1.1rem 1.15rem 1.2rem;
+    margin: 0 0 1rem;
+  }
+  .cmp-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .35rem;
+  }
+  .cmp-hero p { margin: 0 0 .45rem; color: var(--muted); font-size: .92rem; }
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .75rem;
+    padding: .28rem .5rem;
+    border: 1px solid var(--line);
+    margin: 0 .3rem .3rem 0;
+  }
+  .pill.hot { border-color: var(--line-hot); color: var(--accent2); }
+  .pill.ok { border-color: var(--ok); color: var(--ok); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .55rem;
+    margin: 0 0 1rem;
+  }
+  @media (max-width: 800px) { .stats { grid-template-columns: 1fr 1fr; } }
+  .stat {
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    padding: .65rem .7rem;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.2rem;
+    color: var(--accent2);
+  }
+  .stat span { color: var(--muted); font-size: .78rem; }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin: 0 0 .85rem;
+  }
+  .tabs button {
+    font-family: var(--mono);
+    font-size: .78rem;
+    padding: .45rem .7rem;
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .tabs button.on { border-color: var(--accent); background: var(--soft); color: var(--accent2); }
+  .panel {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .85rem 1rem 1rem;
+    margin: 0 0 1rem;
+    display: none;
+  }
+  .panel.show { display: block; }
+  .panel h2 {
+    margin: 0 0 .5rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .chart { position: relative; height: 340px; }
+  .chart.sm { height: 280px; }
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+  @media (max-width: 900px) { .grid2 { grid-template-columns: 1fr; } }
+  .note {
+    border-left: 3px solid var(--accent2);
+    padding: .7rem .85rem;
+    background: rgba(0,0,0,.2);
+    color: var(--muted);
+    font-size: .9rem;
+    margin: 0 0 1rem;
+  }
+  .note ul { margin: .35rem 0 0; padding-left: 1.1rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    font-family: var(--mono);
+  }
+  th, td {
+    border-bottom: 1px solid var(--line);
+    padding: .4rem .35rem;
+    text-align: right;
+  }
+  th:first-child, td:first-child { text-align: left; }
+  th {
+    font-size: .68rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .up { color: var(--ok); }
+  .files { font-family: var(--mono); font-size: .78rem; color: var(--muted); word-break: break-all; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" alt="">
+      <span class="brand-text">
+        <span class="brand-name">SAVAGESEAR</span>
+        <span class="brand-tag">V5f vs V5g</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="index.html#home">Accueil</a>
+      <a href="FICHE-V5G-360.md">Fiche V5g</a>
+      <a href="logs-v5f/">Logs V5f</a>
+      <a href="compare-v5f-v5g.html" class="on">Compare V5g</a>
+      <a href="compare-v5f-v5g-accped.html">AccPed WOT</a>
+    </nav>
+  </header>
+
+  <main class="cmp-main">
+    <section class="cmp-hero">
+      <span class="pill hot">V5G · 360 LONG BAND</span>
+      <span class="pill ok">STAGE1 STOCK MAX</span>
+      <span class="pill">9979 · CAYE</span>
+      <h1>V5f FINAL vs V5g 360</h1>
+      <p>Comparaison visuelle des deux cartos — wish, tqlim, tegt, smoke, partiels réactifs.</p>
+      <p class="files" id="files"></p>
+    </section>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="note" id="notes"></div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="on" data-tab="wot">WOT AccPed</button>
+      <button type="button" data-tab="pedal">Courbes pédale</button>
+      <button type="button" data-tab="react">Réactif 1.5–2k</button>
+      <button type="button" data-tab="tqlim">tqlim</button>
+      <button type="button" data-tab="tegt">tegt EGT</button>
+      <button type="button" data-tab="smoke">smoke</button>
+      <button type="button" data-tab="chain">Chaîne</button>
+    </div>
+
+    <div class="panel show" id="wot">
+      <h2>Driver wish WOT (col ~100 %) vs régime</h2>
+      <div class="chart"><canvas id="cWot"></canvas></div>
+    </div>
+
+    <div class="panel" id="pedal">
+      <h2>AccPed · couple vs % pédale (plusieurs régimes)</h2>
+      <div class="grid2">
+        <div class="chart sm"><canvas id="cPed1491"></canvas></div>
+        <div class="chart sm"><canvas id="cPed1995"></canvas></div>
+        <div class="chart sm"><canvas id="cPed3003"></canvas></div>
+        <div class="chart sm"><canvas id="cPed3990"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel" id="react">
+      <h2>Partiels 1500–2500 — deltas V5g − V5f (réactivité)</h2>
+      <table>
+        <thead>
+          <tr><th>RPM</th><th>Pédale %</th><th>V5f</th><th>V5g</th><th>Δ</th></tr>
+        </thead>
+        <tbody id="reactBody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="tqlim">
+      <h2>tqlim_base · ATM ≈ 1000 mbar</h2>
+      <div class="chart"><canvas id="cTq"></canvas></div>
+    </div>
+
+    <div class="panel" id="tegt">
+      <h2>tqlim_tegt · coupe EGT @ RPM ≈ 3000</h2>
+      <div class="chart"><canvas id="cTegt"></canvas></div>
+    </div>
+
+    <div class="panel" id="smoke">
+      <h2>smoke · MAP ≈ 2500 mbar (inchangé V5f→V5g)</h2>
+      <div class="chart sm"><canvas id="cSmoke"></canvas></div>
+    </div>
+
+    <div class="panel" id="chain">
+      <h2>Rappel chaîne couple V5g</h2>
+      <p id="chainTxt" style="color:var(--muted);font-size:.95rem"></p>
+      <table>
+        <thead>
+          <tr><th>Couche</th><th>V5f</th><th>V5g</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AccPed WOT mid</td><td>~333–338</td><td><b>360</b> plat → roll-off @3800</td></tr>
+          <tr><td>tqlim</td><td>~370 + fill V6f</td><td><b>370</b> + roll-off aligné</td></tr>
+          <tr><td>smoke</td><td>375</td><td>375 (inchangé)</td></tr>
+          <tr><td>tegt max</td><td>~320</td><td><b>~360</b> si EGT &lt;~800</td></tr>
+          <tr><td>rail</td><td>héritage</td><td>inchangé</td></tr>
+          <tr><td>launch / HC</td><td>0 / 4800</td><td>inchangé</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const DATA = await fetch('compare-v5f-v5g-data.json').then(r => r.json());
+  const muted = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#9a958a';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#e23a1a';
+  const line = getComputedStyle(document.documentElement).getPropertyValue('--line').trim() || '#3a3834';
+  const gold = '#f5c542';
+  const blue = '#5ec8ff';
+  const grey = '#7a8480';
+
+  document.getElementById('files').textContent =
+    `V5f: ${DATA.files.v5f}  ·  V5g: ${DATA.files.v5g}`;
+
+  const s = DATA.summary;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><b>${s.wot_plateau_v5f.toFixed(0)}→${s.wot_plateau_v5g.toFixed(0)}</b><span>WOT plateau Nm</span></div>
+    <div class="stat"><b>${s.rolloff_start}</b><span>Début roll-off RPM</span></div>
+    <div class="stat"><b>${s.tegt_max_v5f}→${s.tegt_max_v5g}</b><span>tegt max Nm</span></div>
+    <div class="stat"><b>${s.smoke_unchanged ? 'OK' : '?'}</b><span>smoke inchangé 375</span></div>
+  `;
+
+  document.getElementById('notes').innerHTML =
+    '<b>Ce qui change</b><ul>' + DATA.notes.map(n => `<li>${n}</li>`).join('') + '</ul>';
+
+  document.getElementById('chainTxt').textContent = DATA.chain.replace(/&lt;/g, '<');
+
+  const tb = document.getElementById('reactBody');
+  DATA.reactive_partials.forEach(r => {
+    const cls = r.delta > 0.5 ? 'up' : '';
+    tb.innerHTML += `<tr>
+      <td>${r.rpm}</td><td>${r.pedal}</td>
+      <td>${r.v5f.toFixed(1)}</td><td>${r.v5g.toFixed(1)}</td>
+      <td class="${cls}">${r.delta > 0 ? '+' : ''}${r.delta}</td>
+    </tr>`;
+  });
+
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('show'));
+      btn.classList.add('on');
+      document.getElementById(btn.dataset.tab).classList.add('show');
+    });
+  });
+
+  const baseOpt = (yTitle, yMin, yMax) => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { labels: { color: muted, font: { family: 'IBM Plex Mono', size: 11 } } }
+    },
+    scales: {
+      x: {
+        ticks: { color: muted, maxRotation: 0, font: { size: 10 } },
+        grid: { color: line },
+        title: { display: true, text: 'Régime / axe', color: muted }
+      },
+      y: {
+        min: yMin,
+        max: yMax,
+        ticks: { color: muted },
+        grid: { color: line },
+        title: { display: true, text: yTitle, color: muted }
+      }
+    }
+  });
+
+  const lineDs = (label, data, color, dash) => ({
+    label, data, borderColor: color, borderWidth: dash ? 1.5 : 2.5,
+    borderDash: dash || [], pointRadius: dash ? 0 : 3, tension: 0.22, fill: false
+  });
+
+  // WOT
+  new Chart(document.getElementById('cWot'), {
+    type: 'line',
+    data: {
+      labels: DATA.wot.rpm,
+      datasets: [
+        lineDs('V5g', DATA.wot.v5g, accent),
+        lineDs('V5f', DATA.wot.v5f, gold),
+        lineDs('ACE', DATA.wot.ace, blue, [6, 4]),
+        lineDs('ORI', DATA.wot.ori, grey, [2, 3]),
+      ]
+    },
+    options: {
+      ...baseOpt('Nm (WOT)', 100, 380),
+      scales: {
+        ...baseOpt('Nm', 100, 380).scales,
+        x: { ...baseOpt('Nm', 100, 380).scales.x, title: { display: true, text: 'RPM', color: muted } }
+      }
+    }
+  });
+
+  function pedalChart(canvasId, curve) {
+    new Chart(document.getElementById(canvasId), {
+      type: 'line',
+      data: {
+        labels: curve.pedal.map(p => Math.round(p)),
+        datasets: [
+          lineDs('V5g', curve.v5g, accent),
+          lineDs('V5f', curve.v5f, gold),
+          lineDs('ACE', curve.ace, blue, [6, 4]),
+          lineDs('ORI', curve.ori, grey, [2, 3]),
+        ]
+      },
+      options: {
+        ...baseOpt('Nm', 0, 380),
+        plugins: {
+          ...baseOpt('Nm', 0, 380).plugins,
+          title: { display: true, text: `AccPed @ ${curve.rpm} rpm`, color: muted, font: { size: 12 } }
+        },
+        scales: {
+          ...baseOpt('Nm', 0, 380).scales,
+          x: { ...baseOpt('Nm', 0, 380).scales.x, title: { display: true, text: 'Pédale %', color: muted } }
+        }
+      }
+    });
+  }
+  const byRpm = Object.fromEntries(DATA.pedal_curves.map(c => [c.rpm, c]));
+  pedalChart('cPed1491', byRpm[1491]);
+  pedalChart('cPed1995', byRpm[1995]);
+  pedalChart('cPed3003', byRpm[3003]);
+  pedalChart('cPed3990', byRpm[3990]);
+
+  // tqlim
+  const tq = DATA.tqlim_atm1000;
+  new Chart(document.getElementById('cTq'), {
+    type: 'line',
+    data: {
+      labels: tq.rpm,
+      datasets: [
+        lineDs('V5g', tq.v5g, accent),
+        lineDs('V5f', tq.v5f, gold),
+        lineDs('ACE', tq.ace, blue, [6, 4]),
+        lineDs('ORI', tq.ori, grey, [2, 3]),
+      ]
+    },
+    options: {
+      ...baseOpt('Nm', 0, 400),
+      plugins: {
+        ...baseOpt('Nm', 0, 400).plugins,
+        title: { display: true, text: `ATM ≈ ${tq.atm} mbar`, color: muted, font: { size: 12 } }
+      },
+      scales: {
+        ...baseOpt('Nm', 0, 400).scales,
+        x: { ...baseOpt('Nm', 0, 400).scales.x, title: { display: true, text: 'RPM', color: muted } }
+      }
+    }
+  });
+
+  // tegt
+  const tg = DATA.tegt_rpm3000;
+  new Chart(document.getElementById('cTegt'), {
+    type: 'line',
+    data: {
+      labels: tg.egt,
+      datasets: [
+        lineDs('V5g', tg.v5g, accent),
+        lineDs('V5f', tg.v5f, gold),
+        lineDs('ACE', tg.ace, blue, [6, 4]),
+        lineDs('ORI', tg.ori, grey, [2, 3]),
+      ]
+    },
+    options: {
+      ...baseOpt('Nm', 0, 380),
+      plugins: {
+        ...baseOpt('Nm', 0, 380).plugins,
+        title: { display: true, text: `RPM ≈ ${tg.rpm}`, color: muted, font: { size: 12 } }
+      },
+      scales: {
+        ...baseOpt('Nm', 0, 380).scales,
+        x: { ...baseOpt('Nm', 0, 380).scales.x, title: { display: true, text: 'EGT °C', color: muted } }
+      }
+    }
+  });
+
+  // smoke
+  const sm = DATA.smoke_map2500;
+  new Chart(document.getElementById('cSmoke'), {
+    type: 'line',
+    data: {
+      labels: sm.rpm,
+      datasets: [
+        lineDs('V5g (= V5f)', sm.v5g, accent),
+        lineDs('V5f', sm.v5f, gold, [4, 3]),
+      ]
+    },
+    options: {
+      ...baseOpt('Nm', 280, 400),
+      plugins: {
+        ...baseOpt('Nm', 280, 400).plugins,
+        title: { display: true, text: `MAP ≈ ${sm.map} mbar`, color: muted, font: { size: 12 } }
+      },
+      scales: {
+        ...baseOpt('Nm', 280, 400).scales,
+        x: { ...baseOpt('Nm', 280, 400).scales.x, title: { display: true, text: 'RPM', color: muted } }
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -87,23 +87,23 @@
   </div>
 
   <section class="panel">
-    <h2>Roadmap validation mappack</h2>
-    <p class="muted">Ordre <b>V5f FINAL</b> (peu d’IDE) — détail A4 : <a href="fiche-logs-vcds-a4-v5e.html">fiche-logs-vcds-a4-v5e.html</a> · carto <a href="FICHE-V5F-FINAL.md">FICHE-V5F-FINAL.md</a>.</p>
+    <h2>Roadmap DEV carto — V5g 360 (flash)</h2>
+    <p class="muted">Carto : <a href="FICHE-V5G-360.md"><b>FICHE-V5G-360.md</b></a> · preview <a href="compare-v5f-v5g-accped.html">AccPed V5f vs V5g</a> · campagne <a href="fiche-campagne-dev-carto.html">16 runs</a> · V5f soir <a href="logs-v5f/">courbes</a>.</p>
     <ol class="roadmap">
-      <li><span class="tag need">PRIORITÉ</span> <b>VILLE_SOFT</b> — AccPed V6e tip-in (4 IDE)</li>
-      <li><span class="tag need">PRIORITÉ</span> <b>ROUTE_SOFT</b> — 3ᵉ WOT 3000→4200 tqlim+AccPed+tegt320 (6 IDE)</li>
-      <li><span class="tag need">PRIORITÉ</span> <b>DEPART</b> — launch <b>0 Nm</b> @~2800 (5 IDE)</li>
-      <li><span class="tag opt">OK SI RESSENTI</span> <b>HARDCUT</b> — cut ~4800 (4 IDE)</li>
-      <li><span class="tag bonus">SI BESOIN</span> <b>ROUTE_RAIL</b> / <b>ROUTE_TURBO</b> — packs complets (≤9 IDE)</li>
+      <li><span class="tag need">★ POST-FLASH</span> <b>VILLE_TIPIN</b> — soft bas conservé</li>
+      <li><span class="tag need">★</span> <b>VILLE_REACT</b> — reprises 1500–2000 plus vives</li>
+      <li><span class="tag need">★</span> <b>ROUTE_CLIFF</b> — plateau ~360 + roll-off dès ~3800</li>
+      <li><span class="tag need">★</span> <b>ROUTE_AIR</b> + fumée · <b>ROUTE_RAIL</b> · <b>ROUTE_HOT</b></li>
     </ol>
     <div class="box">
       <b>Avant chaque session · fréquence max</b>
       <ul>
-        <li>Soft flashé : <code>V5f</code> (V5e + tegt~320)</li>
-        <li>Moteur chaud · route fixe</li>
+        <li>Soft flashé : <code>V5g</code> (360 long band · base V5f)</li>
+        <li>Moteur chaud · <b>même route banc</b> pour tous les ROUTE_*</li>
         <li>VCDS → 01-Engine → <b>Advanced Measuring Values</b></li>
-        <li><b>Max 5–6 IDE</b> / run (idéalement 4) — au-delà multiplexe ~1–2 s</li>
-        <li>Décoche tout sauf la liste du run · logs courts 20–40 s</li>
+        <li>Options : <b>Blk Int 25</b> · <b>Char Int 0</b> · Group UDS</li>
+        <li><b>Max 4–6 IDE / run</b> — préfère plusieurs fichiers rapides</li>
+        <li>Décoche tout sauf la liste du run · 1 question = 1 CSV</li>
       </ul>
     </div>
     <p class="muted" style="margin:.75rem 0 0">RE Golf 9980 (hors log) : <a href="stage1-hubs-golf9980.html">Stage1 hubs / Top AccPed</a> · liste <a href="map-finder/reports/golf9980-medium-stage1.html">MEDIUM</a> (adresses Ghidra <code>80…</code>).</p>
@@ -177,216 +177,294 @@ const EXTRA = {
   iqdev3: ['IDE00367', 'Injection quantity deviation cylinder 3-FAC_CYL_BAL3'],
   iqdev4: ['IDE00368', 'Injection quantity deviation cylinder 4-FAC_CYL_BAL4'],
   bpa: ['IDE00362', 'Charge Pressure Actuator: activation-ANG_SP_BPA[0]'],
+  bpa_ack: ['IDE00396', 'Charge air pressure actuator: acknowledgment-ANG_BPA[0]'],
   soot_calc: ['IDE00434', 'Particle filter: soot mass calculated-MASS_SOOT_SIM_PF'],
   soot_meas: ['IDE00435', 'Particle filter: soot mass measured-MASS_SOOT_PHY_PF'],
   dpf_dp: ['IDE00427', 'Particle filter: difference pressure-DIP_PF'],
-  /* A5 EDC17 — CORE = même famille UDS ; soot IDE confirmés scan Bertin ; EGT/IQ/limit = nom freeze frame */
+  ambient: ['IDE00361', 'Ambient air pressure-Ambient pressure'],
+  intake_abs: ['IDE00594', 'Absolute intake pressure'],
+  /* A5 / sonde 9979 — ne cocher que si le filtre ADVMB trouve le libellé */
   tqlim: ['filtre', 'Limiting torque'],
   iq: ['filtre', 'Mean injection quantity'],
   egt: ['filtre', 'Exhaust gas temperature before particulate filter'],
   soot: ['IDE00434', 'Particle filter: soot mass calculated'],
-  soot_calc: ['IDE00434', 'Particle filter: soot mass calculated'],
-  soot_meas: ['IDE00435', 'Particle filter: soot mass measured'],
 };
 
+const I = {
+  rpm: ['IDE00021', 'Engine RPM'],
+  spd: ['IDE00075', 'Vehicle speed'],
+  ped: ['IDE00086', 'Accelerator pedal position'],
+  tq: ['IDE00100', 'Engine torque-TQI_SP'],
+  fup_act: ['IDE00188', 'Fuel high-pressure: actual value-FUP_FIL'],
+  fup_sp: ['IDE00201', 'High fuel pressure: specified value-FUP_SP_KPA'],
+  map_sp: ['IDE00190', 'Charge air pressure: specified value-MAP_SP_MMV'],
+  map_act: ['IDE00191', 'Charge air pressure: actual value-MAP_MMV'],
+  maf: ['IDE00347', 'Air mass: actual value:'],
+  coolant: ['IDE00025', 'Coolant temperature'],
+  fco: ['IDE00371', 'Fuel consumption-FCO_T'],
+  bpa: ['IDE00362', 'Charge Pressure Actuator: activation-ANG_SP_BPA[0]'],
+  bpa_ack: ['IDE00396', 'Charge air pressure actuator: acknowledgment-ANG_BPA[0]'],
+  soot_c: ['IDE00434', 'Particle filter: soot mass calculated-MASS_SOOT_SIM_PF'],
+  soot_m: ['IDE00435', 'Particle filter: soot mass measured-MASS_SOOT_PHY_PF'],
+  dpf_dp: ['IDE00427', 'Particle filter: difference pressure-DIP_PF'],
+  ambient: ['IDE00361', 'Ambient air pressure-Ambient pressure'],
+  bal1: ['IDE00365', 'Injection quantity deviation cylinder 1-FAC_CYL_BAL1'],
+  bal2: ['IDE00366', 'Injection quantity deviation cylinder 2-FAC_CYL_BAL2'],
+  bal3: ['IDE00367', 'Injection quantity deviation cylinder 3-FAC_CYL_BAL3'],
+  bal4: ['IDE00368', 'Injection quantity deviation cylinder 4-FAC_CYL_BAL4'],
+};
+
+/** Campagne DEV V5f — packs 4–6 IDE (rafraîchissement rapide). Fiche : fiche-campagne-dev-carto.html */
 const RUNS = [
+  {
+    id: 'route_cliff',
+    label: 'ROUTE_CLIFF',
+    title: 'Run ROUTE_CLIFF — chute couple 3000→4600 + MAP',
+    priority: '★ CRITIQUE DEV — décision fill haut',
+    goal: 'Voir la forme TQI du plateau puis la chute, avec MAP_SP vs MAP_ACT (air OK ou pas).',
+    prove: [
+      'TQI_SP plateau puis chute après ~3900',
+      'MAP suit encore à 4000 ? décroche à 4400 ?',
+      'Pédale haute (même si ~79 % VCDS)',
+    ],
+    conditions: ['Route banc fixe', '3ᵉ ou 4ᵉ', 'ASR ON', 'Moteur chaud', 'WOT en charge'],
+    steps: [
+      'Coche les 6 IDE du pack (rien d’autre)',
+      'Start juste avant le pull',
+      'WOT ~2000 → ~4600',
+      'Relâche · Stop → Save (idéal 2 pulls = 2 fichiers)',
+    ],
+    forbid: 'Frein moteur / changer de rapport mid-pull / 9+ IDE.',
+    file: 'CADDY_V5f_ROUTE_CLIFF_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq, I.map_sp, I.map_act],
+    send: 'CSV + soft V5f + ASR + rapport + heure.',
+  },
+  {
+    id: 'route_air',
+    label: 'ROUTE_AIR',
+    title: 'Run ROUTE_AIR — masse d’air vs couple',
+    priority: '★ CRITIQUE DEV — smoke headroom',
+    goal: 'Croiser air mass + MAP + TQI pour savoir s’il reste de l’air quand le couple baisse.',
+    prove: [
+      'Air mass monte avec la charge',
+      'À 3800–4200 : air encore présent si TQI chute',
+      'Note fumée visuelle 3600–4000',
+    ],
+    conditions: ['Même route que ROUTE_CLIFF', '3ᵉ/4ᵉ', 'ASR ON', 'Noter fumée miroir'],
+    steps: [
+      'Coche les 6 IDE',
+      'Start → même WOT 2000→4600',
+      'Stop → Save + fumée oui/non @régime',
+    ],
+    forbid: 'Oublier la note fumée.',
+    file: 'CADDY_V5f_ROUTE_AIR_YYYYMMDD.csv',
+    ides: [I.rpm, I.ped, I.tq, I.map_act, I.maf, I.coolant],
+    send: 'CSV + fumée oui/non + soft V5f.',
+  },
+  {
+    id: 'route_inj',
+    label: 'ROUTE_INJ',
+    title: 'Run ROUTE_INJ — proxy injection / smoke',
+    priority: '★ DEV — pas d’IQ principale sur 9979',
+    goal: 'Proxy fuel via FCO_T + air + TQI (IQ principale absente des CSV 9979).',
+    prove: ['FCO_T + MAF + TQI sous WOT', 'Croiser fumée visuelle'],
+    conditions: ['Même route banc', 'ASR ON'],
+    steps: ['Coche 6 IDE', 'WOT 2000→4200', 'Stop + note fumée'],
+    forbid: 'Inventer un IDE Injection quantity si absent ADVMB.',
+    file: 'CADDY_V5f_ROUTE_INJ_YYYYMMDD.csv',
+    ides: [I.rpm, I.ped, I.tq, I.maf, I.fco, I.map_act],
+    send: 'CSV + fumée + soft.',
+  },
+  {
+    id: 'route_hot',
+    label: 'ROUTE_HOT',
+    title: 'Run ROUTE_HOT — même CLIFF, jour chaud (tegt)',
+    priority: '★ DEV thermique',
+    goal: 'Comparer TQI mid/haut vs ROUTE_CLIFF soir (suspicion tegt ~320).',
+    prove: ['TQI plus bas en chaleur ?', 'Même portion / rapport que CLIFF'],
+    conditions: ['Milieu de journée / chaleur', 'Clim ON noté', 'T° ext notée', 'Même route'],
+    steps: ['Mêmes 6 IDE que ROUTE_CLIFF', '1–2 WOT', 'Stop → Save'],
+    forbid: 'Comparer à un autre rapport / autre portion.',
+    file: 'CADDY_V5f_ROUTE_HOT_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq, I.map_sp, I.map_act],
+    send: 'CSV + T° ext + clim + soft.',
+  },
   {
     id: 'route_rail',
     label: 'ROUTE_RAIL',
-    title: 'Run ROUTE_RAIL — Stage1 + pression rail',
-    priority: 'PRIORITÉ mappack',
-    goal: 'Prouver couple Stage1 et que le rail réel ne dépasse pas trop la consigne.',
-    prove: [
-      'Couple pic ~320–340 Nm (V2 / V3 ITALIE)',
-      'Rail consigne ~1620 bar',
-      'Rail réel de préférence ≤ 1650–1670 bar (pic court OK à surveiller)',
-      'Pédale haute pendant le pull',
-    ],
-    conditions: [
-      'Route fixe dégagée',
-      '3ᵉ ou 4ᵉ, moteur chaud',
-      'ASR ON',
-      'Même portion à chaque fois (banc route)',
-    ],
-    steps: [
-      'Coche IDE (core + coolant si place)',
-      'Log → Start avant le pull',
-      'Plein gaz ~1800 → 3500–4000 tr/min EN CHARGE',
-      'Relâche, 1 run suffit si propre (2 max)',
-      'Stop → Save',
-    ],
-    forbid: 'Décélération seule / frein moteur / mélange avec launch.',
-    file: 'CADDY_{SOFT}_ROUTE_RAIL_YYYYMMDD.csv',
-    extras: ['coolant'],
-    send: 'CSV + soft + ASR ON + rapport utilisé (3 ou 4).',
+    title: 'Run ROUTE_RAIL — pression rail',
+    priority: 'PRIORITÉ DEV',
+    goal: 'FUP_FIL vs FUP_SP sous WOT (pompe / rail frein haut régime ?).',
+    prove: ['Rail réel suit consigne', 'Pas d’écart monstre haut régime'],
+    conditions: ['Route banc', '3ᵉ/4ᵉ', 'ASR ON'],
+    steps: ['Coche 6 IDE', 'WOT 2000→4200+', 'Stop → Save'],
+    forbid: 'Pull trop court.',
+    file: 'CADDY_V5f_ROUTE_RAIL_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq, I.fup_act, I.fup_sp],
+    send: 'CSV + soft + rapport.',
   },
   {
-    id: 'route_turbo',
-    label: 'ROUTE_TURBO',
-    title: 'Run ROUTE_TURBO — MAP / boost',
-    priority: 'PRIORITÉ mappack',
-    goal: 'Voir si le turbo suit la consigne sous charge (pas d’écart fou).',
-    prove: [
-      'MAP_SP_MMV vs MAP_MMV pendant WOT',
-      'Pas d’écart énorme durable (under/overboost)',
-      'RPM + pédale + vitesse présents',
-    ],
-    conditions: [
-      'Même route / même rapport que ROUTE_RAIL si possible',
-      '3ᵉ ou 4ᵉ',
-      'ASR ON',
-      'Moteur chaud',
-    ],
+    id: 'route_vnt',
+    label: 'ROUTE_VNT',
+    title: 'Run ROUTE_VNT — MAP + actuateur BPA',
+    priority: 'PRIORITÉ DEV turbo',
+    goal: 'Corréler commande VNT (BPA) et MAP sous WOT / haut régime.',
+    prove: ['ANG_SP_BPA actif sous charge', 'MAP_SP vs MAP_ACT'],
+    conditions: ['Même route', 'ASR ON'],
     steps: [
-      'Coche IDE CORE (MAP déjà dedans)',
-      'Log Start',
-      '1 pull franc 1800 → 3500–4000',
-      'Stop → Save',
+      'Coche 6 IDE',
+      'WOT 2000→4600',
+      'Option 2ᵉ fichier : remplacer MAP_SP par IDE00396 acknowledgment',
     ],
-    forbid: 'Changer de portion / de rapport entre deux comparaisons ACE vs V2 / V3 ITALIE.',
-    file: 'CADDY_{SOFT}_ROUTE_TURBO_YYYYMMDD.csv',
-    extras: ['coolant'],
-    send: 'CSV + soft. Idéal : même route que le run rail.',
+    forbid: 'Mélanger avec launch.',
+    file: 'CADDY_V5f_ROUTE_VNT_YYYYMMDD.csv',
+    ides: [I.rpm, I.ped, I.tq, I.map_sp, I.map_act, I.bpa],
+    send: 'CSV (+ VNT_ACK si fait).',
   },
   {
-    id: 'ville',
-    label: 'VILLE',
-    title: 'Run VILLE — confort partiels',
-    priority: 'PRIORITÉ mappack',
-    goal: 'Confirmer que V2 / V3 ITALIE reste agréable vs ACE on/off.',
-    prove: [
-      'Couple progressif à bas régime',
-      'Pas d’à-coups étranges',
-      'Usage réel (ASR ON)',
-    ],
-    conditions: [
-      '15–20 min ville',
-      'ASR ON',
-      'Pas de WOT long',
-    ],
-    steps: [
-      'Coche IDE CORE',
-      'Log Start',
-      'Conduite normale (2ᵉ/3ᵉ, stops)',
-      'Stop → Save',
-    ],
-    forbid: 'Transformer le log ville en session launch.',
-    file: 'CADDY_{SOFT}_VILLE_YYYYMMDD.csv',
-    extras: ['coolant'],
-    send: 'CSV + soft + “ressenti OK / encore on-off”.',
+    id: 'route_densite',
+    label: 'ROUTE_DENSITE',
+    title: 'Run ROUTE_DENSITE — ambiant + boost',
+    priority: 'PRIORITÉ DEV jour/nuit',
+    goal: 'Pression ambiante + MAP + TQI (effet densité).',
+    prove: ['Ambient pressure présent', 'TQI/MAP cohérents avec heure'],
+    conditions: ['Noter heure + T° ext', 'Même route'],
+    steps: ['Coche 6 IDE', '1 WOT', 'Stop → Save'],
+    forbid: 'Oublier l’heure.',
+    file: 'CADDY_V5f_ROUTE_DENSITE_YYYYMMDD.csv',
+    ides: [I.rpm, I.ped, I.tq, I.map_act, I.ambient, I.coolant],
+    send: 'CSV + heure + T° ext.',
+  },
+  {
+    id: 'ville_tipin',
+    label: 'VILLE_TIPIN',
+    title: 'Run VILLE_TIPIN — AccPed soft 0→30 %',
+    priority: 'PRIORITÉ confort',
+    goal: 'Prouver tip-in soft AccPed V6e.',
+    prove: ['TQI progressif', 'Pas d’à-coup'],
+    conditions: ['Ville', 'ASR ON', '2ᵉ/3ᵉ', '5–8 min'],
+    steps: ['Coche 4 IDE', 'Start → démarrages doux + reprises légères', 'Stop'],
+    forbid: 'WOT long / launch.',
+    file: 'CADDY_V5f_VILLE_TIPIN_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq],
+    send: 'CSV + ressenti tip-in.',
+  },
+  {
+    id: 'ville_partiel',
+    label: 'VILLE_PARTIEL',
+    title: 'Run VILLE_PARTIEL — pédale 40–60 %',
+    priority: 'PRIORITÉ AccPed mid',
+    goal: 'Hold mid AccPed (punch mid ressenti).',
+    prove: ['Pédale ~40–60 % maintenue', 'TQI stable / ressenti mid'],
+    conditions: ['ASR ON', '3ᵉ', 'pas de WOT'],
+    steps: ['Coche 4 IDE', '4–5 maintiens mid 3–5 s', 'Stop + note punch'],
+    forbid: 'Plein gaz.',
+    file: 'CADDY_V5f_VILLE_PARTIEL_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq],
+    send: 'CSV + “mid OK / manque punch”.',
+  },
+  {
+    id: 'depart_hold',
+    label: 'DEPART_HOLD',
+    title: 'Run DEPART_HOLD — launch 0 @~2800',
+    priority: 'PRIORITÉ launch',
+    goal: 'Hold launch 0 Nm prouvé + MAP spool.',
+    prove: ['Speed≈0', 'RPM~2700–2800', 'TQI_SP≈0', 'MAP monte', 'pédale haute'],
+    conditions: ['Endroit sûr', 'ASR OFF', '1ʳᵉ + frein à main + en prise'],
+    steps: ['Coche 5 IDE', 'Hold 2–3 s ~2800', 'Départ contrôlé', 'Stop'],
+    forbid: 'Hardcut dans le même fichier · dump violent (→ DEPART_DUMP).',
+    file: 'CADDY_V5f_DEPART_HOLD_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq, I.map_act],
+    send: 'CSV + ASR OFF + soft V5f.',
+  },
+  {
+    id: 'depart_dump',
+    label: 'DEPART_DUMP',
+    title: 'Run DEPART_DUMP — hold puis frein sec (lag)',
+    priority: 'PRIORITÉ ressenti lag',
+    goal: 'Capturer le trou / lag après dump frein à main.',
+    prove: ['MAP + TQI juste après relâche', 'Note lag fort/moyen'],
+    conditions: ['Comme HOLD', '1 essai propre', 'ASR OFF'],
+    steps: ['Coche 5 IDE', 'Hold 2 s', 'Relâche frein assez sec', 'Stop'],
+    forbid: 'Répéter 10× (embrayage).',
+    file: 'CADDY_V5f_DEPART_DUMP_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq, I.map_act],
+    send: 'CSV + note lag.',
   },
   {
     id: 'harcut',
     label: 'HARCUT',
     title: 'Run HARCUT — cut ~4800',
-    priority: 'Validation dossier',
-    goal: 'Montrer couple qui tombe vers 0 près de 4800 en roulant.',
-    prove: [
-      'Vitesse > 0',
-      'Régime zone 4500–4800',
-      'Couple bas / 0 avec pédale encore haute si possible',
-    ],
-    conditions: [
-      '3ᵉ ou 4ᵉ',
-      'Pas frein à main / pas mode launch',
-      'Noter ASR ON ou OFF',
-    ],
-    steps: [
-      'Coche IDE CORE (9 canaux — déjà vu dans LOG-HARCUT.CSV)',
-      'Log Start',
-      'Montée franche jusqu’à ~4800',
-      'Stop → Save',
-    ],
-    forbid: 'Test à l’arrêt (ça devient launch / clutch-prot).',
-    file: 'CADDY_{SOFT}_HARCUT_YYYYMMDD.csv',
-    extras: [],
-    send: 'CSV + soft + ASR + “ressenti cut net ?”.',
+    priority: 'SÉCU',
+    goal: 'Cut net en roulant près de 4800.',
+    prove: ['Vitesse > 0', 'TQI bas/0 ~4800', 'pédale encore haute si possible'],
+    conditions: ['3ᵉ/4ᵉ', 'ASR noté', 'pas frein à main'],
+    steps: ['Coche 4 IDE', 'Montée franche jusqu’au cut', 'Stop'],
+    forbid: 'Test à l’arrêt.',
+    file: 'CADDY_V5f_HARCUT_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq],
+    send: 'CSV + ASR + ressenti cut.',
   },
   {
-    id: 'depart',
-    label: 'DEPART',
-    title: 'Run DEPART — launch',
-    priority: 'BONUS (V5d launch hold)',
-    goal: 'Hold ~2800 + couple ~110 Nm + MAP qui monte + départ sans patinage long.',
-    prove: [
-      'Speed ≈ 0 pendant hold',
-      'RPM hold ~2700–3000 (pas 2500 V2)',
-      'TQI_SP ~100–120 Nm (plus 0)',
-      'MAP_MMV monte pendant hold',
-      'Puis speed > 0 au départ sans patinage long',
-    ],
-    conditions: [
-      'Endroit sûr',
-      'ASR OFF',
-      '1ʳᵉ + frein à main + en prise (pas débrayé au hold)',
-      'Soft V5d (ou noter le soft flashé)',
-    ],
-    steps: [
-      'Coche IDE CORE',
-      'Log Start',
-      'Plein gaz 2–3 s hold ~2800',
-      'Départ contrôlé',
-      'Stop → Save',
-    ],
-    forbid: 'Mélanger hardcut 4800 dans le même fichier. Hold à 2500 « comme V2 ».',
-    file: 'CADDY_{SOFT}_V5d_DEPART_LAUNCH_YYYYMMDD.csv',
-    extras: [],
-    send: 'CSV + soft V5d + ASR OFF + ressenti lag/patinage.',
+    id: 'a100',
+    label: 'A100',
+    title: 'Run A100 — 0→100 compteur',
+    priority: 'SÉCU / perf ref',
+    goal: 'Temps approx 0→~100 (ref V5f soir ~11 s).',
+    prove: ['Speed atteint ~100', 'Profil TQI/pédale'],
+    conditions: ['Route sûre', 'clim OFF noté', 'ASR noté'],
+    steps: ['Coche 4 IDE', 'Start arrêt → WOT ≥100', 'Stop (2 runs idéal)'],
+    forbid: 'Mélanger launch hold 0 sans le dire.',
+    file: 'CADDY_V5f_A100_YYYYMMDD.csv',
+    ides: [I.rpm, I.spd, I.ped, I.tq],
+    send: 'CSV + clim + ASR.',
   },
   {
-    id: 'route_inj',
-    label: 'ROUTE_INJ',
-    title: 'Run ROUTE_INJ — injection / smoke',
-    priority: 'BONUS famille',
-    goal: 'Croiser couple / air / conso sous charge (IQ principale pas encore vue sur 9979).',
-    prove: [
-      'Air mass: actual value: monte avec la charge',
-      'Engine torque-TQI_SP cohérent',
-      'Pas de fumée noire grosse ressentie',
-    ],
-    conditions: [
-      'Même route banc',
-      '3ᵉ/4ᵉ WOT',
-      'ASR ON',
-    ],
-    steps: [
-      'Coche IDE CORE + IDE00371 Fuel consumption-FCO_T',
-      'Log Start → 1 pull 1800–4000',
-      'Stop → Save',
-    ],
-    forbid: 'Oublier de noter s’il y a fumée visuelle.',
-    file: 'CADDY_{SOFT}_ROUTE_INJ_YYYYMMDD.csv',
-    extras: ['fuel_cons'],
-    send: 'CSV + soft + fumée oui/non.',
+    id: 'fap_before',
+    label: 'FAP_BEFORE',
+    title: 'Run FAP_BEFORE — suie baseline',
+    priority: 'SÉCU smoke/FAP',
+    goal: 'Baseline suie + ΔP avant les WOT durs.',
+    prove: ['MASS_SOOT_* + DIP_PF avant session'],
+    conditions: ['Ralenti / arrêt', 'avant pulls durs'],
+    steps: ['Coche 4 IDE', '20–30 s', 'Stop'],
+    forbid: 'WOT dans ce fichier.',
+    file: 'CADDY_V5f_FAP_BEFORE_YYYYMMDD.csv',
+    ides: [I.rpm, I.soot_c, I.soot_m, I.dpf_dp],
+    send: 'CSV.',
+  },
+  {
+    id: 'fap_after',
+    label: 'FAP_AFTER',
+    title: 'Run FAP_AFTER — suie post WOT',
+    priority: 'SÉCU smoke/FAP',
+    goal: 'Δ suie vs BEFORE après série de pulls.',
+    prove: ['Évolution suie / ΔP'],
+    conditions: ['Juste après les ROUTE_*'],
+    steps: ['Mêmes 4 IDE', '20–30 s ralenti', 'Stop'],
+    forbid: 'Attendre 1 h sans le noter.',
+    file: 'CADDY_V5f_FAP_AFTER_YYYYMMDD.csv',
+    ides: [I.rpm, I.soot_c, I.soot_m, I.dpf_dp],
+    send: 'CSV.',
   },
   {
     id: 'calage',
     label: 'CALAGE',
-    title: 'Run CALAGE — courroie sautée (1.6 TDI PCR2.1)',
-    priority: 'DIAG MÉCA (pas mappack)',
-    goal: 'Savoir si le calage distribution a sauté. D’abord défauts, puis ralenti + écarts cylindres, puis compression relative.',
-    prove: [
-      'Présence ou absence P0016 / P0341 / P0321 (photo Auto-Scan)',
-      'Ralenti chaud : RPM stable, écarts cylindres IDE00365–368 dans la norme',
-      'Coolant temperature > 80 °C',
-    ],
-    conditions: [
-      'À l’arrêt, moteur chaud (>80 °C)',
-      'Point mort, frein à main, clim OFF, ASR peu importe',
-      'Pédale à 0 — pas de route',
-      'Ralenti 2–3 min mini',
-    ],
+    title: 'Run CALAGE — ralenti + balance cylindres',
+    priority: 'SÉCU méca',
+    goal: 'Santé moteur avant push carto (ralenti + FAC_CYL_BAL).',
+    prove: ['Coolant >80 °C', 'RPM stable', 'écarts cylindres pas aberrants'],
+    conditions: ['Arrêt', 'PM', 'clim OFF', 'pédale 0'],
     steps: [
-      '01-Engine → Faults : photo / print Auto-Scan AVANT d’effacer',
-      'Advanced Measuring Values : IDE00021 + IDE00025 + IDE00086 + IDE00100 + IDE00347 + IDE00365 + IDE00366 + IDE00367 + IDE00368',
-      'Log Start → ralenti 2–3 min, rien toucher',
-      'Stop → Save CSV',
-      'Puis Basic Settings → Measurement of compression pressure (voir fiche chat)',
+      'Photo Faults si besoin (avant erase)',
+      'Coche 8 IDE (ralenti : Hz moins critique)',
+      '2–3 min sans toucher',
+      'Stop → Save',
     ],
-    forbid: 'WOT / route / lancer le log froid / effacer les défauts avant la photo.',
-    file: 'CADDY_{SOFT}_CALAGE_YYYYMMDD.csv',
-    extras: ['coolant', 'iqdev1', 'iqdev2', 'iqdev3', 'iqdev4'],
-    send: 'Auto-Scan + CSV ralenti + valeurs compression relative (4 cyl) + ressenti démarrage / bruit / fumée.',
+    forbid: 'WOT / moteur froid.',
+    file: 'CADDY_V5f_CALAGE_YYYYMMDD.csv',
+    ides: [I.rpm, I.coolant, I.ped, I.tq, I.bal1, I.bal2, I.bal3, I.bal4],
+    send: 'CSV (+ Auto-Scan si défauts).',
   },
 ];
 
@@ -562,7 +640,7 @@ const RUNS_A5 = [
 const VEH = {
   caddy: {
     title: 'Guide logs VCDS · banc route 9979',
-    lead: 'Un log = une question. Soft : <b>V5f FINAL</b> · <a href="logs-v5f/"><b>Courbes V5f soir (validée)</b></a> · <a href="fiche-logs-vcds-a4-v5e.html">Fiche A4</a> · <a href="FICHE-V5F-FINAL.md">Fiche carto</a> · <a href="logs-v5d-steven/">V5d Steven</a>.',
+    lead: 'Un log = une question. Soft : <b>V5f FINAL</b> · campagne complète : <a href="fiche-campagne-dev-carto.html"><b>fiche-campagne-dev-carto.html</b></a> · <a href="logs-v5f/"><b>Courbes V5f soir</b></a> · <a href="fiche-logs-vcds-a4-v5e.html">Fiche A4</a> · <a href="FICHE-V5F-FINAL.md">Fiche carto</a>.',
     meta: 'Caddy CAYE · PCR2.1 · soft 9979 · ECU 03L906023TB',
     runs: RUNS,
   },
@@ -577,7 +655,12 @@ const VEH = {
 let currentVeh = 'caddy';
 let currentRuns = RUNS;
 
-function ideHtml(list, extras) {
+function ideHtml(list, extras, ides) {
+  if (ides && ides.length) {
+    return ides.map(([id, n]) =>
+      `<div><span class="ide">${id}</span> <span>${n}</span></div>`
+    ).join('');
+  }
   let html = list.map(([id, n]) =>
     `<div><span class="ide">${id}</span> <span>${n}</span></div>`
   ).join('');
@@ -615,7 +698,7 @@ function mountRuns(list) {
     <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">Ce que le log doit prouver</h3>
     <ul>${r.prove.map((x) => `<li class="ok">${x}</li>`).join('')}</ul>
     <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">IDE à cocher</h3>
-    <div class="ide-list">${ideHtml(CORE, r.extras)}</div>
+    <div class="ide-list">${ideHtml(CORE, r.extras, r.ides)}</div>
     <button type="button" class="act" data-copy="${r.id}">Copier IDE + nom fichier</button>
     <h3 style="margin:.8rem 0 .3rem;font-size:.92rem;color:var(--acc)">Conditions</h3>
     <ul>${r.conditions.map((x) => `<li>${x}</li>`).join('')}</ul>
@@ -670,13 +753,18 @@ runsEl.addEventListener('click', async (e) => {
   if (!btn) return;
   const r = currentRuns.find((x) => x.id === btn.dataset.copy);
   if (!r) return;
+  const ideLines = (r.ides && r.ides.length)
+    ? r.ides.map(([id, n]) => `${id} — ${n}`)
+    : [
+        ...CORE.map(([id, n]) => `${id} — ${n}`),
+        ...(r.extras || []).map((k) => EXTRA[k] ? `${EXTRA[k][0]} — ${EXTRA[k][1]}` : ''),
+      ];
   const lines = [
     `RUN: ${r.label}`,
     `FILE: ${r.file}`,
     '',
     'IDE:',
-    ...CORE.map(([id, n]) => `${id} — ${n}`),
-    ...(r.extras || []).map((k) => EXTRA[k] ? `${EXTRA[k][0]} — ${EXTRA[k][1]}` : ''),
+    ...ideLines,
     '',
     `SEND: ${r.send}`,
   ].filter(Boolean);

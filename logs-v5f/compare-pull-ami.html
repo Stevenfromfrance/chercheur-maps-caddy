@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Caddy V5f vs Polo Stage2 400 Nm</title>
+<link rel="icon" href="../avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../chercheur-theme.css?v=atelier1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<style>
+  .main { max-width: 1000px; margin: 0 auto; padding: var(--pad) var(--pad) 4rem; }
+  .hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.12), transparent 42%), var(--panel);
+    padding: 1.05rem 1.15rem 1.15rem;
+    margin: 0 0 1rem;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .4rem;
+  }
+  .hero p { margin: 0 0 .45rem; color: var(--muted); font-size: .92rem; }
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .75rem;
+    padding: .28rem .5rem;
+    border: 1px solid var(--line-hot);
+    color: var(--accent2);
+    margin: 0 .3rem .3rem 0;
+  }
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    margin: 0 0 1rem;
+  }
+  @media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+  .card {
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    padding: .85rem .95rem;
+  }
+  .card h2 {
+    margin: 0 0 .4rem;
+    font-family: var(--display);
+    font-size: 1rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .card ul { margin: .2rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: .9rem; }
+  .card li { margin: .2rem 0; }
+  .card b { color: var(--ink); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .55rem;
+    margin: 0 0 1rem;
+  }
+  @media (max-width: 800px) { .stats { grid-template-columns: 1fr 1fr; } }
+  .stat {
+    border: 1px solid var(--line);
+    background: rgba(0,0,0,.18);
+    padding: .6rem .7rem;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    color: var(--accent2);
+  }
+  .stat span { color: var(--muted); font-size: .78rem; }
+  .panel {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .85rem 1rem 1rem;
+    margin: 0 0 1rem;
+  }
+  .panel h2 {
+    margin: 0 0 .5rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .chart { position: relative; height: 340px; }
+  .chart.sm { height: 280px; }
+  .note {
+    border-left: 3px solid var(--accent2);
+    padding: .7rem .85rem;
+    background: rgba(0,0,0,.2);
+    color: var(--muted);
+    font-size: .9rem;
+    margin: 0 0 1rem;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+  th, td { border-bottom: 1px solid var(--line); padding: .4rem .35rem; text-align: left; }
+  th {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .dn { color: var(--bad); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <a class="brand-lockup" href="../index.html#home">
+      <img class="brand-mark" src="../avatar-savagesear.png" alt="">
+      <span class="brand-text">
+        <span class="brand-name">SAVAGESEAR</span>
+        <span class="brand-tag">Compare 2 logs</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="../index.html#home">Accueil</a>
+      <a href="index.html">Logs V5f</a>
+      <a href="banc-estime.html">Banc estimé</a>
+      <a href="compare-pull-ami.html" class="on">Caddy vs Polo</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <span class="pill">2 VÉHICULES DIFFÉRENTS</span>
+      <span class="pill">MÊME FAMILLE 1.6 TDI</span>
+      <h1>Caddy V5f vs Polo Stage2 400 Nm</h1>
+      <p>
+        Comparaison soignée des <b>deux logs</b> que tu as envoyés — sans mélanger avec d’autres captures.
+      </p>
+    </section>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>Toi — Caddy</h2>
+        <ul>
+          <li><b>Véhicule :</b> Caddy CAYE · PCR 9979</li>
+          <li><b>Stock :</b> ~75 ch / ~250 Nm</li>
+          <li><b>Carto :</b> V5f FINAL (Stage1 daily)</li>
+          <li><b>Outil :</b> VCDS · IDE00100 TQI_SP</li>
+          <li><b>Source :</b> ROUTE 1/3 soir (CSV)</li>
+          <li><b>Pic log :</b> ~338 Nm @ ~1900</li>
+          <li><b>MAP pic :</b> ~2500–2540 hPa</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Lui — Polo</h2>
+        <ul>
+          <li><b>Véhicule :</b> Polo 6R · CAYB 90 cv</li>
+          <li><b>Stock :</b> ~90 ch / ~230–250 Nm</li>
+          <li><b>Carto :</b> Stage 2 personalizzata</li>
+          <li><b>Outil :</b> VCDS Log Viewer · Log 400Nm.csv</li>
+          <li><b>Source :</b> 3ᵉ · 27 °C · tableau + courbe</li>
+          <li><b>Pic log :</b> 398,4 Nm @ 2124 (req 400)</li>
+          <li><b>Turbo pic :</b> 2530 mbar abs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Différence réelle :</b> oui, il a ~60 Nm de plus à bas/mid régime.
+      Ce n’est pas une erreur de lecture de ton log — ton plateau V5f est ~335–338 Nm ;
+      le sien demande <b>400 Nm</b> (Stage2). Boost max similaire (~2,5 bar abs) :
+      l’écart couple vient surtout de la <b>carto / IQ</b>, pas d’un turbo magique.
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>~338</b><span>Toi pic Nm</span></div>
+      <div class="stat"><b>398</b><span>Lui pic Nm (eff.)</span></div>
+      <div class="stat"><b>−60</b><span>Δ @ ~2100</span></div>
+      <div class="stat"><b>≈ MAP</b><span>Boost max proche</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Couple vs régime — points du tableau Polo + Caddy au même RPM</h2>
+      <div class="chart"><canvas id="cNm"></canvas></div>
+    </div>
+
+    <div class="panel">
+      <h2>Pression turbo / MAP abs (mbar ≈ hPa) vs régime</h2>
+      <div class="chart sm"><canvas id="cMap"></canvas></div>
+    </div>
+
+    <div class="panel">
+      <h2>Tableau exact (mêmes RPM)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>RPM</th>
+            <th>Polo req</th>
+            <th>Polo eff</th>
+            <th>Caddy TQI_SP</th>
+            <th>Δ (toi−lui eff)</th>
+            <th>Polo turbo</th>
+            <th>Caddy MAP</th>
+            <th>Polo IQ</th>
+          </tr>
+        </thead>
+        <tbody id="tbl"></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2>Ce qu’on voit (sans erreur)</h2>
+      <ul style="color:var(--muted);margin:.2rem 0 0;padding-left:1.15rem;font-size:.92rem">
+        <li>Polo : <b>richiesta plate à 400</b> longtemps ; <b>effettiva</b> chute avec le régime (turbo/air) — classique Stage2.</li>
+        <li>Caddy : <b>TQI_SP</b> déjà plafonné ~335–338 (carto V5f), puis chute après ~3900.</li>
+        <li>Boost max quasi égal (~2530 vs ~2500) → pas « lui a 2× plus d’air ».</li>
+        <li>Polo logue <b>injection + MAF</b> (52 mg @820 MAF) — canal que ton soft 9979 n’expose pas facilement.</li>
+        <li>Comparer Stage2 Polo 90 à Stage1 Caddy 75 « safe » : écart Nm normal ; viser 400 chez toi = changer d’objectif (smoke/EGT/embrayage).</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* Polo — lignes exactes du tableau Log 400Nm.csv (screenshot) */
+  const polo = [
+    { rpm: 1890, req: 394.0, eff: 386.2, turbo: 2410, iq: 49.8, maf: 760.1 },
+    { rpm: 2124, req: 400.0, eff: 398.4, turbo: 2530, iq: 52.1, maf: 820.3 },
+    { rpm: 2350, req: 400.0, eff: 396.7, turbo: 2510, iq: 51.6, maf: 812.0 },
+    { rpm: 2610, req: 396.0, eff: 392.1, turbo: 2460, iq: 50.3, maf: 795.4 },
+    { rpm: 3020, req: 380.0, eff: 368.5, turbo: 2380, iq: 47.1, maf: 742.0 },
+    { rpm: 3480, req: 340.0, eff: 330.2, turbo: 2200, iq: 43.0, maf: 690.1 },
+    { rpm: 3910, req: 300.0, eff: 291.5, turbo: 2010, iq: 38.2, maf: 620.4 },
+  ];
+
+  /* Caddy ROUTE 1/3 — TQI_SP / MAP au RPM le plus proche (ped≥70) */
+  const caddy = [
+    { rpm: 1890, tq: 338.4, map: 2252 },
+    { rpm: 2124, tq: 337.1, map: 2504 },
+    { rpm: 2350, tq: 336.5, map: 2537 },
+    { rpm: 2610, tq: 336.5, map: 2489 },
+    { rpm: 3020, tq: 334.0, map: 2410 },
+    { rpm: 3480, tq: 332.7, map: 2273 },
+    { rpm: 3910, tq: 319.8, map: 2204 },
+  ];
+
+  const labels = polo.map(p => String(p.rpm));
+  const muted = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#9a958a';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#e23a1a';
+  const line = getComputedStyle(document.documentElement).getPropertyValue('--line').trim() || '#3a3834';
+
+  const base = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { labels: { color: muted, font: { family: 'IBM Plex Mono', size: 11 } } },
+      tooltip: { callbacks: { title: (i) => i[0].label + ' tr/min' } }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'Régime (tr/min)', color: muted },
+        ticks: { color: muted },
+        grid: { color: line }
+      },
+      y: { ticks: { color: muted }, grid: { color: line } }
+    }
+  };
+
+  new Chart(document.getElementById('cNm'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Polo · coppia effettiva',
+          data: polo.map(p => p.eff),
+          borderColor: '#5ec8ff',
+          borderWidth: 2.5,
+          pointRadius: 4,
+          tension: 0.2
+        },
+        {
+          label: 'Polo · coppia richiesta',
+          data: polo.map(p => p.req),
+          borderColor: '#5ec8ff',
+          borderDash: [5, 4],
+          borderWidth: 1.5,
+          pointRadius: 0,
+          tension: 0.2
+        },
+        {
+          label: 'Caddy V5f · TQI_SP',
+          data: caddy.map(c => c.tq),
+          borderColor: accent,
+          backgroundColor: 'rgba(226,58,26,.1)',
+          fill: true,
+          borderWidth: 2.5,
+          pointRadius: 4,
+          tension: 0.2
+        }
+      ]
+    },
+    options: {
+      ...base,
+      scales: {
+        ...base.scales,
+        y: {
+          ...base.scales.y,
+          min: 250,
+          max: 420,
+          title: { display: true, text: 'Couple (Nm)', color: muted }
+        }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('cMap'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Polo · press. turbo (mbar)',
+          data: polo.map(p => p.turbo),
+          borderColor: '#5ec8ff',
+          borderWidth: 2.5,
+          pointRadius: 3,
+          tension: 0.2
+        },
+        {
+          label: 'Caddy · MAP_ACT (hPa)',
+          data: caddy.map(c => c.map),
+          borderColor: accent,
+          borderWidth: 2.5,
+          pointRadius: 3,
+          tension: 0.2
+        }
+      ]
+    },
+    options: {
+      ...base,
+      scales: {
+        ...base.scales,
+        y: {
+          ...base.scales.y,
+          min: 1800,
+          max: 2700,
+          title: { display: true, text: 'Pression abs (mbar / hPa)', color: muted }
+        }
+      }
+    }
+  });
+
+  const tb = document.getElementById('tbl');
+  polo.forEach((p, i) => {
+    const c = caddy[i];
+    const d = (c.tq - p.eff).toFixed(0);
+    tb.innerHTML += `<tr>
+      <td>${p.rpm}</td>
+      <td>${p.req.toFixed(1)}</td>
+      <td>${p.eff.toFixed(1)}</td>
+      <td>${c.tq.toFixed(1)}</td>
+      <td class="dn">${d}</td>
+      <td>${p.turbo}</td>
+      <td>${c.map}</td>
+      <td>${p.iq}</td>
+    </tr>`;
+  });
+});
+</script>
+</body>
+</html>

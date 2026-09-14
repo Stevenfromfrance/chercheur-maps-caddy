@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Campagne logs DEV carto V5f</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<style>
+  .camp-main { max-width: 920px; margin: 0 auto; padding: var(--pad) var(--pad) 4rem; }
+  .camp-hero {
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(226,58,26,.12), transparent 45%), var(--panel);
+    padding: 1.1rem 1.15rem 1.2rem;
+    margin: 0 0 1.1rem;
+  }
+  .camp-hero h1 {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .4rem;
+  }
+  .camp-hero p { margin: 0 0 .55rem; color: var(--muted); font-size: .95rem; }
+  .pill {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .78rem;
+    padding: .3rem .55rem;
+    border: 1px solid var(--line-hot);
+    color: var(--accent2);
+    margin: 0 .35rem .35rem 0;
+  }
+  .box {
+    border: 1px solid var(--line);
+    background: var(--panel2);
+    padding: .85rem .95rem;
+    margin: 0 0 1rem;
+  }
+  .box h2, .run h2 {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .45rem;
+  }
+  .box h3, .run h3 {
+    margin: .75rem 0 .3rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .box ul, .run ul, .run ol { margin: .2rem 0 .4rem; padding-left: 1.15rem; }
+  .box li, .run li { margin: .25rem 0; }
+  .ok { color: var(--ok); }
+  .bad { color: var(--bad); }
+  .run {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .9rem 1rem 1rem;
+    margin: 0 0 .85rem;
+  }
+  .run .tag {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: .35rem;
+  }
+  .ide-list {
+    display: grid;
+    gap: .25rem;
+    font-family: var(--mono);
+    font-size: .82rem;
+    margin: .35rem 0 .5rem;
+    padding: .55rem .65rem;
+    background: rgba(0,0,0,.22);
+    border: 1px solid var(--line);
+  }
+  .ide-list .id { color: var(--accent2); }
+  .file {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: var(--accent2);
+    word-break: break-all;
+  }
+  .toc { columns: 2; gap: 1.2rem; font-size: .9rem; }
+  @media (max-width: 700px) { .toc { columns: 1; } }
+  .toc a { color: var(--ink); }
+  .checklist label {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+    margin: .35rem 0;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" alt="">
+      <span class="brand-text">
+        <span class="brand-name">SAVAGESEAR</span>
+        <span class="brand-tag">Campagne DEV carto</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="index.html#home">Accueil</a>
+      <a href="log-aide.html" class="on">Fiches runs</a>
+      <a href="logs-v5f/">Logs V5f</a>
+      <a href="logs-v5f/banc-estime.html">Banc estimé</a>
+    </nav>
+  </header>
+
+  <main class="camp-main">
+    <section class="camp-hero">
+      <span class="pill">V5f FINAL</span>
+      <span class="pill">9979 · CAYE</span>
+      <span class="pill">MULTI-PACK · PAS 1 MÉGA-LOG</span>
+      <h1>Campagne logs — penser à tout</h1>
+      <p>
+        Objectif : décider si on peut <b>lisser le haut de courbe</b> (après ~3900) sans trop fumer / sans risque.
+        Chaque run = <b>une question</b>. Même route banc pour tous les ROUTE_*.
+      </p>
+      <p>
+        Détail cliquable aussi dans <a href="log-aide.html">log-aide.html</a> (packs DEV).
+      </p>
+    </section>
+
+    <div class="box">
+      <h2>Rafraîchissement IDE — réponse nette</h2>
+      <p style="margin:.2rem 0 .5rem;color:var(--muted)">
+        Oui tu <b>as le droit</b> d’augmenter le nombre d’IDE — mais chaque canal supplémentaire
+        <b>ralentit</b> le multiplexe. Avec tes réglages (Blk Int 25 / Char Int 0 / Group UDS + peu d’IDE)
+        tu es ~0,2 s. Repasser à 9–12 IDE → souvent ~1–2 s comme avant.
+      </p>
+      <ul>
+        <li><b>Règle campagne :</b> <span class="ok">4 à 6 IDE max</span> par fichier (idéal 4–5).</li>
+        <li><b>Ancres toujours :</b> RPM + pédale + TQI_SP (+ vitesse si route/launch).</li>
+        <li><b>Même pull, plusieurs fichiers :</b> ROUTE_CLIFF puis sans bouger la route ROUTE_AIR, etc.</li>
+        <li>Ne fais <b>pas</b> un seul log « tout coché » — ça tue la preuve du cliff.</li>
+      </ul>
+      <h3>Options VCDS (garder)</h3>
+      <ul>
+        <li>01-Engine → Advanced Measuring Values</li>
+        <li>Options : <b>Blk Int 25</b> · <b>Char Int 0</b> · Group <b>UDS</b> si dispo</li>
+        <li>Décoche TOUT sauf la liste du run</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Avant la session (checklist)</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> Soft flashé noté : <code>V5f</code></label>
+        <label><input type="checkbox"> Moteur chaud (&gt;80 °C) sauf si run COLD noté</label>
+        <label><input type="checkbox"> Route banc fixe (même portion, même rapport 3ᵉ ou 4ᵉ)</label>
+        <label><input type="checkbox"> Noter heure / T° ext / clim ON-OFF / fumée visuelle oui-non</label>
+        <label><input type="checkbox"> ASR noté ON/OFF selon fiche</label>
+        <label><input type="checkbox"> CSV brut (pas photo) · nom exact ci-dessous</label>
+      </div>
+      <h3>Sonde ADVMB (1 fois, 2 min)</h3>
+      <p style="color:var(--muted);margin:.2rem 0;font-size:.92rem">
+        Cherche dans la liste ADVMB (filtre) — <b>si présent</b> sur 9979, note le nom exact et on fera un pack dédié.
+        Ne invente pas si absent :
+      </p>
+      <ul>
+        <li>Limiting torque / torque limitation</li>
+        <li>Mean injection quantity / Injection quantity</li>
+        <li>Exhaust gas temperature / EGT</li>
+        <li>Start of injection / SOI</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Ordre de session recommandé</h2>
+      <div class="toc">
+        <ol>
+          <li><a href="#fap_before">FAP_BEFORE</a> (30 s)</li>
+          <li><a href="#calage">CALAGE</a> (ralenti)</li>
+          <li><a href="#ville_tipin">VILLE_TIPIN</a></li>
+          <li><a href="#ville_partiel">VILLE_PARTIEL</a></li>
+          <li><a href="#route_cliff">ROUTE_CLIFF</a> ★ cliff 3k→4.6k</li>
+          <li><a href="#route_air">ROUTE_AIR</a> ★ air vs couple</li>
+          <li><a href="#route_rail">ROUTE_RAIL</a></li>
+          <li><a href="#route_vnt">ROUTE_VNT</a></li>
+          <li><a href="#route_inj">ROUTE_INJ</a> + note fumée</li>
+          <li><a href="#route_densite">ROUTE_DENSITE</a></li>
+          <li><a href="#depart_hold">DEPART_HOLD</a></li>
+          <li><a href="#depart_dump">DEPART_DUMP</a></li>
+          <li><a href="#harcut">HARCUT</a></li>
+          <li><a href="#a100">A100</a></li>
+          <li><a href="#fap_after">FAP_AFTER</a></li>
+          <li><a href="#route_hot">ROUTE_HOT</a> (autre moment, jour chaud)</li>
+        </ol>
+      </div>
+      <p style="color:var(--muted);font-size:.9rem;margin:.6rem 0 0">
+        ★ = critiques pour décider le fill haut régime. Les autres sécurisent rail / VNT / FAP / launch.
+      </p>
+    </div>
+
+    <!-- RUNS -->
+
+    <article class="run" id="fap_before">
+      <div class="tag">FAP · 30 s · 4 IDE</div>
+      <h2>FAP_BEFORE — baseline suie</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Niveau suie calculé / mesuré avant les WOT</li>
+        <li class="ok">ΔP FAP de référence</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00434</span> — Particle filter: soot mass calculated-MASS_SOOT_SIM_PF</div>
+        <div><span class="id">IDE00435</span> — Particle filter: soot mass measured-MASS_SOOT_PHY_PF</div>
+        <div><span class="id">IDE00427</span> — Particle filter: difference pressure-DIP_PF</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>À l’arrêt ou ralenti, moteur chaud</li>
+        <li>Avant toute série de pulls durs</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start log → 20–30 s sans toucher</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> WOT dans ce fichier.</p>
+      <p class="file">CADDY_V5f_FAP_BEFORE_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="calage">
+      <div class="tag">SANTÉ MOTEUR · 8 IDE OK (ralenti lent OK)</div>
+      <h2>CALAGE — ralenti + balance cylindres</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Ralenti stable chaud</li>
+        <li class="ok">Écarts FAC_CYL_BAL* pas aberrants (base méca avant carto agressive)</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00025</span> — Coolant temperature</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00365</span> — Injection quantity deviation cylinder 1-FAC_CYL_BAL1</div>
+        <div><span class="id">IDE00366</span> — Injection quantity deviation cylinder 2-FAC_CYL_BAL2</div>
+        <div><span class="id">IDE00367</span> — Injection quantity deviation cylinder 3-FAC_CYL_BAL3</div>
+        <div><span class="id">IDE00368</span> — Injection quantity deviation cylinder 4-FAC_CYL_BAL4</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Arrêt, PM, frein à main, clim OFF, &gt;80 °C</li>
+        <li>Pédale 0</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → 2–3 min ralenti sans toucher</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> route / WOT / moteur froid.</p>
+      <p class="file">CADDY_V5f_CALAGE_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="ville_tipin">
+      <div class="tag">VILLE · AccPed tip-in · 4 IDE</div>
+      <h2>VILLE_TIPIN — douceur 0→30 %</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Tip-in soft AccPed V6e (pas d’à-coup)</li>
+        <li class="ok">TQI suit la pédale progressivement</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Ville, ASR ON, 2ᵉ/3ᵉ</li>
+        <li>5–8 min · démarrages doux + quelques 0→40 km/h</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → conduite tip-in volontairement progressive</li>
+        <li>2–3 reprises légères (pas WOT)</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> launch / full WOT long.</p>
+      <p class="file">CADDY_V5f_VILLE_TIPIN_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="ville_partiel">
+      <div class="tag">VILLE · AccPed mid hold · 4 IDE</div>
+      <h2>VILLE_PARTIEL — pédale 40–60 %</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Hold mid AccPed (pas trop mou / pas spike)</li>
+        <li class="ok">Couple stable à pédale constante</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Route lente ou avenue, ASR ON, 3ᵉ</li>
+        <li>Pédale volontairement ~40–60 % maintenue 3–5 s, 4–5 fois</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → maintiens pédale mid sans WOT</li>
+        <li>Stop → Save + note ressenti « assez / manque punch mid »</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> plein gaz dans ce fichier.</p>
+      <p class="file">CADDY_V5f_VILLE_PARTIEL_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_cliff">
+      <div class="tag">ROUTE ★ CRITIQUE · cliff + MAP · 6 IDE</div>
+      <h2>ROUTE_CLIFF — chute couple 3000→4600</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Forme TQI_SP du plateau puis chute (ami « drop »)</li>
+        <li class="ok">MAP_SP vs MAP_ACT pendant la chute (air OK ou pas)</li>
+        <li class="ok">Décider si fill wish haut régime est possible</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00190</span> — Charge air pressure: specified value-MAP_SP_MMV</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Route banc fixe · 3ᵉ ou 4ᵉ · ASR ON · chaud</li>
+        <li>Pédale au plancher (même si VCDS ~79 %)</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start juste avant le pull</li>
+        <li>WOT en charge ~2000 → ~4600 (ou jusqu’avant cut)</li>
+        <li>Relâche · Stop → Save</li>
+        <li>Idéal : 2 pulls identiques (fichier 1 et 2)</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> frein moteur · décél seule · changer de rapport mid-pull.</p>
+      <p class="file">CADDY_V5f_ROUTE_CLIFF_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_air">
+      <div class="tag">ROUTE ★ · air / smoke headroom · 6 IDE</div>
+      <h2>ROUTE_AIR — masse d’air vs couple</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Air mass monte avec la charge</li>
+        <li class="ok">À 3800–4200 : air encore là quand TQI baisse ?</li>
+        <li class="ok">Base pour juger smoke / fill haut</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+        <div><span class="id">IDE00347</span> — Air mass: actual value:</div>
+        <div><span class="id">IDE00025</span> — Coolant temperature</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Même route / rapport que ROUTE_CLIFF</li>
+        <li>ASR ON · noter fumée miroir 3600–4200</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → même WOT 2000→4600</li>
+        <li>Stop → Save + « fumée oui/non / où »</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> oublier la note fumée visuelle.</p>
+      <p class="file">CADDY_V5f_ROUTE_AIR_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_rail">
+      <div class="tag">ROUTE · rail · 6 IDE</div>
+      <h2>ROUTE_RAIL — pression gasoil</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">FUP_FIL suit FUP_SP sous WOT</li>
+        <li class="ok">Pas d’écart monstre / pompe qui décroche haut régime</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00188</span> — Fuel high-pressure: actual value-FUP_FIL</div>
+        <div><span class="id">IDE00201</span> — High fuel pressure: specified value-FUP_SP_KPA</div>
+      </div>
+      <h3>Conditions / séquence</h3>
+      <ul>
+        <li>Même route banc · 3ᵉ/4ᵉ · ASR ON</li>
+        <li>Start → WOT 2000→4200+ → Stop</li>
+      </ul>
+      <p><b class="bad">Interdit :</b> pull trop court (&lt;3 s WOT).</p>
+      <p class="file">CADDY_V5f_ROUTE_RAIL_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_vnt">
+      <div class="tag">ROUTE · turbo actuator · 6 IDE</div>
+      <h2>ROUTE_VNT — consigne / réel + BPA</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Actuateur charge pressure suit sous WOT</li>
+        <li class="ok">Corréler MAP et commande VNT en haut de régime</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00190</span> — Charge air pressure: specified value-MAP_SP_MMV</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+        <div><span class="id">IDE00362</span> — Charge Pressure Actuator: activation-ANG_SP_BPA[0]</div>
+      </div>
+      <h3>Bonus (2ᵉ fichier si tu veux)</h3>
+      <p style="color:var(--muted);font-size:.9rem">
+        Remplace IDE00190 par <span class="file">IDE00396 — Charge air pressure actuator: acknowledgment-ANG_BPA[0]</span>
+        → fichier <code>CADDY_V5f_ROUTE_VNT_ACK_YYYYMMDD.csv</code>
+      </p>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Même WOT banc → Stop → Save</li>
+      </ol>
+      <p class="file">CADDY_V5f_ROUTE_VNT_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_inj">
+      <div class="tag">ROUTE · proxy inj/smoke · 6 IDE</div>
+      <h2>ROUTE_INJ — conso + air (pas d’IQ principale sur 9979)</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">FCO_T + air mass + TQI sous WOT (proxy injection)</li>
+        <li class="ok">Croiser avec fumée visuelle (miroir)</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00347</span> — Air mass: actual value:</div>
+        <div><span class="id">IDE00371</span> — Fuel consumption-FCO_T</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+      </div>
+      <h3>Séquence</h3>
+      <ol>
+        <li>WOT 2000→4200 · note fumée 3600–4000</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> oublier « fumée oui/non @régime ».</p>
+      <p class="file">CADDY_V5f_ROUTE_INJ_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_densite">
+      <div class="tag">ROUTE · jour/nuit densité · 6 IDE</div>
+      <h2>ROUTE_DENSITE — ambiant + boost</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Pression ambiante + MAP + TQI (effet densité)</li>
+        <li class="ok">Comparer plus tard à ROUTE_HOT</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+        <div><span class="id">IDE00361</span> — Ambient air pressure-Ambient pressure</div>
+        <div><span class="id">IDE00025</span> — Coolant temperature</div>
+      </div>
+      <h3>Séquence</h3>
+      <ol>
+        <li>1 WOT banc · noter heure + T° ext</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p class="file">CADDY_V5f_ROUTE_DENSITE_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="depart_hold">
+      <div class="tag">DEPART · launch 0 · 5 IDE</div>
+      <h2>DEPART_HOLD — hold ~2800 · TQI≈0</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Speed≈0 · RPM~2700–2800 · TQI_SP≈0 · pédale haute</li>
+        <li class="ok">MAP monte pendant hold (spool)</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Endroit sûr · ASR OFF · 1ʳᵉ · frein à main · en prise</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → plein gaz hold 2–3 s ~2800</li>
+        <li>Départ contrôlé (pas dump violent)</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> hardcut dans le même fichier · test à l’arrêt débrayé seul.</p>
+      <p class="file">CADDY_V5f_DEPART_HOLD_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="depart_dump">
+      <div class="tag">DEPART · lag dump · 5 IDE</div>
+      <h2>DEPART_DUMP — hold puis lâcher frein sec</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Comportement lag / trou après dump (ressenti « gros lag »)</li>
+        <li class="ok">MAP + TQI juste après relâche frein</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+        <div><span class="id">IDE00191</span> — Charge air pressure: actual value-MAP_MMV</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Comme DEPART_HOLD · ASR OFF · endroit sûr</li>
+        <li>1 seul essai propre suffit</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start → hold ~2800 2 s</li>
+        <li>Relâche frein à main assez sec (comme ton ressenti lag)</li>
+        <li>Stop → Save + note « lag fort / moyen »</li>
+      </ol>
+      <p><b class="bad">Interdit :</b> répéter 10× (embrayage).</p>
+      <p class="file">CADDY_V5f_DEPART_DUMP_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="harcut">
+      <div class="tag">HARCUT · 4 IDE</div>
+      <h2>HARCUT — cut ~4800</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">TQI tombe vers 0 près de ~4800 · vitesse &gt; 0</li>
+        <li class="ok">Cut net, pas bizarre</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+      </div>
+      <h3>Conditions / séquence</h3>
+      <ul>
+        <li>3ᵉ/4ᵉ · ASR noté · en charge jusqu’au cut</li>
+        <li>Start → montée franche → Stop dès cut</li>
+      </ul>
+      <p><b class="bad">Interdit :</b> frein à main / arrêt.</p>
+      <p class="file">CADDY_V5f_HARCUT_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="a100">
+      <div class="tag">PERF · 0–100 · 4 IDE</div>
+      <h2>A100 — 0→100 compteur</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Temps approximatif 0→~100 km/h (référence V5f ~11 s)</li>
+        <li class="ok">Profil pédale / TQI pendant l’accel</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00075</span> — Vehicle speed</div>
+        <div><span class="id">IDE00086</span> — Accelerator pedal position</div>
+        <div><span class="id">IDE00100</span> — Engine torque-TQI_SP</div>
+      </div>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Route sûre · clim OFF noté · ASR ON (ou OFF noté)</li>
+        <li>Départ normal (pas launch hold 0 obligatoire)</li>
+      </ul>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Start à l’arrêt · WOT jusqu’à ≥100 compteur</li>
+        <li>Stop → Save · 2 runs si possible</li>
+      </ol>
+      <p class="file">CADDY_V5f_A100_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="fap_after">
+      <div class="tag">FAP · après WOT · 4 IDE</div>
+      <h2>FAP_AFTER — suie post session</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">Δ suie vs FAP_BEFORE (smoke / fill trop agressif ?)</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <div class="ide-list">
+        <div><span class="id">IDE00021</span> — Engine RPM</div>
+        <div><span class="id">IDE00434</span> — Particle filter: soot mass calculated-MASS_SOOT_SIM_PF</div>
+        <div><span class="id">IDE00435</span> — Particle filter: soot mass measured-MASS_SOOT_PHY_PF</div>
+        <div><span class="id">IDE00427</span> — Particle filter: difference pressure-DIP_PF</div>
+      </div>
+      <h3>Séquence</h3>
+      <ol>
+        <li>Juste après la série de pulls · 20–30 s ralenti</li>
+        <li>Stop → Save</li>
+      </ol>
+      <p class="file">CADDY_V5f_FAP_AFTER_YYYYMMDD.csv</p>
+    </article>
+
+    <article class="run" id="route_hot">
+      <div class="tag">ROUTE · tegt / thermique · autre moment</div>
+      <h2>ROUTE_HOT — même que CLIFF, jour chaud</h2>
+      <h3>Ce que ça doit prouver</h3>
+      <ul>
+        <li class="ok">TQI_SP mid/haut plus bas qu’en soir ? (tegt ~320)</li>
+        <li class="ok">Comparer fichier à fichier avec ROUTE_CLIFF soir</li>
+      </ul>
+      <h3>IDE exactes</h3>
+      <p style="color:var(--muted)">Identiques à <a href="#route_cliff">ROUTE_CLIFF</a> (6 IDE).</p>
+      <h3>Conditions</h3>
+      <ul>
+        <li>Milieu de journée / chaleur · clim ON noté · même route</li>
+        <li>Noter T° ext approximative</li>
+      </ul>
+      <p class="file">CADDY_V5f_ROUTE_HOT_YYYYMMDD.csv</p>
+    </article>
+
+    <div class="box">
+      <h2>Ce qu’on pourra conclure après ça</h2>
+      <ul>
+        <li><b>CLIFF + AIR + fumée</b> → fill AccPed/wish haut régime oui/non/combien</li>
+        <li><b>RAIL</b> → rail OK ou frein haut régime</li>
+        <li><b>VNT</b> → turbo commande vs MAP</li>
+        <li><b>HOT vs CLIFF</b> → tegt 320 trop strict ou OK</li>
+        <li><b>FAP before/after</b> → smoke map trop ouverte ?</li>
+        <li><b>TIPIN / PARTIEL / DEPART</b> → confort AccPed + launch</li>
+      </ul>
+      <p style="margin:.6rem 0 0;color:var(--muted)">
+        Envoie les CSV dans le chat (ou dossier) + pour chaque run : soft V5f, ASR, rapport, fumée, heure.
+        Priorité si tu manques de temps : <b>CLIFF + AIR + INJ + HOT</b>.
+      </p>
+    </div>
+  </main>
+</div>
+</body>
+</html>

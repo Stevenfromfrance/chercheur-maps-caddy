@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · AccPed WOT · V5f vs V5g 360</title>
+<link rel="icon" href="avatar-savagesear.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Barlow:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chercheur-theme.css?v=atelier1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<style>
+  .main{max-width:920px;margin:0 auto;padding:var(--pad) var(--pad) 3rem}
+  .hero{border:1px solid var(--line);background:var(--panel);padding:1rem 1.1rem;margin:0 0 1rem}
+  .hero h1{font-family:var(--display);font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;margin:0 0 .35rem}
+  .hero p{margin:0;color:var(--muted);font-size:.92rem}
+  .panel{border:1px solid var(--line);background:var(--panel);padding:.85rem 1rem;margin:0 0 1rem}
+  .chart{height:320px;position:relative}
+  .note{border-left:3px solid var(--accent2);padding:.65rem .8rem;background:rgba(0,0,0,.2);color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top">
+    <a class="brand-lockup" href="index.html#home">
+      <img class="brand-mark" src="avatar-savagesear.png" alt="">
+      <span class="brand-text"><span class="brand-name">SAVAGESEAR</span><span class="brand-tag">V5f vs V5g</span></span>
+    </a>
+    <nav class="nav">
+      <a href="FICHE-V5G-360.md">Fiche V5g</a>
+      <a href="logs-v5f/">Logs V5f</a>
+      <a href="compare-v5f-v5g-accped.html" class="on">Preview AccPed</a>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="hero">
+      <h1>AccPed WOT — V5f → V5g 360</h1>
+      <p>Plateau 360 Nm jusqu’à ~3800 · roll-off progressif · tip-in soft inchangé (hors graphe WOT).</p>
+    </section>
+    <div class="note">
+      Chaîne : wish <b>360</b> &lt; tqlim <b>370</b> ≤ smoke <b>375</b> · rail inchangé · tegt autorise 360 si EGT modèle &lt;~800 °C.
+      Fichier : <code>Caddy_CAYE_03L906023TB_9979_MOD_V5g_360_longband.NOCS</code>
+    </div>
+    <div class="panel">
+      <div class="chart"><canvas id="c"></canvas></div>
+    </div>
+  </main>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const data = await fetch('compare-v5f-v5g-accped-data.json').then(r => r.json());
+  const muted = getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() || '#9a958a';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#e23a1a';
+  const line = getComputedStyle(document.documentElement).getPropertyValue('--line').trim() || '#3a3834';
+  new Chart(document.getElementById('c'), {
+    type: 'line',
+    data: {
+      labels: data.rpm,
+      datasets: [
+        { label: 'V5g WOT', data: data.v5g, borderColor: accent, borderWidth: 2.5, pointRadius: 4, tension: 0.2 },
+        { label: 'V5f WOT', data: data.v5f, borderColor: '#f5c542', borderWidth: 2, pointRadius: 3, tension: 0.2 },
+        { label: 'ACE WOT', data: data.ace, borderColor: '#5ec8ff', borderDash: [6,4], borderWidth: 1.5, pointRadius: 0, tension: 0.2 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: muted, font: { family: 'IBM Plex Mono', size: 11 } } } },
+      scales: {
+        x: { title: { display: true, text: 'RPM', color: muted }, ticks: { color: muted }, grid: { color: line } },
+        y: { min: 180, max: 380, title: { display: true, text: 'Nm', color: muted }, ticks: { color: muted }, grid: { color: line } }
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
