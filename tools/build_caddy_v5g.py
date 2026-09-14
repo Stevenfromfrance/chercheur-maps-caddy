@@ -151,23 +151,33 @@ def reactive_lift(rpm: float, pedal: float, v: float, ace: float, ori: float) ->
 
 
 def wot_target(rpm: float) -> float | None:
-    """WOT ~360 jusqu'à ~3800 puis roll-off progressif (anti-falaise)."""
+    """WOT ~360 jusqu'à ~3800 puis roll-off progressif (anti-falaise).
+
+    Ancres (AccPed axes) :
+      ≤3800 → 360
+      3990  → ~346 (début doux)
+      4998  → ~282 (= niveau V5f, pas en-dessous — courbe lisse)
+      5355  → ~202 (comme V5f fin de bande)
+    """
     if rpm < 900 or rpm >= 5600:
         return None
     if rpm <= ROLLOFF_START:
         return WOT_PLATEAU
-    if rpm <= 4000:
-        t = (rpm - ROLLOFF_START) / (4000 - ROLLOFF_START)
-        return WOT_PLATEAU * (1.0 - t * 0.04)  # 360 → ~346
-    if rpm <= 4500:
-        t = (rpm - 4000) / 500.0
-        return WOT_PLATEAU * (0.96 - t * 0.12)  # ~346 → ~303
-    if rpm <= 5000:
-        t = (rpm - 4500) / 500.0
-        return WOT_PLATEAU * (0.84 - t * 0.12)  # ~303 → ~259
-    if rpm <= 5400:
-        t = (rpm - 5000) / 400.0
-        return WOT_PLATEAU * (0.72 - t * 0.18)  # ~259 → ~194
+    # ancres explicites pour une descente sans trou sous V5f @4998
+    anchors = [
+        (ROLLOFF_START, WOT_PLATEAU),
+        (3990.0, 346.3),
+        (4998.0, 282.3),  # aligné V5f
+        (5355.0, 202.0),
+        (5600.0, 30.0),
+    ]
+    for i in range(len(anchors) - 1):
+        r0, v0 = anchors[i]
+        r1, v1 = anchors[i + 1]
+        if rpm <= r1 or i == len(anchors) - 2:
+            if rpm >= r0 and rpm <= r1:
+                t = 0.0 if r1 == r0 else (rpm - r0) / (r1 - r0)
+                return v0 + t * (v1 - v0)
     return None
 
 

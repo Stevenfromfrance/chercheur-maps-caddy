@@ -35,7 +35,7 @@ reprises mid plus accrocheuses.
 
 Ordre : **wish 360 &lt; tqlim 370 ≤ smoke 375**.
 
-Octets ≠ V5f : **875**
+Octets ≠ V5f : **862**
 
 ## Flash
 

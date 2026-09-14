@@ -26,8 +26,8 @@
     360.0,
     360.0,
     346.3,
-    259.4,
-    201.7
+    282.3,
+    202.0
   ],
   "ace": [
     340.0,
@@ -39,5 +39,5 @@
     340.0,
     340.0
   ],
-  "note": "AccPed WOT col \u00b7 V5g plateau 360 jusqu a ~3800 puis roll-off"
+  "note": "V5g plateau 360 \u00b7 roll-off @3800 \u00b7 @4998 aligne V5f (courbe lisse)"
 }
