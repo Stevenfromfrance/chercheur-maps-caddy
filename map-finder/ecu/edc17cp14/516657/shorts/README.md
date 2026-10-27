@@ -77,5 +77,5 @@ Guides courts (15–60 sec) pour EDC17 — issus des Reels Facebook + **Lesson 2
 
 ---
 
-**Statut :** **17/17 shorts** créés  
+**Statut :** **18 shorts** (+ Lesson 21 + YouTube DPF/EGR)  
 **Dernière maj :** 27 oct 2026

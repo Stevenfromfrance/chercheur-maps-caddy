@@ -65,14 +65,16 @@
       "0x1065c"
     ]
   },
-  "status": "v1.5_0aw_ready",
+  "status": "v1.5_0aw_ready_audited",
   "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
   "compare": "map-finder/ecu/edc17cp14/516657/v15_kp_compare.json",
+  "audit": "map-finder/ecu/edc17cp14/516657/AUDIT-V15-VS-NOUVELLE-METHODO.md",
   "viewer": "a5-winols.html",
   "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
     "Coolant / G83 repaired (123 C, P102A / P2185)",
-    "KESS OBD read first: IDs 516657 + size 2 Mo"
+    "KESS OBD read first: IDs 516657 + size 2 Mo",
+    "WinOLS audit P1: Torque Request Gear 1-5 max Nm vs ORI (0AW)"
   ],
   "pack_goal": [
     "stage1_0aw_fill400",
@@ -83,7 +85,24 @@
     "hardcut_soi_vmax"
   ],
   "pack_later": [
-    "logs_ville_route_inj_harcut"
+    "logs_ville_route_inj_harcut",
+    "logs_route_rail_turbo_hot",
+    "winols_factors_checklist_rpm05_pedal_pct_nm01",
+    "audit_gear_tq_request_0aw",
+    "optional_v16_hotstart_idle_if_needed",
+    "optional_v16_vgt_only_if_turbo_lag"
   ],
+  "methodology_aligned": {
+    "lesson21_injtime": "ok_plus_1_7pct",
+    "lesson21_turbo_with_limiter": "ok_plus_4pct_both",
+    "davinci_dpf_egr": "ok",
+    "no_launch_0aw": "ok",
+    "gaps": [
+      "gear_tq_pct_high_review",
+      "vgt_untouched",
+      "hotstart_idle_absent",
+      "limp_raise_skip_on_0aw"
+    ]
+  },
   "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }

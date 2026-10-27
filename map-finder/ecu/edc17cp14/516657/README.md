@@ -7,6 +7,9 @@
 
 Hardcut 4800 → **9600** raw | Cap 350 Nm → raw **3500** | WOT ≥85% → **≥6963** raw
 
+📋 **Audit méthodo (oct 2026) :** V1.5 **alignée** Lesson 21 (InjTime/SOI/lambda/turbo+lim/DaVinci).  
+→ `AUDIT-V15-VS-NOUVELLE-METHODO.md` — **P1 :** revoir Torque Request Gear 1–5 (0AW) avant flash.
+
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 
 - `ORI_FLS.fls` — flash interne 2 Mo (fichier carto)
