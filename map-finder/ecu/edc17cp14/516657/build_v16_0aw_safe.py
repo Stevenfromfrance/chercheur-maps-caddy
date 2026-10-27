@@ -16,9 +16,11 @@ RESTORE TO ORI (PCR2.1-style mistakes on EDC17/0AW):
 1. Torque Request Standard + Gear 1..5
    → AccPed-like mid fill (+100..200% on partiels) = PCR aggression
    → Lesson 21 gearbox protection: do NOT raise gear wish on 0AW
+   → Helps Multitronic shift under WOT (wish gear back to stock)
 2. RPM Limiters raised +8%
    → 5450→5900 / 5600→6050 real rpm (factor 0.5) = raise redline PCR-style
-   → Not Stage1 conservateur on 2.7 TDI 256k km
+3. Turbo cells where ORI == 1000 hPa (0-boost / atm floor)
+   → V1.5 blind +4% made 1000→1040 — Lesson 21: leave 1000 rpm / 0-boost alone
 
 python build_v16_0aw_safe.py
 """
@@ -56,6 +58,19 @@ RPM_LIM_RESTORE = [
     ("RPM_Limiter_3", 0x1AFD72),
 ]
 
+# Turbo banks + limiteur — restore only atm floor cells (ORI raw == 1000 hPa)
+TURBO_FLOOR_REGIONS = [
+    ("Turbo_1", 0x1D5D7C, 320),
+    ("Turbo_2", 0x1D5EF4, 320),
+    ("Turbo_3", 0x1D606C, 320),
+    ("Turbo_4", 0x1D61E4, 320),
+    ("Turbo_5", 0x1D635C, 320),
+    ("Turbo_6", 0x1D64D4, 320),
+    ("Turbo_7", 0x1D67C4, 320),
+    ("Turbo_Limiter_APS", 0x1D6DF8, 210),
+]
+TURBO_ATM_FLOOR = 1000  # hPa — 0-boost / atmospheric
+
 
 def u16(b: bytes | bytearray, i: int) -> int:
     return b[i] | (b[i + 1] << 8)
@@ -68,7 +83,14 @@ def main() -> None:
     assert n == 2_097_152 == len(v15)
 
     out = bytearray(v15)
-    report_restore = {"wish_bytes": 0, "rpm_bytes": 0, "wish_maps": [], "rpm_maps": []}
+    report_restore = {
+        "wish_bytes": 0,
+        "rpm_bytes": 0,
+        "turbo_floor_cells": 0,
+        "wish_maps": [],
+        "rpm_maps": [],
+        "turbo_floor": [],
+    }
 
     for name, addr, size in WISH_RESTORE:
         before = sum(1 for i in range(size) if out[addr + i] != ori[addr + i])
@@ -96,6 +118,21 @@ def main() -> None:
                     "v15_rpm_x0_5": v * 0.5,
                     "ori_rpm_x0_5": o * 0.5,
                 }
+            )
+
+    # Turbo: keep +4% only where ORI > atm floor; restore 1000 hPa cells
+    for name, addr, size in TURBO_FLOOR_REGIONS:
+        cells = 0
+        for i in range(0, size, 2):
+            o = u16(ori, addr + i)
+            if o == TURBO_ATM_FLOOR and u16(out, addr + i) != TURBO_ATM_FLOOR:
+                out[addr + i] = ori[addr + i]
+                out[addr + i + 1] = ori[addr + i + 1]
+                cells += 1
+        if cells:
+            report_restore["turbo_floor_cells"] += cells
+            report_restore["turbo_floor"].append(
+                {"name": name, "addr_hex": f"{addr:06X}", "cells_restored_to_1000hPa": cells}
             )
 
     # Verify restores
@@ -129,13 +166,24 @@ def main() -> None:
         errors.append("wish_restore_too_small")
     if report_restore["rpm_bytes"] < 6:
         errors.append("rpm_restore_incomplete")
+    if report_restore["turbo_floor_cells"] < 20:
+        errors.append("turbo_floor_restore_too_small")
+
+    # No remaining atm-floor raises
+    floor_left = 0
+    for _, addr, size in TURBO_FLOOR_REGIONS:
+        for i in range(0, size, 2):
+            if u16(ori, addr + i) == TURBO_ATM_FLOOR and u16(out, addr + i) != TURBO_ATM_FLOOR:
+                floor_left += 1
+    if floor_left:
+        errors.append(f"turbo_floor_left {floor_left}")
 
     report = {
         "file": OUT_NAME,
         "ok": not errors,
         "errors": errors,
         "based_on": "V1.5_0AW",
-        "goal": "strip_PCR21_wish_fill_and_rpm_raise_keep_edc17_soft_stage1",
+        "goal": "strip_PCR21_wish_fill_rpm_raise_and_turbo_atm_floor",
         "bytes_changed_vs_ori": bytes_vs_ori,
         "bytes_changed_vs_v15": bytes_vs_v15,
         "restored_to_ori": report_restore,
@@ -145,20 +193,25 @@ def main() -> None:
             "injtime_u16_cells_still_diff": inj_changed,
             "iq_cruise_logic": True,
             "smoke_lambda_soft": True,
-            "turbo_plus_limiter": True,
+            "turbo_plus_4pct_except_atm_floor_1000hPa": True,
             "soi_soft": True,
             "rail_soft": True,
         },
         "pcr21_errors_removed": [
-            "Torque Request Standard + Gear1-5 mid-fill (AccPed-style PCR aggression)",
+            "Torque Request Standard + Gear1-5 mid-fill (AccPed-style PCR) — fixes 0AW WOT shift fight",
             "RPM limiters +8% (raise redline 5450→5900 / 5600→6050 real rpm)",
+            "Turbo atm floor 1000→1040 hPa (0-boost / ~1000 rpm zone) — Lesson 21 leave alone",
         ],
+        "symptoms_targeted": {
+            "hard_to_shift_at_wot": "Gear TQ maps restored ORI (V1.5 fill fought Multitronic)",
+            "issue_around_1000_rpm_or_1000hPa_floor": "Turbo cells ORI=1000 hPa restored (no blind +4%)",
+        },
         "ids_ok": id_ok,
         "ids_unmoved": id_unmoved,
         "note": (
             "noCHK. V1.6 SAFE = V1.5 minus PCR2.1 contaminations. "
-            "Wish/Gear TQ and RPM limiters = ORI. Soft Stage1 via InjTime/IQ/SOI/smoke/turbo/rail + DaVinci. "
-            "0AW: no launch, no gear wish raise, no redline raise."
+            "Wish/Gear TQ + RPM lim = ORI; turbo keeps +4% except 1000 hPa floor. "
+            "0AW: no launch, no gear wish raise, no redline raise, no fake boost at atm."
         ),
     }
 
@@ -184,14 +237,17 @@ Pourquoi V1.6 (correction PCR2.1 → EDC17)
 Corrige (restore ORI)
   - Torque Request Standard @ 183FFE
   - Torque Request Gear 1..5 @ 19AE94..19B4BA
+    → vise difficulte a passer un rapport a fond de pedale (0AW)
   - RPM Limiter Neutral + RPM Limiter #2/#3
+  - Turbo cellules ORI=1000 hPa (plancher 0-boost) laissees a 1000
+    → vise zone ~1000 rpm / 0-boost (Lesson 21) ; le +4 % reste ailleurs
 
 Conserve de V1.5 (methodo EDC17 / Lesson 21)
   - DaVinci DPF/EGR/FLAPS
   - Injection Time soft (~+1.7 %, cap +3 %)
   - IQ #1 +2 % ; IQ #2/#3/#4 ORI
   - Smoke lambda ~+5 %
-  - Turbo ~+4 % + limiteur turbo ~+4 %
+  - Turbo ~+4 % + limiteur (sauf plancher 1000 hPa)
   - SOI ~+5 %
   - Rail ~+3 %
 
@@ -199,6 +255,7 @@ Philosophie
   Stage1 soft 0AW = fuel/air soft + deletes.
   PAS de wish gear style AccPed PCR.
   PAS de hausse redline.
+  PAS de fausse consigne boost a 1000 hPa.
 
 OBLIGATOIRE avant flash
   1. CHK WinOLS/KESS
