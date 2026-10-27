@@ -5,10 +5,16 @@
 2. **Pédale 8192** → Double-clic + **%** (8192→100%)
 3. **Couple Nm** → Factor **0.1** + precision **1** (153→15.3 Nm)
 
-Hardcut 4800 → **9600** raw | Cap 350 Nm → raw **3500** | WOT ≥85% → **≥6963** raw
+Hardcut 4800 → **9600** raw (si HC) | Stock ~**400 Nm** (pas cap PCR 350) | WOT ≥85% → **≥6963** raw
 
-📋 **Audit méthodo (oct 2026) :** V1.5 **alignée** Lesson 21 (InjTime/SOI/lambda/turbo+lim/DaVinci).  
-→ `AUDIT-V15-VS-NOUVELLE-METHODO.md` — **P1 :** revoir Torque Request Gear 1–5 (0AW) avant flash.
+## Fichier à flasher (confiance sans logs)
+
+**`A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls`**
+
+V1.5 avait encore des réflexes **PCR2.1** (fill wish/gear + hausse redline).  
+**V1.6 SAFE** = V1.5 **moins** ces erreurs → `LIVRAISON-V1.6-0AW-SAFE.txt` · `build_v16_0aw_safe.py`
+
+📋 Audit : `AUDIT-V15-VS-NOUVELLE-METHODO.md`
 
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 

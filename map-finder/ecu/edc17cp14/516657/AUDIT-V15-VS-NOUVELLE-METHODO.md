@@ -1,9 +1,10 @@
 # Audit A5 Bertin V1.5 × Nouvelle méthodologie EDC17
 
-**Verdict :** V1.5 est **globalement bonne et alignée** sur Lesson 21 / shorts Facebook.  
-**Ne pas refaire from scratch.** → **Revue ciblée + doc + éventuelle V1.6** après logs.
+**Verdict mis à jour :** V1.5 avait encore des **erreurs PCR2.1** (wish/gear fill + redline +8 %).  
+→ **Corrigé dans V1.6 SAFE** (`build_v16_0aw_safe.py`) — fichier de confiance **sans logs**.
 
-Date audit : 27 oct 2026 · Soft **516657** · Fichier V1.5 `…fill400_DPF_EGR_HC_SOI_noCHK.fls`
+Date audit : 27 oct 2026 · Soft **516657**  
+Flash : `A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls`
 
 ---
 
