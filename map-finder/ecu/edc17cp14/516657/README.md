@@ -1,5 +1,8 @@
 # Audi A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008
 
+⚠️ **CRITIQUE EDC17 : RPM stockés ×2 !** Factor WinOLS **0.5** obligatoire sur tous axes RPM.  
+Hardcut 4800 rpm → saisir **9600** WinOLS | Launch 2700 rpm → saisir **5400** WinOLS
+
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 
 - `ORI_FLS.fls` — flash interne 2 Mo (fichier carto)

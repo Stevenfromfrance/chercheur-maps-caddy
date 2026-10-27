@@ -1,5 +1,19 @@
 # MÉTHODOLOGIE EDC17CP14 — Récapitulatif et Comparaison
 
+## ⚠️ INFORMATION CRITIQUE EDC17
+
+**EDC17 stocke RPM ×2 !**
+
+- L'axe WinOLS affiche 10,000 → valeur réelle moteur = **5000 rpm**
+- **Facteur WinOLS obligatoire : 0.5**
+- Hardcut 4800 rpm → saisir **9600** dans WinOLS
+- Launch 2700 rpm → saisir **5400** dans WinOLS
+- **Tous les axes RPM** de toutes les maps sont doublés
+
+📄 **Voir détail complet :** `EDC17-RPM-FACTOR-CRITICAL.md`
+
+---
+
 ## 📋 Contexte
 
 Ce document récapitule la méthodologie appliquée au calculateur **EDC17CP14** (Audi A5 Sportback CGKA) et la compare avec les méthodologies utilisées pour le **PCR2.1** (Caddy) déjà documentées dans ce repository.
@@ -141,6 +155,7 @@ A5_516657_V15_HARCUT_YYYYMMDD.csv      # Hardcut validation
 
 | Aspect | EDC17CP14 (A5) | PCR2.1 (Caddy) | Raison |
 |--------|----------------|----------------|--------|
+| **RPM storage** | ⚠️ **×2 (factor 0.5 WinOLS)** | ×1 (normal) | **CRITIQUE : axes RPM doublés** |
 | **A2L exact** | ❌ Similar 0005 seulement | ✅ A2L 9979 exact | Limitation DAMOS-Big-Archive |
 | **Maps nommées** | ⚠️ Partiel (via A2L similar) | ✅ 100% nommées | Pas d'A2L 0008/B3UX exact |
 | **Référence Stage2** | ✅ A4 même SW 516657 | ❌ Pas de ref directe | Bonne pratique A5 |
