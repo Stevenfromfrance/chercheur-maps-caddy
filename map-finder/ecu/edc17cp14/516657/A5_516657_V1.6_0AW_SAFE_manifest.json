@@ -1,0 +1,110 @@
+{
+  "file": "A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls",
+  "ok": true,
+  "errors": [],
+  "based_on": "V1.5_0AW",
+  "goal": "strip_PCR21_wish_fill_and_rpm_raise_keep_edc17_soft_stage1",
+  "bytes_changed_vs_ori": 5774,
+  "bytes_changed_vs_v15": 464,
+  "restored_to_ori": {
+    "wish_bytes": 454,
+    "rpm_bytes": 10,
+    "wish_maps": [
+      {
+        "name": "Torque_Request_Standard",
+        "addr_hex": "183FFE",
+        "size": 128,
+        "bytes_restored": 43
+      },
+      {
+        "name": "Torque_Request_Gear_1",
+        "addr_hex": "19AE94",
+        "size": 256,
+        "bytes_restored": 83
+      },
+      {
+        "name": "Torque_Request_Gear_2",
+        "addr_hex": "19AFC8",
+        "size": 256,
+        "bytes_restored": 80
+      },
+      {
+        "name": "Torque_Request_Gear_3",
+        "addr_hex": "19B0FC",
+        "size": 256,
+        "bytes_restored": 73
+      },
+      {
+        "name": "Torque_Request_Gear_4",
+        "addr_hex": "19B230",
+        "size": 256,
+        "bytes_restored": 73
+      },
+      {
+        "name": "Torque_Request_Gear_5",
+        "addr_hex": "19B4BA",
+        "size": 256,
+        "bytes_restored": 102
+      }
+    ],
+    "rpm_maps": [
+      {
+        "name": "RPM_Limiter_Neutral_1",
+        "addr_hex": "1917C0",
+        "v15_raw": 5400,
+        "ori_raw": 5000,
+        "v15_rpm_x0_5": 2700.0,
+        "ori_rpm_x0_5": 2500.0
+      },
+      {
+        "name": "RPM_Limiter_Neutral_2",
+        "addr_hex": "191810",
+        "v15_raw": 8200,
+        "ori_raw": 7600,
+        "v15_rpm_x0_5": 4100.0,
+        "ori_rpm_x0_5": 3800.0
+      },
+      {
+        "name": "RPM_Limiter_Neutral_3",
+        "addr_hex": "191814",
+        "v15_raw": 5400,
+        "ori_raw": 5000,
+        "v15_rpm_x0_5": 2700.0,
+        "ori_rpm_x0_5": 2500.0
+      },
+      {
+        "name": "RPM_Limiter_2",
+        "addr_hex": "1AFD70",
+        "v15_raw": 11800,
+        "ori_raw": 10900,
+        "v15_rpm_x0_5": 5900.0,
+        "ori_rpm_x0_5": 5450.0
+      },
+      {
+        "name": "RPM_Limiter_3",
+        "addr_hex": "1AFD72",
+        "v15_raw": 12100,
+        "ori_raw": 11200,
+        "v15_rpm_x0_5": 6050.0,
+        "ori_rpm_x0_5": 5600.0
+      }
+    ]
+  },
+  "kept_from_v15": {
+    "davinci_dpf_egr_flaps": true,
+    "injection_time_soft": true,
+    "injtime_u16_cells_still_diff": 90,
+    "iq_cruise_logic": true,
+    "smoke_lambda_soft": true,
+    "turbo_plus_limiter": true,
+    "soi_soft": true,
+    "rail_soft": true
+  },
+  "pcr21_errors_removed": [
+    "Torque Request Standard + Gear1-5 mid-fill (AccPed-style PCR aggression)",
+    "RPM limiters +8% (raise redline 5450\u21925900 / 5600\u21926050 real rpm)"
+  ],
+  "ids_ok": true,
+  "ids_unmoved": true,
+  "note": "noCHK. V1.6 SAFE = V1.5 minus PCR2.1 contaminations. Wish/Gear TQ and RPM limiters = ORI. Soft Stage1 via InjTime/IQ/SOI/smoke/turbo/rail + DaVinci. 0AW: no launch, no gear wish raise, no redline raise."
+}
