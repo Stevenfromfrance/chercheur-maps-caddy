@@ -7,14 +7,16 @@
 
 Hardcut 4800 → **9600** raw (si HC) | Stock ~**400 Nm** (pas cap PCR 350) | WOT ≥85% → **≥6963** raw
 
-## Fichier à flasher (confiance sans logs)
+## Fichiers à flasher (0AW-safe, méthodo EDC17)
 
-**`A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls`**
+| Fichier | Rôle |
+|---|---|
+| **`A5_516657_V1.7_0AW_HIGH_rpm_safe_noPCR_wish_DPF_EGR_noCHK.fls`** | **Stage1 recommandé** — gain surtout **haut régime**, wish/gear ORI |
+| `A5_516657_V1.6_0AW_SAFE_…fls` | Base SAFE (sans boost haut régime façonné) |
 
-V1.5 avait encore des réflexes **PCR2.1** (fill wish/gear + hausse redline).  
-**V1.6 SAFE** = V1.5 **moins** ces erreurs → `LIVRAISON-V1.6-0AW-SAFE.txt` · `build_v16_0aw_safe.py`
-
-📋 Audit : `AUDIT-V15-VS-NOUVELLE-METHODO.md`
+- **Jamais** fill Torque Request Gear (erreur PCR) · **Jamais** hausse redline · turbo **1000 hPa** intouché  
+- Build : `build_v17_0aw_high.py` · Livraison : `LIVRAISON-V1.7-0AW-HIGH.txt`  
+- Audit : `AUDIT-V15-VS-NOUVELLE-METHODO.md`
 
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 

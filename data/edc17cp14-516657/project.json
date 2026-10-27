@@ -65,13 +65,14 @@
       "0x1065c"
     ]
   },
-  "status": "v1.6_0aw_safe_ready",
-  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls",
+  "status": "v1.7_0aw_high_ready",
+  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.7_0AW_HIGH_rpm_safe_noPCR_wish_DPF_EGR_noCHK.fls",
+  "v16_safe": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls",
   "v15_archive": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
   "compare": "map-finder/ecu/edc17cp14/516657/v15_kp_compare.json",
   "audit": "map-finder/ecu/edc17cp14/516657/AUDIT-V15-VS-NOUVELLE-METHODO.md",
-  "build": "map-finder/ecu/edc17cp14/516657/build_v16_0aw_safe.py",
-  "livraison": "map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.6-0AW-SAFE.txt",
+  "build": "map-finder/ecu/edc17cp14/516657/build_v17_0aw_high.py",
+  "livraison": "map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.7-0AW-HIGH.txt",
   "viewer": "a5-winols.html",
   "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
