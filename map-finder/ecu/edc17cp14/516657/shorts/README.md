@@ -114,6 +114,7 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
 | **Raw storage view** | ⏳ | ✅ | **SYNTHÈSE** #1+#2+#3 |
 | **Driver's wish lecture** | ✅ logique | ✅ | Full dès 70 % bas régime |
 | **Pedal sweep @ RPM** | ✅ logique | ✅ | 0→12→40→88→403 @2000 |
+| **First map (wish)** | ✅ AccPed | ✅ Driver's wish | Même rôle chaîne couple |
 | A2L similar | ❌ | ✅ | 0005 → 0008 |
 | Injection Time | ❌ | ✅ | **NOUVEAU** @ 0x1D1496 |
 | IQ cruise | ⏳ | ✅ | Logique différente |
@@ -159,5 +160,5 @@ shorts-videos/
 ---
 
 **Dernière mise à jour :** 27 oct 2026  
-**Statut :** 6/12 shorts créés (#1–#4 conversions + #5–#6 lecture AccPed)  
-**Priorité :** Compléter #7-#12 selon ordre logique
+**Statut :** 7/12 shorts créés (#1–#4 conversions + #5–#6 lecture + #7 fondement)  
+**Priorité :** Compléter #8-#12 selon ordre logique
