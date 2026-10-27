@@ -93,6 +93,16 @@
 
 📄 **Détail :** `EDC17-WINOLS-HEX-BASICS.md` | **Shorts :** `08` · `09` · `10`
 
+### 🔴 Lesson 21 — Guide Tuning Complet (EDC16 & EDC17)
+
+**Source Facebook screenshots** → `EDC17-LESSON21-TUNING-GUIDE.md` + shorts **#11–#17**
+
+Chaîne : Wish → Translation → **Limiters** → Fuel (µs/°) → Air (mbar/VGT)  
+Playbook : turbo +4–8 % · InjTime +1–13 % · EGR=0 · limp raise · λ 1.2–1.3 · 14.55:1  
+EDC16≈EDC17 (même math, fichier plus gros)
+
+**Scorecard A5 V1.5 :** InjTime +1.7 % ✅ · EGR off ✅ · turbo ~+6 % ✅ · limp/0AW ⏳ prudence
+
 ---
 
 ## 📋 Contexte
