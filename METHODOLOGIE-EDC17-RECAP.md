@@ -25,6 +25,19 @@
 
 📄 **Détail :** `EDC17-PEDAL-AXIS-CRITICAL.md` | **Short :** `shorts/02-pedal-axis-8192.md`
 
+### 🔴 Critique #3 : Couple Factor 0.1
+
+**EDC17 stocke le couple en dixièmes de Nm !**
+
+- Raw 153 → **15.3 Nm** (factor **0.1**, precision **1**)
+- Formule : `Value = 0.1 × Eprom + 0`
+- Objectif : **un chiffre de précision** de plus vs factor 1.0
+- Driver's wish, tqlim, hardcut… — **pas** le factor PCR2.1 (0.03125−1024)
+
+📄 **Détail :** `EDC17-TORQUE-FACTOR-CRITICAL.md` | **Short :** `shorts/03-torque-factor-01.md`
+
+**AccPed EDC17 = 3 conversions :** RPM ×0.5 + pédale % + couple ×0.1
+
 ---
 
 ## 📋 Contexte
@@ -169,6 +182,8 @@ A5_516657_V15_HARCUT_YYYYMMDD.csv      # Hardcut validation
 | Aspect | EDC17CP14 (A5) | PCR2.1 (Caddy) | Raison |
 |--------|----------------|----------------|--------|
 | **RPM storage** | ⚠️ **×2 (factor 0.5 WinOLS)** | ×1 (normal) | **CRITIQUE : axes RPM doublés** |
+| **Pédale storage** | ⚠️ **0–8192 (conv %)** | 0–100% direct | **CRITIQUE : 8192 = 100%** |
+| **Couple factor** | ⚠️ **0.1 (dixièmes Nm)** | souvent 0.03125−1024 | **CRITIQUE : ne pas copier PCR** |
 | **A2L exact** | ❌ Similar 0005 seulement | ✅ A2L 9979 exact | Limitation DAMOS-Big-Archive |
 | **Maps nommées** | ⚠️ Partiel (via A2L similar) | ✅ 100% nommées | Pas d'A2L 0008/B3UX exact |
 | **Référence Stage2** | ✅ A4 même SW 516657 | ❌ Pas de ref directe | Bonne pratique A5 |

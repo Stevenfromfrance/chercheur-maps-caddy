@@ -1,10 +1,11 @@
 # Audi A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008
 
-⚠️ **CRITIQUES EDC17 :**
-1. **RPM ×2** → Factor WinOLS **0.5** sur axes RPM (10000→5000 rpm)
-2. **Pédale 8192** → Double-clic + **%** sur axes pédale (8192→100%)
+⚠️ **CRITIQUES EDC17 (3 conversions AccPed) :**
+1. **RPM ×2** → Factor **0.5** (10000→5000 rpm)
+2. **Pédale 8192** → Double-clic + **%** (8192→100%)
+3. **Couple Nm** → Factor **0.1** + precision **1** (153→15.3 Nm)
 
-Hardcut 4800 → **9600** WinOLS | Launch 2700 → **5400** WinOLS | WOT ≥85% → **≥6963** raw
+Hardcut 4800 → **9600** raw | Cap 350 Nm → raw **3500** | WOT ≥85% → **≥6963** raw
 
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 
