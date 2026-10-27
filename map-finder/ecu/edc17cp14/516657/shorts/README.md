@@ -16,12 +16,17 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
    - Factor WinOLS 0.5
    - Hardcut / Launch conversion
 
-2. ⏳ **02-a2l-similar-0005.md** (à créer)
+2. **[02-pedal-axis-8192.md](02-pedal-axis-8192.md)** ⚠️ **CRITIQUE**
+   - Pédale 8192 = 100%
+   - Conversion WinOLS (double-clic + %)
+   - Identifier tip-in / WOT
+
+3. ⏳ **03-a2l-similar-0005.md** (à créer)
    - Import A2L similar
    - Offset 0005 → 0008
    - Vérification noms maps
 
-3. ⏳ **03-injection-time-soft.md** (à créer)
+4. ⏳ **04-injection-time-soft.md** (à créer)
    - Map @ 0x1D1496
    - +1.7% médiane
    - Cap +3% vs ORI
@@ -78,7 +83,8 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
 
 | Short | PCR2.1 | EDC17 | Notes |
 |---|:-:|:-:|---|
-| **RPM ×2 factor** | ❌ | ✅ | **NOUVEAU** — critique |
+| **RPM ×2 factor** | ❌ | ✅ | **NOUVEAU** — critique #1 |
+| **Pédale 8192** | ❌ | ✅ | **NOUVEAU** — critique #2 |
 | A2L similar | ❌ | ✅ | 0005 → 0008 |
 | Injection Time | ❌ | ✅ | **NOUVEAU** @ 0x1D1496 |
 | IQ cruise | ⏳ | ✅ | Logique différente |
@@ -124,5 +130,5 @@ shorts-videos/
 ---
 
 **Dernière mise à jour :** 27 oct 2026  
-**Statut :** 1/12 shorts créés  
-**Priorité :** Compléter #2-#12 selon ordre logique
+**Statut :** 2/12 shorts créés (Short #1 RPM ×2, Short #2 Pédale 8192)  
+**Priorité :** Compléter #3-#12 selon ordre logique

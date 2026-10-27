@@ -1,6 +1,8 @@
 # MÉTHODOLOGIE EDC17CP14 — Récapitulatif et Comparaison
 
-## ⚠️ INFORMATION CRITIQUE EDC17
+## ⚠️ INFORMATIONS CRITIQUES EDC17
+
+### 🔴 Critique #1 : RPM ×2 Factor
 
 **EDC17 stocke RPM ×2 !**
 
@@ -10,7 +12,18 @@
 - Launch 2700 rpm → saisir **5400** dans WinOLS
 - **Tous les axes RPM** de toutes les maps sont doublés
 
-📄 **Voir détail complet :** `EDC17-RPM-FACTOR-CRITICAL.md`
+📄 **Détail :** `EDC17-RPM-FACTOR-CRITICAL.md` | **Short :** `shorts/01-rpm-factor-x2.md`
+
+### 🔴 Critique #2 : Pédale 8192 = 100%
+
+**EDC17 stocke pédale en valeur brute 0-8192 !**
+
+- L'axe pédale affiche 8192 → valeur réelle = **100%**
+- **Conversion WinOLS : double-clic axe + bouton %**
+- Sans conversion : impossible d'identifier tip-in (0-23%) vs WOT (≥85%)
+- S'applique à **toutes les maps** avec axe pédale (AccPed, torque request...)
+
+📄 **Détail :** `EDC17-PEDAL-AXIS-CRITICAL.md` | **Short :** `shorts/02-pedal-axis-8192.md`
 
 ---
 
