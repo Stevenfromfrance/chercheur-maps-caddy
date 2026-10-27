@@ -1,5 +1,23 @@
 # Audi A5 Sportback CGKA · EDC17CP14 · SW 516657 / 0008
 
+⚠️ **CRITIQUES EDC17 (3 conversions AccPed) :**
+1. **RPM ×2** → Factor **0.5** (10000→5000 rpm)
+2. **Pédale 8192** → Double-clic + **%** (8192→100%)
+3. **Couple Nm** → Factor **0.1** + precision **1** (153→15.3 Nm)
+
+Hardcut 4800 → **9600** raw (si HC) | Stock ~**400 Nm** (pas cap PCR 350) | WOT ≥85% → **≥6963** raw
+
+## Fichiers à flasher (0AW-safe, méthodo EDC17)
+
+| Fichier | Rôle |
+|---|---|
+| **`A5_516657_V1.7_0AW_HIGH_rpm_safe_noPCR_wish_DPF_EGR_noCHK.fls`** | **Stage1 recommandé** — gain surtout **haut régime**, wish/gear ORI |
+| `A5_516657_V1.6_0AW_SAFE_…fls` | Base SAFE (sans boost haut régime façonné) |
+
+- **Jamais** fill Torque Request Gear (erreur PCR) · **Jamais** hausse redline · turbo **1000 hPa** intouché  
+- Build : `build_v17_0aw_high.py` · Livraison : `LIVRAISON-V1.7-0AW-HIGH.txt`  
+- Audit : `AUDIT-V15-VS-NOUVELLE-METHODO.md`
+
 Client Bertin. ORI lu en boot K-TAG plugin 151 (MICRO + EEPROM).
 
 - `ORI_FLS.fls` — flash interne 2 Mo (fichier carto)

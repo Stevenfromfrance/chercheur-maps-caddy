@@ -1,0 +1,40 @@
+A5 Bertin — V1.6 0AW SAFE (sans logs)
+
+Fichier :
+  A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls
+
+Pourquoi V1.6 (correction PCR2.1 → EDC17)
+  V1.5 appliquait encore des reflexes Caddy/PCR2.1 :
+  1) Fill agressif Torque Request Standard + Gear 1-5 (partiels +100..200 %)
+  2) RPM limiters +8 % (redline reel ~5450→5900 / 5600→6050)
+
+Corrige (restore ORI)
+  - Torque Request Standard @ 183FFE
+  - Torque Request Gear 1..5 @ 19AE94..19B4BA
+    → vise difficulte a passer un rapport a fond de pedale (0AW)
+  - RPM Limiter Neutral + RPM Limiter #2/#3
+  - Turbo cellules ORI=1000 hPa (plancher 0-boost) laissees a 1000
+    → vise zone ~1000 rpm / 0-boost (Lesson 21) ; le +4 % reste ailleurs
+
+Conserve de V1.5 (methodo EDC17 / Lesson 21)
+  - DaVinci DPF/EGR/FLAPS
+  - Injection Time soft (~+1.7 %, cap +3 %)
+  - IQ #1 +2 % ; IQ #2/#3/#4 ORI
+  - Smoke lambda ~+5 %
+  - Turbo ~+4 % + limiteur (sauf plancher 1000 hPa)
+  - SOI ~+5 %
+  - Rail ~+3 %
+
+Philosophie
+  Stage1 soft 0AW = fuel/air soft + deletes.
+  PAS de wish gear style AccPed PCR.
+  PAS de hausse redline.
+  PAS de fausse consigne boost a 1000 hPa.
+
+OBLIGATOIRE avant flash
+  1. CHK WinOLS/KESS
+  2. G83 / EGT / FAP+EGR physiques
+  3. Lecture KESS OBD (516657 + 2 Mo) puis ecriture V1.6 CHK
+
+Octets ≠ ORI : 5652
+Octets ≠ V1.5 : 586 (restores)

@@ -1,0 +1,32 @@
+A5 Bertin — V1.7 0AW HIGH (Stage1 haut regime, Multitronic-safe)
+
+Fichier :
+  A5_516657_V1.7_0AW_HIGH_rpm_safe_noPCR_wish_DPF_EGR_noCHK.fls
+
+Pour qui
+  Stage 1 qui RESPECTE la 0AW : gain surtout haut regime,
+  sans erreurs PCR2.1 (pas de fill wish/gear, pas de hausse redline).
+
+Base
+  V1.6 SAFE (DaVinci DPF/EGR, wish/gear ORI, RPM lim ORI, turbo floor 1000 OK)
+
+Ajoute (forme haut regime)
+  - IQ #1 : ~+0.8 % bas → ~+4 % haut
+  - Injection Time : ~+1 % bas → ~+7.5 % haut (cap +8 %)
+  - SOI : ~+2 % → ~+5 %
+  - Smoke lambda : ~+3 % → ~+6 %
+  - Turbo + limiteur : ~+2 % → ~+6 % (cellules actives)
+  - Plancher turbo 1000 hPa : INCHANGE (ORI)
+
+JAMAIS touche (0AW)
+  - Torque Request Standard + Gear 1..5
+  - RPM limiters
+  - Launch
+
+Obligatoire avant flash
+  1. CHK WinOLS/KESS
+  2. G83 / EGT / FAP physiques
+  3. KESS OBD read 516657 + 2 Mo puis write V1.7 CHK
+
+Octets ≠ ORI : 6364
+Octets ≠ V1.6 : 4424
