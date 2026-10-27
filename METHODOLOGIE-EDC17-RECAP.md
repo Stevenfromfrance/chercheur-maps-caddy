@@ -103,6 +103,16 @@ EDC16≈EDC17 (même math, fichier plus gros)
 
 **Scorecard A5 V1.5 :** InjTime +1.7 % ✅ · EGR off ✅ · turbo ~+6 % ✅ · limp/0AW ⏳ prudence
 
+### 🔴 YouTube EDC17CP14 — DPF / EGR / Hot Start / Idle
+
+**https://youtu.be/dKaJ-WJMwcc** (Dragiša Trimunović) — démo Audi A6 SW **505999**
+
+- Switches DPF `1EE34A` 0100→0000 + EGR + **Hot start** `1F84FA` + Idle FIX  
+- **≠ adresses A5 516657** — logique OK, offsets non  
+- A5 : deletes déjà via **DaVinci** ; **trou** = Hot Start / Idle si hard start post-flash  
+
+📄 `EDC17-YOUTUBE-DPF-EGR-HOTSTART.md` | Short `#18`
+
 ---
 
 ## 📋 Contexte

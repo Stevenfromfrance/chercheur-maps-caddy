@@ -42,6 +42,11 @@ Guides courts (15–60 sec) pour EDC17 — issus des Reels Facebook + **Lesson 2
 | 16 | [16-edc16-vs-edc17.md](16-edc16-vs-edc17.md) | Evolution not revolution |
 | 17 | [17-safe-increments-playbook.md](17-safe-increments-playbook.md) | Checklist incréments |
 
+### E. YouTube EDC17CP14 (#18)
+| # | Fichier | Sujet |
+|---|---|---|
+| 18 | [18-youtube-dpf-egr-hotstart.md](18-youtube-dpf-egr-hotstart.md) | DPF/EGR/Hot Start/Idle — A6 505999 vs A5 DaVinci |
+
 ## 🔄 vs PCR2.1 (Caddy)
 
 | Concept | Caddy | EDC17 shorts |
