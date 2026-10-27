@@ -31,12 +31,17 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
    - 8192 = 100 % · 4032 = 403.2 Nm · 10000 = 5000 rpm
    - Preuve visuelle #1+#2+#3 sur une map
 
-5. ⏳ **05-a2l-similar-0005.md** (à créer)
+5. **[05-drivers-wish-rpm-pedal.md](05-drivers-wish-rpm-pedal.md)** ⚠️ **LECTURE**
+   - Lire AccPed = RPM × % pédale → Nm
+   - Full torque dès **70 %** @500–1500 (pas besoin 100 %)
+   - Tip-in / saturation / roll-off
+
+6. ⏳ **06-a2l-similar-0005.md** (à créer)
    - Import A2L similar
    - Offset 0005 → 0008
    - Vérification noms maps
 
-5. ⏳ **05-injection-time-soft.md** (à créer)
+7. ⏳ **07-injection-time-soft.md** (à créer)
    - Map @ 0x1D1496
    - +1.7% médiane
    - Cap +3% vs ORI
@@ -96,6 +101,7 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
 | **RPM ×2 factor** | ❌ | ✅ | **NOUVEAU** — critique #1 |
 | **Pédale 8192** | ❌ | ✅ | **NOUVEAU** — critique #2 |
 | **Couple factor 0.1** | ❌ (autre formule) | ✅ | **NOUVEAU** — critique #3 |
+| **Raw storage view** | ⏳ | ✅ | **SYNTHÈSE** #1+#2+#3 |
 | A2L similar | ❌ | ✅ | 0005 → 0008 |
 | Injection Time | ❌ | ✅ | **NOUVEAU** @ 0x1D1496 |
 | IQ cruise | ⏳ | ✅ | Logique différente |
@@ -141,5 +147,5 @@ shorts-videos/
 ---
 
 **Dernière mise à jour :** 27 oct 2026  
-**Statut :** 3/12 shorts créés (#1 RPM ×2, #2 Pédale 8192, #3 Couple 0.1)  
-**Priorité :** Compléter #4-#12 selon ordre logique
+**Statut :** 4/12 shorts créés (#1–#3 critiques + #4 synthèse raw)  
+**Priorité :** Compléter #5-#12 selon ordre logique

@@ -48,6 +48,17 @@
 
 📄 **Détail :** `EDC17-RAW-STORAGE-CRITICAL.md` | **Short :** `shorts/04-raw-storage-before-conversion.md`
 
+### 🔴 Critique #5 : Lecture Driver's Wish (RPM + pédale)
+
+**Full torque ≠ toujours 100 % pédale.**
+
+- Exemple : **500–1500 rpm** → déjà **403 Nm** dès **70 %** pédale
+- Toujours croiser **RPM × % pédale** (jamais une seule colonne)
+- Tip-in : 0–10 % = 0 Nm ; roll-off haut régime sur 70 % et 100 %
+- **vs Caddy :** même logique croisée ; seuil WOT Caddy souvent ≥85 %, ici saturation dès 70 % bas régime
+
+📄 **Détail :** `EDC17-DRIVERS-WISH-READ-CRITICAL.md` | **Short :** `shorts/05-drivers-wish-rpm-pedal.md`
+
 ---
 
 ## 📋 Contexte
