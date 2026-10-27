@@ -70,6 +70,17 @@
 
 📄 **Détail :** `EDC17-PEDAL-SWEEP-CRITICAL.md` | **Short :** `shorts/06-pedal-sweep-2000rpm.md`
 
+### 🔴 Critique #7 : First Map = Driver's Wish
+
+**Première map du système entier.**
+
+- Transforme **% pédale × RPM → Nm demandés**
+- Wish ≠ couple roue : les limiteurs / smoke / rail suivent
+- **vs Caddy :** AccPed = même rôle (premier levier Stage1)
+- Ordre : wish → tqlim → smoke → rail/inj → turbo → deletes
+
+📄 **Détail :** `EDC17-FIRST-MAP-CRITICAL.md` | **Short :** `shorts/07-first-map-drivers-wish.md`
+
 ---
 
 ## 📋 Contexte
