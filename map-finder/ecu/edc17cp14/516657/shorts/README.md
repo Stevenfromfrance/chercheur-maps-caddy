@@ -26,7 +26,12 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
    - Un chiffre décimal de plus
    - Driver's wish / tqlim / hardcut
 
-4. ⏳ **04-a2l-similar-0005.md** (à créer)
+4. **[04-raw-storage-before-conversion.md](04-raw-storage-before-conversion.md)** ⚠️ **SYNTHÈSE**
+   - ECU ne stocke pas des Nm — que des raw
+   - 8192 = 100 % · 4032 = 403.2 Nm · 10000 = 5000 rpm
+   - Preuve visuelle #1+#2+#3 sur une map
+
+5. ⏳ **05-a2l-similar-0005.md** (à créer)
    - Import A2L similar
    - Offset 0005 → 0008
    - Vérification noms maps

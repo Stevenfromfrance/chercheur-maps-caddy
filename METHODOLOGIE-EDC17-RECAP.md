@@ -38,6 +38,16 @@
 
 **AccPed EDC17 = 3 conversions :** RPM ×0.5 + pédale % + couple ×0.1
 
+### 🔴 Critique #4 : Vue RAW (synthèse)
+
+**L'ECU ne stocke pas des Nm — uniquement des entiers bruts.**
+
+- Exemple post FB : **8192 = 100 % pédale**, **4032 = 403.2 Nm**
+- Axe RPM raw 10000 = **5000 rpm** (×2)
+- Preuve visuelle des 3 conversions sur une seule map Driver's wish
+
+📄 **Détail :** `EDC17-RAW-STORAGE-CRITICAL.md` | **Short :** `shorts/04-raw-storage-before-conversion.md`
+
 ---
 
 ## 📋 Contexte
