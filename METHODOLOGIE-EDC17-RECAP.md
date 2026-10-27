@@ -59,6 +59,17 @@
 
 📄 **Détail :** `EDC17-DRIVERS-WISH-READ-CRITICAL.md` | **Short :** `shorts/05-drivers-wish-rpm-pedal.md`
 
+### 🔴 Critique #6 : Pedal Sweep (ligne RPM fixe)
+
+**Fixer le régime, balayer la pédale = lire le driver wish.**
+
+- Exemple @ **2000 rpm** : **0 → 12 → 40 → 88 → … → 403 Nm**
+- C'est la courbe « sensation » tip-in → mid → WOT
+- À 2000 rpm, 70 % = 381 Nm (plus saturé comme @500–1500)
+- **vs Caddy :** même check progressivité ligne par ligne AccPed
+
+📄 **Détail :** `EDC17-PEDAL-SWEEP-CRITICAL.md` | **Short :** `shorts/06-pedal-sweep-2000rpm.md`
+
 ---
 
 ## 📋 Contexte
