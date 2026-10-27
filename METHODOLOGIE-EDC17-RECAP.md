@@ -81,6 +81,18 @@
 
 📄 **Détail :** `EDC17-FIRST-MAP-CRITICAL.md` | **Short :** `shorts/07-first-map-drivers-wish.md`
 
+### 🔴 Critiques #8–#10 : WinOLS Hex Basics
+
+**Socle hexdump (démo BMW EDC17 390655, applicable A5).**
+
+| # | Règle |
+|---|---|
+| 8 | Adresses **toujours hex** |
+| 9 | Lignes 16 octets : début `…0`, fin `…F` (start from zero) |
+| 10 | Colonne **gauche** = adresse |
+
+📄 **Détail :** `EDC17-WINOLS-HEX-BASICS.md` | **Shorts :** `08` · `09` · `10`
+
 ---
 
 ## 📋 Contexte

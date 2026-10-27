@@ -46,12 +46,21 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
    - Pédale → torque demand (Nm)
    - AccPed Caddy = Driver's wish EDC17
 
-8. ⏳ **08-a2l-similar-0005.md** (à créer)
+8. **[08-addresses-always-hex.md](08-addresses-always-hex.md)** — WinOLS basics
+   - Adresses **toujours hex**
+
+9. **[09-why-rows-end-in-f.md](09-why-rows-end-in-f.md)** — WinOLS basics
+   - Lignes 16 octets : `…0` → `…F`
+
+10. **[10-left-column-address.md](10-left-column-address.md)** — WinOLS basics
+    - Colonne **gauche** = adresse
+
+11. ⏳ **11-a2l-similar-0005.md** (à créer)
    - Import A2L similar
    - Offset 0005 → 0008
    - Vérification noms maps
 
-9. ⏳ **09-injection-time-soft.md** (à créer)
+12. ⏳ **12-injection-time-soft.md** (à créer)
    - Map @ 0x1D1496
    - +1.7% médiane
    - Cap +3% vs ORI
@@ -115,6 +124,7 @@ EDC17 stocke RPM ×2 → factor 0.5 WinOLS **obligatoire** sur tous axes RPM !
 | **Driver's wish lecture** | ✅ logique | ✅ | Full dès 70 % bas régime |
 | **Pedal sweep @ RPM** | ✅ logique | ✅ | 0→12→40→88→403 @2000 |
 | **First map (wish)** | ✅ AccPed | ✅ Driver's wish | Même rôle chaîne couple |
+| **Hex basics** | implicite | ✅ #8–#10 | Adresses hex / lignes F / colonne |
 | A2L similar | ❌ | ✅ | 0005 → 0008 |
 | Injection Time | ❌ | ✅ | **NOUVEAU** @ 0x1D1496 |
 | IQ cruise | ⏳ | ✅ | Logique différente |
@@ -160,5 +170,5 @@ shorts-videos/
 ---
 
 **Dernière mise à jour :** 27 oct 2026  
-**Statut :** 7/12 shorts créés (#1–#4 conversions + #5–#6 lecture + #7 fondement)  
-**Priorité :** Compléter #8-#12 selon ordre logique
+**Statut :** 10/12 shorts créés (#1–#7 maps + #8–#10 hexdump basics)  
+**Priorité :** Compléter #11–#12 (A2L similar, Injection Time)
