@@ -80,7 +80,13 @@ MOTEUR APLATI sur ce plan — OUVRIR « ENSEMBLE »
 -----------------------------------------------
 https://cad.onshape.com/documents/cf86a5c78a4dd68745e89dad/w/5ef8c98edd32932abdd087a8/e/a1c70fc4cedf0741114d1238
 Script : python flatten_from_user_cale.py --upload
-  - garde la transform cale user (bake STEP)
-  - aplatit la bride mesh sous la cale (normale / 4 trous)
-  - n'envoie PLUS la cale sur le côté roulement vilebrequin (+X)
+
+CARTER CAD-LIKE (plans + trous cylindriques) — OUVRIR « ENSEMBLE »
+-------------------------------------------------------------------
+https://cad.onshape.com/documents/8c2006be23d0bc0dc9fb9e6f/w/a035d849592a5136952edb51/e/7a7fd5ab3c822445c79532f4
+Script : python refine_carter_cadlike.py --upload
+  - bride plane (pose cale user)
+  - 4 coins Ø~7.1 + 2 oreilles Ø~6.7 → cylindres parfaits
+  - cale baked à la pose USER (pas de recentrage +X)
+  - solide Onshape ~1.66e-3 m³
 IMPORTANT : cliquer « ENSEMBLE moteur + cale ».
