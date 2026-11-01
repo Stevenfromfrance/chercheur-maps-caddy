@@ -1,0 +1,75 @@
+{
+  "method": "joint_silhouette_extrude_plus_cyl_boss_crank_tunnel",
+  "goal": "reproduce carter moteur as editable B-Rep (scan as underlay)",
+  "frame": "joint=Right/X=0, cylinder\u2248+Y (from align_and_reverse_faces)",
+  "carter": {
+    "silhouette_points": 61,
+    "silhouette_area_mm2": 6514.215363171437,
+    "x_range": [
+      -77.15072326660156,
+      121.35272338867186
+    ],
+    "thickness_mm": 198.50344665527342,
+    "cylinder": {
+      "center": [
+        116.46129393029553,
+        407.31051387974753,
+        -9.942931247420068
+      ],
+      "bore": 47.0,
+      "pad": [
+        139.47900725463748,
+        110.0
+      ],
+      "boss_h": 55.0,
+      "studs": [
+        [
+          36.416620550120356,
+          405.1145030693435,
+          17.033142609869056
+        ],
+        [
+          133.62433500480998,
+          407.78137873744544,
+          -24.49239692119743
+        ],
+        [
+          141.61709774571636,
+          408.00065870502345,
+          -48.57084883141163
+        ],
+        [
+          30.13809049107888,
+          404.9422527583298,
+          -7.369282623467657
+        ]
+      ],
+      "stud_dia": 8.5
+    },
+    "crank": {
+      "center": [
+        -5.0,
+        8.934971946817065,
+        -12.654112970088168
+      ],
+      "diameter": 46.939467622982676
+    },
+    "ignition": {
+      "center": [
+        11.451722703168128,
+        -52.95461463472801,
+        0.42565087346759967
+      ],
+      "pad_dia": 110.0,
+      "hole_dia": 28.0
+    },
+    "bbox": {
+      "xlen": 263.35152082421587,
+      "ylen": 465.97597285225135,
+      "zlen": 142.7537993040786,
+      "volume_mm3": 2140497.298149696
+    }
+  },
+  "step": "/workspace/mina_scan/carter_moteur_brep.step",
+  "onshape_url": "https://cad.onshape.com/documents/2cac81a96ea0025dd084960c/w/731fe43d0f795f1484ffbbb3/e/a3c9d802b17cb20bfff5de89"
+}
