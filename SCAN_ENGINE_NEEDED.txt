@@ -88,13 +88,19 @@ Script : python refine_carter_cadlike.py --upload
 
 RÉTRO-INGÉNIERIE B-Rep — LOC MOTEUR (joint / cylindre / allumage)
 ----------------------------------------------------------------
+(Ancien, plans PCA/offset de travers — NE PLUS UTILISER)
 https://cad.onshape.com/documents/035dc502b17ef4325158b45f/w/ac62afd35128557a4ae49025/e/771a79edb7e2430f007041f9
-Script : python reverse_carter_faces.py --upload
-  Focus carter (PAS la cale clapet) :
-  - `_face cylindre B-Rep` : plan goujons + alésage + 4 trous
-  - `_plan joint B-Rep` : plan de joint idéalisé
-  - `_face allumage B-Rep` : bout carter côté allumage
-  - `_mesh calque` : scan sous-jacent
-Méthode : plan réf → esquisse idéale → extrusion solide (CadQuery STEP).
+
+ALIGNÉ 3 POINTS → origine (joint = Right / X=0) — OUVRIR « ENSEMBLE »
+--------------------------------------------------------------------
+https://cad.onshape.com/documents/f9b5ddc005281e07f2ba6a96/w/1b433dabe7c0db74f6e1e7cf/e/bf324f4c0964541173023013
+Script : python align_and_reverse_faces.py --upload
+Méthode (comme en Onshape manuel) :
+  1) Plan par 3 points ESPACÉS sur le maillage (pas Offset/PCA)
+  2) Validation type vue en coupe (rms / p10 / p90 sur la face)
+  3) Transform type Mate Connector : plan de joint → Right (X=0) + origine
+  4) Pads B-Rep cylindre / joint / allumage dans ce repère
+Section (mm) : cylindre rms≈0.12 tilt≈1.7° | allumage rms≈0.05 | joint rms≈0.10
+Vérifier dans Onshape : Section view sur chaque plan = ligne qui effleure le mesh.
 
 (Ancien doc bride+cale : e37ed7ae… — secondaire)
