@@ -1,0 +1,239 @@
+{
+  "method": "refine_carter_cadlike",
+  "user_doc": "https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0",
+  "cale_ref": {
+    "name": "calle vl14",
+    "onshape": "https://cad.onshape.com/documents/a21e5846c7f0224fd076feed/w/f27de36333f4b344289a56ea/e/25eaf2b3c944d6feceef6161",
+    "size_mm": {
+      "x": 68.202,
+      "y": 78.3,
+      "z": 19.541
+    },
+    "thickness_mm": 19.541,
+    "ear_spacing_mm": 64.033,
+    "ear_holes_xy_mm": [
+      {
+        "x": -5.516,
+        "y": 33.098,
+        "diameter": 6.76
+      },
+      {
+        "x": 2.505,
+        "y": -30.431,
+        "diameter": 6.771
+      }
+    ],
+    "corner_holes_xy_mm": [
+      {
+        "x": -32.774,
+        "y": -19.03,
+        "diameter": 7.197
+      },
+      {
+        "x": -32.584,
+        "y": 21.81,
+        "diameter": 7.105
+      },
+      {
+        "x": 29.882,
+        "y": 21.72,
+        "diameter": 7.143
+      },
+      {
+        "x": 29.634,
+        "y": -19.156,
+        "diameter": 7.092
+      }
+    ],
+    "note": "Cale d'admission param\u00e9trique Onshape (Sketch/Extrude). Remplace les r\u00e9f\u00e9rences pr\u00e9c\u00e9dentes erron\u00e9es."
+  },
+  "source_stl": "/workspace/mina_scan/mina_piece_80000.stl",
+  "flange_plane": {
+    "normal": [
+      -0.007161767994572232,
+      -0.33395452704644807,
+      0.9425619783029523
+    ],
+    "d_mm": 51.50242942982086,
+    "center_mm": [
+      6.506424329280091,
+      22.566173809829603,
+      63.47999476796403
+    ]
+  },
+  "gap_cale_to_mesh_mm": 15.571792354314704,
+  "flange_flatten": {
+    "n_faces": 426,
+    "n_core": 124,
+    "n_blend": 535,
+    "rms_core_after": 2.261716722842169e-12,
+    "span_core_after": 1.1382894626876805e-11,
+    "normal": [
+      -0.007161767994572232,
+      -0.33395452704644807,
+      0.9425619783029523
+    ],
+    "d_mm": 51.50242942982086,
+    "center_mm": [
+      6.506424329280091,
+      22.566173809829603,
+      63.47999476796403
+    ],
+    "holes_ref_mm": [
+      [
+        36.14859271818508,
+        31.194106317886853,
+        65.96778961761603
+      ],
+      [
+        12.535814024825678,
+        -7.827157776948214,
+        51.96294182817648
+      ],
+      [
+        6.244869743539916,
+        51.99069581318797,
+        73.1089133186583
+      ],
+      [
+        -17.480521611102052,
+        12.969744002543376,
+        59.10332052034889
+      ]
+    ]
+  },
+  "holes": [
+    {
+      "kind": "corner",
+      "center_on_flange_mm": [
+        41.20393440618333,
+        40.27978986813565,
+        69.2253052058706
+      ],
+      "diameter_mm": 7.197,
+      "n_verts_moved": 21,
+      "radius_rms_before": 1.1889309335778613,
+      "radius_rms_after": 2.545570439865189e-15,
+      "radius_span_before": 3.4978282730614207,
+      "radius_span_after": 1.021405182655144e-14,
+      "radius_median_before": 4.369186623396905,
+      "radius_median_after": 3.5984999999999987
+    },
+    {
+      "kind": "corner",
+      "center_on_flange_mm": [
+        39.898680649551245,
+        1.9798086167447706,
+        55.645508498694966
+      ],
+      "diameter_mm": 7.105,
+      "n_verts_moved": 0,
+      "radius_rms_before": null,
+      "radius_rms_after": null,
+      "radius_span_before": null,
+      "radius_span_after": null,
+      "radius_median_before": null,
+      "radius_median_after": null
+    },
+    {
+      "kind": "corner",
+      "center_on_flange_mm": [
+        -22.53673621634933,
+        3.8709266401736278,
+        55.84114492272954
+      ],
+      "diameter_mm": 7.143,
+      "n_verts_moved": 18,
+      "radius_rms_before": 1.095695402904487,
+      "radius_rms_after": 1.6148137811567933e-15,
+      "radius_span_before": 2.522779331268456,
+      "radius_span_after": 6.217248937900877e-15,
+      "radius_median_before": 4.439296472197788,
+      "radius_median_after": 3.5714999999999995
+    },
+    {
+      "kind": "corner",
+      "center_on_flange_mm": [
+        -21.17252541510919,
+        42.20299620441114,
+        69.4327586501881
+      ],
+      "diameter_mm": 7.092,
+      "n_verts_moved": 20,
+      "radius_rms_before": 1.07256477522819,
+      "radius_rms_after": 2.482534153247273e-15,
+      "radius_span_before": 3.1384626730427527,
+      "radius_span_after": 1.1102230246251565e-14,
+      "radius_median_before": 4.362338839523891,
+      "radius_median_after": 3.546
+    },
+    {
+      "kind": "ear",
+      "center_on_flange_mm": [
+        12.534593004852235,
+        -7.824772587017471,
+        51.9637776356159
+      ],
+      "diameter_mm": 6.76,
+      "n_verts_moved": 40,
+      "radius_rms_before": 1.1514608277667622,
+      "radius_rms_after": 9.262214823830476e-16,
+      "radius_span_before": 3.0227739966783873,
+      "radius_span_after": 3.9968028886505635e-15,
+      "radius_median_before": 4.321739302541698,
+      "radius_median_after": 3.38
+    },
+    {
+      "kind": "ear",
+      "center_on_flange_mm": [
+        6.252179734766833,
+        51.99361988363244,
+        73.11000487448945
+      ],
+      "diameter_mm": 6.771,
+      "n_verts_moved": 27,
+      "radius_rms_before": 0.7824490150538784,
+      "radius_rms_after": 2.2253749033711442e-15,
+      "radius_span_before": 2.6568298517281783,
+      "radius_span_after": 1.1546319456101628e-14,
+      "radius_median_before": 3.711641476547401,
+      "radius_median_after": 3.3855
+    }
+  ],
+  "other_planes": [
+    {
+      "area": 2888.0411264788186,
+      "normal": [
+        -0.8084969585984602,
+        0.5580597102000032,
+        0.18682084409007507
+      ],
+      "d": 39.2655025992436,
+      "rms_before": 0.3393975029040239,
+      "rms_after": 0.00021970663318312362,
+      "span_before": 1.25375287574996,
+      "span_after": 0.0009879621933706062
+    },
+    {
+      "area": 2881.6677850788456,
+      "normal": [
+        0.025801474017456482,
+        0.9951964740116672,
+        0.09443655039904683
+      ],
+      "d": 5.976710212225027,
+      "rms_before": 0.4492383222337874,
+      "rms_after": 0.00044658314738111585,
+      "span_before": 1.4145147038583765,
+      "span_after": 0.0023911474586251202
+    }
+  ],
+  "n_faces_out": 80000,
+  "watertight": true,
+  "volume_mm3": 1660782.1167185344,
+  "note": "Cale pose USER pr\u00e9serv\u00e9e; trous snapp\u00e9s cylindriques; pas de recentrage +X.",
+  "onshape_url": "https://cad.onshape.com/documents/8c2006be23d0bc0dc9fb9e6f/w/a035d849592a5136952edb51/e/7a7fd5ab3c822445c79532f4",
+  "onshape_n_solids": 1,
+  "onshape_n_sheets": 0,
+  "onshape_top_volume_m3": 0.0016607821087937238
+}

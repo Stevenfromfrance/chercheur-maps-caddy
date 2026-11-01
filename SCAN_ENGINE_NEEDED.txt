@@ -1,0 +1,131 @@
+Ce qu'il faut pour générer un moteur à partir d'un scan 3D (type Minarelli HOR)
+================================================================================
+
+ÉTAT DU SCAN ACTUEL
+-------------------
+Document : Untitled document / Part Studio « MINARELLI HOR »
+URL : https://cad.onshape.com/documents/393e786d769846f9a2277f57/w/23b52a0fc2db5410b3057fe6/e/1561a4ef6b92ae7c09ccde9b
+Type : mesh STL (~3,0 M faces, ~152 Mo), PAS un scan A4 2D
+Corps principal : watertight après nettoyage, extents ~239 × 568 × 222 mm
+(Note : l'axe long inclut goujons / artefacts — à caler avec une cote réelle)
+
+PHASE 1 — AUTOMATISABLE (script scan_to_engine.py)  ← fait
+----------------------------------------------------------
+[x] Clés API Onshape (.env : ACCESS_KEY, SECRET_KEY, BASE_URL)
+[x] Téléchargement du STL source (blob Onshape)
+[x] Nettoyage mesh (plus gros corps, fragments jetés)
+[x] Décimation (~80k faces) pour Onshape fluide
+[x] Export STL pièce unique local
+[x] Upload → nouveau document Onshape (1 Part Studio / 1 pièce)
+[ ] Recalage échelle (--scale-axis + --scale-mm)  ← TOI : 1 mesure réelle
+
+PHASE 2 — TOI (manuel dans Onshape, sur la pièce générée)
+---------------------------------------------------------
+[ ] Vérifier l'échelle (comparer 1 alésage / entraxe goujons au réel)
+[ ] Orientier / plans de construction (plan de joint, axe vilo)
+[ ] Peaufiner la géométrie (coupes, faces, trous) — une seule pièce
+[ ] Garder le mesh comme référence visuelle sous les sketches
+
+PHASE 3 — PLUS TARD (moteur « vrai » CAD)
+-----------------------------------------
+[ ] Split carter gauche / carter droit (plan de joint)
+[ ] Sketches paramétriques (alésages, nervures, faces joint)
+[ ] Assemblage Onshape (carter G + D + cylindre + etc.)
+[ ] Cotations fonctionnelles + tolérances
+
+OUTILS / DÉPS
+-------------
+pip install -r requirements-scan.txt
+python scan_to_engine.py --upload
+python scan_to_engine.py --stl mina_scan/mina_raw.stl --scale-axis y --scale-mm XXX --upload
+
+FICHIERS CLÉS
+-------------
+scan_to_engine.py     pipeline principal
+onshape_http.py       auth HMAC Onshape
+requirements-scan.txt dépendances Python
+mina_scan/            sorties locales (gitignoré : STL lourds)
+make_editable_copy.py copie arbre features (utile pour cales 2D, pas pour ce mesh)
+scan_scale.py         échelle scans A4 2D (autre cas d'usage)
+
+LIMITES HONNÊTES
+----------------
+- Onshape / Cursor ne « inventent » pas un moteur paramétrique depuis un prompt.
+- Le mesh clean = gabarit 1 pièce. Le CAD éditable = reverse manuel (ou semi-auto plus tard).
+- Pas de split G/D en phase 1 (comme demandé).
+
+
+PIÈCE GÉNÉRÉE (phase 1)
+---------------------
+https://cad.onshape.com/documents/d00619e4f5ad0c64938cc17f/w/a9d23a71a07ffa269554fef8
+(80k faces)
+
+CALE DE RÉFÉRENCE (calle vl14)
+------------------------------
+https://cad.onshape.com/documents/a21e5846c7f0224fd076feed/w/f27de36333f4b344289a56ea/e/25eaf2b3c944d6feceef6161
+Cotes : 68.2 × 78.3 × 19.5 mm — oreilles entraxe ≈ 64.03 mm
+(fichier cale_admission_ref.json)
+
+CALE ALIGNÉE (réf. manuelle utilisateur)
+----------------------------------------
+https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0
+Pose capturée → mina_scan/user_cale_pose.json
+
+POSE CALE UTILISATEUR (référence 4 trous — NE PAS recentrer sur +X / roulement)
+------------------------------------------------------------------------------
+https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0
+Les 4 trous de la calle = patron des 4 trous carter. On n'y touche pas.
+
+MOTEUR APLATI sur ce plan — OUVRIR « ENSEMBLE »
+-----------------------------------------------
+https://cad.onshape.com/documents/cf86a5c78a4dd68745e89dad/w/5ef8c98edd32932abdd087a8/e/a1c70fc4cedf0741114d1238
+Script : python flatten_from_user_cale.py --upload
+
+CARTER CAD-LIKE mesh (plans + trous snappés) — OUVRIR « ENSEMBLE »
+-------------------------------------------------------------------
+https://cad.onshape.com/documents/8c2006be23d0bc0dc9fb9e6f/w/a035d849592a5136952edb51/e/7a7fd5ab3c822445c79532f4
+Script : python refine_carter_cadlike.py --upload
+
+RÉTRO-INGÉNIERIE B-Rep — LOC MOTEUR (joint / cylindre / allumage)
+----------------------------------------------------------------
+(Ancien, plans PCA/offset de travers — NE PLUS UTILISER)
+https://cad.onshape.com/documents/035dc502b17ef4325158b45f/w/ac62afd35128557a4ae49025/e/771a79edb7e2430f007041f9
+
+ALIGNÉ 3 POINTS → origine (joint = Right / X=0) — OUVRIR « ENSEMBLE »
+--------------------------------------------------------------------
+https://cad.onshape.com/documents/f9b5ddc005281e07f2ba6a96/w/1b433dabe7c0db74f6e1e7cf/e/bf324f4c0964541173023013
+Script : python align_and_reverse_faces.py --upload
+Méthode (comme en Onshape manuel) :
+  1) Plan par 3 points ESPACÉS sur le maillage (pas Offset/PCA)
+  2) Validation type vue en coupe (rms / p10 / p90 sur la face)
+  3) Transform type Mate Connector : plan de joint → Right (X=0) + origine
+  4) Pads B-Rep cylindre / joint / allumage dans ce repère
+Section (mm) : cylindre rms≈0.12 tilt≈1.7° | allumage rms≈0.05 | joint rms≈0.10
+
+CARTER MOTEUR B-Rep (reproduction CAD peaufinée) — OUVRIR « ENSEMBLE »
+----------------------------------------------------------------------
+https://cad.onshape.com/documents/bb6d4c5219b11ebdf2b11c1b/w/473b29eb0ed223adc4857f23/e/3786b6b1920379bcef7f291d
+Script : python rebuild_carter_brep.py --upload
+Contenu :
+  - `_carter moteur B-Rep` : solide éditable peaufiné
+      · silhouette joint plus fine (≈80 pts) + vis de fermeture
+      · corps en paliers d’épaisseur X (zones ign / mid / cyl)
+      · deck cylindre : goujons recalés, alésage fité (~Ø40 au centre goujons), collar
+      · tunnel vilo Ø47 moyenné sur coupes
+      · face allumage = vraie silhouette de section
+  - `_mesh calque aligné` : scan sous-jacent (joint = X=0)
+Suite : split G/D, nervures, détails fonderie.
+(Ancien v1 : 2cac81a9… — moins précis sur l’alésage cylindre)
+
+CARTER G / D (split + nervures + bossages) — OUVRIR « ENSEMBLE »
+----------------------------------------------------------------
+https://cad.onshape.com/documents/b81703aa450cf2e9cfbcc890/w/75803f615650df14ed9d0c45/e/963811c1584182fe1f13653e
+Script : python rebuild_carter_halves.py --upload
+  - `_carter G (X≤0)` / `_carter D (X≥0)` : demi-carters
+  - `_carter complet (avant split)` : solide avant coupe
+  - `_mesh calque aligné`
+  Nervures radiales autour vilo + liaison vers cylindre ;
+  bossages roulement latéraux détectés sur le scan.
+
+
+(Ancien doc bride+cale : e37ed7ae… — secondaire)
