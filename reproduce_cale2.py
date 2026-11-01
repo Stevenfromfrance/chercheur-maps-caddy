@@ -1,11 +1,16 @@
 """
-Reproduit la cale du document Onshape « cale final » et compare les cotes.
+Compare / twin de la cale Onshape « cale final ».
 
-Référence manuelle :
+Référence :
 https://cad.onshape.com/documents/5cc42b294eb99d49a3bb8a88/w/aa52e1d9f9b6ecfdf4680687/e/32ca01a3073e3a948ad21fb3
 
-Le scan associé (Calle Rand d.png) est en ~300 DPI :
-  902×923 px → 76.4×78.1 mm  ≈  bbox Onshape 75.0×78.1 mm  (±1 %)
+Ce script :
+1. Mesure le scan Calle Rand d.png @ 300 DPI vs la bbox Onshape
+2. Exporte le STEP exact du Part Studio (même géométrie / mêmes cotes)
+3. Le réimporte dans un nouveau document pour contrôle
+
+IMPORTANT : ne pas « inventer » le profil (échancrure, arcs). Une approx
+CadQuery simplifiée déforme la pièce (comme la version orange ratée).
 """
 
 from __future__ import annotations
@@ -14,120 +19,23 @@ import os
 import time
 from pathlib import Path
 
-import cadquery as cq
 from dotenv import load_dotenv
 from onshape_client.client import Client
+from onshape_client.oas.models.bt_document_params import BTDocumentParams
+from onshape_client.oas.models.bt_translate_format_params import BTTranslateFormatParams
+from PIL import Image
 
-# --- Cotes mesurées sur le Part Studio Onshape (mm) ---
-OUTER_W = 75.0
-OUTER_H = 70.0          # corps hors oreilles (oreilles ajoutées à part)
-THICKNESS = 12.1
-CORNER_R = 6.0
-LOBE_R = 7.1
-HOLE_D = 6.28
-
-# Trous principaux (centres relatifs au centre de la bbox Onshape)
-HOLES = [
-    (3.62, 32.04),     # haut (oreille)
-    (-3.73, -31.87),   # bas (oreille)
-    (-26.35, 10.15),   # gauche
-    (26.25, -9.98),    # droite
-]
-
-# Petits trous coins (carré central / fixations) Ø5
-CORNER_HOLES = [
-    (-35.0, 27.5),
-    (35.0, 27.5),
-    (-35.0, -27.5),
-    (35.0, -27.5),
-]
-CORNER_HOLE_D = 5.0
-
-OUTPUT_STEP = Path(__file__).resolve().parent / "cale2_repro.step"
-DOC_NAME = "Cale2 repro DPI compare"
-
-# Référence Onshape (pour le tableau comparatif)
-REF = {
-    "outer_w": 75.0,
-    "outer_h": 78.054,
-    "thickness": 12.1,
-    "hole_spacing_v": 63.91,
-    "top_hole": (3.62, 32.04),
-    "bot_hole": (-3.73, -31.87),
-}
+REF_DID = "5cc42b294eb99d49a3bb8a88"
+REF_WID = "aa52e1d9f9b6ecfdf4680687"
+REF_EID = "32ca01a3073e3a948ad21fb3"
+SCAN = Path(__file__).resolve().parent / "cmp_cale2_scan.png"
+OUT_STEP = Path(__file__).resolve().parent / "cale2_exact.step"
 
 
-def build() -> cq.Workplane:
-    body = (
-        cq.Workplane("XY")
-        .rect(OUTER_W, OUTER_H)
-        .extrude(THICKNESS)
-        .edges("|Z")
-        .fillet(CORNER_R)
-    )
-
-    # Oreilles haut/bas uniquement (comme le scan)
-    lobes = cq.Workplane("XY")
-    for cx, cy in (HOLES[0], HOLES[1]):
-        lobes = lobes.moveTo(cx, cy).circle(LOBE_R)
-    body = body.union(lobes.extrude(THICKNESS))
-
-    # Échancrure gauche simplifiée (taille d'après le trou gauche)
-    # On retire un disque large côté gauche pour créer la taille
-    waist = (
-        cq.Workplane("XY")
-        .workplane(offset=-0.1)
-        .moveTo(-45, 5)
-        .circle(22)
-        .extrude(THICKNESS + 0.2)
-    )
-    body = body.cut(waist)
-
-    # Trous principaux
-    holes = cq.Workplane("XY").workplane(offset=-0.1)
-    for cx, cy in HOLES:
-        holes = holes.moveTo(cx, cy).circle(HOLE_D / 2)
-    body = body.cut(holes.extrude(THICKNESS + 0.2))
-
-    # Trous coins Ø5
-    ch = cq.Workplane("XY").workplane(offset=-0.1)
-    for cx, cy in CORNER_HOLES:
-        ch = ch.moveTo(cx, cy).circle(CORNER_HOLE_D / 2)
-    body = body.cut(ch.extrude(THICKNESS + 0.2))
-
-    return body
-
-
-def compare(part: cq.Workplane) -> None:
-    bb = part.val().BoundingBox()
-    print("\n=== COMPARAISON DIMENSIONS ===")
-    rows = [
-        ("Largeur hors-tout (mm)", REF["outer_w"], bb.xlen),
-        ("Hauteur hors-tout (mm)", REF["outer_h"], bb.ylen),
-        ("Épaisseur (mm)", REF["thickness"], bb.zlen),
-        (
-            "Entraxe trous H/B (mm)",
-            REF["hole_spacing_v"],
-            abs(HOLES[0][1] - HOLES[1][1]),
-        ),
-    ]
-    print(f"{'Mesure':<28} {'Onshape':>10} {'Repro':>10} {'Écart%':>8}")
-    for name, ref, got in rows:
-        err = 100.0 * (got - ref) / ref if ref else 0
-        print(f"{name:<28} {ref:10.3f} {got:10.3f} {err:7.2f}%")
-
-    # Scan DPI
-    print("\n=== SCAN Calle Rand d.png @ 300 DPI ===")
-    print("Image 902×923 px → 76.37×78.15 mm")
-    print("Bbox pièce scan     → ~76.20×77.98 mm")
-    print(f"Écart scan vs Onshape largeur : {(76.20-75)/75*100:.2f}%")
-    print(f"Écart scan vs Onshape hauteur : {(77.98-78.054)/78.054*100:.2f}%")
-
-
-def upload(step: Path) -> str:
+def make_client() -> Client:
     load_dotenv()
     Client.singleton_instance = None
-    client = Client(
+    return Client(
         configuration={
             "base_url": os.getenv("ONSHAPE_BASE_URL"),
             "access_key": os.getenv("ONSHAPE_ACCESS_KEY"),
@@ -135,10 +43,63 @@ def upload(step: Path) -> str:
         },
         keys_file=None,
     )
-    from onshape_client.oas.models.bt_document_params import BTDocumentParams
 
+
+def compare_scan_to_onshape(client: Client) -> None:
+    bb = client.part_studios_api.get_part_studio_bounding_boxes(
+        REF_DID, "w", REF_WID, REF_EID
+    )
+    b = bb.to_dict()
+    ow = (b["high_x"] - b["low_x"]) * 1000
+    oh = (b["high_y"] - b["low_y"]) * 1000
+    ot = (b["high_z"] - b["low_z"]) * 1000
+    print("\n=== Onshape référence ===")
+    print(f"  hors-tout : {ow:.3f} × {oh:.3f} × {ot:.3f} mm")
+
+    if SCAN.exists():
+        im = Image.open(SCAN)
+        dpi = (im.info.get("dpi") or (300, 300))[0]
+        mpp = 25.4 / float(dpi)
+        sw, sh = im.size[0] * mpp, im.size[1] * mpp
+        print(f"\n=== Scan {SCAN.name} @ {dpi:.0f} DPI ===")
+        print(f"  image     : {sw:.3f} × {sh:.3f} mm")
+        print(f"  écart W   : {(sw - ow) / ow * 100:.2f}%")
+        print(f"  écart H   : {(sh - oh) / oh * 100:.2f}%")
+    else:
+        print("(scan local absent — skip comparaison DPI)")
+
+
+def export_exact_step(client: Client) -> Path:
+    print("\nExport STEP exact depuis Onshape…")
+    params = BTTranslateFormatParams(
+        format_name="STEP",
+        store_in_document=False,
+        notify_user=False,
+        destination_name="cale2_exact",
+    )
+    tr = client.part_studios_api.create_part_studio_translation(
+        REF_DID, "w", REF_WID, REF_EID, params
+    )
+    while True:
+        info = client.translation_api.get_translation(tr.id)
+        print(" ", info.request_state)
+        if info.request_state in ("DONE", "FAILED"):
+            break
+        time.sleep(2)
+    if info.request_state != "DONE":
+        raise RuntimeError(info.to_dict())
+    fid = info.result_external_data_ids[0]
+    resp = client.documents_api.download_external_data(
+        REF_DID, fid, _preload_content=False
+    )
+    OUT_STEP.write_bytes(resp.data)
+    print(f"STEP écrit : {OUT_STEP} ({OUT_STEP.stat().st_size} o)")
+    return OUT_STEP
+
+
+def reimport(client: Client, step: Path) -> str:
     doc = client.documents_api.create_document(
-        BTDocumentParams(name=DOC_NAME, is_public=True)
+        BTDocumentParams(name="Cale2 EXACT export (meme cotes)", is_public=True)
     )
     dd = doc.to_dict()
     did, wid = dd["id"], dd["default_workspace"]["id"]
@@ -166,11 +127,10 @@ def upload(step: Path) -> str:
 
 
 def main():
-    part = build()
-    cq.exporters.export(part, str(OUTPUT_STEP))
-    print(f"STEP écrit : {OUTPUT_STEP} ({OUTPUT_STEP.stat().st_size} o)")
-    compare(part)
-    upload(OUTPUT_STEP)
+    client = make_client()
+    compare_scan_to_onshape(client)
+    step = export_exact_step(client)
+    reimport(client, step)
 
 
 if __name__ == "__main__":
