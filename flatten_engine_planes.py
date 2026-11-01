@@ -16,14 +16,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-import time
 from collections import deque
 from pathlib import Path
 
 import numpy as np
 import trimesh
-from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "mina_scan"
