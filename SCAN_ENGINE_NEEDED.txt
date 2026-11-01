@@ -71,13 +71,16 @@ CALE ALIGNÉE (réf. manuelle utilisateur)
 https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0
 Pose capturée → mina_scan/user_cale_pose.json
 
-MOTEUR APLATI (plans nivelés, mesh solide) — OUVRIR « ENSEMBLE »
----------------------------------------------------------------
-https://cad.onshape.com/documents/bf4238b160c9a9614bec8f45/w/dbdac0cd5b6a424d14fc2970/e/a060a7092d7cfd21588c2f7c
-Script : python flatten_engine_planes.py --upload
-  - bride admission : projection cœur + blend (sans casser le manifold)
-  - autres plans : petits pas itératifs
-  - import Onshape = 1 gros solide (~1.67e-3 m³) + calle vl14 assise sur X≈53.5
-  - /!\ une projection brutale explosait le mesh en fragments (cale seule visible)
-IMPORTANT : cliquer « ENSEMBLE moteur + cale » (pas _moteur/_cale seule).
-(Ancien doc cassé 90a4407b… à ignorer.)
+POSE CALE UTILISATEUR (référence 4 trous — NE PAS recentrer sur +X / roulement)
+------------------------------------------------------------------------------
+https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0
+Les 4 trous de la calle = patron des 4 trous carter. On n'y touche pas.
+
+MOTEUR APLATI sur ce plan — OUVRIR « ENSEMBLE »
+-----------------------------------------------
+https://cad.onshape.com/documents/cf86a5c78a4dd68745e89dad/w/5ef8c98edd32932abdd087a8/e/a1c70fc4cedf0741114d1238
+Script : python flatten_from_user_cale.py --upload
+  - garde la transform cale user (bake STEP)
+  - aplatit la bride mesh sous la cale (normale / 4 trous)
+  - n'envoie PLUS la cale sur le côté roulement vilebrequin (+X)
+IMPORTANT : cliquer « ENSEMBLE moteur + cale ».
