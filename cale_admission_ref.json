@@ -1,15 +1,20 @@
 {
-  "name": "cale d'admission",
-  "onshape": "https://cad.onshape.com/documents/5cc42b294eb99d49a3bb8a88/w/aa52e1d9f9b6ecfdf4680687/e/32ca01a3073e3a948ad21fb3",
+  "name": "basetta_sotto_minarelli_orizzontale",
+  "onshape": "https://cad.onshape.com/documents/abf25ddd7939c47991ad4c6b/w/070b3d29da40e7fe778d2d9f/e/4d14edf501f8ccd04846218a",
   "size_mm": {
-    "x": 75.0,
-    "y": 78.054,
-    "z": 12.1
+    "x": 75.409,
+    "y": 7.6,
+    "z": 65.0
   },
-  "tab_hole_spacing_mm": 64.337,
-  "tab_holes_mm": [
-    {"x": 3.619, "y": 32.042, "diameter": 6.28},
-    {"x": -3.731, "y": -31.874, "diameter": 6.235}
-  ],
-  "note": "Cotes réelles issues du Part Studio Onshape (sketches calibrés). Sert de référence d'échelle pour le scan Minarelli."
+  "thickness_mm": 7.6,
+  "port_mm": {
+    "w": 38.0,
+    "h": 44.0
+  },
+  "holes": {
+    "count": 4,
+    "diameter_mm": 6.5,
+    "note": "4 trous Ø6.5 autour de l'orifice rectangulaire 38×44"
+  },
+  "note": "Nouvelle cale de référence (remplace l'ancienne erronée). Mesh OBJ importé dans Onshape."
 }
