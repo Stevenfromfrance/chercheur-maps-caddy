@@ -57,6 +57,8 @@ DEFAULT_WID = "23b52a0fc2db5410b3057fe6"
 DEFAULT_EID = "1561a4ef6b92ae7c09ccde9b"  # Part Studio MINARELLI HOR
 
 OUT_DIR = Path(__file__).resolve().parent / "mina_scan"
+CALE_REF_PATH = Path(__file__).resolve().parent / "cale_admission_ref.json"
+
 AXIS_INDEX = {"x": 0, "y": 1, "z": 2}
 
 
@@ -304,6 +306,7 @@ def main() -> None:
             "manual_refine_pending": True,
             "split_carter_gd_pending": True,
         },
+        "cale_ref": json.loads(CALE_REF_PATH.read_text()) if CALE_REF_PATH.exists() else None,
         "still_needed_for_full_engine": [
             "1 cote réelle (pied à coulisse) pour --scale-mm",
             "Reverse CAD manuel (sketches) sur la pièce mesh",

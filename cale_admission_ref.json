@@ -1,0 +1,15 @@
+{
+  "name": "cale d'admission",
+  "onshape": "https://cad.onshape.com/documents/5cc42b294eb99d49a3bb8a88/w/aa52e1d9f9b6ecfdf4680687/e/32ca01a3073e3a948ad21fb3",
+  "size_mm": {
+    "x": 75.0,
+    "y": 78.054,
+    "z": 12.1
+  },
+  "tab_hole_spacing_mm": 64.337,
+  "tab_holes_mm": [
+    {"x": 3.619, "y": 32.042, "diameter": 6.28},
+    {"x": -3.731, "y": -31.874, "diameter": 6.235}
+  ],
+  "note": "Cotes réelles issues du Part Studio Onshape (sketches calibrés). Sert de référence d'échelle pour le scan Minarelli."
+}

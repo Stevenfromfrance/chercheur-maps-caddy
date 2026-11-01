@@ -58,4 +58,11 @@ LIMITES HONNÊTES
 PIÈCE GÉNÉRÉE (phase 1)
 ---------------------
 https://cad.onshape.com/documents/d00619e4f5ad0c64938cc17f/w/a9d23a71a07ffa269554fef8
-(80k faces, échelle scan brute — à caler avec 1 cote réelle)
+(80k faces)
+
+DOC MOTEUR + CALE D'ADMISSION (cotes réelles)
+--------------------------------------------
+https://cad.onshape.com/documents/6ce65fc3a321bb6ca7fc25ec/w/7a4de24b97a9450ebe372d64
+Réf cale : 75.000 × 78.054 × 12.100 mm, entraxe oreilles ≈ 64.34 mm
+(fichier cale_admission_ref.json)
+Échelle scan vs cale : écart ~1.5 % → pas de rescaling forcé.
