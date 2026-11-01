@@ -102,14 +102,19 @@ Méthode (comme en Onshape manuel) :
   4) Pads B-Rep cylindre / joint / allumage dans ce repère
 Section (mm) : cylindre rms≈0.12 tilt≈1.7° | allumage rms≈0.05 | joint rms≈0.10
 
-CARTER MOTEUR B-Rep (reproduction CAD) — OUVRIR « ENSEMBLE »
--------------------------------------------------------------
-https://cad.onshape.com/documents/2cac81a96ea0025dd084960c/w/731fe43d0f795f1484ffbbb3/e/a3c9d802b17cb20bfff5de89
+CARTER MOTEUR B-Rep (reproduction CAD peaufinée) — OUVRIR « ENSEMBLE »
+----------------------------------------------------------------------
+https://cad.onshape.com/documents/bb6d4c5219b11ebdf2b11c1b/w/473b29eb0ed223adc4857f23/e/3786b6b1920379bcef7f291d
 Script : python rebuild_carter_brep.py --upload
 Contenu :
-  - `_carter moteur B-Rep` : solide éditable (silhouette joint → extrusion,
-    boss cylindre + alésage Ø47 + 4 goujons, tunnel vilo Ø47, face allumage)
+  - `_carter moteur B-Rep` : solide éditable peaufiné
+      · silhouette joint plus fine (≈80 pts) + vis de fermeture
+      · corps en paliers d’épaisseur X (zones ign / mid / cyl)
+      · deck cylindre : goujons recalés, alésage fité (~Ø40 au centre goujons), collar
+      · tunnel vilo Ø47 moyenné sur coupes
+      · face allumage = vraie silhouette de section
   - `_mesh calque aligné` : scan sous-jacent (joint = X=0)
-C’est une première reproduction CAD du carter (pas encore split G/D ni nervures).
+Suite : split G/D, nervures, détails fonderie.
+(Ancien v1 : 2cac81a9… — moins précis sur l’alésage cylindre)
 
 (Ancien doc bride+cale : e37ed7ae… — secondaire)
