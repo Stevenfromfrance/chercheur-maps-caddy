@@ -7,13 +7,13 @@ Repère (déjà calé) :
   - axe cylindre ≈ +Y
   - scan = calque sous le solide
 
-Méthode (plans → esquisses → extrusions / trous) :
-  1) Contour du carter au plan de joint (section X=0, simplifié)
-  2) Extrusion du corps le long de X (épaisseur réelle du scan)
-  3) Boss / deck cylindre + alésage + 4 goujons
-  4) Tunnel vilo (alésage transversal détecté près du joint)
-  5) Face allumage (bout −Y)
-  6) Upload ENSEMBLE : mesh aligné + carter B-Rep (+ pads de ref)
+Méthode (plans → esquisses → extrusions / trous), peaufinée :
+  1) Contour joint plus fin (simplify 1.2) + vis de fermeture détectées
+  2) Corps en paliers d'épaisseur X selon zones Y (ign / mid / cyl)
+  3) Deck cylindre : goujons recalés, alésage fité sur paroi radiale, collar
+  4) Tunnel vilo moyenné sur plusieurs coupes X
+  5) Face allumage = vraie silhouette de section (plus un cercle)
+  6) Upload ENSEMBLE : mesh aligné + carter B-Rep
 
 Usage :
   python rebuild_carter_brep.py --upload
@@ -37,42 +37,120 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "mina_scan"
 
 
-def joint_silhouette_yz(mesh: trimesh.Trimesh, *, simplify=2.0):
-    """Polygone YZ du plan de joint (X=0), coords 3D (x=0,y,z)."""
-    sec = mesh.section(plane_origin=[0, 0, 0], plane_normal=[1, 0, 0])
+def section_polygon_3d(mesh, origin, normal, *, simplify=1.5):
+    """Plus grand polygone d'une coupe → liste de points 3D + aire."""
+    sec = mesh.section(plane_origin=origin, plane_normal=normal)
     if sec is None:
-        raise RuntimeError("pas de section joint X=0")
+        return None, None, None
     path2, tf = sec.to_2D()
+    if not path2.polygons_full:
+        return None, None, None
     main = max(path2.polygons_full, key=lambda p: p.area)
     simp = main.simplify(simplify, preserve_topology=True)
     coords2 = np.asarray(simp.exterior.coords, float)
-    # 2D → 3D
     ones = np.ones((len(coords2), 1))
     pts = (tf @ np.hstack([coords2, np.zeros((len(coords2), 1)), ones]).T).T[:, :3]
-    # force X=0
-    pts[:, 0] = 0.0
-    # drop closing duplicate
     if np.linalg.norm(pts[0] - pts[-1]) < 1e-6:
         pts = pts[:-1]
-    return pts, float(simp.area)
+    return pts, float(simp.area), tf
 
 
-def body_x_range(mesh: trimesh.Trimesh) -> tuple[float, float]:
-    """Épaisseur utile du carter (ignore extrémités goujons / artefacts)."""
+def joint_silhouette_yz(mesh: trimesh.Trimesh, *, simplify=1.2):
+    pts, area, _ = section_polygon_3d(
+        mesh, [0, 0, 0], [1, 0, 0], simplify=simplify
+    )
+    if pts is None:
+        raise RuntimeError("pas de section joint X=0")
+    pts = pts.copy()
+    pts[:, 0] = 0.0
+    return pts, area
+
+
+def zone_x_range(mesh: trimesh.Trimesh, y0: float, y1: float) -> tuple[float, float]:
     v = mesh.vertices
-    core = v[(v[:, 1] > -30) & (v[:, 1] < 320)]
-    lo, hi = np.percentile(core[:, 0], [3, 92])
+    x = v[(v[:, 1] > y0) & (v[:, 1] < y1), 0]
+    if len(x) < 50:
+        return -40.0, 40.0
+    lo, hi = np.percentile(x, [6, 94])
     return float(lo), float(hi)
 
 
-def detect_crank_bore(mesh: trimesh.Trimesh) -> dict | None:
-    """Alésage vilo / roulement près du joint (cercle rond dans une coupe X)."""
+def refine_studs(mesh: trimesh.Trimesh, seed_studs: list[np.ndarray]) -> list[np.ndarray]:
+    """Recale les 4 goujons sur les pointes hautes du mesh."""
+    v = mesh.vertices
+    hi = v[v[:, 1] > np.percentile(v[:, 1], 97.5)]
+    cells: dict = {}
+    for p in hi:
+        key = (round(float(p[0]) / 4) * 4, round(float(p[2]) / 4) * 4)
+        if key not in cells or p[1] > cells[key][1]:
+            cells[key] = p.copy()
+    peaks = sorted(cells.values(), key=lambda p: -p[1])
+    out = []
+    for seed in seed_studs[:4]:
+        best = None
+        best_d = 1e9
+        for p in peaks:
+            d = float(np.linalg.norm(p[[0, 2]] - seed[[0, 2]]))
+            if d < best_d and d < 18:
+                best_d, best = d, p
+        out.append(best if best is not None else seed.copy())
+    # NMS if duplicates
+    cleaned = []
+    for p in out:
+        if all(np.linalg.norm(p[[0, 2]] - q[[0, 2]]) > 15 for q in cleaned):
+            cleaned.append(p)
+    while len(cleaned) < 4 and peaks:
+        p = peaks.pop(0)
+        if all(np.linalg.norm(p[[0, 2]] - q[[0, 2]]) > 22 for q in cleaned):
+            cleaned.append(p)
+    return cleaned[:4]
+
+
+def detect_cylinder_bore(mesh: trimesh.Trimesh, studs: list[np.ndarray]) -> dict:
+    """Centre + rayon d'alésage par fit sur paroi radiale près du deck."""
+    c0 = np.mean(np.vstack(studs), axis=0)
+    deck_y = float(np.median([s[1] for s in studs]))
+    fn, fc = mesh.face_normals, mesh.triangles_center
+    radial = (np.abs(fn[:, 1]) < 0.4) & (fc[:, 1] > deck_y - 55) & (fc[:, 1] < deck_y - 2)
+    pts = fc[radial]
+    d = np.linalg.norm(pts[:, [0, 2]] - c0[[0, 2]], axis=1)
     best = None
-    for t in np.linspace(-25, 25, 21):
+    for r0 in np.linspace(18.0, 28.0, 21):
+        wall = pts[(d > r0 - 2.2) & (d < r0 + 2.2)][:, [0, 2]]
+        if len(wall) < 50:
+            continue
+        x, y = wall[:, 0], wall[:, 1]
+        A = np.c_[2 * x, 2 * y, np.ones_like(x)]
+        sol, *_ = np.linalg.lstsq(A, x * x + y * y, rcond=None)
+        cx, cy = float(sol[0]), float(sol[1])
+        rr = float(np.sqrt(max(sol[2] + cx * cx + cy * cy, 0.0)))
+        resid = float(np.std(np.linalg.norm(wall - np.array([cx, cy]), axis=1) - rr))
+        score = resid + 0.01 * abs(rr - 23.5)  # légère préférence ~Ø47 Minarelli
+        cand = {
+            "center": np.array([cx, deck_y, cy]),
+            "radius": rr,
+            "resid": resid,
+            "n": len(wall),
+            "score": score,
+        }
+        if best is None or score < best["score"]:
+            best = cand
+    if best is None:
+        return {
+            "center": np.array([c0[0], deck_y, c0[2]]),
+            "radius": 23.5,
+            "resid": None,
+            "n": 0,
+        }
+    return best
+
+
+def detect_crank_bore(mesh: trimesh.Trimesh) -> dict | None:
+    """Moyenne des cercles propres près du joint (Y~0–60)."""
+    samples = []
+    for t in np.linspace(-40, 40, 41):
         try:
-            sec = mesh.section(
-                plane_origin=[t, 0, 0], plane_normal=[1, 0, 0]
-            )
+            sec = mesh.section(plane_origin=[t, 0, 0], plane_normal=[1, 0, 0])
         except Exception:
             continue
         if sec is None:
@@ -81,26 +159,74 @@ def detect_crank_bore(mesh: trimesh.Trimesh) -> dict | None:
         for poly in path2.polygons_full:
             for ring in [poly.exterior, *poly.interiors]:
                 xy = np.asarray(ring.coords, float)
-                if len(xy) < 16:
+                if len(xy) < 24:
                     continue
                 c = xy.mean(0)
                 r = np.linalg.norm(xy - c, axis=1)
                 rm, rs = float(r.mean()), float(r.std())
-                if not (16.0 <= rm <= 32.0) or rs > rm * 0.08:
+                if not (20.0 <= rm <= 26.0) or rs > rm * 0.05:
                     continue
-                # prefer near mid-height of carter (not far cylinder)
                 p3 = (tf @ np.array([c[0], c[1], 0, 1.0]))[:3]
-                score = rs / rm + 0.002 * abs(p3[1] - 40)  # prefer Y~40
-                cand = {
-                    "x": float(t),
-                    "center": np.array([float(t), float(p3[1]), float(p3[2])]),
-                    "radius": rm,
-                    "roundness": rs / rm,
-                    "score": score,
-                }
-                if best is None or cand["score"] < best["score"]:
-                    best = cand
-    return best
+                if -15 < p3[1] < 70 and abs(p3[2]) < 45:
+                    samples.append((rm, p3, float(t), rs / rm))
+    if not samples:
+        return None
+    rs = np.array([s[0] for s in samples])
+    cs = np.array([s[1] for s in samples])
+    xs = np.array([s[2] for s in samples])
+    return {
+        "center": np.array([0.0, float(cs[:, 1].mean()), float(cs[:, 2].mean())]),
+        "radius": float(rs.mean()),
+        "roundness": float(np.mean([s[3] for s in samples])),
+        "x_span": [float(xs.min()), float(xs.max())],
+        "n": len(samples),
+    }
+
+
+def detect_joint_bolts(mesh: trimesh.Trimesh) -> list[dict]:
+    """Petits trous circulaires au plan de joint (vis de fermeture)."""
+    holes = []
+    for t in np.linspace(-4, 4, 5):
+        try:
+            sec = mesh.section(plane_origin=[t, 0, 0], plane_normal=[1, 0, 0])
+        except Exception:
+            continue
+        if sec is None:
+            continue
+        path2, tf = sec.to_2D()
+        for poly in path2.polygons_full:
+            rings = list(poly.interiors)
+            if poly.area < 120:
+                rings = [poly.exterior, *rings]
+            for ring in rings:
+                xy = np.asarray(ring.coords, float)
+                if len(xy) < 10:
+                    continue
+                c = xy.mean(0)
+                r = np.linalg.norm(xy - c, axis=1)
+                rm, rs = float(r.mean()), float(r.std())
+                if 2.2 <= rm <= 5.0 and rs < 0.9:
+                    p3 = (tf @ np.array([c[0], c[1], 0, 1.0]))[:3]
+                    holes.append((rm, p3))
+    # cluster YZ
+    clusters: list[dict] = []
+    for rm, p3 in holes:
+        placed = False
+        for cl in clusters:
+            if np.linalg.norm(p3[1:] - cl["c"][1:]) < 8:
+                cl["pts"].append(p3)
+                cl["rs"].append(rm)
+                placed = True
+                break
+        if not placed:
+            clusters.append({"c": p3.copy(), "pts": [p3], "rs": [rm]})
+    out = []
+    for cl in clusters:
+        if len(cl["pts"]) < 1:
+            continue
+        c = np.mean(cl["pts"], axis=0)
+        out.append({"center": np.array([0.0, c[1], c[2]]), "radius": float(np.mean(cl["rs"]))})
+    return out
 
 
 def load_aligned_meta():
@@ -108,53 +234,97 @@ def load_aligned_meta():
     return rep
 
 
-def build_carter(mesh: trimesh.Trimesh, meta: dict) -> tuple[cq.Workplane, dict]:
-    sil, sil_area = joint_silhouette_yz(mesh, simplify=2.2)
-    x0, x1 = body_x_range(mesh)
-    # ensure extrusion goes both sides of joint
-    x0 = min(x0, -5.0)
-    x1 = max(x1, 5.0)
-    thickness = x1 - x0
-
-    print(f"Silhouette joint: {len(sil)} pts, area={sil_area:.0f} mm²")
-    print(f"Extrusion X: {x0:.1f} → {x1:.1f} (épaisseur {thickness:.1f} mm)")
-
-    # Corps : esquisse YZ au plan X=x0, extrusion jusqu'à x1
-    pts2 = [(float(p[1]), float(p[2])) for p in sil]
+def extrude_poly_x(pts_yz: np.ndarray, x0: float, x1: float) -> cq.Workplane:
+    pts2 = [(float(p[1]), float(p[2])) for p in pts_yz]
     plane0 = cq.Plane(
         origin=cq.Vector(float(x0), 0, 0),
         normal=cq.Vector(1, 0, 0),
         xDir=cq.Vector(0, 1, 0),
     )
-    body = cq.Workplane(plane0).polyline(pts2).close().extrude(float(thickness))
+    return cq.Workplane(plane0).polyline(pts2).close().extrude(float(x1 - x0))
 
-    # --- Boss / deck cylindre ---
-    cyl = meta["breps"]["cylindre"]
-    cyl_c = np.array(cyl["center"], float)
-    studs = [np.array(s, float) for s in cyl.get("studs") or []]
-    bore = float(cyl.get("bore") or 47.0)
-    deck_y = float(cyl_c[1])
+
+def build_carter(mesh: trimesh.Trimesh, meta: dict) -> tuple[cq.Workplane, dict]:
+    # 1) Silhouette joint plus fine
+    sil, sil_area = joint_silhouette_yz(mesh, simplify=1.2)
+    print(f"Silhouette joint: {len(sil)} pts, area={sil_area:.0f} mm²")
+
+    # 2) Corps en paliers (épaisseur X selon zone Y)
+    x_ign = zone_x_range(mesh, -60, 50)
+    x_mid = zone_x_range(mesh, 50, 280)
+    x_cyl = zone_x_range(mesh, 280, 420)
+    print(f"X ign {x_ign[0]:.1f}→{x_ign[1]:.1f} | mid {x_mid[0]:.1f}→{x_mid[1]:.1f} | cyl {x_cyl[0]:.1f}→{x_cyl[1]:.1f}")
+
+    # base = extrusion joint sur plage crank/ign (traverse le plan X=0)
+    x0 = min(x_ign[0], x_mid[0], -8.0)
+    x1 = max(x_ign[1], 8.0)
+    body = extrude_poly_x(sil, x0, x1)
+
+    # renfort côté +X (demi-carter plus épais / cylindre)
+    x_plus0 = max(5.0, x_mid[0] if x_mid[0] > 0 else 5.0)
+    x_plus1 = max(x_mid[1], x_cyl[1])
+    if x_plus1 > x_plus0 + 10:
+        # section à Y médian pour bulk +X : réutilise silhouette joint (approx)
+        bulk = extrude_poly_x(sil, x_plus0, x_plus1)
+        body = body.union(bulk)
+
+    carter = body
+
+    # 3) Deck cylindre peaufiné
+    seed_studs = [np.array(s, float) for s in (meta["breps"]["cylindre"].get("studs") or [])]
+    studs = refine_studs(mesh, seed_studs) if seed_studs else seed_studs
+    bore_info = detect_cylinder_bore(mesh, studs if studs else seed_studs)
+    bore_c = bore_info["center"]
+    bore_r = float(bore_info["radius"])
+    # clamp Ø40–50
+    bore_r = float(np.clip(bore_r, 20.0, 25.0))
+    deck_y = float(bore_c[1])
+    print(
+        f"Cylindre: centre=({bore_c[0]:.1f},{bore_c[2]:.1f}) Ø={2*bore_r:.1f} "
+        f"deck Y={deck_y:.1f} studs={len(studs)} resid={bore_info.get('resid')}"
+    )
+
     if len(studs) >= 4:
-        xs = [s[0] for s in studs] + [cyl_c[0]]
-        zs = [s[2] for s in studs] + [cyl_c[2]]
-        pad_x = max(xs) - min(xs) + 28.0
-        pad_z = max(zs) - min(zs) + 28.0
+        xs = [s[0] for s in studs]
+        zs = [s[2] for s in studs]
+        pad_x = float(np.ptp(xs) + 32.0)
+        pad_z = float(np.ptp(zs) + 32.0)
+        pad_cx = float(np.mean(xs))
+        pad_cz = float(np.mean(zs))
     else:
-        pad_x, pad_z = 130.0, 130.0
-    pad_x = float(np.clip(pad_x, 110, 170))
-    pad_z = float(np.clip(pad_z, 110, 170))
-    boss_h = 55.0
+        pad_x = pad_z = 140.0
+        pad_cx, pad_cz = float(bore_c[0]), float(bore_c[2])
+    pad_x = float(np.clip(pad_x, 110, 180))
+    pad_z = float(np.clip(pad_z, 90, 160))
+    boss_h = 62.0
 
     deck_plane = cq.Plane(
-        origin=cq.Vector(float(cyl_c[0]), deck_y, float(cyl_c[2])),
+        origin=cq.Vector(pad_cx, deck_y, pad_cz),
         normal=cq.Vector(0, 1, 0),
         xDir=cq.Vector(1, 0, 0),
     )
+    # boss avec filet léger (chamfer via rounded rect approx: circle hull of studs)
     boss = cq.Workplane(deck_plane).rect(pad_x, pad_z).extrude(-boss_h)
-    carter = body.union(boss)
+    # collar cylindrique autour de l'alésage
+    collar = (
+        cq.Workplane(
+            cq.Plane(
+                origin=cq.Vector(float(bore_c[0]), deck_y, float(bore_c[2])),
+                normal=cq.Vector(0, 1, 0),
+                xDir=cq.Vector(1, 0, 0),
+            )
+        )
+        .circle(bore_r + 14.0)
+        .extrude(-boss_h)
+    )
+    carter = carter.union(boss).union(collar)
 
-    bore_cut = cq.Workplane(deck_plane).circle(bore / 2).extrude(-(boss_h + 90))
-    carter = carter.cut(bore_cut)
+    bore_plane = cq.Plane(
+        origin=cq.Vector(float(bore_c[0]), deck_y + 0.5, float(bore_c[2])),
+        normal=cq.Vector(0, 1, 0),
+        xDir=cq.Vector(1, 0, 0),
+    )
+    carter = carter.cut(cq.Workplane(bore_plane).circle(bore_r).extrude(-(boss_h + 100)))
 
     stud_dia = 8.5
     for s in studs[:4]:
@@ -163,24 +333,24 @@ def build_carter(mesh: trimesh.Trimesh, meta: dict) -> tuple[cq.Workplane, dict]
             normal=cq.Vector(0, 1, 0),
             xDir=cq.Vector(1, 0, 0),
         )
-        hole = cq.Workplane(sp).circle(stud_dia / 2).extrude(-(boss_h + 20))
-        carter = carter.cut(hole)
+        carter = carter.cut(cq.Workplane(sp).circle(stud_dia / 2).extrude(-(boss_h + 25)))
 
-    # --- Tunnel vilo (axe ≈ X, à travers le joint) ---
+    # 4) Tunnel vilo peaufiné
     crank = detect_crank_bore(mesh)
     if crank is None:
-        print("WARN: tunnel vilo non détecté — Ø47 de secours")
+        print("WARN: tunnel vilo non détecté — Ø47 secours")
         crank = {
-            "center": np.array([0.0, 40.0, 0.0]),
+            "center": np.array([0.0, 10.0, -10.0]),
             "radius": 23.5,
             "roundness": None,
-            "score": None,
+            "x_span": [-20.0, 20.0],
+            "n": 0,
         }
     else:
         print(
-            f"Tunnel vilo: Ø{2 * crank['radius']:.1f} @ "
+            f"Tunnel vilo: Ø{2*crank['radius']:.1f} @ "
             f"Y={crank['center'][1]:.1f} Z={crank['center'][2]:.1f} "
-            f"(roundness {crank['roundness']:.3f})"
+            f"X={crank['x_span']} n={crank['n']}"
         )
     cc = crank["center"]
     crank_plane = cq.Plane(
@@ -188,21 +358,69 @@ def build_carter(mesh: trimesh.Trimesh, meta: dict) -> tuple[cq.Workplane, dict]
         normal=cq.Vector(1, 0, 0),
         xDir=cq.Vector(0, 1, 0),
     )
-    half = float(max(abs(x0), abs(x1)) + 15.0)
-    tun = cq.Workplane(crank_plane).circle(float(crank["radius"])).extrude(half, both=True)
-    carter = carter.cut(tun)
-
-    # --- Face allumage (bout −Y) ---
-    ign = meta["breps"]["allumage"]
-    ign_c = np.array(ign["center"], float)
-    ign_plane = cq.Plane(
-        origin=cq.Vector(float(ign_c[0]), float(ign_c[1]), float(ign_c[2])),
-        normal=cq.Vector(0, -1, 0),
-        xDir=cq.Vector(1, 0, 0),
+    # traverse tout le corps (roulement G→D)
+    half = float(max(abs(x0), abs(x_plus1), abs(x1)) + 20.0)
+    carter = carter.cut(
+        cq.Workplane(crank_plane).circle(float(crank["radius"])).extrude(half, both=True)
     )
-    end_pad = cq.Workplane(ign_plane).circle(55.0).extrude(-6.0)
-    end_hole = cq.Workplane(ign_plane).circle(14.0).extrude(-20.0)
-    carter = carter.union(end_pad).cut(end_hole)
+
+    # 5) Vis de joint (si détectées)
+    bolts = detect_joint_bolts(mesh)
+    print(f"Vis joint détectées: {len(bolts)}")
+    for b in bolts:
+        bp = cq.Plane(
+            origin=cq.Vector(0.0, float(b["center"][1]), float(b["center"][2])),
+            normal=cq.Vector(1, 0, 0),
+            xDir=cq.Vector(0, 1, 0),
+        )
+        carter = carter.cut(
+            cq.Workplane(bp).circle(float(b["radius"])).extrude(abs(x0) + 8, both=True)
+        )
+
+    # 6) Face allumage = vraie silhouette (plus un cercle générique)
+    ign = meta["breps"]["allumage"]
+    ign_n = np.array(ign["normal"], float)
+    ign_n /= np.linalg.norm(ign_n) + 1e-12
+    ign_d = float(ign["d"])
+    ign_pts, ign_area, _ = section_polygon_3d(
+        mesh, ign_n * ign_d, ign_n, simplify=1.8
+    )
+    ign_c = np.array(ign["center"], float)
+    if ign_pts is not None and len(ign_pts) >= 4:
+        # plan local allumage
+        # xDir ≈ +X
+        xdir = np.array([1.0, 0.0, 0.0])
+        xdir = xdir - ign_n * (xdir @ ign_n)
+        xdir /= np.linalg.norm(xdir) + 1e-12
+        ydir = np.cross(ign_n, xdir)
+        origin = ign_pts.mean(0)
+        ign_plane = cq.Plane(
+            origin=cq.Vector(*map(float, origin)),
+            normal=cq.Vector(*map(float, ign_n)),
+            xDir=cq.Vector(*map(float, xdir)),
+        )
+
+        def to2(p):
+            q = p - origin
+            return float(q @ xdir), float(q @ ydir)
+
+        poly2 = [to2(p) for p in ign_pts]
+        end_pad = cq.Workplane(ign_plane).polyline(poly2).close().extrude(-7.0)
+        # trou central ~ stator / vilo
+        end_hole = cq.Workplane(ign_plane).circle(14.0).extrude(-22.0)
+        carter = carter.union(end_pad).cut(end_hole)
+        print(f"Allumage: silhouette {len(ign_pts)} pts, area={ign_area:.0f} mm²")
+    else:
+        ign_plane = cq.Plane(
+            origin=cq.Vector(*map(float, ign_c)),
+            normal=cq.Vector(0, -1, 0),
+            xDir=cq.Vector(1, 0, 0),
+        )
+        carter = carter.union(cq.Workplane(ign_plane).circle(55).extrude(-6)).cut(
+            cq.Workplane(ign_plane).circle(14).extrude(-20)
+        )
+        ign_area = None
+        print("Allumage: fallback cercle")
 
     bb = carter.val().BoundingBox()
     print(
@@ -213,21 +431,33 @@ def build_carter(mesh: trimesh.Trimesh, meta: dict) -> tuple[cq.Workplane, dict]
     info = {
         "silhouette_points": len(sil),
         "silhouette_area_mm2": sil_area,
-        "x_range": [x0, x1],
-        "thickness_mm": thickness,
+        "x_zones": {"ign": list(x_ign), "mid": list(x_mid), "cyl": list(x_cyl)},
+        "x_range_body": [x0, x1],
         "cylinder": {
-            "center": cyl_c.tolist(),
-            "bore": bore,
+            "center": bore_c.tolist(),
+            "bore": 2 * bore_r,
             "pad": [pad_x, pad_z],
+            "pad_center": [pad_cx, pad_cz],
             "boss_h": boss_h,
             "studs": [s.tolist() for s in studs],
             "stud_dia": stud_dia,
+            "fit_resid": bore_info.get("resid"),
         },
         "crank": {
             "center": crank["center"].tolist(),
             "diameter": float(2 * crank["radius"]),
+            "x_span": crank.get("x_span"),
+            "n_samples": crank.get("n"),
         },
-        "ignition": {"center": ign_c.tolist(), "pad_dia": 110.0, "hole_dia": 28.0},
+        "joint_bolts": [
+            {"center": b["center"].tolist(), "diameter": 2 * b["radius"]} for b in bolts
+        ],
+        "ignition": {
+            "center": ign_c.tolist(),
+            "silhouette_points": int(len(ign_pts) if ign_pts is not None else 0),
+            "area_mm2": ign_area,
+            "hole_dia": 28.0,
+        },
         "bbox": {
             "xlen": bb.xlen,
             "ylen": bb.ylen,
