@@ -305,9 +305,31 @@ def upload_ensemble(cale_step: Path, name: str) -> str:
         if e["elementType"] != "PARTSTUDIO" or e["name"] == "Part Studio 1":
             continue
         parts = api(f"/api/parts/d/{did}/w/{wid}/e/{e['id']}")
-        solid = next((p for p in parts if p.get("bodyType") == "solid"), None)
-        if not solid:
+        solids = [p for p in parts if p.get("bodyType") == "solid"]
+        if not solids:
             continue
+        # Toujours la plus grosse pièce (évite un fragment mesh minuscule)
+        solid = solids[0]
+        if len(solids) > 1:
+            try:
+                mp = api(
+                    f"/api/partstudios/d/{did}/w/{wid}/e/{e['id']}/massproperties",
+                    qs="massAsGroup=false",
+                )
+                bodies = mp.get("bodies") or {}
+                best_vol, best = -1.0, solids[0]
+                for p in solids:
+                    b = bodies.get(p["partId"]) or {}
+                    vol = b.get("volume")
+                    if isinstance(vol, list):
+                        vol = vol[0]
+                    vol = float(vol or 0.0)
+                    if vol > best_vol:
+                        best_vol, best = vol, p
+                solid = best
+                print(f"  insert {e['name']}: {solid.get('name')} vol={best_vol:.4e} m³ ({len(solids)} solids)")
+            except Exception as ex:
+                print("  massproperties warn", ex)
         api(
             f"/api/assemblies/d/{did}/w/{wid}/e/{aid}/instances",
             method="post",

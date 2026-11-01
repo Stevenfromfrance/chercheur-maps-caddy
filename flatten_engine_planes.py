@@ -226,66 +226,179 @@ def intake_flange_level(mesh: trimesh.Trimesh, ref: dict) -> dict:
     }
 
 
-def flatten_levels(
+def _vertex_faces(faces: np.ndarray) -> dict[int, list[int]]:
+    from collections import defaultdict
+
+    v2f: dict[int, list[int]] = defaultdict(list)
+    for fi, tri in enumerate(faces):
+        for vid in tri:
+            v2f[int(vid)].append(fi)
+    return v2f
+
+
+def _vertex_neighbors(faces: np.ndarray) -> dict[int, set[int]]:
+    from collections import defaultdict
+
+    nbrs: dict[int, set[int]] = defaultdict(set)
+    for tri in faces:
+        a, b, c = (int(tri[0]), int(tri[1]), int(tri[2]))
+        nbrs[a].update((b, c))
+        nbrs[b].update((a, c))
+        nbrs[c].update((a, b))
+    return nbrs
+
+
+def flatten_intake_core_blend(
+    mesh: trimesh.Trimesh,
+    intake: dict,
+    *,
+    min_frac: float = 0.85,
+    max_dist: float = 6.0,
+    blend_hops: int = 3,
+) -> tuple[trimesh.Trimesh, dict]:
+    """
+    Aplatit la bride admission sans casser le manifold Onshape :
+    - projection dure des sommets « cœur » (quasi 100 % faces bride)
+    - anneau de blend autour pour éviter les plis
+    Une projection brutale de toute la zone bride (parois de trous incluses)
+    explosait le mesh en fragments à l'import Onshape.
+    """
+    d = float(intake["d"])
+    face_ids = np.asarray(intake["faces"], dtype=np.int32)
+    f = mesh.faces
+    v = mesh.vertices.copy()
+    flange_set = set(map(int, face_ids))
+    v2f = _vertex_faces(f)
+    nbrs = _vertex_neighbors(f)
+    vids = np.unique(f[face_ids].reshape(-1)).astype(int)
+
+    core: list[int] = []
+    for vid in vids:
+        faces_of = v2f[int(vid)]
+        frac = sum(1 for fi in faces_of if fi in flange_set) / max(len(faces_of), 1)
+        dist = float(v[vid, 0] - d)
+        if frac < min_frac or abs(dist) > max_dist:
+            continue
+        v[vid, 0] = d
+        core.append(int(vid))
+
+    core_set = set(core)
+    ring: set[int] = set()
+    frontier = set(core)
+    for _ in range(blend_hops):
+        nxt: set[int] = set()
+        for vid in frontier:
+            for nb in nbrs[vid]:
+                if nb not in core_set and nb not in ring:
+                    nxt.add(nb)
+        ring |= nxt
+        frontier = nxt
+
+    cy, cz = float(intake["center"][1]), float(intake["center"][2])
+    for _ in range(12):
+        v2 = v.copy()
+        for vid in ring:
+            nbs = list(nbrs[vid])
+            if not nbs:
+                continue
+            avg = v[nbs].mean(0)
+            near = (
+                abs(v[vid, 0] - d) < 8
+                and abs(v[vid, 1] - cy) < 55
+                and abs(v[vid, 2] - cz) < 55
+            )
+            target_x = (0.5 * v[vid, 0] + 0.5 * d) if near else v[vid, 0]
+            v2[vid, 0] = 0.55 * v[vid, 0] + 0.45 * target_x
+            v2[vid, 1] = 0.7 * v[vid, 1] + 0.3 * avg[1]
+            v2[vid, 2] = 0.7 * v[vid, 2] + 0.3 * avg[2]
+        v = v2
+
+    out = mesh.copy()
+    out.vertices = v
+    out.fix_normals()
+    core_x = out.vertices[core, 0] if core else np.array([d])
+    report = {
+        "name": "intake_flange",
+        "area": float(intake["area"]),
+        "members": 1,
+        "normal": [1.0, 0.0, 0.0],
+        "d": d,
+        "center": np.asarray(intake["center"]).tolist(),
+        "n_core": len(core),
+        "n_blend": len(ring),
+        "rms_before": float(intake.get("rms0", 0)),
+        "span_before": float(intake.get("span0", 0)),
+        "rms_after": float(np.sqrt(np.mean((core_x - d) ** 2))),
+        "span_after": float(np.ptp(core_x)),
+        "mean_abs_move_mm": None,
+        "max_abs_move_mm": None,
+    }
+    return out, report
+
+
+def flatten_levels_iterative(
     mesh: trimesh.Trimesh,
     levels: list[dict],
     *,
-    max_move: float = 4.0,
-    edge_blend_mm: float = 2.5,
+    iters: int = 20,
+    step: float = 0.3,
+    max_abs: float = 2.0,
+    min_frac: float = 0.75,
 ) -> tuple[trimesh.Trimesh, list[dict]]:
-    """Projette les sommets des faces de chaque niveau sur le plan (blend en bord)."""
-    v = mesh.vertices.copy()
+    """Petits pas vers le plan (hors bride) — safe pour Onshape."""
     f = mesh.faces
-    # Accumulate weighted projections
-    acc = np.zeros_like(v)
-    wsum = np.zeros(len(v), dtype=np.float64)
+    v = mesh.vertices.copy()
+    v2f = _vertex_faces(f)
     reports = []
-
     for lv in levels:
-        faces = lv["faces"]
+        if lv.get("name") == "intake_flange":
+            continue
+        face_ids = np.asarray(lv["faces"], dtype=np.int32)
         n = np.asarray(lv["normal"], dtype=np.float64)
         n = n / (np.linalg.norm(n) + 1e-12)
         d = float(lv["d"])
-        vids = np.unique(f[faces].reshape(-1))
-        pts = v[vids]
-        dist = pts @ n - d
-        # Bride / plans nommés : projection dure ; autres : clip doux
-        hard = bool(lv.get("name"))
-        lim = 12.0 if hard else max_move
-        move = dist if hard else np.clip(dist, -lim, lim)
-        w = np.ones(len(vids), dtype=np.float64)
-        if not hard:
-            w *= np.clip(1.0 - (np.abs(dist) / (lim + 1e-6)) * 0.25, 0.4, 1.0)
-        target = pts - np.outer(move, n)
-        acc[vids] += target * w[:, None]
-        wsum[vids] += w
-        new_dist = (target @ n) - d
+        faceset = set(map(int, face_ids))
+        vids = np.unique(f[face_ids].reshape(-1))
+        fracs = {
+            int(vid): sum(1 for fi in v2f[int(vid)] if fi in faceset)
+            / max(len(v2f[int(vid)]), 1)
+            for vid in vids
+        }
+
+        def _stats():
+            conf = [int(vid) for vid in vids if fracs[int(vid)] >= min_frac]
+            if not conf:
+                return 0.0, 0.0
+            dist = v[conf] @ n - d
+            return float(np.sqrt(np.mean(dist**2))), float(np.ptp(dist))
+
+        rms0, span0 = _stats()
+        for _ in range(iters):
+            for vid in vids:
+                frac = fracs[int(vid)]
+                if frac < min_frac:
+                    continue
+                dist = float(v[vid] @ n - d)
+                if abs(dist) > max_abs:
+                    continue
+                v[vid] = v[vid] - (step * frac * dist) * n
+        rms1, span1 = _stats()
         reports.append(
             {
                 "name": lv.get("name", "plane"),
-                "area": float(lv["area"]),
+                "area": float(lv.get("area", 0)),
                 "members": int(lv.get("members", 1)),
                 "normal": n.tolist(),
                 "d": d,
-                "center": np.asarray(lv.get("center", pts.mean(0))).tolist(),
-                "rms_before": float(lv.get("rms0", np.sqrt(np.mean(dist**2)))),
-                "span_before": float(lv.get("span0", np.ptp(dist))),
-                "rms_after": float(np.sqrt(np.mean(new_dist**2))),
-                "span_after": float(np.ptp(new_dist)),
-                "n_vertices": int(len(vids)),
-                "mean_abs_move_mm": float(np.mean(np.abs(move))),
-                "max_abs_move_mm": float(np.max(np.abs(move))),
+                "center": np.asarray(lv.get("center", [0, 0, 0])).tolist(),
+                "rms_before": rms0,
+                "span_before": span0,
+                "rms_after": rms1,
+                "span_after": span1,
             }
         )
-
-    mask = wsum > 0
-    v[mask] = acc[mask] / wsum[mask, None]
     out = mesh.copy()
     out.vertices = v
-    try:
-        out.remove_degenerate_faces()
-    except Exception:
-        pass
     out.fix_normals()
     return out, reports
 
@@ -347,10 +460,39 @@ def realign_cale_to_flange(flange_d: float, flange_center_yz: np.ndarray) -> Pat
     return out
 
 
+def repair_single_body(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
+    """Garde un seul corps, normals OK — critique pour l'import Onshape."""
+    mesh = mesh.copy()
+    try:
+        mesh.merge_vertices()
+    except Exception:
+        pass
+    try:
+        trimesh.repair.fix_normals(mesh)
+        trimesh.repair.fix_inversion(mesh)
+    except Exception:
+        pass
+    parts = mesh.split(only_watertight=False)
+    if not parts:
+        return mesh
+    parts = sorted(parts, key=lambda p: (len(p.faces), abs(getattr(p, "volume", 0) or 0)), reverse=True)
+    out = parts[0]
+    try:
+        out.process(validate=True)
+    except Exception:
+        pass
+    print(
+        f"  repair: {len(parts)} composants → keep {len(out.faces)} faces "
+        f"watertight={out.is_watertight}"
+    )
+    return out
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--stl", default=str(OUT / "mina_clean_200k.stl"))
-    p.add_argument("--faces", type=int, default=120000, help="décimation sortie")
+    # 80k watertight de préférence (200k non-manifold → Onshape éclate en fragments)
+    p.add_argument("--stl", default=str(OUT / "mina_piece_80000.stl"))
+    p.add_argument("--faces", type=int, default=80000, help="décimation sortie")
     p.add_argument("--upload", action="store_true")
     p.add_argument("--name", default="MINARELLI aplati + calle vl14 — ENSEMBLE")
     args = p.parse_args()
@@ -362,10 +504,10 @@ def main():
         print(f"Pose manuelle lue: mating center {pose.get('mating_face_center_mm')}")
 
     mesh = trimesh.load(args.stl, force="mesh")
-    print(f"Mesh in: {len(mesh.faces)} faces, extents {mesh.extents}")
+    print(f"Mesh in: {len(mesh.faces)} faces, watertight={mesh.is_watertight}, extents {mesh.extents}")
 
     print("Détection des plans…")
-    patches = detect_patches(mesh)
+    patches = detect_patches(mesh, min_area=700, min_faces=40)
     print(f"  {len(patches)} patchs")
     intake = intake_flange_level(mesh, ref)
     print(
@@ -373,34 +515,44 @@ def main():
         f"span={intake['span0']:.2f} area={intake['area']:.0f}"
     )
 
-    levels = select_levels_to_flatten(patches, intake, top_n=30)
-    print(f"Niveaux à aplatir: {len(levels)}")
-    for i, lv in enumerate(levels[:12]):
-        n = lv["normal"]
-        print(
-            f"  {i:2d} {lv.get('name','plane'):16s} A={lv['area']:7.0f} "
-            f"n=({n[0]:+.2f},{n[1]:+.2f},{n[2]:+.2f}) d={lv['d']:.2f} "
-            f"members={lv.get('members',1)}"
-        )
+    levels = select_levels_to_flatten(patches, intake, top_n=20)
+    # hors bride : seulement plans déjà assez réguliers
+    other = [
+        lv
+        for lv in levels
+        if lv.get("name") != "intake_flange" and float(lv.get("rms0", lv.get("rms", 99))) <= 0.7
+    ]
+    print(f"Niveaux secondaires: {len(other)} (+ bride cœur/blend)")
 
-    flat, reports = flatten_levels(mesh, levels, max_move=3.5)
-    print("Aplatissement:")
-    for r in reports[:12]:
+    print("Aplatissement bride (cœur + blend)…")
+    flat, intake_report = flatten_intake_core_blend(mesh, intake)
+    print(
+        f"  intake core={intake_report['n_core']} blend={intake_report['n_blend']} "
+        f"rms {intake_report['rms_before']:.2f}→{intake_report['rms_after']:.2f}"
+    )
+    flat, reports = flatten_levels_iterative(flat, other)
+    reports = [intake_report] + reports
+    print("Aplatissement autres plans:")
+    for r in reports[1:12]:
         print(
             f"  {r['name']:16s} rms {r['rms_before']:.2f}→{r['rms_after']:.2f}  "
-            f"span {r['span_before']:.2f}→{r['span_after']:.2f}  "
-            f"moveμ={r['mean_abs_move_mm']:.2f}"
+            f"span {r['span_before']:.2f}→{r['span_after']:.2f}"
         )
 
-    # Décimer pour Onshape
+    flat = repair_single_body(flat)
+    if not flat.is_watertight:
+        print("WARN: mesh non watertight — Onshape peut fragmenter l'import")
+
+    # Décimer pour Onshape (après repair, pour rester manifold)
     if args.faces and len(flat.faces) > args.faces:
         flat = flat.simplify_quadric_decimation(face_count=args.faces)
-        print(f"Décimé → {len(flat.faces)} faces")
+        flat = repair_single_body(flat)
+        print(f"Décimé → {len(flat.faces)} faces watertight={flat.is_watertight}")
 
     OUT.mkdir(parents=True, exist_ok=True)
     out_stl = OUT / "mina_flattened.stl"
     flat.export(out_stl)
-    print(f"STL → {out_stl}")
+    print(f"STL → {out_stl} faces={len(flat.faces)} watertight={flat.is_watertight}")
 
     meta = {
         "source_stl": args.stl,
@@ -410,6 +562,7 @@ def main():
         "intake_center_mm": intake["center"].tolist(),
         "levels": reports,
         "n_faces_out": len(flat.faces),
+        "watertight": bool(flat.is_watertight),
     }
     (OUT / "flatten_report.json").write_text(json.dumps(meta, indent=2))
 
@@ -419,14 +572,11 @@ def main():
     print(f"  STEP cale → {cale_step}")
 
     if args.upload:
-        # Réutilise le flux upload éprouvé
         import align_cale_admission as ac
 
-        # Pointer temporairement le STL moteur
         old = ac.ENGINE_STL
         ac.ENGINE_STL = out_stl
         try:
-            # upload_ensemble attend cale_step path
             url = ac.upload_ensemble(cale_step, args.name)
         finally:
             ac.ENGINE_STL = old
