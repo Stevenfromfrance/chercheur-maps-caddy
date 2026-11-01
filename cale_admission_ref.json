@@ -1,20 +1,22 @@
 {
-  "name": "basetta_sotto_minarelli_orizzontale",
-  "onshape": "https://cad.onshape.com/documents/abf25ddd7939c47991ad4c6b/w/070b3d29da40e7fe778d2d9f/e/4d14edf501f8ccd04846218a",
+  "name": "calle vl14",
+  "onshape": "https://cad.onshape.com/documents/a21e5846c7f0224fd076feed/w/f27de36333f4b344289a56ea/e/25eaf2b3c944d6feceef6161",
   "size_mm": {
-    "x": 75.409,
-    "y": 7.6,
-    "z": 65.0
+    "x": 68.202,
+    "y": 78.3,
+    "z": 19.541
   },
-  "thickness_mm": 7.6,
-  "port_mm": {
-    "w": 38.0,
-    "h": 44.0
-  },
-  "holes": {
-    "count": 4,
-    "diameter_mm": 6.5,
-    "note": "4 trous Ø6.5 autour de l'orifice rectangulaire 38×44"
-  },
-  "note": "Nouvelle cale de référence (remplace l'ancienne erronée). Mesh OBJ importé dans Onshape."
+  "thickness_mm": 19.541,
+  "ear_spacing_mm": 64.033,
+  "ear_holes_xy_mm": [
+    {"x": -5.516, "y": 33.098, "diameter": 6.76},
+    {"x": 2.505, "y": -30.431, "diameter": 6.771}
+  ],
+  "corner_holes_xy_mm": [
+    {"x": -32.774, "y": -19.03, "diameter": 7.197},
+    {"x": -32.584, "y": 21.81, "diameter": 7.105},
+    {"x": 29.882, "y": 21.72, "diameter": 7.143},
+    {"x": 29.634, "y": -19.156, "diameter": 7.092}
+  ],
+  "note": "Cale d'admission paramétrique Onshape (Sketch/Extrude). Remplace les références précédentes erronées."
 }

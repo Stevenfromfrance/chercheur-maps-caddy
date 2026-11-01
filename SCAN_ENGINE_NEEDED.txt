@@ -60,14 +60,14 @@ PIÈCE GÉNÉRÉE (phase 1)
 https://cad.onshape.com/documents/d00619e4f5ad0c64938cc17f/w/a9d23a71a07ffa269554fef8
 (80k faces)
 
-NOUVELLE CALE DE RÉFÉRENCE (basetta)
-------------------------------------
-https://cad.onshape.com/documents/abf25ddd7939c47991ad4c6b/w/070b3d29da40e7fe778d2d9f/e/4d14edf501f8ccd04846218a
-Cotes : 75.4 × 7.6 × 65.0 mm — orifice 38×44 — 4 trous Ø6.5
-(fichier cale_admission_ref.json) — remplace l'ancienne cale erronée.
+CALE DE RÉFÉRENCE (calle vl14)
+------------------------------
+https://cad.onshape.com/documents/a21e5846c7f0224fd076feed/w/f27de36333f4b344289a56ea/e/25eaf2b3c944d6feceef6161
+Cotes : 68.2 × 78.3 × 19.5 mm — oreilles entraxe ≈ 64.03 mm
+(fichier cale_admission_ref.json)
 
-CALE ALIGNÉE SUR BRIDE — OUVRIR ONGLET « ENSEMBLE »
-----------------------------------------------------
-https://cad.onshape.com/documents/ef54d9f7116a1ad45229ae70/w/c40a875847998ae073b5dfaa/e/4810f6b9eca922c4652a9ee2
+CALE ALIGNÉE — OUVRIR ONGLET « ENSEMBLE »
+----------------------------------------
+https://cad.onshape.com/documents/1e32d65f042f7996e13f488e/w/e07b84c5400cdc64bdef09d3/e/98877c5408780f46fd3c6bd0
 Script : python align_cale_admission.py --upload
-IMPORTANT : cliquer l'onglet « ENSEMBLE moteur + cale » (pas _moteur/_cale seule).
+IMPORTANT : cliquer « ENSEMBLE moteur + cale » (pas _moteur/_cale seule).
