@@ -1,0 +1,86 @@
+{
+  "method": "reverse_engineering_brep_intake_flange",
+  "user_doc": "https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0",
+  "workflow": [
+    "1. Plan de r\u00e9f\u00e9rence = bride (normale/d mesh sous cale user)",
+    "2. Esquisse id\u00e9ale (rect + cercles) \u2014 pas le bruit du scan",
+    "3. Extrusion solide CadQuery \u2192 STEP",
+    "4. Mesh scan gard\u00e9 comme calque dans l'ensemble",
+    "5. Cale pose USER pr\u00e9serv\u00e9e (pas c\u00f4t\u00e9 roulement +X)"
+  ],
+  "flange_plane": {
+    "normal": [
+      -0.007161767994572232,
+      -0.33395452704644807,
+      0.9425619783029523
+    ],
+    "d_mm": 51.50242942982086,
+    "center_mm": [
+      6.506424329280091,
+      22.566173809829603,
+      63.47999476796403
+    ]
+  },
+  "gap_cale_to_mesh_mm": 15.571792354314704,
+  "holes": [
+    {
+      "kind": "corner",
+      "diameter_mm": 7.197,
+      "center_mm": [
+        41.20393440618333,
+        40.27978986813565,
+        69.2253052058706
+      ]
+    },
+    {
+      "kind": "corner",
+      "diameter_mm": 7.105,
+      "center_mm": [
+        39.898680649551245,
+        1.9798086167447706,
+        55.645508498694966
+      ]
+    },
+    {
+      "kind": "corner",
+      "diameter_mm": 7.143,
+      "center_mm": [
+        -22.53673621634933,
+        3.8709266401736278,
+        55.84114492272954
+      ]
+    },
+    {
+      "kind": "corner",
+      "diameter_mm": 7.092,
+      "center_mm": [
+        -21.17252541510919,
+        42.20299620441114,
+        69.4327586501881
+      ]
+    },
+    {
+      "kind": "ear",
+      "diameter_mm": 6.76,
+      "center_mm": [
+        12.534593004852235,
+        -7.824772587017471,
+        51.9637776356159
+      ]
+    },
+    {
+      "kind": "ear",
+      "diameter_mm": 6.771,
+      "center_mm": [
+        6.252179734766833,
+        51.99361988363244,
+        73.11000487448945
+      ]
+    }
+  ],
+  "brep_step": "/workspace/mina_scan/carter_intake_flange_brep.step",
+  "thickness_mm": 8.0,
+  "port_diameter_mm": 43.0,
+  "onshape_limit": "Onshape ne convertit pas nativement mesh\u2192B-Rep ; le solide propre est g\u00e9n\u00e9r\u00e9 en CadQuery puis import\u00e9 STEP.",
+  "onshape_url": "https://cad.onshape.com/documents/e37ed7aed8187401b39f6e14/w/3a53b467bca174563810936f/e/fce31988da751eb813ebf24e"
+}

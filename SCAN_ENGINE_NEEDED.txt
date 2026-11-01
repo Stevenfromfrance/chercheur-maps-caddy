@@ -81,12 +81,20 @@ MOTEUR APLATI sur ce plan — OUVRIR « ENSEMBLE »
 https://cad.onshape.com/documents/cf86a5c78a4dd68745e89dad/w/5ef8c98edd32932abdd087a8/e/a1c70fc4cedf0741114d1238
 Script : python flatten_from_user_cale.py --upload
 
-CARTER CAD-LIKE (plans + trous cylindriques) — OUVRIR « ENSEMBLE »
+CARTER CAD-LIKE mesh (plans + trous snappés) — OUVRIR « ENSEMBLE »
 -------------------------------------------------------------------
 https://cad.onshape.com/documents/8c2006be23d0bc0dc9fb9e6f/w/a035d849592a5136952edb51/e/7a7fd5ab3c822445c79532f4
 Script : python refine_carter_cadlike.py --upload
-  - bride plane (pose cale user)
-  - 4 coins Ø~7.1 + 2 oreilles Ø~6.7 → cylindres parfaits
-  - cale baked à la pose USER (pas de recentrage +X)
-  - solide Onshape ~1.66e-3 m³
-IMPORTANT : cliquer « ENSEMBLE moteur + cale ».
+
+RÉTRO-INGÉNIERIE B-Rep (scan = calque, solides modifiables)
+-----------------------------------------------------------
+https://cad.onshape.com/documents/e37ed7aed8187401b39f6e14/w/3a53b467bca174563810936f/e/fce31988da751eb813ebf24e
+Script : python reverse_carter_brep.py --upload
+Méthode :
+  1. Plan de référence = bride admission (pose cale user / mesh)
+  2. Esquisse idéale (rect + cercles Ø cale) — pas le bruit du scan
+  3. Extrusion solide CadQuery → STEP importé Onshape
+  4. Mesh gardé comme calque ; cale pose USER inchangée
+Onglets : `_mesh calque` / `_bride B-Rep (modifiable)` / `_cale seule` / ENSEMBLE
+Limite Onshape : pas de mesh→B-Rep natif ; le B-Rep est généré à côté du scan.
+Suite possible : même méthode pour plan de joint / cylindre / allumage.
