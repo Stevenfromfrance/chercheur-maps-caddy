@@ -1,0 +1,61 @@
+Ce qu'il faut pour générer un moteur à partir d'un scan 3D (type Minarelli HOR)
+================================================================================
+
+ÉTAT DU SCAN ACTUEL
+-------------------
+Document : Untitled document / Part Studio « MINARELLI HOR »
+URL : https://cad.onshape.com/documents/393e786d769846f9a2277f57/w/23b52a0fc2db5410b3057fe6/e/1561a4ef6b92ae7c09ccde9b
+Type : mesh STL (~3,0 M faces, ~152 Mo), PAS un scan A4 2D
+Corps principal : watertight après nettoyage, extents ~239 × 568 × 222 mm
+(Note : l'axe long inclut goujons / artefacts — à caler avec une cote réelle)
+
+PHASE 1 — AUTOMATISABLE (script scan_to_engine.py)  ← fait
+----------------------------------------------------------
+[x] Clés API Onshape (.env : ACCESS_KEY, SECRET_KEY, BASE_URL)
+[x] Téléchargement du STL source (blob Onshape)
+[x] Nettoyage mesh (plus gros corps, fragments jetés)
+[x] Décimation (~80k faces) pour Onshape fluide
+[x] Export STL pièce unique local
+[x] Upload → nouveau document Onshape (1 Part Studio / 1 pièce)
+[ ] Recalage échelle (--scale-axis + --scale-mm)  ← TOI : 1 mesure réelle
+
+PHASE 2 — TOI (manuel dans Onshape, sur la pièce générée)
+---------------------------------------------------------
+[ ] Vérifier l'échelle (comparer 1 alésage / entraxe goujons au réel)
+[ ] Orientier / plans de construction (plan de joint, axe vilo)
+[ ] Peaufiner la géométrie (coupes, faces, trous) — une seule pièce
+[ ] Garder le mesh comme référence visuelle sous les sketches
+
+PHASE 3 — PLUS TARD (moteur « vrai » CAD)
+-----------------------------------------
+[ ] Split carter gauche / carter droit (plan de joint)
+[ ] Sketches paramétriques (alésages, nervures, faces joint)
+[ ] Assemblage Onshape (carter G + D + cylindre + etc.)
+[ ] Cotations fonctionnelles + tolérances
+
+OUTILS / DÉPS
+-------------
+pip install -r requirements-scan.txt
+python scan_to_engine.py --upload
+python scan_to_engine.py --stl mina_scan/mina_raw.stl --scale-axis y --scale-mm XXX --upload
+
+FICHIERS CLÉS
+-------------
+scan_to_engine.py     pipeline principal
+onshape_http.py       auth HMAC Onshape
+requirements-scan.txt dépendances Python
+mina_scan/            sorties locales (gitignoré : STL lourds)
+make_editable_copy.py copie arbre features (utile pour cales 2D, pas pour ce mesh)
+scan_scale.py         échelle scans A4 2D (autre cas d'usage)
+
+LIMITES HONNÊTES
+----------------
+- Onshape / Cursor ne « inventent » pas un moteur paramétrique depuis un prompt.
+- Le mesh clean = gabarit 1 pièce. Le CAD éditable = reverse manuel (ou semi-auto plus tard).
+- Pas de split G/D en phase 1 (comme demandé).
+
+
+PIÈCE GÉNÉRÉE (phase 1)
+---------------------
+https://cad.onshape.com/documents/d00619e4f5ad0c64938cc17f/w/a9d23a71a07ffa269554fef8
+(80k faces, échelle scan brute — à caler avec 1 cote réelle)
