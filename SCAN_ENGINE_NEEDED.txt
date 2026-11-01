@@ -66,8 +66,17 @@ https://cad.onshape.com/documents/a21e5846c7f0224fd076feed/w/f27de36333f4b344289
 Cotes : 68.2 × 78.3 × 19.5 mm — oreilles entraxe ≈ 64.03 mm
 (fichier cale_admission_ref.json)
 
-CALE ALIGNÉE — OUVRIR ONGLET « ENSEMBLE »
+CALE ALIGNÉE (réf. manuelle utilisateur)
 ----------------------------------------
-https://cad.onshape.com/documents/1e32d65f042f7996e13f488e/w/e07b84c5400cdc64bdef09d3/e/98877c5408780f46fd3c6bd0
-Script : python align_cale_admission.py --upload
+https://cad.onshape.com/documents/2c6f5dc90c562912ee912772/w/6ced650506796055997a4293/e/bc2e37baa9202f63561df6c0
+Pose capturée → mina_scan/user_cale_pose.json
+
+MOTEUR APLATI (plans joint / brides nivelés) — OUVRIR « ENSEMBLE »
+-----------------------------------------------------------------
+https://cad.onshape.com/documents/90a4407ba6d17ab98c6871a6/w/6dc96885e3352e5e3a2cf73c/e/b17c0438d45657f44c290cf2
+Script : python flatten_engine_planes.py --upload
+  - détecte les patchs plans (bride admission, faces carter, appuis)
+  - fusionne les coplanaires → un seul niveau
+  - projette le mesh (bride admission : RMS ~3.8 → 0.0 mm)
+  - recale calle vl14 sur la bride aplatie
 IMPORTANT : cliquer « ENSEMBLE moteur + cale » (pas _moteur/_cale seule).
