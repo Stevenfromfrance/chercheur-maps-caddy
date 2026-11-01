@@ -22,14 +22,30 @@ WALL = 7.5                 # épaisseur de paroi du cadre
 LOBE_R = 9.0               # rayon des 4 oreilles
 HOLE_D = 5.0               # diamètre des trous de fixation
 CORNER_R = 4.0             # congé coins extérieurs
-INNER_CORNER_R = 2.0       # congé coins de la découpe
+INNER_CORNER_R = 0.8       # coins intérieurs plus anguleux (comme la photo)
 NOTCH_R = 2.2              # rayon des 2 encoches hautes (intérieur)
 NOTCH_SPACING = 18.0       # entraxe des 2 encoches
 THICKNESS = 2.0            # épaisseur de la cale
 
+# Décalage des oreilles latérales (photo = symétrie 180°, PAS miroir 4 côtés)
+# Oreille gauche vers le bas, oreille droite vers le haut (~37% du demi-côté)
+LOBE_SIDE_OFFSET = 12.5
+# Léger décalage des oreilles haut/bas (même symétrie 180°)
+LOBE_TB_OFFSET = 4.5
+
 OUTPUT_STEP = Path(__file__).resolve().parent / "cale_generee.step"
 OUTPUT_SVG = Path(__file__).resolve().parent / "cale_generee_preview.svg"
-DOC_NAME = "Cale generee photo"
+DOC_NAME = "Cale generee v3 asym"
+
+
+def lobe_centers(half: float):
+    """Centres des 4 oreilles / trous — rotation 180° autour de l'origine."""
+    return [
+        (-LOBE_TB_OFFSET, half),                 # haut (légèrement à gauche)
+        (LOBE_TB_OFFSET, -half),                 # bas (légèrement à droite)
+        (half, LOBE_SIDE_OFFSET),                # droite (vers le haut)
+        (-half, -LOBE_SIDE_OFFSET),              # gauche (vers le bas)
+    ]
 
 
 def build_cale() -> cq.Workplane:
@@ -37,6 +53,7 @@ def build_cale() -> cq.Workplane:
     inner = OUTER_SIDE - 2 * WALL
     inner_half = inner / 2
     hole_r = HOLE_D / 2
+    centers = lobe_centers(half)
 
     # Carré principal avec congés d'angle
     square = (
@@ -47,9 +64,9 @@ def build_cale() -> cq.Workplane:
         .fillet(CORNER_R)
     )
 
-    # 4 oreilles (disques) centrées sur les milieux des côtés
+    # 4 oreilles (positions asymétriques = photo réelle)
     lobes = cq.Workplane("XY")
-    for cx, cy in ((0, half), (0, -half), (half, 0), (-half, 0)):
+    for cx, cy in centers:
         lobes = lobes.moveTo(cx, cy).circle(LOBE_R)
     body = square.union(lobes.extrude(THICKNESS))
 
@@ -70,7 +87,7 @@ def build_cale() -> cq.Workplane:
 
     # Trous de fixation au centre de chaque oreille
     holes = cq.Workplane("XY").workplane(offset=-0.1)
-    for cx, cy in ((0, half), (0, -half), (half, 0), (-half, 0)):
+    for cx, cy in centers:
         holes = holes.moveTo(cx, cy).circle(hole_r)
     body = body.cut(holes.extrude(THICKNESS + 0.2))
 
