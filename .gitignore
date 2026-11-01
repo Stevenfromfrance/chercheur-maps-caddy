@@ -10,4 +10,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+mon_assemblage.step
+*.step
+
 
