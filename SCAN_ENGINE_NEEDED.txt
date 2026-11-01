@@ -117,4 +117,15 @@ Contenu :
 Suite : split G/D, nervures, détails fonderie.
 (Ancien v1 : 2cac81a9… — moins précis sur l’alésage cylindre)
 
+CARTER G / D (split + nervures + bossages) — OUVRIR « ENSEMBLE »
+----------------------------------------------------------------
+https://cad.onshape.com/documents/b81703aa450cf2e9cfbcc890/w/75803f615650df14ed9d0c45/e/963811c1584182fe1f13653e
+Script : python rebuild_carter_halves.py --upload
+  - `_carter G (X≤0)` / `_carter D (X≥0)` : demi-carters
+  - `_carter complet (avant split)` : solide avant coupe
+  - `_mesh calque aligné`
+  Nervures radiales autour vilo + liaison vers cylindre ;
+  bossages roulement latéraux détectés sur le scan.
+
+
 (Ancien doc bride+cale : e37ed7ae… — secondaire)
