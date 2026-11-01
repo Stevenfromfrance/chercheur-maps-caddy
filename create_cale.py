@@ -1,9 +1,9 @@
 """
-Génère une cale/joint identique à la photo (cadre carré + 4 oreilles + 4 trous + découpe centrale)
-puis l'importe dans un nouveau document Onshape.
+Génère une cale calée sur la version manuelle Onshape :
+https://cad.onshape.com/documents/1949a3eff8d0532716c1e442/w/8fce890e626c947d8d8cd2db/e/4a013ce2f5e63c3c7caacd6b
 
-Cotes dérivées des proportions de la photo (échelle basée sur trous Ø5 mm).
-Ajuste les constantes ci-dessous si tu as les cotes réelles au pied à coulisse.
+Cotes mesurées via l'API (bbox + centres des trous).
+Pour la prochaine pièce depuis un scan A4 : voir scan_scale.py
 """
 
 from __future__ import annotations
@@ -16,93 +16,67 @@ import cadquery as cq
 from dotenv import load_dotenv
 from onshape_client.client import Client
 
-# --- Cotes paramétriques (mm) ---
-OUTER_SIDE = 68.0          # côté du carré principal (hors oreilles)
-WALL = 7.5                 # épaisseur de paroi du cadre
-LOBE_R = 9.0               # rayon des 4 oreilles
-HOLE_D = 5.0               # diamètre des trous de fixation
-CORNER_R = 4.0             # congé coins extérieurs
-INNER_CORNER_R = 0.8       # coins intérieurs plus anguleux (comme la photo)
-NOTCH_R = 2.2              # rayon des 2 encoches hautes (intérieur)
-NOTCH_SPACING = 18.0       # entraxe des 2 encoches
-THICKNESS = 2.0            # épaisseur de la cale
+# --- Cotes = version manuelle Onshape (mm) ---
+OUTER_W = 27.643
+OUTER_H = 23.814
+THICKNESS = 5.0
+HOLE_D = 2.52
+LOBE_R = 3.6
+CORNER_R = 2.5
+INNER_W = 16.0
+INNER_H = 13.0
+INNER_CORNER_R = 1.2
+NOTCH_R = 1.0
+NOTCH_SPACING = 6.0
 
-# Décalage des oreilles latérales (photo = symétrie 180°, PAS miroir 4 côtés)
-# Oreille gauche vers le bas, oreille droite vers le haut (~37% du demi-côté)
-LOBE_SIDE_OFFSET = 12.5
-# Léger décalage des oreilles haut/bas (même symétrie 180°)
-LOBE_TB_OFFSET = 4.5
+# Centres des trous / oreilles relatifs au centre de la bbox manuelle
+# Symétrie 180° (haut-gauche / bas-droite, etc.)
+HOLE_CENTERS = [
+    (-3.657, 9.442),    # haut
+    (11.306, 1.541),    # droite
+    (3.728, -9.437),    # bas
+    (-11.306, -1.535),  # gauche
+]
 
 OUTPUT_STEP = Path(__file__).resolve().parent / "cale_generee.step"
-OUTPUT_SVG = Path(__file__).resolve().parent / "cale_generee_preview.svg"
-DOC_NAME = "Cale generee v3 asym"
-
-
-def lobe_centers(half: float):
-    """Centres des 4 oreilles / trous — rotation 180° autour de l'origine."""
-    return [
-        (-LOBE_TB_OFFSET, half),                 # haut (légèrement à gauche)
-        (LOBE_TB_OFFSET, -half),                 # bas (légèrement à droite)
-        (half, LOBE_SIDE_OFFSET),                # droite (vers le haut)
-        (-half, -LOBE_SIDE_OFFSET),              # gauche (vers le bas)
-    ]
+DOC_NAME = "Cale recalibree manuelle"
 
 
 def build_cale() -> cq.Workplane:
-    half = OUTER_SIDE / 2
-    inner = OUTER_SIDE - 2 * WALL
-    inner_half = inner / 2
     hole_r = HOLE_D / 2
-    centers = lobe_centers(half)
 
-    # Carré principal avec congés d'angle
-    square = (
+    body = (
         cq.Workplane("XY")
-        .rect(OUTER_SIDE, OUTER_SIDE)
+        .rect(OUTER_W, OUTER_H)
         .extrude(THICKNESS)
         .edges("|Z")
         .fillet(CORNER_R)
     )
 
-    # 4 oreilles (positions asymétriques = photo réelle)
     lobes = cq.Workplane("XY")
-    for cx, cy in centers:
+    for cx, cy in HOLE_CENTERS:
         lobes = lobes.moveTo(cx, cy).circle(LOBE_R)
-    body = square.union(lobes.extrude(THICKNESS))
+    body = body.union(lobes.extrude(THICKNESS))
 
-    # Découpe centrale
     cut = (
         cq.Workplane("XY")
         .workplane(offset=-0.1)
-        .rect(inner, inner)
+        .rect(INNER_W, INNER_H)
         .extrude(THICKNESS + 0.2)
         .edges("|Z")
         .fillet(INNER_CORNER_R)
     )
-    # 2 encoches sur le bord intérieur haut
     notches = cq.Workplane("XY").workplane(offset=-0.1)
     for nx in (-NOTCH_SPACING / 2, NOTCH_SPACING / 2):
-        notches = notches.moveTo(nx, inner_half).circle(NOTCH_R)
+        notches = notches.moveTo(nx, INNER_H / 2).circle(NOTCH_R)
     body = body.cut(cut.union(notches.extrude(THICKNESS + 0.2)))
 
-    # Trous de fixation au centre de chaque oreille
     holes = cq.Workplane("XY").workplane(offset=-0.1)
-    for cx, cy in centers:
+    for cx, cy in HOLE_CENTERS:
         holes = holes.moveTo(cx, cy).circle(hole_r)
     body = body.cut(holes.extrude(THICKNESS + 0.2))
 
     return body
-
-
-def export_preview(part: cq.Workplane, path: Path) -> None:
-    """Export SVG vue de dessus pour comparaison visuelle."""
-    # Section / projection approximative : exporter les wires du face top
-    try:
-        exporters = cq.exporters
-        exporters.export(part, str(path), exporters.ExportTypes.SVG)
-        print(f"Preview SVG : {path}")
-    except Exception as e:
-        print(f"Preview SVG indisponible ({e})")
 
 
 def make_client() -> Client:
@@ -119,11 +93,9 @@ def make_client() -> Client:
 
 
 def upload_step_to_onshape(client: Client, step_path: Path) -> str:
-    """Crée un document Onshape et y importe le STEP. Retourne l'URL du document."""
     from onshape_client.oas.models.bt_document_params import BTDocumentParams
 
     print(f"Création du document Onshape « {DOC_NAME} »…")
-    # Compte Free Onshape : documents publics uniquement
     doc = client.documents_api.create_document(
         BTDocumentParams(name=DOC_NAME, is_public=True)
     )
@@ -134,8 +106,6 @@ def upload_step_to_onshape(client: Client, step_path: Path) -> str:
 
     print("Import du STEP → Part Studio Onshape…")
     with open(step_path, "rb") as f:
-        # Ne pas passer format_name : sinon Onshape stocke un blob
-        # au lieu de créer un Part Studio éditable.
         translation = client.translation_api.create_translation(
             did,
             wid,
@@ -167,13 +137,16 @@ def upload_step_to_onshape(client: Client, step_path: Path) -> str:
 
 def main():
     print(
-        f"Construction cale : outer={OUTER_SIDE} wall={WALL} lobeR={LOBE_R} "
-        f"holeØ={HOLE_D} thickness={THICKNESS} mm"
+        f"Cale manuelle : {OUTER_W}×{OUTER_H}×{THICKNESS} mm, "
+        f"trous Ø{HOLE_D}, oreilles R={LOBE_R}"
     )
     part = build_cale()
     cq.exporters.export(part, str(OUTPUT_STEP))
-    print(f"STEP écrit : {OUTPUT_STEP} ({OUTPUT_STEP.stat().st_size} octets)")
-    export_preview(part, OUTPUT_SVG)
+    bb = part.val().BoundingBox()
+    print(
+        f"STEP {OUTPUT_STEP} ({OUTPUT_STEP.stat().st_size} o) "
+        f"bbox {bb.xlen:.3f}×{bb.ylen:.3f}×{bb.zlen:.3f} mm"
+    )
 
     client = make_client()
     url = upload_step_to_onshape(client, OUTPUT_STEP)
