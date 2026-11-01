@@ -66,3 +66,10 @@ https://cad.onshape.com/documents/6ce65fc3a321bb6ca7fc25ec/w/7a4de24b97a9450ebe3
 Réf cale : 75.000 × 78.054 × 12.100 mm, entraxe oreilles ≈ 64.34 mm
 (fichier cale_admission_ref.json)
 Échelle scan vs cale : écart ~1.5 % → pas de rescaling forcé.
+
+CALE ALIGNÉE SUR BRIDE ADMISSION
+--------------------------------
+https://cad.onshape.com/documents/c7f415a5942454647e8af76a/w/44b95a848de981926af097b8/e/0b1730e2737dd993bfb044c7
+Script : python align_cale_admission.py --upload
+Pose : face de joint sur bride +X (~X=53.7), centrée orifice ~Ø43, oreilles calées sur creux mesh (err≈5.7 mm total).
+Peaufinage manuel : micro-ajustement possible (scan bruité).
