@@ -28,3 +28,7 @@ RE Golf 9980 — validation Stage1 / Top AccPed : [`stage1-hubs-golf9980.html`](
 Client A5 Sportback CGKA EDC17CP14 : [`a5-cgka-edc17cp14.html`](https://stevenfromfrance.github.io/chercheur-maps-caddy/a5-cgka-edc17cp14.html)
 
 Banque PCR2.1 (25 softs) : [`pcr21-banque.html`](https://stevenfromfrance.github.io/chercheur-maps-caddy/pcr21-banque.html)
+
+## OBDLink → macOS
+
+Cartographie communication Bluetooth dongle (CX BLE / MX+ SPP) pour l’app Mac atelier : [`docs/obdlink-bluetooth-macos.md`](docs/obdlink-bluetooth-macos.md)
