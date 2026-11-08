@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAVAGESEAR · Log VILLE GPS 2026-11-08</title>
+<link rel="icon" href="../avatar-savagesear.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../chercheur-theme.css?v=atelier1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+<style>
+  .v5d-main { max-width: 1180px; margin: 0 auto; padding: var(--pad) var(--pad) 4rem; }
+  .v5d-hero {
+    margin: 0 0 1.1rem;
+    padding: 1rem 1.1rem 1.15rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .v5d-hero h2 {
+    font-family: var(--display);
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0 0 .35rem;
+  }
+  .v5d-hero .meta { color: var(--muted); margin: 0 0 .75rem; font-size: .92rem; }
+  .grade {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .82rem;
+    padding: .35rem .6rem;
+    border: 1px solid var(--line-hot);
+    background: var(--soft);
+    color: var(--accent2);
+    margin-bottom: .75rem;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .85rem;
+  }
+  @media (max-width: 900px) { .verdict-grid { grid-template-columns: 1fr; } }
+  .verdict-col h3 {
+    margin: 0 0 .45rem;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .verdict-col ul { margin: 0; padding: 0; list-style: none; }
+  .verdict-col li {
+    margin: 0 0 .55rem;
+    padding: .55rem .65rem;
+    border-left: 3px solid var(--line);
+    background: rgba(0,0,0,.18);
+  }
+  .verdict-col.ok li { border-left-color: var(--ok); }
+  .verdict-col.ko li { border-left-color: var(--bad); }
+  .verdict-col.next li { border-left-color: var(--accent2); }
+  .verdict-col li b { display: block; margin-bottom: .2rem; }
+  .verdict-col li span { color: var(--muted); font-size: .92rem; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: .4rem;
+    margin: .85rem 0 1rem;
+  }
+  .stat {
+    padding: .4rem .5rem;
+    background: rgba(0,0,0,.22);
+    border: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: .75rem;
+  }
+  .stat .k { color: var(--muted); display: block; font-size: .68rem; margin-bottom: .15rem; }
+  .stat .v { color: var(--ink); }
+  .panel {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: .9rem 1rem 1.1rem;
+    margin: 0 0 1rem;
+  }
+  .panel h3 {
+    margin: 0 0 .7rem;
+    font-family: var(--display);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+  }
+  .chart-wrap {
+    position: relative;
+    height: min(320px, 50vh);
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--line);
+    padding: .5rem;
+  }
+  .map-wrap {
+    height: min(360px, 55vh);
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--line);
+    padding: .5rem;
+  }
+  .map-wrap svg { width: 100%; height: 100%; display: block; }
+  .note-box {
+    margin-top: .75rem;
+    padding: .55rem .7rem;
+    border-left: 3px solid var(--accent2);
+    background: rgba(245,197,66,.06);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+  .note-box b { color: var(--ink); }
+  .csv-link { font-family: var(--mono); font-size: .78rem; }
+  .loading { color: var(--muted); padding: 2rem 0; text-align: center; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 1rem;
+  }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="log-aide-page density-compact">
+<header>
+  <div class="header-stripe" aria-hidden="true"></div>
+  <div class="header-inner">
+  <div class="brand-row">
+    <a class="brand-lockup" href="../index.html#home">
+      <img class="brand-mark" src="../avatar-savagesear.png" width="48" height="48" alt="SAVAGESEAR Reprog">
+      <div class="brand-text">
+        <p class="brand-name"><span>S</span><span>A</span><span>V</span><span>A</span><span>G</span><span>E</span><span>S</span><span>E</span><span>A</span><span>R</span></p>
+        <p class="brand-tag">Reprog</p>
+        <h1>Log VILLE · GPS 08/11</h1>
+      </div>
+    </a>
+    <div class="work-controls" role="group" aria-label="Thème">
+      <span class="theme-toggle">
+        <button type="button" class="theme-btn on" id="btn-theme-dark">Noir</button>
+        <button type="button" class="theme-btn" id="btn-theme-light">Blanc</button>
+      </span>
+    </div>
+    <nav class="nav-jump" aria-label="Pages">
+      <a href="../index.html#home">Accueil</a>
+      <a href="../log-aide.html">Fiches runs</a>
+      <a href="../logs-v5f/">V5f soir</a>
+      <a href="../logs-v5d-steven/">V5d Steven</a>
+      <a href="index.html" class="on">VILLE GPS</a>
+    </nav>
+  </div>
+  </div>
+</header>
+
+<main class="v5d-main">
+  <div id="app" class="loading">Chargement data.json…</div>
+</main>
+
+<script>
+(function () {
+  const themeBtns = {
+    dark: document.getElementById('btn-theme-dark'),
+    light: document.getElementById('btn-theme-light'),
+  };
+  function applyTheme(mode) {
+    document.body.classList.toggle('theme-light', mode === 'light');
+    themeBtns.dark.classList.toggle('on', mode === 'dark');
+    themeBtns.light.classList.toggle('on', mode === 'light');
+    try { localStorage.setItem('ss-theme', mode); } catch (_) {}
+  }
+  themeBtns.dark.addEventListener('click', () => applyTheme('dark'));
+  themeBtns.light.addEventListener('click', () => applyTheme('light'));
+  try {
+    const saved = localStorage.getItem('ss-theme');
+    if (saved === 'light' || saved === 'dark') applyTheme(saved);
+  } catch (_) {}
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function listItems(items) {
+    return items.map(it => `<li><b>${esc(it.title)}</b><span>${esc(it.detail)}</span></li>`).join('');
+  }
+
+  function pathSvg(path, bbox) {
+    const pad = 12;
+    const w = 640, h = 360;
+    const lon0 = bbox.lon_min, lon1 = bbox.lon_max;
+    const lat0 = bbox.lat_min, lat1 = bbox.lat_max;
+    const dx = Math.max(lon1 - lon0, 1e-6);
+    const dy = Math.max(lat1 - lat0, 1e-6);
+    // keep aspect roughly square in lon/lat for Cayenne
+    const sx = (w - 2 * pad) / dx;
+    const sy = (h - 2 * pad) / dy;
+    const s = Math.min(sx, sy);
+    const ox = (w - s * dx) / 2;
+    const oy = (h - s * dy) / 2;
+    const xy = (p) => {
+      const x = ox + (p.lon - lon0) * s;
+      const y = h - (oy + (p.lat - lat0) * s);
+      return [x, y];
+    };
+    const pts = path.map(xy);
+    const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ');
+    const start = pts[0], end = pts[pts.length - 1];
+    const peak = path.reduce((a, b) => a.kmh >= b.kmh ? a : b);
+    const peakXY = xy(peak);
+    return `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Trace GPS ville Cayenne">
+      <rect x="0" y="0" width="${w}" height="${h}" fill="transparent"/>
+      <path d="${d}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="${start[0].toFixed(1)}" cy="${start[1].toFixed(1)}" r="5" fill="var(--ok)"/>
+      <circle cx="${end[0].toFixed(1)}" cy="${end[1].toFixed(1)}" r="5" fill="var(--accent2)"/>
+      <circle cx="${peakXY[0].toFixed(1)}" cy="${peakXY[1].toFixed(1)}" r="4" fill="var(--bad)"/>
+      <text x="${pad}" y="${h - 8}" fill="var(--muted)" font-size="11" font-family="IBM Plex Mono, monospace">vert=départ · jaune=fin · rouge=pic ${peak.kmh} km/h</text>
+    </svg>`;
+  }
+
+  function render(data) {
+    const s = data.stats;
+    const v = data.verdict;
+    const app = document.getElementById('app');
+    app.className = '';
+    app.innerHTML = `
+      <div class="v5d-hero">
+        <div class="grade">${esc(v.grade)}</div>
+        <h2>${esc(data.run)} · Caddy 1.6 TDI</h2>
+        <p class="meta">${esc(data.vehicle)} · ${esc(data.start_local)} → ~${esc(data.end_local_approx.split(' ').slice(1).join(' '))}<br>${esc(data.source)}</p>
+        <p>${esc(v.summary)}</p>
+        <div class="stats">
+          <div class="stat"><span class="k">Durée</span><span class="v">${s.duration_min} min</span></div>
+          <div class="stat"><span class="k">Distance</span><span class="v">${s.distance_km} km</span></div>
+          <div class="stat"><span class="k">Vmax</span><span class="v">${s.spd_max_kmh} km/h</span></div>
+          <div class="stat"><span class="k">Moy. roulant</span><span class="v">${s.spd_mean_moving_kmh} km/h</span></div>
+          <div class="stat"><span class="k">À l’arrêt</span><span class="v">${s.stopped_pct} %</span></div>
+          <div class="stat"><span class="k">Coolant écran</span><span class="v">${s.coolant_screen_C} °C</span></div>
+        </div>
+        <div class="verdict-grid">
+          <div class="verdict-col ok"><h3>OK</h3><ul>${listItems(v.ok)}</ul></div>
+          <div class="verdict-col ko"><h3>Manque</h3><ul>${listItems(v.ko)}</ul></div>
+          <div class="verdict-col next"><h3>Ensuite</h3><ul>${listItems(v.next)}</ul></div>
+        </div>
+        <p class="csv-link" style="margin:.85rem 0 0">CSV · <a href="csv/CADDY_VILLE_GPS_20261108.csv">CADDY_VILLE_GPS_20261108.csv</a></p>
+      </div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Vitesse GPS</h3>
+          <div class="chart-wrap"><canvas id="spdChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <h3>Trace Cayenne</h3>
+          <div class="map-wrap">${pathSvg(data.path, s.bbox)}</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Répartition vitesse</h3>
+        <div class="chart-wrap" style="height:220px"><canvas id="binChart"></canvas></div>
+        <div class="note-box">
+          <b>Export incomplet.</b> Sur le téléphone tu avais aussi MAF, charge calculée et coolant —
+          le CSV ne contient que GPS + vitesse. Pour valider AccPed tip-in V5g : VCDS avec RPM + Speed + AccPed + TQI_SP
+          (<a href="../log-aide.html">fiche VILLE_TIPIN</a>).
+        </div>
+      </div>
+    `;
+
+    const spd = data.spd_series;
+    new Chart(document.getElementById('spdChart'), {
+      type: 'line',
+      data: {
+        labels: spd.map(p => (p.t / 60).toFixed(1)),
+        datasets: [{
+          label: 'Vitesse GPS (km/h)',
+          data: spd.map(p => p.kmh),
+          borderColor: '#e23a1a',
+          backgroundColor: 'rgba(226,58,26,.12)',
+          fill: true,
+          pointRadius: 0,
+          borderWidth: 2,
+          tension: .15,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#c8c8c8' } },
+          title: { display: true, text: 'Source: OBD GPS export · 08/11/2026 17:53–18:03 America/Cayenne', color: '#8a8a8a', font: { size: 11 } },
+        },
+        scales: {
+          x: { title: { display: true, text: 'Temps (min)', color: '#8a8a8a' }, ticks: { color: '#8a8a8a' }, grid: { color: 'rgba(255,255,255,.06)' } },
+          y: { title: { display: true, text: 'km/h', color: '#8a8a8a' }, ticks: { color: '#8a8a8a' }, grid: { color: 'rgba(255,255,255,.06)' } },
+        },
+      },
+    });
+
+    new Chart(document.getElementById('binChart'), {
+      type: 'bar',
+      data: {
+        labels: data.bins.map(b => b.label),
+        datasets: [{
+          label: 'Part du temps (%)',
+          data: data.bins.map(b => b.pct),
+          backgroundColor: ['#94a3b8', '#3ecf7a', '#5b9cff', '#f5c542'],
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Répartition du temps par bande de vitesse', color: '#8a8a8a', font: { size: 11 } },
+        },
+        scales: {
+          x: { ticks: { color: '#8a8a8a' }, grid: { display: false } },
+          y: { title: { display: true, text: '% du log', color: '#8a8a8a' }, ticks: { color: '#8a8a8a' }, grid: { color: 'rgba(255,255,255,.06)' }, max: 50 },
+        },
+      },
+    });
+  }
+
+  fetch('data.json')
+    .then(r => r.json())
+    .then(render)
+    .catch(err => {
+      const app = document.getElementById('app');
+      app.className = 'err';
+      app.textContent = 'Erreur chargement: ' + err;
+    });
+})();
+</script>
+</body>
+</html>
