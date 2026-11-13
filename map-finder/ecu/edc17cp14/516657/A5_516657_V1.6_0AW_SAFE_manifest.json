@@ -1,0 +1,148 @@
+{
+  "file": "A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls",
+  "ok": true,
+  "errors": [],
+  "based_on": "V1.5_0AW",
+  "goal": "strip_PCR21_wish_fill_rpm_raise_and_turbo_atm_floor",
+  "bytes_changed_vs_ori": 5652,
+  "bytes_changed_vs_v15": 586,
+  "restored_to_ori": {
+    "wish_bytes": 454,
+    "rpm_bytes": 10,
+    "turbo_floor_cells": 61,
+    "wish_maps": [
+      {
+        "name": "Torque_Request_Standard",
+        "addr_hex": "183FFE",
+        "size": 128,
+        "bytes_restored": 43
+      },
+      {
+        "name": "Torque_Request_Gear_1",
+        "addr_hex": "19AE94",
+        "size": 256,
+        "bytes_restored": 83
+      },
+      {
+        "name": "Torque_Request_Gear_2",
+        "addr_hex": "19AFC8",
+        "size": 256,
+        "bytes_restored": 80
+      },
+      {
+        "name": "Torque_Request_Gear_3",
+        "addr_hex": "19B0FC",
+        "size": 256,
+        "bytes_restored": 73
+      },
+      {
+        "name": "Torque_Request_Gear_4",
+        "addr_hex": "19B230",
+        "size": 256,
+        "bytes_restored": 73
+      },
+      {
+        "name": "Torque_Request_Gear_5",
+        "addr_hex": "19B4BA",
+        "size": 256,
+        "bytes_restored": 102
+      }
+    ],
+    "rpm_maps": [
+      {
+        "name": "RPM_Limiter_Neutral_1",
+        "addr_hex": "1917C0",
+        "v15_raw": 5400,
+        "ori_raw": 5000,
+        "v15_rpm_x0_5": 2700.0,
+        "ori_rpm_x0_5": 2500.0
+      },
+      {
+        "name": "RPM_Limiter_Neutral_2",
+        "addr_hex": "191810",
+        "v15_raw": 8200,
+        "ori_raw": 7600,
+        "v15_rpm_x0_5": 4100.0,
+        "ori_rpm_x0_5": 3800.0
+      },
+      {
+        "name": "RPM_Limiter_Neutral_3",
+        "addr_hex": "191814",
+        "v15_raw": 5400,
+        "ori_raw": 5000,
+        "v15_rpm_x0_5": 2700.0,
+        "ori_rpm_x0_5": 2500.0
+      },
+      {
+        "name": "RPM_Limiter_2",
+        "addr_hex": "1AFD70",
+        "v15_raw": 11800,
+        "ori_raw": 10900,
+        "v15_rpm_x0_5": 5900.0,
+        "ori_rpm_x0_5": 5450.0
+      },
+      {
+        "name": "RPM_Limiter_3",
+        "addr_hex": "1AFD72",
+        "v15_raw": 12100,
+        "ori_raw": 11200,
+        "v15_rpm_x0_5": 6050.0,
+        "ori_rpm_x0_5": 5600.0
+      }
+    ],
+    "turbo_floor": [
+      {
+        "name": "Turbo_1",
+        "addr_hex": "1D5D7C",
+        "cells_restored_to_1000hPa": 12
+      },
+      {
+        "name": "Turbo_2",
+        "addr_hex": "1D5EF4",
+        "cells_restored_to_1000hPa": 12
+      },
+      {
+        "name": "Turbo_3",
+        "addr_hex": "1D606C",
+        "cells_restored_to_1000hPa": 12
+      },
+      {
+        "name": "Turbo_4",
+        "addr_hex": "1D61E4",
+        "cells_restored_to_1000hPa": 12
+      },
+      {
+        "name": "Turbo_7",
+        "addr_hex": "1D67C4",
+        "cells_restored_to_1000hPa": 12
+      },
+      {
+        "name": "Turbo_Limiter_APS",
+        "addr_hex": "1D6DF8",
+        "cells_restored_to_1000hPa": 1
+      }
+    ]
+  },
+  "kept_from_v15": {
+    "davinci_dpf_egr_flaps": true,
+    "injection_time_soft": true,
+    "injtime_u16_cells_still_diff": 90,
+    "iq_cruise_logic": true,
+    "smoke_lambda_soft": true,
+    "turbo_plus_4pct_except_atm_floor_1000hPa": true,
+    "soi_soft": true,
+    "rail_soft": true
+  },
+  "pcr21_errors_removed": [
+    "Torque Request Standard + Gear1-5 mid-fill (AccPed-style PCR) \u2014 fixes 0AW WOT shift fight",
+    "RPM limiters +8% (raise redline 5450\u21925900 / 5600\u21926050 real rpm)",
+    "Turbo atm floor 1000\u21921040 hPa (0-boost / ~1000 rpm zone) \u2014 Lesson 21 leave alone"
+  ],
+  "symptoms_targeted": {
+    "hard_to_shift_at_wot": "Gear TQ maps restored ORI (V1.5 fill fought Multitronic)",
+    "issue_around_1000_rpm_or_1000hPa_floor": "Turbo cells ORI=1000 hPa restored (no blind +4%)"
+  },
+  "ids_ok": true,
+  "ids_unmoved": true,
+  "note": "noCHK. V1.6 SAFE = V1.5 minus PCR2.1 contaminations. Wish/Gear TQ + RPM lim = ORI; turbo keeps +4% except 1000 hPa floor. 0AW: no launch, no gear wish raise, no redline raise, no fake boost at atm."
+}

@@ -65,9 +65,14 @@
       "0x1065c"
     ]
   },
-  "status": "v1.5_0aw_ready",
-  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
+  "status": "v1.7_0aw_high_ready",
+  "v1_file": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.7_0AW_HIGH_rpm_safe_noPCR_wish_DPF_EGR_noCHK.fls",
+  "v16_safe": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.6_0AW_SAFE_noPCR_wish_noRPMup_injtime_turbo_DPF_EGR_noCHK.fls",
+  "v15_archive": "map-finder/ecu/edc17cp14/516657/A5_516657_V1.5_0AW_injtime_cruiseIQ_vmaxoff_nosmoke_fill400_DPF_EGR_HC_SOI_noCHK.fls",
   "compare": "map-finder/ecu/edc17cp14/516657/v15_kp_compare.json",
+  "audit": "map-finder/ecu/edc17cp14/516657/AUDIT-V15-VS-NOUVELLE-METHODO.md",
+  "build": "map-finder/ecu/edc17cp14/516657/build_v17_0aw_high.py",
+  "livraison": "map-finder/ecu/edc17cp14/516657/LIVRAISON-V1.7-0AW-HIGH.txt",
   "viewer": "a5-winols.html",
   "flash": "KESS V2 OBD CHK — file is noCHK. Restore = K-TAG 151 BOOT. EEPROM off.",
   "no_flash_until": [
@@ -75,15 +80,38 @@
     "KESS OBD read first: IDs 516657 + size 2 Mo"
   ],
   "pack_goal": [
-    "stage1_0aw_fill400",
-    "nosmoke_lambda",
+    "edc17_soft_stage1_no_pcr21_wish",
     "injtime_soft",
-    "cruise_iq",
+    "iq_cruise",
+    "nosmoke_lambda",
+    "turbo_with_limiter",
+    "soi_soft",
+    "rail_soft",
     "dpf_egr_flaps",
-    "hardcut_soi_vmax"
+    "wish_gear_ori_0aw",
+    "rpm_limiters_ori"
+  ],
+  "pcr21_errors_fixed_in_v16": [
+    "torque_request_standard_and_gear1_5_mid_fill_restored_ori",
+    "rpm_limiters_plus8pct_redline_raise_restored_ori"
   ],
   "pack_later": [
-    "logs_ville_route_inj_harcut"
+    "logs_ville_route_inj_turbo_rail_harcut",
+    "optional_hotstart_idle_if_needed",
+    "optional_vgt_only_if_turbo_lag"
   ],
+  "methodology_aligned": {
+    "lesson21_injtime": "ok_plus_1_7pct",
+    "lesson21_turbo_with_limiter": "ok_plus_4pct_both",
+    "davinci_dpf_egr": "ok",
+    "no_launch_0aw": "ok",
+    "no_pcr_wish_fill": "ok_v16",
+    "no_rpm_redline_raise": "ok_v16",
+    "gaps_ Remaining_optional": [
+      "vgt_untouched",
+      "hotstart_idle_absent",
+      "limp_raise_skip_on_0aw"
+    ]
+  },
   "no_launch": "0AW Multitronic — do not apply Caddy-style launch"
 }
