@@ -7,3 +7,17 @@ __pycache__/
 *.pyc
 node_modules/
 .cursor/
+.env
+.env.*
+!.env.example
+mon_assemblage.step
+*.step
+*.stl
+cale_generee_preview.svg
+cale_generee_preview.png
+cale_onshape_view.png
+view_*.png
+ref_*.png
+cale1_bodies.json
+
+
